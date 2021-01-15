@@ -10,3 +10,5 @@ jupyter-book
 gsutil
 scikit-allel
 malariagen-data
+ghp-import
+
