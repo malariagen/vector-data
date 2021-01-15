@@ -1,0 +1,14 @@
+numpy
+pandas
+matplotlib
+zarr
+dask
+fsspec
+gcsfs
+jupyterlab
+jupyter-book
+gsutil
+scikit-allel
+malariagen-data
+ghp-import
+

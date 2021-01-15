@@ -1,4 +1,4 @@
-# MalariaGEN Vector Public Data
+# MalariaGEN vector open data
 
 This repository provides a public discussion forum, issue tracker and technical documentation for public data releases providing genomic data from sequencing of malaria mosquitoes (vectors) by MalariaGEN projects.
 

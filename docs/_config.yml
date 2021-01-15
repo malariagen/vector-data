@@ -1,0 +1,18 @@
+title: "MalariaGEN vector open data guide"
+logo: images/logo.png
+execute:
+  execute_notebooks: "off"
+repository:
+  url: https://github.com/malariagen/vector-open-data
+  path_to_book              : docs
+  branch                    : master
+launch_buttons:
+  notebook_interface: "jupyterlab"
+launch_buttons:
+  binderhub_url: "https://gke.mybinder.org"
+  colab_url: "https://colab.research.google.com"
+html:
+  use_repository_button : true
+  use_issues_button: true
+  extra_footer: "By the MalariaGEN Resource Centre Team."
+ 
