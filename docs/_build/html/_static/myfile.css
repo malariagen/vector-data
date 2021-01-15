@@ -1,0 +1,4 @@
+nav.bd-links p.caption { 
+    /* Don't capitalize the part headings in the navigation bar */
+    text-transform: none; 
+}

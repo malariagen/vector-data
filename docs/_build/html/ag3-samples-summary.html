@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ag1000G phase 3 - summary of samples &#8212; MalariaGEN vector open data guide</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MalariaGEN vector open data guide</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing-page.html">
+   MalariaGEN vector open data guide
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Ag1000G phase 3 (Ag3)
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ag3/intro.html">
+   Introduction to Ag1000G phase 3 (Ag3)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ag3/snp-cloud.html">
+   Ag1000G phase 3 SNP data release - cloud data access guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ag3/snp-download.html">
+   Ag1000G phase 3 SNP data release - data download guide
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/ag3-samples-summary.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-open-data/master?urlpath=tree/docs/ag3-samples-summary.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/malariagen/vector-open-data/blob/master/docs/ag3-samples-summary.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="ag1000g-phase-3-summary-of-samples">
+<h1>Ag1000G phase 3 - summary of samples<a class="headerlink" href="#ag1000g-phase-3-summary-of-samples" title="Permalink to this headline">¶</a></h1>
+<p>This notebook provides a summary of which samples are available as part of the <a class="reference external" href="https://www.malariagen.net/data/ag1000g-phase3-snp">Ag1000G phase 3 SNP data release</a>.</p>
+<p>This notebook assumes you have read either the <span class="xref myst">data download guide</span> or the <span class="xref myst">cloud access guide</span>. This notebook reads data from the cloud, but to use locally downloaded data replace “gs://vo_agam_release” with the local file system path where data have been downloaded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install packages</span>
+<span class="o">!</span>pip install -q --pre malariagen_data
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup cloud access</span>
+<span class="kn">import</span> <span class="nn">malariagen_data</span>
+<span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read in sample metadata for all sample sets containing wild-caught samples (excludes sample set AG1000G-X which contains lab crosses)</span>
+<span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">cohort</span><span class="o">=</span><span class="s2">&quot;v3_wild&quot;</span><span class="p">)</span>
+
+<span class="c1"># apply grouping</span>
+<span class="n">summ</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;sample_set&quot;</span><span class="p">,</span> <span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;species&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">summ</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;count&quot;</span>
+
+<span class="c1"># make pivot table</span>
+<span class="n">df_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">summ</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> 
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sample_set&quot;</span><span class="p">,</span> <span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">],</span> 
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>species</th>
+      <th>arabiensis</th>
+      <th>coluzzii</th>
+      <th>gambiae</th>
+      <th>intermediate_arabiensis_gambiae</th>
+      <th>intermediate_gambiae_coluzzii</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>country</th>
+      <th>year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AG1000G-AO</th>
+      <th>Angola</th>
+      <th>2009</th>
+      <td>0</td>
+      <td>81</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-BF-A</th>
+      <th>Burkina Faso</th>
+      <th>2012</th>
+      <td>0</td>
+      <td>82</td>
+      <td>98</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>AG1000G-BF-B</th>
+      <th>Burkina Faso</th>
+      <th>2014</th>
+      <td>3</td>
+      <td>53</td>
+      <td>46</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-BF-C</th>
+      <th>Burkina Faso</th>
+      <th>2004</th>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-CD</th>
+      <th>Democratic Republic of Congo</th>
+      <th>2015</th>
+      <td>0</td>
+      <td>0</td>
+      <td>76</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">AG1000G-CF</th>
+      <th rowspan="2" valign="top">Central African Republic</th>
+      <th>1993</th>
+      <td>0</td>
+      <td>5</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>0</td>
+      <td>13</td>
+      <td>53</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-CI</th>
+      <th>Cote d'Ivoire</th>
+      <th>2012</th>
+      <td>0</td>
+      <td>80</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-CM-A</th>
+      <th>Cameroon</th>
+      <th>2009</th>
+      <td>0</td>
+      <td>0</td>
+      <td>303</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-CM-B</th>
+      <th>Cameroon</th>
+      <th>2005</th>
+      <td>0</td>
+      <td>7</td>
+      <td>90</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-CM-C</th>
+      <th>Cameroon</th>
+      <th>2013</th>
+      <td>2</td>
+      <td>19</td>
+      <td>23</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-FR</th>
+      <th>Mayotte</th>
+      <th>2011</th>
+      <td>0</td>
+      <td>0</td>
+      <td>23</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-GA-A</th>
+      <th>Gabon</th>
+      <th>2000</th>
+      <td>0</td>
+      <td>0</td>
+      <td>69</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-GH</th>
+      <th>Ghana</th>
+      <th>2012</th>
+      <td>0</td>
+      <td>64</td>
+      <td>36</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-GM-A</th>
+      <th>Gambia, The</th>
+      <th>2011</th>
+      <td>0</td>
+      <td>5</td>
+      <td>58</td>
+      <td>0</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>AG1000G-GM-B</th>
+      <th>Gambia, The</th>
+      <th>2012</th>
+      <td>0</td>
+      <td>16</td>
+      <td>9</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>AG1000G-GM-C</th>
+      <th>Gambia, The</th>
+      <th>2012</th>
+      <td>0</td>
+      <td>148</td>
+      <td>2</td>
+      <td>0</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>AG1000G-GN-A</th>
+      <th>Guinea</th>
+      <th>2012</th>
+      <td>0</td>
+      <td>4</td>
+      <td>40</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">AG1000G-GN-B</th>
+      <th>Guinea</th>
+      <th>2012</th>
+      <td>0</td>
+      <td>7</td>
+      <td>83</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Mali</th>
+      <th>2012</th>
+      <td>0</td>
+      <td>28</td>
+      <td>65</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>AG1000G-GQ</th>
+      <th>Equatorial Guinea</th>
+      <th>2002</th>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-GW</th>
+      <th>Guinea-Bissau</th>
+      <th>2010</th>
+      <td>0</td>
+      <td>0</td>
+      <td>29</td>
+      <td>0</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">AG1000G-KE</th>
+      <th rowspan="3" valign="top">Kenya</th>
+      <th>2000</th>
+      <td>0</td>
+      <td>0</td>
+      <td>19</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2007</th>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>10</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>AG1000G-ML-A</th>
+      <th>Mali</th>
+      <th>2014</th>
+      <td>0</td>
+      <td>27</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-ML-B</th>
+      <th>Mali</th>
+      <th>2004</th>
+      <td>2</td>
+      <td>36</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>AG1000G-MW</th>
+      <th>Malawi</th>
+      <th>2015</th>
+      <td>41</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">AG1000G-MZ</th>
+      <th rowspan="2" valign="top">Mozambique</th>
+      <th>2003</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2004</th>
+      <td>0</td>
+      <td>0</td>
+      <td>71</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">AG1000G-TZ</th>
+      <th rowspan="3" valign="top">Tanzania</th>
+      <th>2012</th>
+      <td>87</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>1</td>
+      <td>0</td>
+      <td>36</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>137</td>
+      <td>0</td>
+      <td>32</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>AG1000G-UG</th>
+      <th>Uganda</th>
+      <th>2012</th>
+      <td>82</td>
+      <td>0</td>
+      <td>207</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
