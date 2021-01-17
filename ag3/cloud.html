@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ag3 cloud data access guide &#8212; MalariaGEN vector data user guide</title>
+    <title>Ag3 cloud data access &#8212; MalariaGEN vector data user guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -106,7 +106,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Ag3 cloud data access guide
+   Ag3 cloud data access
   </a>
  </li>
  <li class="toctree-l1">
@@ -223,11 +223,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about-this-guide">
-   About this guide
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-hosting">
    Data hosting
   </a>
@@ -263,8 +258,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-reading">
-   Further reading
+  <a class="reference internal nav-link" href="#running-larger-computations">
+   Running larger computations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback-and-suggestions">
+   Feedback and suggestions
   </a>
  </li>
 </ul>
@@ -278,24 +278,21 @@
         
               <div>
                 
-  <div class="section" id="ag3-cloud-data-access-guide">
-<h1>Ag3 cloud data access guide<a class="headerlink" href="#ag3-cloud-data-access-guide" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="ag3-cloud-data-access">
+<h1>Ag3 cloud data access<a class="headerlink" href="#ag3-cloud-data-access" title="Permalink to this headline">¶</a></h1>
 <p>This page provides information about how to access data from <a class="reference internal" href="intro.html"><span class="doc std std-doc"><em>Anopheles gambiae</em> 1000 Genomes project (Ag1000G) phase 3</span></a> via Google Cloud. This includes sample metadata and single nucleotide polymorphism (SNP) calls.</p>
-<div class="section" id="about-this-guide">
-<h2>About this guide<a class="headerlink" href="#about-this-guide" title="Permalink to this headline">¶</a></h2>
-<p>This guide is written as a Jupyter notebook. It illustrates how to read data directly from the cloud, without having to first download any data locally. This notebook can be run from any computer, but will work best when run from a compute node within Google Cloud, because it will be physically closer to the data and so data transfer is faster. For example, this notebook can be run via <a class="reference external" href="https://gke.mybinder.org">MyBinder</a> or <a class="reference external" href="https://colab.research.google.com/">Google Colab</a> which are free interactive computing service running in the cloud.</p>
-<p>To launch this notebook in the cloud and run it for yourself, click the rocket icon at the top of the page and select one of the cloud computing services available.</p>
-</div>
+<p>This notebook illustrates how to read data directly from the cloud, without having to first download any data locally. This notebook can be run from any computer, but will work best when run from a compute node within Google Cloud, because it will be physically closer to the data and so data transfer is faster. For example, this notebook can be run via <a class="reference external" href="https://gke.mybinder.org">MyBinder</a> or <a class="reference external" href="https://colab.research.google.com/">Google Colab</a> which are free interactive computing service running in the cloud.</p>
+<p>To launch this notebook in the cloud and run it for yourself, click the rocket icon (<i class="fas fa-rocket"></i>) at the top of the page and select one of the cloud computing services available.</p>
 <div class="section" id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
 <p>All data required for this notebook is hosted on Google Cloud Storage (GCS). Data are hosted in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted in GCS are publicly accessible and do not require any authentication to access.</p>
 </div>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
-<p>Running this notebook requires the following Python packages to be installed: numpy, dask, zarr, gcsfs, fsspec, scikit-allel. These packages can be installed via pip or conda. E.g.:</p>
+<p>Running this notebook requires the following Python packages to be installed: numpy, dask, zarr, gcsfs, fsspec. These packages can be installed via pip or conda. E.g.:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install numpy dask<span class="o">[</span>array<span class="o">]</span> zarr gcsfs fsspec scikit-allel
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q numpy dask<span class="o">[</span>array<span class="o">]</span> zarr gcsfs fsspec
 </pre></div>
 </div>
 </div>
@@ -303,12 +300,12 @@
 <p>To make accessing these data more convenient, we’ve also created a <a class="reference external" href="https://github.com/malariagen/malariagen-data-python">malariagen_data Python package</a>, which is available from PyPI. This is experimental so please let us know if you find any bugs or have any suggestions. The <code class="docutils literal notranslate"><span class="pre">malariagen_data</span></code> package can be installed via pip, e.g.:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install malariagen-data
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen-data
 </pre></div>
 </div>
 </div>
 </div>
-<p>Once installed, data access from GCS is set up with the following code:</p>
+<p>Once installed, data access from Google Cloud is set up with the following code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
@@ -1135,28 +1132,109 @@ dtype: int64
 
   <!-- Vertical lines -->
   <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="1" y1="0" x2="1" y2="25" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="3" y1="0" x2="3" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
   <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="8" y1="0" x2="8" y2="25" />
+  <line x1="9" y1="0" x2="9" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
   <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="13" y1="0" x2="13" y2="25" />
+  <line x1="14" y1="0" x2="14" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="16" y1="0" x2="16" y2="25" />
   <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="20" y1="0" x2="20" y2="25" />
+  <line x1="21" y1="0" x2="21" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
   <line x1="25" y1="0" x2="25" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="27" y1="0" x2="27" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
   <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="32" y1="0" x2="32" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="34" y1="0" x2="34" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
   <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="38" y1="0" x2="38" y2="25" />
+  <line x1="39" y1="0" x2="39" y2="25" />
+  <line x1="40" y1="0" x2="40" y2="25" />
+  <line x1="42" y1="0" x2="42" y2="25" />
   <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="46" y1="0" x2="46" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="49" y1="0" x2="49" y2="25" />
   <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="51" y1="0" x2="51" y2="25" />
+  <line x1="53" y1="0" x2="53" y2="25" />
+  <line x1="54" y1="0" x2="54" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
   <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="59" y1="0" x2="59" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="61" y1="0" x2="61" y2="25" />
   <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="63" y1="0" x2="63" y2="25" />
+  <line x1="65" y1="0" x2="65" y2="25" />
+  <line x1="66" y1="0" x2="66" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
   <line x1="68" y1="0" x2="68" y2="25" />
+  <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="71" y1="0" x2="71" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="73" y1="0" x2="73" y2="25" />
+  <line x1="74" y1="0" x2="74" y2="25" />
   <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="77" y1="0" x2="77" y2="25" />
+  <line x1="78" y1="0" x2="78" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
   <line x1="81" y1="0" x2="81" y2="25" />
+  <line x1="83" y1="0" x2="83" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="85" y1="0" x2="85" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
   <line x1="87" y1="0" x2="87" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="91" y1="0" x2="91" y2="25" />
+  <line x1="92" y1="0" x2="92" y2="25" />
   <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="95" y1="0" x2="95" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="98" y1="0" x2="98" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
   <line x1="101" y1="0" x2="101" y2="25" />
+  <line x1="102" y1="0" x2="102" y2="25" />
+  <line x1="103" y1="0" x2="103" y2="25" />
+  <line x1="104" y1="0" x2="104" y2="25" />
+  <line x1="106" y1="0" x2="106" y2="25" />
   <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="109" y1="0" x2="109" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
   <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="114" y1="0" x2="114" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="116" y1="0" x2="116" y2="25" />
+  <line x1="118" y1="0" x2="118" y2="25" />
+  <line x1="119" y1="0" x2="119" y2="25" />
   <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >52226568</text>
@@ -1197,28 +1275,109 @@ dtype: int64
 
   <!-- Vertical lines -->
   <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="1" y1="0" x2="1" y2="25" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="3" y1="0" x2="3" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
   <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="8" y1="0" x2="8" y2="25" />
+  <line x1="9" y1="0" x2="9" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
   <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="13" y1="0" x2="13" y2="25" />
+  <line x1="14" y1="0" x2="14" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="16" y1="0" x2="16" y2="25" />
   <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="20" y1="0" x2="20" y2="25" />
+  <line x1="21" y1="0" x2="21" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
   <line x1="25" y1="0" x2="25" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="27" y1="0" x2="27" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
   <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="32" y1="0" x2="32" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="34" y1="0" x2="34" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
   <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="38" y1="0" x2="38" y2="25" />
+  <line x1="39" y1="0" x2="39" y2="25" />
+  <line x1="40" y1="0" x2="40" y2="25" />
+  <line x1="42" y1="0" x2="42" y2="25" />
   <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="46" y1="0" x2="46" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="49" y1="0" x2="49" y2="25" />
   <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="51" y1="0" x2="51" y2="25" />
+  <line x1="53" y1="0" x2="53" y2="25" />
+  <line x1="54" y1="0" x2="54" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
   <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="59" y1="0" x2="59" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="61" y1="0" x2="61" y2="25" />
   <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="63" y1="0" x2="63" y2="25" />
+  <line x1="65" y1="0" x2="65" y2="25" />
+  <line x1="66" y1="0" x2="66" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
   <line x1="68" y1="0" x2="68" y2="25" />
+  <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="71" y1="0" x2="71" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="73" y1="0" x2="73" y2="25" />
+  <line x1="74" y1="0" x2="74" y2="25" />
   <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="77" y1="0" x2="77" y2="25" />
+  <line x1="78" y1="0" x2="78" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
   <line x1="81" y1="0" x2="81" y2="25" />
+  <line x1="83" y1="0" x2="83" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="85" y1="0" x2="85" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
   <line x1="87" y1="0" x2="87" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="91" y1="0" x2="91" y2="25" />
+  <line x1="92" y1="0" x2="92" y2="25" />
   <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="95" y1="0" x2="95" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="98" y1="0" x2="98" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
   <line x1="101" y1="0" x2="101" y2="25" />
+  <line x1="102" y1="0" x2="102" y2="25" />
+  <line x1="103" y1="0" x2="103" y2="25" />
+  <line x1="104" y1="0" x2="104" y2="25" />
+  <line x1="106" y1="0" x2="106" y2="25" />
   <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="109" y1="0" x2="109" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
   <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="114" y1="0" x2="114" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="116" y1="0" x2="116" y2="25" />
+  <line x1="118" y1="0" x2="118" y2="25" />
+  <line x1="119" y1="0" x2="119" y2="25" />
   <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >52226568</text>
@@ -1255,24 +1414,105 @@ dtype: int64
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="1" x2="25" y2="1" />
+  <line x1="0" y1="2" x2="25" y2="2" />
+  <line x1="0" y1="3" x2="25" y2="3" />
+  <line x1="0" y1="4" x2="25" y2="4" />
   <line x1="0" y1="6" x2="25" y2="6" />
+  <line x1="0" y1="7" x2="25" y2="7" />
+  <line x1="0" y1="8" x2="25" y2="8" />
+  <line x1="0" y1="9" x2="25" y2="9" />
+  <line x1="0" y1="10" x2="25" y2="10" />
   <line x1="0" y1="12" x2="25" y2="12" />
+  <line x1="0" y1="13" x2="25" y2="13" />
+  <line x1="0" y1="14" x2="25" y2="14" />
+  <line x1="0" y1="15" x2="25" y2="15" />
+  <line x1="0" y1="16" x2="25" y2="16" />
   <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="19" x2="25" y2="19" />
+  <line x1="0" y1="20" x2="25" y2="20" />
+  <line x1="0" y1="21" x2="25" y2="21" />
+  <line x1="0" y1="22" x2="25" y2="22" />
+  <line x1="0" y1="24" x2="25" y2="24" />
   <line x1="0" y1="25" x2="25" y2="25" />
+  <line x1="0" y1="26" x2="25" y2="26" />
+  <line x1="0" y1="27" x2="25" y2="27" />
+  <line x1="0" y1="28" x2="25" y2="28" />
+  <line x1="0" y1="30" x2="25" y2="30" />
   <line x1="0" y1="31" x2="25" y2="31" />
+  <line x1="0" y1="32" x2="25" y2="32" />
+  <line x1="0" y1="33" x2="25" y2="33" />
+  <line x1="0" y1="34" x2="25" y2="34" />
+  <line x1="0" y1="36" x2="25" y2="36" />
   <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="38" x2="25" y2="38" />
+  <line x1="0" y1="39" x2="25" y2="39" />
+  <line x1="0" y1="40" x2="25" y2="40" />
+  <line x1="0" y1="42" x2="25" y2="42" />
   <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="44" x2="25" y2="44" />
+  <line x1="0" y1="45" x2="25" y2="45" />
+  <line x1="0" y1="46" x2="25" y2="46" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="49" x2="25" y2="49" />
   <line x1="0" y1="50" x2="25" y2="50" />
+  <line x1="0" y1="51" x2="25" y2="51" />
+  <line x1="0" y1="53" x2="25" y2="53" />
+  <line x1="0" y1="54" x2="25" y2="54" />
+  <line x1="0" y1="55" x2="25" y2="55" />
   <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="57" x2="25" y2="57" />
+  <line x1="0" y1="59" x2="25" y2="59" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="61" x2="25" y2="61" />
   <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="63" x2="25" y2="63" />
+  <line x1="0" y1="65" x2="25" y2="65" />
+  <line x1="0" y1="66" x2="25" y2="66" />
+  <line x1="0" y1="67" x2="25" y2="67" />
   <line x1="0" y1="68" x2="25" y2="68" />
+  <line x1="0" y1="69" x2="25" y2="69" />
+  <line x1="0" y1="71" x2="25" y2="71" />
+  <line x1="0" y1="72" x2="25" y2="72" />
+  <line x1="0" y1="73" x2="25" y2="73" />
+  <line x1="0" y1="74" x2="25" y2="74" />
   <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="77" x2="25" y2="77" />
+  <line x1="0" y1="78" x2="25" y2="78" />
+  <line x1="0" y1="79" x2="25" y2="79" />
+  <line x1="0" y1="80" x2="25" y2="80" />
   <line x1="0" y1="81" x2="25" y2="81" />
+  <line x1="0" y1="83" x2="25" y2="83" />
+  <line x1="0" y1="84" x2="25" y2="84" />
+  <line x1="0" y1="85" x2="25" y2="85" />
+  <line x1="0" y1="86" x2="25" y2="86" />
   <line x1="0" y1="87" x2="25" y2="87" />
+  <line x1="0" y1="89" x2="25" y2="89" />
+  <line x1="0" y1="90" x2="25" y2="90" />
+  <line x1="0" y1="91" x2="25" y2="91" />
+  <line x1="0" y1="92" x2="25" y2="92" />
   <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="95" x2="25" y2="95" />
+  <line x1="0" y1="96" x2="25" y2="96" />
+  <line x1="0" y1="97" x2="25" y2="97" />
+  <line x1="0" y1="98" x2="25" y2="98" />
+  <line x1="0" y1="99" x2="25" y2="99" />
   <line x1="0" y1="101" x2="25" y2="101" />
+  <line x1="0" y1="102" x2="25" y2="102" />
+  <line x1="0" y1="103" x2="25" y2="103" />
+  <line x1="0" y1="104" x2="25" y2="104" />
+  <line x1="0" y1="106" x2="25" y2="106" />
   <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="108" x2="25" y2="108" />
+  <line x1="0" y1="109" x2="25" y2="109" />
+  <line x1="0" y1="110" x2="25" y2="110" />
+  <line x1="0" y1="112" x2="25" y2="112" />
   <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="114" x2="25" y2="114" />
+  <line x1="0" y1="115" x2="25" y2="115" />
+  <line x1="0" y1="116" x2="25" y2="116" />
+  <line x1="0" y1="118" x2="25" y2="118" />
+  <line x1="0" y1="119" x2="25" y2="119" />
   <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1280,7 +1520,7 @@ dtype: int64
   <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >3</text>
@@ -1389,28 +1629,184 @@ dtype: int64
 
   <!-- Vertical lines -->
   <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="25" />
+  <line x1="1" y1="0" x2="1" y2="25" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="3" y1="0" x2="3" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
+  <line x1="5" y1="0" x2="5" y2="25" />
   <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="8" y1="0" x2="8" y2="25" />
+  <line x1="8" y1="0" x2="8" y2="25" />
+  <line x1="9" y1="0" x2="9" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="11" y1="0" x2="11" y2="25" />
+  <line x1="11" y1="0" x2="11" y2="25" />
   <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="13" y1="0" x2="13" y2="25" />
+  <line x1="13" y1="0" x2="13" y2="25" />
+  <line x1="14" y1="0" x2="14" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="16" y1="0" x2="16" y2="25" />
+  <line x1="17" y1="0" x2="17" y2="25" />
+  <line x1="17" y1="0" x2="17" y2="25" />
   <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="20" y1="0" x2="20" y2="25" />
+  <line x1="21" y1="0" x2="21" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="23" y1="0" x2="23" y2="25" />
   <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="25" y1="0" x2="25" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="27" y1="0" x2="27" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="29" y1="0" x2="29" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
   <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="32" y1="0" x2="32" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="34" y1="0" x2="34" y2="25" />
+  <line x1="35" y1="0" x2="35" y2="25" />
+  <line x1="35" y1="0" x2="35" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
   <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="38" y1="0" x2="38" y2="25" />
+  <line x1="39" y1="0" x2="39" y2="25" />
+  <line x1="39" y1="0" x2="39" y2="25" />
+  <line x1="40" y1="0" x2="40" y2="25" />
+  <line x1="41" y1="0" x2="41" y2="25" />
+  <line x1="42" y1="0" x2="42" y2="25" />
+  <line x1="42" y1="0" x2="42" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
   <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="46" y1="0" x2="46" y2="25" />
+  <line x1="46" y1="0" x2="46" y2="25" />
+  <line x1="47" y1="0" x2="47" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="49" y1="0" x2="49" y2="25" />
   <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="51" y1="0" x2="51" y2="25" />
+  <line x1="51" y1="0" x2="51" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="53" y1="0" x2="53" y2="25" />
+  <line x1="53" y1="0" x2="53" y2="25" />
+  <line x1="54" y1="0" x2="54" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
   <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="58" y1="0" x2="58" y2="25" />
+  <line x1="59" y1="0" x2="59" y2="25" />
+  <line x1="59" y1="0" x2="59" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="61" y1="0" x2="61" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
   <line x1="63" y1="0" x2="63" y2="25" />
+  <line x1="64" y1="0" x2="64" y2="25" />
+  <line x1="64" y1="0" x2="64" y2="25" />
+  <line x1="65" y1="0" x2="65" y2="25" />
+  <line x1="66" y1="0" x2="66" y2="25" />
+  <line x1="66" y1="0" x2="66" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="68" y1="0" x2="68" y2="25" />
+  <line x1="68" y1="0" x2="68" y2="25" />
   <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="71" y1="0" x2="71" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="73" y1="0" x2="73" y2="25" />
+  <line x1="73" y1="0" x2="73" y2="25" />
+  <line x1="74" y1="0" x2="74" y2="25" />
   <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="76" y1="0" x2="76" y2="25" />
+  <line x1="77" y1="0" x2="77" y2="25" />
+  <line x1="77" y1="0" x2="77" y2="25" />
+  <line x1="78" y1="0" x2="78" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
+  <line x1="81" y1="0" x2="81" y2="25" />
   <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="83" y1="0" x2="83" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="85" y1="0" x2="85" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="87" y1="0" x2="87" y2="25" />
   <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="91" y1="0" x2="91" y2="25" />
+  <line x1="92" y1="0" x2="92" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
   <line x1="95" y1="0" x2="95" y2="25" />
+  <line x1="95" y1="0" x2="95" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="98" y1="0" x2="98" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="100" y1="0" x2="100" y2="25" />
   <line x1="101" y1="0" x2="101" y2="25" />
+  <line x1="102" y1="0" x2="102" y2="25" />
+  <line x1="102" y1="0" x2="102" y2="25" />
+  <line x1="103" y1="0" x2="103" y2="25" />
+  <line x1="104" y1="0" x2="104" y2="25" />
+  <line x1="104" y1="0" x2="104" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="106" y1="0" x2="106" y2="25" />
+  <line x1="106" y1="0" x2="106" y2="25" />
   <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="109" y1="0" x2="109" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="111" y1="0" x2="111" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
   <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="114" y1="0" x2="114" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="116" y1="0" x2="116" y2="25" />
+  <line x1="117" y1="0" x2="117" y2="25" />
+  <line x1="117" y1="0" x2="117" y2="25" />
+  <line x1="118" y1="0" x2="118" y2="25" />
+  <line x1="119" y1="0" x2="119" y2="25" />
+  <line x1="119" y1="0" x2="119" y2="25" />
   <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >52226568</text>
@@ -1468,71 +1864,432 @@ dtype: int64
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="80" y2="71" />
+  <line x1="10" y1="0" x2="80" y2="71" />
   <line x1="10" y1="1" x2="80" y2="71" />
+  <line x1="10" y1="1" x2="80" y2="72" />
+  <line x1="10" y1="2" x2="80" y2="72" />
+  <line x1="10" y1="2" x2="80" y2="72" />
   <line x1="10" y1="2" x2="80" y2="73" />
+  <line x1="10" y1="3" x2="80" y2="73" />
+  <line x1="10" y1="3" x2="80" y2="73" />
   <line x1="10" y1="3" x2="80" y2="74" />
+  <line x1="10" y1="3" x2="80" y2="74" />
+  <line x1="10" y1="4" x2="80" y2="74" />
   <line x1="10" y1="4" x2="80" y2="75" />
+  <line x1="10" y1="4" x2="80" y2="75" />
+  <line x1="10" y1="5" x2="80" y2="75" />
   <line x1="10" y1="5" x2="80" y2="76" />
+  <line x1="10" y1="5" x2="80" y2="76" />
+  <line x1="10" y1="6" x2="80" y2="77" />
+  <line x1="10" y1="6" x2="80" y2="77" />
+  <line x1="10" y1="7" x2="80" y2="77" />
   <line x1="10" y1="7" x2="80" y2="78" />
+  <line x1="10" y1="8" x2="80" y2="78" />
+  <line x1="10" y1="8" x2="80" y2="78" />
+  <line x1="10" y1="8" x2="80" y2="79" />
   <line x1="10" y1="9" x2="80" y2="79" />
+  <line x1="10" y1="9" x2="80" y2="80" />
+  <line x1="10" y1="9" x2="80" y2="80" />
   <line x1="10" y1="10" x2="80" y2="80" />
+  <line x1="10" y1="10" x2="80" y2="81" />
+  <line x1="10" y1="10" x2="80" y2="81" />
+  <line x1="10" y1="11" x2="80" y2="81" />
   <line x1="10" y1="11" x2="80" y2="82" />
+  <line x1="10" y1="12" x2="80" y2="82" />
+  <line x1="10" y1="12" x2="80" y2="82" />
   <line x1="10" y1="12" x2="80" y2="83" />
+  <line x1="10" y1="13" x2="80" y2="83" />
+  <line x1="10" y1="13" x2="80" y2="84" />
+  <line x1="10" y1="13" x2="80" y2="84" />
   <line x1="10" y1="14" x2="80" y2="84" />
+  <line x1="10" y1="14" x2="80" y2="85" />
+  <line x1="10" y1="15" x2="80" y2="85" />
   <line x1="10" y1="15" x2="80" y2="86" />
+  <line x1="10" y1="15" x2="80" y2="86" />
+  <line x1="10" y1="16" x2="80" y2="86" />
   <line x1="10" y1="16" x2="80" y2="87" />
+  <line x1="10" y1="16" x2="80" y2="87" />
+  <line x1="10" y1="16" x2="80" y2="87" />
+  <line x1="10" y1="17" x2="80" y2="88" />
+  <line x1="10" y1="17" x2="80" y2="88" />
+  <line x1="10" y1="18" x2="80" y2="88" />
   <line x1="10" y1="18" x2="80" y2="88" />
   <line x1="10" y1="18" x2="80" y2="89" />
+  <line x1="10" y1="18" x2="80" y2="89" />
+  <line x1="10" y1="19" x2="80" y2="89" />
+  <line x1="10" y1="19" x2="80" y2="90" />
+  <line x1="10" y1="20" x2="80" y2="90" />
   <line x1="10" y1="20" x2="80" y2="91" />
+  <line x1="10" y1="20" x2="80" y2="91" />
+  <line x1="10" y1="21" x2="80" y2="91" />
   <line x1="10" y1="21" x2="80" y2="92" />
+  <line x1="10" y1="22" x2="80" y2="92" />
+  <line x1="10" y1="22" x2="80" y2="93" />
+  <line x1="10" y1="23" x2="80" y2="93" />
   <line x1="10" y1="23" x2="80" y2="94" />
+  <line x1="10" y1="24" x2="80" y2="94" />
+  <line x1="10" y1="24" x2="80" y2="95" />
+  <line x1="10" y1="25" x2="80" y2="95" />
   <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="26" />
+  <line x1="11" y1="1" x2="11" y2="26" />
+  <line x1="11" y1="1" x2="11" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="28" />
+  <line x1="13" y1="3" x2="13" y2="28" />
   <line x1="13" y1="3" x2="13" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="30" />
+  <line x1="15" y1="5" x2="15" y2="30" />
+  <line x1="15" y1="5" x2="15" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="32" />
   <line x1="17" y1="7" x2="17" y2="32" />
+  <line x1="17" y1="7" x2="17" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="34" />
+  <line x1="19" y1="9" x2="19" y2="34" />
+  <line x1="19" y1="9" x2="19" y2="35" />
+  <line x1="20" y1="10" x2="20" y2="35" />
+  <line x1="20" y1="10" x2="20" y2="35" />
   <line x1="20" y1="10" x2="20" y2="36" />
+  <line x1="21" y1="11" x2="21" y2="36" />
+  <line x1="21" y1="11" x2="21" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="38" />
+  <line x1="23" y1="13" x2="23" y2="38" />
+  <line x1="23" y1="13" x2="23" y2="39" />
+  <line x1="24" y1="14" x2="24" y2="39" />
   <line x1="24" y1="14" x2="24" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="41" />
+  <line x1="26" y1="16" x2="26" y2="41" />
+  <line x1="26" y1="16" x2="26" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="43" />
+  <line x1="28" y1="18" x2="28" y2="43" />
   <line x1="28" y1="18" x2="28" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="45" />
+  <line x1="30" y1="20" x2="30" y2="45" />
+  <line x1="30" y1="20" x2="30" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="47" />
   <line x1="32" y1="22" x2="32" y2="47" />
+  <line x1="32" y1="22" x2="32" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="49" />
+  <line x1="34" y1="24" x2="34" y2="49" />
+  <line x1="34" y1="24" x2="34" y2="50" />
+  <line x1="35" y1="25" x2="35" y2="50" />
+  <line x1="35" y1="25" x2="35" y2="50" />
   <line x1="35" y1="25" x2="35" y2="51" />
+  <line x1="36" y1="26" x2="36" y2="51" />
+  <line x1="36" y1="26" x2="36" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="53" />
+  <line x1="38" y1="28" x2="38" y2="53" />
+  <line x1="38" y1="28" x2="38" y2="54" />
+  <line x1="39" y1="29" x2="39" y2="54" />
   <line x1="39" y1="29" x2="39" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="56" />
+  <line x1="41" y1="31" x2="41" y2="56" />
+  <line x1="41" y1="31" x2="41" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="58" />
   <line x1="43" y1="33" x2="43" y2="58" />
+  <line x1="43" y1="33" x2="43" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="60" />
+  <line x1="45" y1="35" x2="45" y2="60" />
+  <line x1="45" y1="35" x2="45" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="62" />
   <line x1="47" y1="37" x2="47" y2="62" />
+  <line x1="47" y1="37" x2="47" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="64" />
+  <line x1="49" y1="39" x2="49" y2="64" />
+  <line x1="49" y1="39" x2="49" y2="65" />
+  <line x1="50" y1="40" x2="50" y2="65" />
+  <line x1="50" y1="40" x2="50" y2="65" />
   <line x1="50" y1="40" x2="50" y2="66" />
+  <line x1="51" y1="41" x2="51" y2="66" />
+  <line x1="51" y1="41" x2="51" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="68" />
+  <line x1="53" y1="43" x2="53" y2="68" />
+  <line x1="53" y1="43" x2="53" y2="69" />
+  <line x1="54" y1="44" x2="54" y2="69" />
   <line x1="54" y1="44" x2="54" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="71" />
+  <line x1="56" y1="46" x2="56" y2="71" />
+  <line x1="56" y1="46" x2="56" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="73" />
   <line x1="58" y1="48" x2="58" y2="73" />
+  <line x1="58" y1="48" x2="58" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="75" />
+  <line x1="60" y1="50" x2="60" y2="75" />
+  <line x1="60" y1="50" x2="60" y2="76" />
+  <line x1="61" y1="51" x2="61" y2="76" />
+  <line x1="61" y1="51" x2="61" y2="76" />
   <line x1="61" y1="51" x2="61" y2="77" />
+  <line x1="62" y1="52" x2="62" y2="77" />
+  <line x1="62" y1="52" x2="62" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="79" />
+  <line x1="64" y1="54" x2="64" y2="79" />
+  <line x1="64" y1="54" x2="64" y2="80" />
+  <line x1="65" y1="55" x2="65" y2="80" />
+  <line x1="65" y1="55" x2="65" y2="80" />
   <line x1="65" y1="55" x2="65" y2="81" />
+  <line x1="66" y1="56" x2="66" y2="81" />
+  <line x1="66" y1="56" x2="66" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="83" />
+  <line x1="68" y1="58" x2="68" y2="83" />
+  <line x1="68" y1="58" x2="68" y2="84" />
+  <line x1="69" y1="59" x2="69" y2="84" />
   <line x1="69" y1="59" x2="69" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="86" />
+  <line x1="71" y1="61" x2="71" y2="86" />
+  <line x1="71" y1="61" x2="71" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="88" />
   <line x1="73" y1="63" x2="73" y2="88" />
+  <line x1="73" y1="63" x2="73" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="90" />
+  <line x1="75" y1="65" x2="75" y2="90" />
+  <line x1="75" y1="65" x2="75" y2="91" />
+  <line x1="76" y1="66" x2="76" y2="91" />
+  <line x1="76" y1="66" x2="76" y2="91" />
   <line x1="76" y1="66" x2="76" y2="92" />
+  <line x1="77" y1="67" x2="77" y2="92" />
+  <line x1="77" y1="67" x2="77" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="94" />
+  <line x1="79" y1="69" x2="79" y2="94" />
+  <line x1="79" y1="69" x2="79" y2="95" />
+  <line x1="80" y1="70" x2="80" y2="95" />
+  <line x1="80" y1="70" x2="80" y2="95" />
   <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,96.00085180870013 10.0,25.41261651458248" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="10.000000,0.000000 80.588235,70.588235 80.588235,96.000852 10.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="35" y2="0" />
+  <line x1="10" y1="0" x2="36" y2="0" />
+  <line x1="11" y1="1" x2="36" y2="1" />
+  <line x1="11" y1="1" x2="37" y2="1" />
+  <line x1="12" y1="2" x2="37" y2="2" />
+  <line x1="12" y1="2" x2="37" y2="2" />
+  <line x1="12" y1="2" x2="38" y2="2" />
+  <line x1="13" y1="3" x2="38" y2="3" />
   <line x1="13" y1="3" x2="39" y2="3" />
+  <line x1="14" y1="4" x2="39" y2="4" />
+  <line x1="14" y1="4" x2="39" y2="4" />
+  <line x1="14" y1="4" x2="40" y2="4" />
+  <line x1="15" y1="5" x2="40" y2="5" />
+  <line x1="15" y1="5" x2="41" y2="5" />
+  <line x1="16" y1="6" x2="41" y2="6" />
+  <line x1="16" y1="6" x2="41" y2="6" />
+  <line x1="16" y1="6" x2="42" y2="6" />
   <line x1="17" y1="7" x2="42" y2="7" />
+  <line x1="17" y1="7" x2="43" y2="7" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="18" y1="8" x2="44" y2="8" />
+  <line x1="19" y1="9" x2="44" y2="9" />
+  <line x1="19" y1="9" x2="45" y2="9" />
+  <line x1="20" y1="10" x2="45" y2="10" />
+  <line x1="20" y1="10" x2="45" y2="10" />
   <line x1="20" y1="10" x2="46" y2="10" />
+  <line x1="21" y1="11" x2="46" y2="11" />
+  <line x1="21" y1="11" x2="47" y2="11" />
+  <line x1="22" y1="12" x2="47" y2="12" />
+  <line x1="22" y1="12" x2="47" y2="12" />
+  <line x1="22" y1="12" x2="48" y2="12" />
+  <line x1="23" y1="13" x2="48" y2="13" />
+  <line x1="23" y1="13" x2="49" y2="13" />
+  <line x1="24" y1="14" x2="49" y2="14" />
   <line x1="24" y1="14" x2="50" y2="14" />
+  <line x1="25" y1="15" x2="50" y2="15" />
+  <line x1="25" y1="15" x2="50" y2="15" />
+  <line x1="25" y1="15" x2="51" y2="15" />
+  <line x1="26" y1="16" x2="51" y2="16" />
+  <line x1="26" y1="16" x2="52" y2="16" />
+  <line x1="27" y1="17" x2="52" y2="17" />
+  <line x1="27" y1="17" x2="52" y2="17" />
+  <line x1="27" y1="17" x2="53" y2="17" />
+  <line x1="28" y1="18" x2="53" y2="18" />
   <line x1="28" y1="18" x2="54" y2="18" />
+  <line x1="29" y1="19" x2="54" y2="19" />
+  <line x1="29" y1="19" x2="54" y2="19" />
+  <line x1="29" y1="19" x2="55" y2="19" />
+  <line x1="30" y1="20" x2="55" y2="20" />
+  <line x1="30" y1="20" x2="56" y2="20" />
+  <line x1="31" y1="21" x2="56" y2="21" />
+  <line x1="31" y1="21" x2="56" y2="21" />
+  <line x1="31" y1="21" x2="57" y2="21" />
   <line x1="32" y1="22" x2="57" y2="22" />
+  <line x1="32" y1="22" x2="58" y2="22" />
+  <line x1="33" y1="23" x2="58" y2="23" />
+  <line x1="33" y1="23" x2="58" y2="23" />
+  <line x1="33" y1="23" x2="59" y2="23" />
+  <line x1="34" y1="24" x2="59" y2="24" />
+  <line x1="34" y1="24" x2="60" y2="24" />
+  <line x1="35" y1="25" x2="60" y2="25" />
+  <line x1="35" y1="25" x2="60" y2="25" />
   <line x1="35" y1="25" x2="61" y2="25" />
+  <line x1="36" y1="26" x2="61" y2="26" />
+  <line x1="36" y1="26" x2="62" y2="26" />
+  <line x1="37" y1="27" x2="62" y2="27" />
+  <line x1="37" y1="27" x2="62" y2="27" />
+  <line x1="37" y1="27" x2="63" y2="27" />
+  <line x1="38" y1="28" x2="63" y2="28" />
+  <line x1="38" y1="28" x2="64" y2="28" />
+  <line x1="39" y1="29" x2="64" y2="29" />
   <line x1="39" y1="29" x2="65" y2="29" />
+  <line x1="40" y1="30" x2="65" y2="30" />
+  <line x1="40" y1="30" x2="65" y2="30" />
+  <line x1="40" y1="30" x2="66" y2="30" />
+  <line x1="41" y1="31" x2="66" y2="31" />
+  <line x1="41" y1="31" x2="67" y2="31" />
+  <line x1="42" y1="32" x2="67" y2="32" />
+  <line x1="42" y1="32" x2="67" y2="32" />
+  <line x1="42" y1="32" x2="68" y2="32" />
   <line x1="43" y1="33" x2="68" y2="33" />
+  <line x1="43" y1="33" x2="69" y2="33" />
+  <line x1="44" y1="34" x2="69" y2="34" />
+  <line x1="44" y1="34" x2="69" y2="34" />
+  <line x1="44" y1="34" x2="70" y2="34" />
+  <line x1="45" y1="35" x2="70" y2="35" />
+  <line x1="45" y1="35" x2="71" y2="35" />
+  <line x1="46" y1="36" x2="71" y2="36" />
+  <line x1="46" y1="36" x2="71" y2="36" />
+  <line x1="46" y1="36" x2="72" y2="36" />
   <line x1="47" y1="37" x2="72" y2="37" />
+  <line x1="47" y1="37" x2="73" y2="37" />
+  <line x1="48" y1="38" x2="73" y2="38" />
+  <line x1="48" y1="38" x2="73" y2="38" />
+  <line x1="48" y1="38" x2="74" y2="38" />
+  <line x1="49" y1="39" x2="74" y2="39" />
+  <line x1="49" y1="39" x2="75" y2="39" />
+  <line x1="50" y1="40" x2="75" y2="40" />
+  <line x1="50" y1="40" x2="75" y2="40" />
   <line x1="50" y1="40" x2="76" y2="40" />
+  <line x1="51" y1="41" x2="76" y2="41" />
+  <line x1="51" y1="41" x2="77" y2="41" />
+  <line x1="52" y1="42" x2="77" y2="42" />
+  <line x1="52" y1="42" x2="77" y2="42" />
+  <line x1="52" y1="42" x2="78" y2="42" />
+  <line x1="53" y1="43" x2="78" y2="43" />
+  <line x1="53" y1="43" x2="79" y2="43" />
+  <line x1="54" y1="44" x2="79" y2="44" />
   <line x1="54" y1="44" x2="80" y2="44" />
+  <line x1="55" y1="45" x2="80" y2="45" />
+  <line x1="55" y1="45" x2="80" y2="45" />
+  <line x1="55" y1="45" x2="81" y2="45" />
+  <line x1="56" y1="46" x2="81" y2="46" />
+  <line x1="56" y1="46" x2="82" y2="46" />
+  <line x1="57" y1="47" x2="82" y2="47" />
+  <line x1="57" y1="47" x2="82" y2="47" />
+  <line x1="57" y1="47" x2="83" y2="47" />
   <line x1="58" y1="48" x2="83" y2="48" />
+  <line x1="58" y1="48" x2="84" y2="48" />
+  <line x1="59" y1="49" x2="84" y2="49" />
+  <line x1="59" y1="49" x2="84" y2="49" />
+  <line x1="59" y1="49" x2="85" y2="49" />
+  <line x1="60" y1="50" x2="85" y2="50" />
+  <line x1="60" y1="50" x2="86" y2="50" />
+  <line x1="61" y1="51" x2="86" y2="51" />
+  <line x1="61" y1="51" x2="86" y2="51" />
   <line x1="61" y1="51" x2="87" y2="51" />
+  <line x1="62" y1="52" x2="87" y2="52" />
+  <line x1="62" y1="52" x2="88" y2="52" />
+  <line x1="63" y1="53" x2="88" y2="53" />
+  <line x1="63" y1="53" x2="88" y2="53" />
+  <line x1="63" y1="53" x2="89" y2="53" />
+  <line x1="64" y1="54" x2="89" y2="54" />
+  <line x1="64" y1="54" x2="90" y2="54" />
+  <line x1="65" y1="55" x2="90" y2="55" />
+  <line x1="65" y1="55" x2="90" y2="55" />
   <line x1="65" y1="55" x2="91" y2="55" />
+  <line x1="66" y1="56" x2="91" y2="56" />
+  <line x1="66" y1="56" x2="92" y2="56" />
+  <line x1="67" y1="57" x2="92" y2="57" />
+  <line x1="67" y1="57" x2="92" y2="57" />
+  <line x1="67" y1="57" x2="93" y2="57" />
+  <line x1="68" y1="58" x2="93" y2="58" />
+  <line x1="68" y1="58" x2="94" y2="58" />
+  <line x1="69" y1="59" x2="94" y2="59" />
   <line x1="69" y1="59" x2="95" y2="59" />
+  <line x1="70" y1="60" x2="95" y2="60" />
+  <line x1="70" y1="60" x2="95" y2="60" />
+  <line x1="70" y1="60" x2="96" y2="60" />
+  <line x1="71" y1="61" x2="96" y2="61" />
+  <line x1="71" y1="61" x2="97" y2="61" />
+  <line x1="72" y1="62" x2="97" y2="62" />
+  <line x1="72" y1="62" x2="97" y2="62" />
+  <line x1="72" y1="62" x2="98" y2="62" />
   <line x1="73" y1="63" x2="98" y2="63" />
+  <line x1="73" y1="63" x2="99" y2="63" />
+  <line x1="74" y1="64" x2="99" y2="64" />
+  <line x1="74" y1="64" x2="99" y2="64" />
+  <line x1="74" y1="64" x2="100" y2="64" />
+  <line x1="75" y1="65" x2="100" y2="65" />
+  <line x1="75" y1="65" x2="101" y2="65" />
+  <line x1="76" y1="66" x2="101" y2="66" />
+  <line x1="76" y1="66" x2="101" y2="66" />
   <line x1="76" y1="66" x2="102" y2="66" />
+  <line x1="77" y1="67" x2="102" y2="67" />
+  <line x1="77" y1="67" x2="103" y2="67" />
+  <line x1="78" y1="68" x2="103" y2="68" />
+  <line x1="78" y1="68" x2="103" y2="68" />
+  <line x1="78" y1="68" x2="104" y2="68" />
+  <line x1="79" y1="69" x2="104" y2="69" />
+  <line x1="79" y1="69" x2="105" y2="69" />
+  <line x1="80" y1="70" x2="105" y2="70" />
+  <line x1="80" y1="70" x2="105" y2="70" />
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1540,28 +2297,77 @@ dtype: int64
   <line x1="35" y1="0" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 35.41261651458248,0.0 106.00085180870013,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="10.000000,0.000000 35.412617,0.000000 106.000852,70.588235 80.588235,70.588235" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
   <line x1="80" y1="71" x2="106" y2="71" />
+  <line x1="80" y1="71" x2="106" y2="71" />
+  <line x1="80" y1="71" x2="106" y2="71" />
+  <line x1="80" y1="72" x2="106" y2="72" />
+  <line x1="80" y1="72" x2="106" y2="72" />
+  <line x1="80" y1="72" x2="106" y2="72" />
+  <line x1="80" y1="73" x2="106" y2="73" />
+  <line x1="80" y1="73" x2="106" y2="73" />
   <line x1="80" y1="73" x2="106" y2="73" />
   <line x1="80" y1="74" x2="106" y2="74" />
+  <line x1="80" y1="74" x2="106" y2="74" />
+  <line x1="80" y1="74" x2="106" y2="74" />
+  <line x1="80" y1="75" x2="106" y2="75" />
+  <line x1="80" y1="75" x2="106" y2="75" />
   <line x1="80" y1="75" x2="106" y2="75" />
   <line x1="80" y1="76" x2="106" y2="76" />
+  <line x1="80" y1="76" x2="106" y2="76" />
+  <line x1="80" y1="77" x2="106" y2="77" />
+  <line x1="80" y1="77" x2="106" y2="77" />
+  <line x1="80" y1="77" x2="106" y2="77" />
+  <line x1="80" y1="78" x2="106" y2="78" />
+  <line x1="80" y1="78" x2="106" y2="78" />
   <line x1="80" y1="78" x2="106" y2="78" />
   <line x1="80" y1="79" x2="106" y2="79" />
+  <line x1="80" y1="79" x2="106" y2="79" />
   <line x1="80" y1="80" x2="106" y2="80" />
+  <line x1="80" y1="80" x2="106" y2="80" />
+  <line x1="80" y1="80" x2="106" y2="80" />
+  <line x1="80" y1="81" x2="106" y2="81" />
+  <line x1="80" y1="81" x2="106" y2="81" />
+  <line x1="80" y1="81" x2="106" y2="81" />
+  <line x1="80" y1="82" x2="106" y2="82" />
+  <line x1="80" y1="82" x2="106" y2="82" />
   <line x1="80" y1="82" x2="106" y2="82" />
   <line x1="80" y1="83" x2="106" y2="83" />
+  <line x1="80" y1="83" x2="106" y2="83" />
   <line x1="80" y1="84" x2="106" y2="84" />
+  <line x1="80" y1="84" x2="106" y2="84" />
+  <line x1="80" y1="84" x2="106" y2="84" />
+  <line x1="80" y1="85" x2="106" y2="85" />
+  <line x1="80" y1="85" x2="106" y2="85" />
+  <line x1="80" y1="86" x2="106" y2="86" />
+  <line x1="80" y1="86" x2="106" y2="86" />
   <line x1="80" y1="86" x2="106" y2="86" />
   <line x1="80" y1="87" x2="106" y2="87" />
+  <line x1="80" y1="87" x2="106" y2="87" />
+  <line x1="80" y1="87" x2="106" y2="87" />
+  <line x1="80" y1="88" x2="106" y2="88" />
+  <line x1="80" y1="88" x2="106" y2="88" />
+  <line x1="80" y1="88" x2="106" y2="88" />
   <line x1="80" y1="88" x2="106" y2="88" />
   <line x1="80" y1="89" x2="106" y2="89" />
+  <line x1="80" y1="89" x2="106" y2="89" />
+  <line x1="80" y1="89" x2="106" y2="89" />
+  <line x1="80" y1="90" x2="106" y2="90" />
+  <line x1="80" y1="90" x2="106" y2="90" />
+  <line x1="80" y1="91" x2="106" y2="91" />
+  <line x1="80" y1="91" x2="106" y2="91" />
   <line x1="80" y1="91" x2="106" y2="91" />
   <line x1="80" y1="92" x2="106" y2="92" />
+  <line x1="80" y1="92" x2="106" y2="92" />
+  <line x1="80" y1="93" x2="106" y2="93" />
+  <line x1="80" y1="93" x2="106" y2="93" />
   <line x1="80" y1="94" x2="106" y2="94" />
+  <line x1="80" y1="94" x2="106" y2="94" />
+  <line x1="80" y1="95" x2="106" y2="95" />
+  <line x1="80" y1="95" x2="106" y2="95" />
   <line x1="80" y1="96" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1569,7 +2375,7 @@ dtype: int64
   <line x1="106" y1="70" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="80.58823529411765,70.58823529411765 106.00085180870013,70.58823529411765 106.00085180870013,96.00085180870013 80.58823529411765,96.00085180870013" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="80.588235,70.588235 106.000852,70.588235 106.000852,96.000852 80.588235,96.000852" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="93.294544" y="116.000852" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
@@ -1611,17 +2417,6 @@ dtype: int64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>found 1571 gambiae samples
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/aliman/pyenv/vector-public-data-dev-py38/lib/python3.8/site-packages/dask/array/routines.py:1220: PerformanceWarning: Slicing is producing a large chunk. To accept the large
-chunk and silence this warning, set the option
-    &gt;&gt;&gt; with dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: False}):
-    ...     array[indexer]
-
-To avoid creating the large chunks, set the option
-    &gt;&gt;&gt; with dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: True}):
-    ...     array[indexer]
-  return a[(slice(None),) * axis + (indices,)]
-</pre></div>
-</div>
 <div class="output text_html"><table>
 <tr>
 <td>
@@ -1642,71 +2437,420 @@ To avoid creating the large chunks, set the option
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="80" y2="70" />
   <line x1="10" y1="0" x2="80" y2="71" />
+  <line x1="10" y1="1" x2="80" y2="71" />
   <line x1="10" y1="1" x2="80" y2="72" />
+  <line x1="10" y1="1" x2="80" y2="72" />
+  <line x1="10" y1="2" x2="80" y2="72" />
+  <line x1="10" y1="2" x2="80" y2="72" />
   <line x1="10" y1="2" x2="80" y2="73" />
+  <line x1="10" y1="3" x2="80" y2="73" />
+  <line x1="10" y1="3" x2="80" y2="74" />
   <line x1="10" y1="4" x2="80" y2="74" />
+  <line x1="10" y1="4" x2="80" y2="75" />
+  <line x1="10" y1="5" x2="80" y2="76" />
   <line x1="10" y1="6" x2="80" y2="76" />
+  <line x1="10" y1="7" x2="80" y2="77" />
+  <line x1="10" y1="7" x2="80" y2="78" />
   <line x1="10" y1="8" x2="80" y2="79" />
+  <line x1="10" y1="9" x2="80" y2="80" />
+  <line x1="10" y1="9" x2="80" y2="80" />
   <line x1="10" y1="10" x2="80" y2="80" />
+  <line x1="10" y1="11" x2="80" y2="81" />
+  <line x1="10" y1="11" x2="80" y2="81" />
   <line x1="10" y1="11" x2="80" y2="82" />
+  <line x1="10" y1="12" x2="80" y2="83" />
+  <line x1="10" y1="12" x2="80" y2="83" />
   <line x1="10" y1="13" x2="80" y2="83" />
+  <line x1="10" y1="13" x2="80" y2="84" />
   <line x1="10" y1="14" x2="80" y2="84" />
+  <line x1="10" y1="14" x2="80" y2="84" />
+  <line x1="10" y1="14" x2="80" y2="85" />
+  <line x1="10" y1="14" x2="80" y2="85" />
   <line x1="10" y1="15" x2="80" y2="85" />
+  <line x1="10" y1="15" x2="80" y2="86" />
+  <line x1="10" y1="16" x2="80" y2="87" />
   <line x1="10" y1="17" x2="80" y2="88" />
   <line x1="10" y1="17" x2="80" y2="88" />
+  <line x1="10" y1="17" x2="80" y2="88" />
+  <line x1="10" y1="17" x2="80" y2="88" />
+  <line x1="10" y1="18" x2="80" y2="88" />
+  <line x1="10" y1="18" x2="80" y2="88" />
   <line x1="10" y1="18" x2="80" y2="89" />
+  <line x1="10" y1="19" x2="80" y2="89" />
+  <line x1="10" y1="19" x2="80" y2="89" />
+  <line x1="10" y1="19" x2="80" y2="90" />
   <line x1="10" y1="19" x2="80" y2="90" />
   <line x1="10" y1="20" x2="80" y2="91" />
+  <line x1="10" y1="20" x2="80" y2="91" />
+  <line x1="10" y1="21" x2="80" y2="91" />
+  <line x1="10" y1="21" x2="80" y2="91" />
   <line x1="10" y1="21" x2="80" y2="92" />
+  <line x1="10" y1="22" x2="80" y2="92" />
+  <line x1="10" y1="22" x2="80" y2="92" />
   <line x1="10" y1="23" x2="80" y2="93" />
+  <line x1="10" y1="23" x2="80" y2="94" />
+  <line x1="10" y1="24" x2="80" y2="95" />
   <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="26" />
+  <line x1="11" y1="1" x2="11" y2="26" />
+  <line x1="11" y1="1" x2="11" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="28" />
+  <line x1="13" y1="3" x2="13" y2="28" />
   <line x1="13" y1="3" x2="13" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="30" />
+  <line x1="15" y1="5" x2="15" y2="30" />
+  <line x1="15" y1="5" x2="15" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="32" />
   <line x1="17" y1="7" x2="17" y2="32" />
+  <line x1="17" y1="7" x2="17" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="34" />
+  <line x1="19" y1="9" x2="19" y2="34" />
+  <line x1="19" y1="9" x2="19" y2="35" />
+  <line x1="20" y1="10" x2="20" y2="35" />
+  <line x1="20" y1="10" x2="20" y2="35" />
   <line x1="20" y1="10" x2="20" y2="36" />
+  <line x1="21" y1="11" x2="21" y2="36" />
+  <line x1="21" y1="11" x2="21" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="38" />
+  <line x1="23" y1="13" x2="23" y2="38" />
+  <line x1="23" y1="13" x2="23" y2="39" />
+  <line x1="24" y1="14" x2="24" y2="39" />
   <line x1="24" y1="14" x2="24" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="41" />
+  <line x1="26" y1="16" x2="26" y2="41" />
+  <line x1="26" y1="16" x2="26" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="43" />
+  <line x1="28" y1="18" x2="28" y2="43" />
   <line x1="28" y1="18" x2="28" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="45" />
+  <line x1="30" y1="20" x2="30" y2="45" />
+  <line x1="30" y1="20" x2="30" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="47" />
   <line x1="32" y1="22" x2="32" y2="47" />
+  <line x1="32" y1="22" x2="32" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="49" />
+  <line x1="34" y1="24" x2="34" y2="49" />
+  <line x1="34" y1="24" x2="34" y2="50" />
+  <line x1="35" y1="25" x2="35" y2="50" />
+  <line x1="35" y1="25" x2="35" y2="50" />
   <line x1="35" y1="25" x2="35" y2="51" />
+  <line x1="36" y1="26" x2="36" y2="51" />
+  <line x1="36" y1="26" x2="36" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="53" />
+  <line x1="38" y1="28" x2="38" y2="53" />
+  <line x1="38" y1="28" x2="38" y2="54" />
+  <line x1="39" y1="29" x2="39" y2="54" />
   <line x1="39" y1="29" x2="39" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="56" />
+  <line x1="41" y1="31" x2="41" y2="56" />
+  <line x1="41" y1="31" x2="41" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="58" />
   <line x1="43" y1="33" x2="43" y2="58" />
+  <line x1="43" y1="33" x2="43" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="60" />
+  <line x1="45" y1="35" x2="45" y2="60" />
+  <line x1="45" y1="35" x2="45" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="62" />
   <line x1="47" y1="37" x2="47" y2="62" />
+  <line x1="47" y1="37" x2="47" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="64" />
+  <line x1="49" y1="39" x2="49" y2="64" />
+  <line x1="49" y1="39" x2="49" y2="65" />
+  <line x1="50" y1="40" x2="50" y2="65" />
+  <line x1="50" y1="40" x2="50" y2="65" />
   <line x1="50" y1="40" x2="50" y2="66" />
+  <line x1="51" y1="41" x2="51" y2="66" />
+  <line x1="51" y1="41" x2="51" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="68" />
+  <line x1="53" y1="43" x2="53" y2="68" />
+  <line x1="53" y1="43" x2="53" y2="69" />
+  <line x1="54" y1="44" x2="54" y2="69" />
   <line x1="54" y1="44" x2="54" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="71" />
+  <line x1="56" y1="46" x2="56" y2="71" />
+  <line x1="56" y1="46" x2="56" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="73" />
   <line x1="58" y1="48" x2="58" y2="73" />
+  <line x1="58" y1="48" x2="58" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="75" />
+  <line x1="60" y1="50" x2="60" y2="75" />
+  <line x1="60" y1="50" x2="60" y2="76" />
+  <line x1="61" y1="51" x2="61" y2="76" />
+  <line x1="61" y1="51" x2="61" y2="76" />
   <line x1="61" y1="51" x2="61" y2="77" />
+  <line x1="62" y1="52" x2="62" y2="77" />
+  <line x1="62" y1="52" x2="62" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="79" />
+  <line x1="64" y1="54" x2="64" y2="79" />
+  <line x1="64" y1="54" x2="64" y2="80" />
+  <line x1="65" y1="55" x2="65" y2="80" />
+  <line x1="65" y1="55" x2="65" y2="80" />
   <line x1="65" y1="55" x2="65" y2="81" />
+  <line x1="66" y1="56" x2="66" y2="81" />
+  <line x1="66" y1="56" x2="66" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="83" />
+  <line x1="68" y1="58" x2="68" y2="83" />
+  <line x1="68" y1="58" x2="68" y2="84" />
+  <line x1="69" y1="59" x2="69" y2="84" />
   <line x1="69" y1="59" x2="69" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="86" />
+  <line x1="71" y1="61" x2="71" y2="86" />
+  <line x1="71" y1="61" x2="71" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="88" />
   <line x1="73" y1="63" x2="73" y2="88" />
+  <line x1="73" y1="63" x2="73" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="90" />
+  <line x1="75" y1="65" x2="75" y2="90" />
+  <line x1="75" y1="65" x2="75" y2="91" />
+  <line x1="76" y1="66" x2="76" y2="91" />
+  <line x1="76" y1="66" x2="76" y2="91" />
   <line x1="76" y1="66" x2="76" y2="92" />
+  <line x1="77" y1="67" x2="77" y2="92" />
+  <line x1="77" y1="67" x2="77" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="94" />
+  <line x1="79" y1="69" x2="79" y2="94" />
+  <line x1="79" y1="69" x2="79" y2="95" />
+  <line x1="80" y1="70" x2="80" y2="95" />
+  <line x1="80" y1="70" x2="80" y2="95" />
   <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,96.00085180870013 10.0,25.41261651458249" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="10.000000,0.000000 80.588235,70.588235 80.588235,96.000852 10.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="35" y2="0" />
+  <line x1="10" y1="0" x2="36" y2="0" />
+  <line x1="11" y1="1" x2="36" y2="1" />
+  <line x1="11" y1="1" x2="37" y2="1" />
+  <line x1="12" y1="2" x2="37" y2="2" />
+  <line x1="12" y1="2" x2="37" y2="2" />
+  <line x1="12" y1="2" x2="38" y2="2" />
+  <line x1="13" y1="3" x2="38" y2="3" />
   <line x1="13" y1="3" x2="39" y2="3" />
+  <line x1="14" y1="4" x2="39" y2="4" />
+  <line x1="14" y1="4" x2="39" y2="4" />
+  <line x1="14" y1="4" x2="40" y2="4" />
+  <line x1="15" y1="5" x2="40" y2="5" />
+  <line x1="15" y1="5" x2="41" y2="5" />
+  <line x1="16" y1="6" x2="41" y2="6" />
+  <line x1="16" y1="6" x2="41" y2="6" />
+  <line x1="16" y1="6" x2="42" y2="6" />
   <line x1="17" y1="7" x2="42" y2="7" />
+  <line x1="17" y1="7" x2="43" y2="7" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="18" y1="8" x2="44" y2="8" />
+  <line x1="19" y1="9" x2="44" y2="9" />
+  <line x1="19" y1="9" x2="45" y2="9" />
+  <line x1="20" y1="10" x2="45" y2="10" />
+  <line x1="20" y1="10" x2="45" y2="10" />
   <line x1="20" y1="10" x2="46" y2="10" />
+  <line x1="21" y1="11" x2="46" y2="11" />
+  <line x1="21" y1="11" x2="47" y2="11" />
+  <line x1="22" y1="12" x2="47" y2="12" />
+  <line x1="22" y1="12" x2="47" y2="12" />
+  <line x1="22" y1="12" x2="48" y2="12" />
+  <line x1="23" y1="13" x2="48" y2="13" />
+  <line x1="23" y1="13" x2="49" y2="13" />
+  <line x1="24" y1="14" x2="49" y2="14" />
   <line x1="24" y1="14" x2="50" y2="14" />
+  <line x1="25" y1="15" x2="50" y2="15" />
+  <line x1="25" y1="15" x2="50" y2="15" />
+  <line x1="25" y1="15" x2="51" y2="15" />
+  <line x1="26" y1="16" x2="51" y2="16" />
+  <line x1="26" y1="16" x2="52" y2="16" />
+  <line x1="27" y1="17" x2="52" y2="17" />
+  <line x1="27" y1="17" x2="52" y2="17" />
+  <line x1="27" y1="17" x2="53" y2="17" />
+  <line x1="28" y1="18" x2="53" y2="18" />
   <line x1="28" y1="18" x2="54" y2="18" />
+  <line x1="29" y1="19" x2="54" y2="19" />
+  <line x1="29" y1="19" x2="54" y2="19" />
+  <line x1="29" y1="19" x2="55" y2="19" />
+  <line x1="30" y1="20" x2="55" y2="20" />
+  <line x1="30" y1="20" x2="56" y2="20" />
+  <line x1="31" y1="21" x2="56" y2="21" />
+  <line x1="31" y1="21" x2="56" y2="21" />
+  <line x1="31" y1="21" x2="57" y2="21" />
   <line x1="32" y1="22" x2="57" y2="22" />
+  <line x1="32" y1="22" x2="58" y2="22" />
+  <line x1="33" y1="23" x2="58" y2="23" />
+  <line x1="33" y1="23" x2="58" y2="23" />
+  <line x1="33" y1="23" x2="59" y2="23" />
+  <line x1="34" y1="24" x2="59" y2="24" />
+  <line x1="34" y1="24" x2="60" y2="24" />
+  <line x1="35" y1="25" x2="60" y2="25" />
+  <line x1="35" y1="25" x2="60" y2="25" />
   <line x1="35" y1="25" x2="61" y2="25" />
+  <line x1="36" y1="26" x2="61" y2="26" />
+  <line x1="36" y1="26" x2="62" y2="26" />
+  <line x1="37" y1="27" x2="62" y2="27" />
+  <line x1="37" y1="27" x2="62" y2="27" />
+  <line x1="37" y1="27" x2="63" y2="27" />
+  <line x1="38" y1="28" x2="63" y2="28" />
+  <line x1="38" y1="28" x2="64" y2="28" />
+  <line x1="39" y1="29" x2="64" y2="29" />
   <line x1="39" y1="29" x2="65" y2="29" />
+  <line x1="40" y1="30" x2="65" y2="30" />
+  <line x1="40" y1="30" x2="65" y2="30" />
+  <line x1="40" y1="30" x2="66" y2="30" />
+  <line x1="41" y1="31" x2="66" y2="31" />
+  <line x1="41" y1="31" x2="67" y2="31" />
+  <line x1="42" y1="32" x2="67" y2="32" />
+  <line x1="42" y1="32" x2="67" y2="32" />
+  <line x1="42" y1="32" x2="68" y2="32" />
   <line x1="43" y1="33" x2="68" y2="33" />
+  <line x1="43" y1="33" x2="69" y2="33" />
+  <line x1="44" y1="34" x2="69" y2="34" />
+  <line x1="44" y1="34" x2="69" y2="34" />
+  <line x1="44" y1="34" x2="70" y2="34" />
+  <line x1="45" y1="35" x2="70" y2="35" />
+  <line x1="45" y1="35" x2="71" y2="35" />
+  <line x1="46" y1="36" x2="71" y2="36" />
+  <line x1="46" y1="36" x2="71" y2="36" />
+  <line x1="46" y1="36" x2="72" y2="36" />
   <line x1="47" y1="37" x2="72" y2="37" />
+  <line x1="47" y1="37" x2="73" y2="37" />
+  <line x1="48" y1="38" x2="73" y2="38" />
+  <line x1="48" y1="38" x2="73" y2="38" />
+  <line x1="48" y1="38" x2="74" y2="38" />
+  <line x1="49" y1="39" x2="74" y2="39" />
+  <line x1="49" y1="39" x2="75" y2="39" />
+  <line x1="50" y1="40" x2="75" y2="40" />
+  <line x1="50" y1="40" x2="75" y2="40" />
   <line x1="50" y1="40" x2="76" y2="40" />
+  <line x1="51" y1="41" x2="76" y2="41" />
+  <line x1="51" y1="41" x2="77" y2="41" />
+  <line x1="52" y1="42" x2="77" y2="42" />
+  <line x1="52" y1="42" x2="77" y2="42" />
+  <line x1="52" y1="42" x2="78" y2="42" />
+  <line x1="53" y1="43" x2="78" y2="43" />
+  <line x1="53" y1="43" x2="79" y2="43" />
+  <line x1="54" y1="44" x2="79" y2="44" />
   <line x1="54" y1="44" x2="80" y2="44" />
+  <line x1="55" y1="45" x2="80" y2="45" />
+  <line x1="55" y1="45" x2="80" y2="45" />
+  <line x1="55" y1="45" x2="81" y2="45" />
+  <line x1="56" y1="46" x2="81" y2="46" />
+  <line x1="56" y1="46" x2="82" y2="46" />
+  <line x1="57" y1="47" x2="82" y2="47" />
+  <line x1="57" y1="47" x2="82" y2="47" />
+  <line x1="57" y1="47" x2="83" y2="47" />
   <line x1="58" y1="48" x2="83" y2="48" />
+  <line x1="58" y1="48" x2="84" y2="48" />
+  <line x1="59" y1="49" x2="84" y2="49" />
+  <line x1="59" y1="49" x2="84" y2="49" />
+  <line x1="59" y1="49" x2="85" y2="49" />
+  <line x1="60" y1="50" x2="85" y2="50" />
+  <line x1="60" y1="50" x2="86" y2="50" />
+  <line x1="61" y1="51" x2="86" y2="51" />
+  <line x1="61" y1="51" x2="86" y2="51" />
   <line x1="61" y1="51" x2="87" y2="51" />
+  <line x1="62" y1="52" x2="87" y2="52" />
+  <line x1="62" y1="52" x2="88" y2="52" />
+  <line x1="63" y1="53" x2="88" y2="53" />
+  <line x1="63" y1="53" x2="88" y2="53" />
+  <line x1="63" y1="53" x2="89" y2="53" />
+  <line x1="64" y1="54" x2="89" y2="54" />
+  <line x1="64" y1="54" x2="90" y2="54" />
+  <line x1="65" y1="55" x2="90" y2="55" />
+  <line x1="65" y1="55" x2="90" y2="55" />
   <line x1="65" y1="55" x2="91" y2="55" />
+  <line x1="66" y1="56" x2="91" y2="56" />
+  <line x1="66" y1="56" x2="92" y2="56" />
+  <line x1="67" y1="57" x2="92" y2="57" />
+  <line x1="67" y1="57" x2="92" y2="57" />
+  <line x1="67" y1="57" x2="93" y2="57" />
+  <line x1="68" y1="58" x2="93" y2="58" />
+  <line x1="68" y1="58" x2="94" y2="58" />
+  <line x1="69" y1="59" x2="94" y2="59" />
   <line x1="69" y1="59" x2="95" y2="59" />
+  <line x1="70" y1="60" x2="95" y2="60" />
+  <line x1="70" y1="60" x2="95" y2="60" />
+  <line x1="70" y1="60" x2="96" y2="60" />
+  <line x1="71" y1="61" x2="96" y2="61" />
+  <line x1="71" y1="61" x2="97" y2="61" />
+  <line x1="72" y1="62" x2="97" y2="62" />
+  <line x1="72" y1="62" x2="97" y2="62" />
+  <line x1="72" y1="62" x2="98" y2="62" />
   <line x1="73" y1="63" x2="98" y2="63" />
+  <line x1="73" y1="63" x2="99" y2="63" />
+  <line x1="74" y1="64" x2="99" y2="64" />
+  <line x1="74" y1="64" x2="99" y2="64" />
+  <line x1="74" y1="64" x2="100" y2="64" />
+  <line x1="75" y1="65" x2="100" y2="65" />
+  <line x1="75" y1="65" x2="101" y2="65" />
+  <line x1="76" y1="66" x2="101" y2="66" />
+  <line x1="76" y1="66" x2="101" y2="66" />
   <line x1="76" y1="66" x2="102" y2="66" />
+  <line x1="77" y1="67" x2="102" y2="67" />
+  <line x1="77" y1="67" x2="103" y2="67" />
+  <line x1="78" y1="68" x2="103" y2="68" />
+  <line x1="78" y1="68" x2="103" y2="68" />
+  <line x1="78" y1="68" x2="104" y2="68" />
+  <line x1="79" y1="69" x2="104" y2="69" />
+  <line x1="79" y1="69" x2="105" y2="69" />
+  <line x1="80" y1="70" x2="105" y2="70" />
+  <line x1="80" y1="70" x2="105" y2="70" />
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1714,28 +2858,65 @@ To avoid creating the large chunks, set the option
   <line x1="35" y1="0" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 35.41261651458248,0.0 106.00085180870013,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="10.000000,0.000000 35.412617,0.000000 106.000852,70.588235 80.588235,70.588235" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
+  <line x1="80" y1="70" x2="106" y2="70" />
+  <line x1="80" y1="71" x2="106" y2="71" />
   <line x1="80" y1="71" x2="106" y2="71" />
   <line x1="80" y1="72" x2="106" y2="72" />
+  <line x1="80" y1="72" x2="106" y2="72" />
+  <line x1="80" y1="72" x2="106" y2="72" />
+  <line x1="80" y1="72" x2="106" y2="72" />
+  <line x1="80" y1="73" x2="106" y2="73" />
   <line x1="80" y1="73" x2="106" y2="73" />
   <line x1="80" y1="74" x2="106" y2="74" />
+  <line x1="80" y1="74" x2="106" y2="74" />
+  <line x1="80" y1="75" x2="106" y2="75" />
   <line x1="80" y1="76" x2="106" y2="76" />
+  <line x1="80" y1="76" x2="106" y2="76" />
+  <line x1="80" y1="77" x2="106" y2="77" />
+  <line x1="80" y1="78" x2="106" y2="78" />
   <line x1="80" y1="79" x2="106" y2="79" />
   <line x1="80" y1="80" x2="106" y2="80" />
+  <line x1="80" y1="80" x2="106" y2="80" />
+  <line x1="80" y1="80" x2="106" y2="80" />
+  <line x1="80" y1="81" x2="106" y2="81" />
+  <line x1="80" y1="81" x2="106" y2="81" />
   <line x1="80" y1="82" x2="106" y2="82" />
   <line x1="80" y1="83" x2="106" y2="83" />
+  <line x1="80" y1="83" x2="106" y2="83" />
+  <line x1="80" y1="83" x2="106" y2="83" />
+  <line x1="80" y1="84" x2="106" y2="84" />
+  <line x1="80" y1="84" x2="106" y2="84" />
   <line x1="80" y1="84" x2="106" y2="84" />
   <line x1="80" y1="85" x2="106" y2="85" />
+  <line x1="80" y1="85" x2="106" y2="85" />
+  <line x1="80" y1="85" x2="106" y2="85" />
+  <line x1="80" y1="86" x2="106" y2="86" />
+  <line x1="80" y1="87" x2="106" y2="87" />
+  <line x1="80" y1="88" x2="106" y2="88" />
+  <line x1="80" y1="88" x2="106" y2="88" />
+  <line x1="80" y1="88" x2="106" y2="88" />
+  <line x1="80" y1="88" x2="106" y2="88" />
   <line x1="80" y1="88" x2="106" y2="88" />
   <line x1="80" y1="88" x2="106" y2="88" />
   <line x1="80" y1="89" x2="106" y2="89" />
+  <line x1="80" y1="89" x2="106" y2="89" />
+  <line x1="80" y1="89" x2="106" y2="89" />
+  <line x1="80" y1="90" x2="106" y2="90" />
   <line x1="80" y1="90" x2="106" y2="90" />
   <line x1="80" y1="91" x2="106" y2="91" />
+  <line x1="80" y1="91" x2="106" y2="91" />
+  <line x1="80" y1="91" x2="106" y2="91" />
+  <line x1="80" y1="91" x2="106" y2="91" />
+  <line x1="80" y1="92" x2="106" y2="92" />
+  <line x1="80" y1="92" x2="106" y2="92" />
   <line x1="80" y1="92" x2="106" y2="92" />
   <line x1="80" y1="93" x2="106" y2="93" />
+  <line x1="80" y1="94" x2="106" y2="94" />
+  <line x1="80" y1="95" x2="106" y2="95" />
   <line x1="80" y1="96" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1743,7 +2924,7 @@ To avoid creating the large chunks, set the option
   <line x1="106" y1="70" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="80.58823529411765,70.58823529411765 106.00085180870013,70.58823529411765 106.00085180870013,96.00085180870013 80.58823529411765,96.00085180870013" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="80.588235,70.588235 106.000852,70.588235 106.000852,96.000852 80.588235,96.000852" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="93.294544" y="116.000852" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
@@ -1786,7 +2967,15 @@ To avoid creating the large chunks, set the option
 </div>
 </div>
 </div>
-<p>If you want to work with the genotype calls, you may find it convenient to use <a class="reference external" href="http://scikit-allel.readthedocs.org/">scikit-allel</a>. E.g., this code sets up a genotype array:</p>
+<p>If you want to work with the genotype calls, you may find it convenient to use <a class="reference external" href="http://scikit-allel.readthedocs.org/">scikit-allel</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="o">!</span>pip install -q scikit-allel
+</pre></div>
+</div>
+</div>
+</div>
+<p>E.g., this code sets up a genotype array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the scikit-allel wrapper class for genotype calls</span>
@@ -1800,12 +2989,10 @@ To avoid creating the large chunks, set the option
 <div class="cell_output docutils container">
 <div class="output text_html"><div class="allel allel-DisplayAs2D"><span>&lt;GenotypeDaskArray shape=(52226568, 283, 2) dtype=int8&gt;</span><table><thead><tr><th></th><th style="text-align: center">0</th><th style="text-align: center">1</th><th style="text-align: center">2</th><th style="text-align: center">3</th><th style="text-align: center">4</th><th style="text-align: center">...</th><th style="text-align: center">278</th><th style="text-align: center">279</th><th style="text-align: center">280</th><th style="text-align: center">281</th><th style="text-align: center">282</th></tr></thead><tbody><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">0</th><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">1</th><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">2</th><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">...</th><td style="text-align: center" colspan="12">...</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">52226565</th><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">...</td><td style="text-align: center">0/0</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">52226566</th><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">...</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">52226567</th><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">...</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td></tr></tbody></table></div></div></div>
 </div>
-<p>Here’s an example computation to count the number of segregating SNPs on chromosome arm 3R that also pass gamb_colu_arab site filters. This will take a little while, because it is scanning millions of genotype calls in hundreds of samples:</p>
+<p>Here’s an example computation to count the number of segregating SNPs on chromosome arm 3R that also pass gamb_colu_arab site filters. This may take a little while, because it is scanning genotype calls at millions of SNPs in hundreds of samples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">allel</span>
-
-<span class="c1"># import dask progress bar</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import dask progress bar</span>
 <span class="kn">from</span> <span class="nn">dask.diagnostics.progress</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
 
 <span class="c1"># import numpy</span>
@@ -1826,102 +3013,39 @@ To avoid creating the large chunks, set the option
 <span class="c1"># perform an allele count over genotypes</span>
 <span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="n">seq_id</span><span class="o">=</span><span class="n">seq_id</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
 <span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
-    <span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-    
+<span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
 <span class="c1"># locate segregating sites</span>
 <span class="n">loc_seg</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="n">is_segregating</span><span class="p">()</span>
 
 <span class="c1"># count segregating and pass sites</span>
-<span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">loc_pass</span> <span class="o">&amp;</span> <span class="n">loc_seg</span><span class="p">)</span>
+<span class="n">n_pass_seg</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">loc_pass</span> <span class="o">&amp;</span> <span class="n">loc_seg</span><span class="p">)</span>
+
+<span class="c1"># run the computation</span>
+<span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
+    <span class="n">n_pass_seg</span> <span class="o">=</span> <span class="n">n_pass_seg</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+
+<span class="n">n_pass_seg</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 2% Completed |  6.6s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[########################################] | 100% Completed |  3min  6.7s
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="n">e46f2b1ffe69</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
-<span class="ne">---&gt; </span><span class="mi">25</span>     <span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> 
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="c1"># locate segregating sites</span>
-
-<span class="nn">~/pyenv/vector-public-data-dev-py38/lib/python3.8/site-packages/allel/model/dask.py</span> in <span class="ni">compute</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">731</span> 
-<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">733</span>         <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">AlleleCountsDaskArray</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">734</span>         <span class="k">return</span> <span class="n">AlleleCountsArray</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">735</span> 
-
-<span class="nn">~/pyenv/vector-public-data-dev-py38/lib/python3.8/site-packages/allel/model/dask.py</span> in <span class="ni">compute</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span> 
-<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">144</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span> 
-<span class="g g-Whitespace">    </span><span class="mi">146</span> 
-
-<span class="nn">~/pyenv/vector-public-data-dev-py38/lib/python3.8/site-packages/dask/base.py</span> in <span class="ni">compute</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="n">dask</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">compute</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">279</span><span class="s2">         (result,) = compute(self, traverse=False, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span><span class="s2">         return result</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span><span class="s2"> </span>
-
-<span class="nn">~/pyenv/vector-public-data-dev-py38/lib/python3.8/site-packages/dask/base.py</span> in <span class="ni">compute</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">565</span><span class="s2">         postcomputes.append(x.__dask_postcompute__())</span>
-<span class="g g-Whitespace">    </span><span class="mi">566</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">567</span><span class="s2">     results = schedule(dsk, keys, **kwargs)</span>
-<span class="nn">    568     return repack([f(r, *a) for r, (f, a)</span> in <span class="ni">zip</span><span class="nt">(results, postcomputes)])</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span><span class="s2"> </span>
-
-<span class="nn">~/pyenv/vector-public-data-dev-py38/lib/python3.8/site-packages/dask/threaded.py</span> in <span class="ni">get</span><span class="nt">(dsk, result, cache, num_workers, pool, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2">                 pools[thread][num_workers] = pool</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="s2"> </span>
-<span class="ne">---&gt; </span><span class="mi">76</span><span class="s2">     results = get_async(</span>
-<span class="g g-Whitespace">     </span><span class="mi">77</span><span class="s2">         pool.apply_async,</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span><span class="s2">         len(pool._pool),</span>
-
-<span class="nn">~/pyenv/vector-public-data-dev-py38/lib/python3.8/site-packages/dask/local.py</span> in <span class="ni">get_async</span><span class="nt">(apply_async, num_workers, dsk, result, cache, get_id, rerun_exceptions_locally, pack_exception, raise_exception, callbacks, dumps, loads, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">473</span><span class="s2">             # Main loop, wait on tasks to finish, insert new ones</span>
-<span class="g g-Whitespace">    </span><span class="mi">474</span><span class="s2">             while state[&quot;waiting&quot;] or state[&quot;ready&quot;] or state[&quot;running&quot;]:</span>
-<span class="ne">--&gt; </span><span class="mi">475</span><span class="s2">                 key, res_info, failed = queue_get(queue)</span>
-<span class="g g-Whitespace">    </span><span class="mi">476</span><span class="s2">                 if failed:</span>
-<span class="g g-Whitespace">    </span><span class="mi">477</span><span class="s2">                     exc, tb = loads(res_info)</span>
-
-<span class="nn">~/pyenv/vector-public-data-dev-py38/lib/python3.8/site-packages/dask/local.py</span> in <span class="ni">queue_get</span><span class="nt">(q)</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span><span class="s2">     def queue_get(q):</span>
-<span class="ne">--&gt; </span><span class="mi">133</span><span class="s2">         return q.get()</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span><span class="s2"> </span>
-
-<span class="nn">/usr/lib/python3.8/queue.py</span> in <span class="ni">get</span><span class="nt">(self, block, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">168</span><span class="s2">             elif timeout is None:</span>
-<span class="g g-Whitespace">    </span><span class="mi">169</span><span class="s2">                 while not self._qsize():</span>
-<span class="ne">--&gt; </span><span class="mi">170</span><span class="s2">                     self.not_empty.wait()</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span><span class="s2">             elif timeout &lt; 0:</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="s2">                 raise ValueError(&quot;&#39;timeout&#39; must be a non-negative number&quot;)</span>
-
-<span class="nn">/usr/lib/python3.8/threading.py</span> in <span class="ni">wait</span><span class="nt">(self, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">300</span><span class="s2">         try:    # restore state no matter what (e.g., KeyboardInterrupt)</span>
-<span class="g g-Whitespace">    </span><span class="mi">301</span><span class="s2">             if timeout is None:</span>
-<span class="ne">--&gt; </span><span class="mi">302</span><span class="s2">                 waiter.acquire()</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span><span class="s2">                 gotit = True</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span><span class="s2">             else:</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11226723
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="further-reading">
-<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
-<p>We will hopefully be able to write up further examples of analysing data soon, so please follow <a class="reference external" href="https://twitter.com/malariagenomics">&#64;malariagenomics</a> on Twitter or keep an eye on the <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions">malariagen/vector-public-data GitHub discussion board</a>.</p>
+<div class="section" id="running-larger-computations">
+<h2>Running larger computations<a class="headerlink" href="#running-larger-computations" title="Permalink to this headline">¶</a></h2>
+<p>Please note that free cloud computing services such as Google Colab and MyBinder provide only limited computing resources. Thus although these services are able to efficiently read Ag3 data stored on Google Cloud, you may find that you run out of memory, or computations take a long time running on a single core. If you would like any suggestions regarding how to set up more powerful compute resources in the cloud, please feel free to get in touch via the <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">malariagen/vector-data GitHub discussion board</a>.</p>
+</div>
+<div class="section" id="feedback-and-suggestions">
+<h2>Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">¶</a></h2>
+<p>If there are particular analyses you would like to run, or if you have other suggestions for useful documentation we could add to this site, we would love to know, please get in touch via the <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">malariagen/vector-data GitHub discussion board</a>.</p>
 </div>
 </div>
 
