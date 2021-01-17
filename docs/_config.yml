@@ -1,9 +1,11 @@
-title: "MalariaGEN vector open data guide"
+title: MalariaGEN vector data user guide
+author: MalariaGEN
+copyright: "2021"
 logo: images/logo.png
 execute:
   execute_notebooks: "off"
 repository:
-  url: https://github.com/malariagen/vector-open-data
+  url: https://github.com/malariagen/vector-data
   path_to_book              : docs
   branch                    : master
 launch_buttons:
@@ -14,5 +16,4 @@ launch_buttons:
 html:
   use_repository_button : true
   use_issues_button: true
-  extra_footer: "By the MalariaGEN Resource Centre Team."
  
