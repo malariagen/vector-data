@@ -1,6 +1,6 @@
 - file: landing-page
 
-- part: Ag1000G phase 3 (Ag3)
+- part: Ag3 (Ag1000G phase 3)
   chapters:
     - file: ag3/intro
     - file: ag3/cloud
