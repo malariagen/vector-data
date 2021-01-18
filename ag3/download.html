@@ -303,8 +303,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-reading">
-   Further reading
+  <a class="reference internal nav-link" href="#feedback-and-suggestions">
+   Feedback and suggestions
   </a>
  </li>
 </ul>
@@ -331,7 +331,7 @@
 </div>
 <div class="section" id="sample-sets">
 <h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">¶</a></h2>
-<p>Data in this release are organised into 26 sample sets. Each of these sample sets corresponds to a set of mosquito specimens contributed by a collaborating study. Depending on your objectives, you may want to download data from only specific sample sets, or all sample sets. For convenience there is a tab-delimited manifest file listing all sample sets in the release. Here is a direct download link for the sample set manifest:</p>
+<p>Data in this release are organised into 28 sample sets. Each of these sample sets corresponds to a set of mosquito specimens contributed by a collaborating study. Depending on your objectives, you may want to download data from only specific sample sets, or all sample sets. For convenience there is a tab-delimited manifest file listing all sample sets in the release. Here is a direct download link for the sample set manifest:</p>
 <ul class="simple">
 <li><p>https://storage.googleapis.com/vo_agam_release/v3/manifest.tsv</p></li>
 </ul>
@@ -1818,7 +1818,8 @@ dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import scikit-allel</span>
 <span class="kn">import</span> <span class="nn">allel</span>
 
-<span class="c1"># import dask progress bar</span>
+<span class="c1"># import dask </span>
+<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
 <span class="kn">from</span> <span class="nn">dask.diagnostics.progress</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
 
 <span class="c1"># import numpy</span>
@@ -1839,19 +1840,24 @@ dtype: int64
 <span class="c1"># perform an allele count over genotypes</span>
 <span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="n">seq_id</span><span class="o">=</span><span class="n">seq_id</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
 <span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
-    <span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-    
+<span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
 <span class="c1"># locate segregating sites</span>
 <span class="n">loc_seg</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="n">is_segregating</span><span class="p">()</span>
 
 <span class="c1"># count segregating and pass sites</span>
-<span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">loc_pass</span> <span class="o">&amp;</span> <span class="n">loc_seg</span><span class="p">)</span>
+<span class="n">n_pass_seg</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">loc_pass</span> <span class="o">&amp;</span> <span class="n">loc_seg</span><span class="p">)</span>
+
+<span class="c1"># run the computation</span>
+<span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
+    <span class="n">n_pass_seg</span> <span class="o">=</span> <span class="n">n_pass_seg</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+
+<span class="n">n_pass_seg</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[########################################] | 100% Completed |  9.2s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[########################################] | 100% Completed | 10.0s
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11226723
@@ -1860,9 +1866,9 @@ dtype: int64
 </div>
 </div>
 </div>
-<div class="section" id="further-reading">
-<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
-<p>We will hopefully be able to write up further examples of analysing data soon, so please follow <a class="reference external" href="https://twitter.com/malariagenomics">&#64;malariagenomics</a> on Twitter or keep an eye on the <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions">malariagen/vector-public-data GitHub discussion board</a>.</p>
+<div class="section" id="feedback-and-suggestions">
+<h2>Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">¶</a></h2>
+<p>If there are particular analyses you would like to run, or if you have other suggestions for useful documentation we could add to this site, we would love to know, please get in touch via the <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">malariagen/vector-data GitHub discussion board</a>.</p>
 </div>
 </div>
 
