@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ag3 data downloads &#8212; MalariaGEN vector data user guide</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -1826,7 +1826,7 @@ dtype: int64
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># choose chromosome arm</span>
-<span class="n">seq_id</span> <span class="o">=</span> <span class="s2">&quot;3R&quot;</span>
+<span class="n">contig</span> <span class="o">=</span> <span class="s2">&quot;3R&quot;</span>
 
 <span class="c1"># choose site filter mask</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="s2">&quot;gamb_colu_arab&quot;</span>
@@ -1835,10 +1835,10 @@ dtype: int64
 <span class="n">sample_sets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">]</span>
 
 <span class="c1"># locate pass sites</span>
-<span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">seq_id</span><span class="o">=</span><span class="n">seq_id</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="n">contig</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 
 <span class="c1"># perform an allele count over genotypes</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="n">seq_id</span><span class="o">=</span><span class="n">seq_id</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
+<span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="n">contig</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
 <span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
 <span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
@@ -1920,7 +1920,7 @@ dtype: int64
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
