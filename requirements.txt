@@ -11,4 +11,5 @@ gsutil
 scikit-allel
 malariagen-data
 ghp-import
-
+cartopy
+rasterio
