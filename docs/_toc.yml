@@ -7,4 +7,4 @@
     - file: ag3/download
     - file: ag3/examples
       sections:
-        - file: ag3/collection-sites
+        - file: ag3/examples/collection-sites
