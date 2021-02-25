@@ -423,7 +423,7 @@
 <p>To load geographical data and plot maps, we’ll need to install some packages, including <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">cartopy</a> and <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/">rasterio</a>. Installing these packages can be a bit fiddly. If you’re running this on Google Colab or other Debian/Ubuntu systems and using pip to install Python packages, the following code should do it. Installation commands on other systems may vary.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>apt-get -q install libgdal-dev libproj-dev libgeos-dev
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>apt-get -q install libgdal-dev libproj-dev libgeos-dev proj-data proj-bin
 <span class="o">!</span>pip install -q cython numpy scipy pyshp six matplotlib pandas malariagen_data adjustText
 <span class="o">!</span>pip uninstall -q -y shapely  # make sure we have a fresh install
 <span class="o">!</span>pip install -q shapely --no-binary shapely
