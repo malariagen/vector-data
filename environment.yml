@@ -1,0 +1,22 @@
+name: malariagen-vector-data
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - scipy
+  - pandas
+  - dask
+  - matplotlib
+  - fsspec
+  - gcsfs
+  - jupyterlab
+  - jupyter-book
+  - gsutil
+  - scikit-allel
+  - cartopy
+  - rasterio
+  - pip
+  - pip:
+    - malariagen_data
