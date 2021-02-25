@@ -1,4 +1,5 @@
 numpy
+scipy
 pandas
 matplotlib
 zarr
@@ -11,4 +12,3 @@ gsutil
 scikit-allel
 malariagen-data
 ghp-import
-

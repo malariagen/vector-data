@@ -1,0 +1,6 @@
+gdal-bin
+libgdal-dev
+libgeos-dev
+libproj-dev
+cython3
+python3-numpy
