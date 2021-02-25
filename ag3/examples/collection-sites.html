@@ -1,0 +1,3287 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mosquito collection sites &#8212; MalariaGEN vector data user guide</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Ag3 analysis examples" href="../examples.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">MalariaGEN vector data user guide</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../landing-page.html">
+   MalariaGEN vector data user guide
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Ag3 (Ag1000G phase 3)
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction to Ag3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cloud.html">
+   Ag3 cloud data access
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../download.html">
+   Ag3 data downloads
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../examples.html">
+   Ag3 analysis examples
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Mosquito collection sites
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/ag3/examples/collection-sites.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/malariagen/vector-data"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/examples/collection-sites.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=tree/docs/ag3/examples/collection-sites.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/malariagen/vector-data/blob/master/docs/ag3/examples/collection-sites.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mozambique">
+   Mozambique
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#malawi">
+   Malawi
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tanzania">
+   Tanzania
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kenya">
+   Kenya
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uganda">
+   Uganda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#democratic-republic-of-the-congo">
+   Democratic Republic of the Congo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#central-african-republic">
+   Central African Republic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cameroon">
+   Cameroon
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-cm-c">
+     AG1000G-CM-C
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-cm-b">
+     AG1000G-CM-B
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-cm-a">
+     AG1000G-CM-A
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gabon">
+   Gabon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#angola">
+   Angola
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ghana">
+   Ghana
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cote-d-ivoire">
+   Côte d’Ivoire
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#burkina-faso">
+   Burkina Faso
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-bf-a-ag1000g-bf-b">
+     AG1000G-BF-A, AG1000G-BF-B
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-bf-c">
+     AG1000G-BF-C
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mali">
+   Mali
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-gn-b-mali">
+     AG1000G-GN-B (Mali)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-ml-a">
+     AG1000G-ML-A
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-ml-b">
+     AG1000G-ML-B
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guinea">
+   Guinea
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guinea-bissau">
+   Guinea-Bissau
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-gambia">
+   The Gambia
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-gm-a">
+     AG1000G-GM-A
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-gm-b">
+     AG1000G-GM-B
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ag1000g-gm-c">
+     AG1000G-GM-C
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mayotte-island">
+   Mayotte Island
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bioko-island">
+   Bioko Island
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="mosquito-collection-sites">
+<h1>Mosquito collection sites<a class="headerlink" href="#mosquito-collection-sites" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we’ll take a virtual tour of the locations where mosquitoes contributed to Ag1000G phase 3 were collected. We’ll plot some maps to see the collection sites in their geographical context. For added interest, we’ll also plot some other geographical data on the maps, such as <a class="reference external" href="http://www.aag.org/cs/publications/special/map_african_ecosystems">ecosystem classifications</a> and ITN coverage from the <a class="reference external" href="https://malariaatlas.org/explorer/#/">Malaria Atlas Project</a>.</p>
+<p>As always, this notebook is executable, which means you can run it for yourself by clicking the launch icon (<i class="fas fa-rocket"></i>) at the top of the page and selecting one of the cloud computing services available.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>To load geographical data and plot maps, we’ll need to install some packages, including <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">cartopy</a> and <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/">rasterio</a>. Installing these packages can be a bit fiddly. If you’re running this on Google Colab or other Debian/Ubuntu systems and using pip to install Python packages, the following code should do it. Installation commands on other systems may vary.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>apt-get -q install libgdal-dev libproj-dev libgeos-dev
+<span class="o">!</span>pip install -q cython numpy scipy pyshp six matplotlib pandas malariagen_data adjustText
+<span class="o">!</span>pip uninstall -q -y shapely  # make sure we have a fresh install
+<span class="o">!</span>pip install -q shapely --no-binary shapely
+<span class="o">!</span>pip install -q --upgrade cartopy
+<span class="o">!</span>pip install -q --upgrade rasterio
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading package lists...
+Building dependency tree...
+Reading state information...
+libgdal-dev is already the newest version (2.2.3+dfsg-2).
+libgeos-dev is already the newest version (3.6.2-1build2).
+libgeos-dev set to manually installed.
+libproj-dev is already the newest version (4.9.3-2).
+libproj-dev set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 13 not upgraded.
+     |████████████████████████████████| 225kB 5.7MB/s 
+     |████████████████████████████████| 112kB 22.6MB/s 
+     |████████████████████████████████| 133kB 23.5MB/s 
+     |████████████████████████████████| 5.8MB 17.8MB/s 
+     |████████████████████████████████| 1.3MB 39.9MB/s 
+     |████████████████████████████████| 296kB 57.4MB/s 
+     |████████████████████████████████| 143kB 39.3MB/s 
+?25h  Building wheel for pyshp (setup.py) ... ?25l?25hdone
+  Building wheel for adjustText (setup.py) ... ?25l?25hdone
+  Building wheel for asciitree (setup.py) ... ?25l?25hdone
+     |████████████████████████████████| 389kB 5.9MB/s 
+<span class=" -Color -Color-Red">ERROR: albumentations 0.1.12 has requirement imgaug&lt;0.2.7,&gt;=0.2.5, but you&#39;ll have imgaug 0.2.9 which is incompatible.</span>
+?25h    Running setup.py install for shapely ... ?25l?25hdone
+     |████████████████████████████████| 14.4MB 347kB/s 
+?25h  Building wheel for cartopy (setup.py) ... ?25l?25hdone
+     |████████████████████████████████| 19.1MB 1.3MB/s 
+?25h
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check we have cartopy 0.18.0 or greater, needed to get tiles from google maps</span>
+<span class="kn">import</span> <span class="nn">cartopy</span>
+<span class="n">cartopy</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.18.0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setup access to MalariaGEN data via Google Cloud.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
+<span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To plot the extra geographical data, we’ll need to download some files.</p>
+<p>The ecosystem classifications in full resolution are available from the <a class="reference external" href="http://rmgsc.cr.usgs.gov/outgoing/ecosystems/AfricaData/">USGS website</a>, but these are large files and higher resolution than we need. For convenience we’ve precomputed a downsampled version of these data, let’s download it.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG_5pc.tif
+<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG.tif.vat.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2021-02-25 15:54:31--  https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG_5pc.tif
+Resolving storage.googleapis.com (storage.googleapis.com)... 173.194.215.128, 173.194.216.128, 173.194.217.128, ...
+Connecting to storage.googleapis.com (storage.googleapis.com)|173.194.215.128|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 94643430 (90M) [image/tiff]
+Saving to: ‘Africa_IVC_20130316_final_MG_5pc.tif’
+
+Africa_IVC_20130316 100%[===================&gt;]  90.26M   122MB/s    in 0.7s    
+
+2021-02-25 15:54:32 (122 MB/s) - ‘Africa_IVC_20130316_final_MG_5pc.tif’ saved [94643430/94643430]
+
+--2021-02-25 15:54:32--  https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG.tif.vat.csv
+Resolving storage.googleapis.com (storage.googleapis.com)... 173.194.216.128, 173.194.217.128, 64.233.170.128, ...
+Connecting to storage.googleapis.com (storage.googleapis.com)|173.194.216.128|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 35825 (35K) [text/csv]
+Saving to: ‘Africa_IVC_20130316_final_MG.tif.vat.csv’
+
+Africa_IVC_20130316 100%[===================&gt;]  34.99K  --.-KB/s    in 0.001s  
+
+2021-02-25 15:54:32 (62.1 MB/s) - ‘Africa_IVC_20130316_final_MG.tif.vat.csv’ saved [35825/35825]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Data from the Malaria Atlas Project can be downloaded from their <a class="reference external" href="https://malariaatlas.org/explorer/">data explorer site</a>. Let’s download the most recent ITN coverage model.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber -O 2020_Africa_ITN_Use.zip <span class="s2">&quot;https://malariaatlas.org/geoserver/Explorer/ows?service=CSW&amp;version=2.0.1&amp;request=DirectDownload&amp;ResourceId=Explorer:2020_Africa_ITN_Use&quot;</span>
+<span class="o">!</span>unzip -n -d 2020_Africa_ITN_Use 2020_Africa_ITN_Use.zip
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2021-02-25 15:54:36--  https://malariaatlas.org/geoserver/Explorer/ows?service=CSW&amp;version=2.0.1&amp;request=DirectDownload&amp;ResourceId=Explorer:2020_Africa_ITN_Use
+Resolving malariaatlas.org (malariaatlas.org)... 49.255.1.196
+Connecting to malariaatlas.org (malariaatlas.org)|49.255.1.196|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘2020_Africa_ITN_Use.zip’
+
+2020_Africa_ITN_Use     [                &lt;=&gt; ]  93.88M  5.31MB/s    in 27s     
+
+2021-02-25 15:55:06 (3.50 MB/s) - ‘2020_Africa_ITN_Use.zip’ saved [98438364]
+
+Archive:  2020_Africa_ITN_Use.zip
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2017.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2008.tif  
+  inflating: 2020_Africa_ITN_Use/sample_image.dat  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2010.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2002.tif  
+  inflating: 2020_Africa_ITN_Use/indexer.properties  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2005.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2007.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2011.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2003.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2015.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2019.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2000.tif  
+  inflating: 2020_Africa_ITN_Use/2020_Africa_ITN_Use.properties  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2009.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2001.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2006.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2012.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2004.tif  
+  inflating: 2020_Africa_ITN_Use/timeregex.properties  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2016.tif  
+  inflating: 2020_Africa_ITN_Use/datastore.properties  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2013.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2014.tif  
+  inflating: 2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_2018.tif  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s define some functions for loading the map data and plotting a map, with support for different background options.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">cartopy</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+<span class="kn">from</span> <span class="nn">cartopy.io.img_tiles</span> <span class="kn">import</span> <span class="n">OSM</span><span class="p">,</span> <span class="n">GoogleTiles</span>
+<span class="kn">from</span> <span class="nn">adjustText</span> <span class="kn">import</span> <span class="n">adjust_text</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup some geographical projections</span>
+<span class="n">crs_lonlat</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+<span class="n">crs_mercator</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Mercator</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">load_ecosystems</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Load the African ecosystems data.&quot;&quot;&quot;</span>
+
+    <span class="c1"># build a matplotlib colour map from the colour table</span>
+    <span class="n">df_colors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Africa_IVC_20130316_final_MG.tif.vat.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">df_colors</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">df_colors</span><span class="p">[[</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">colors</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span>
+    <span class="c1"># fix the zero colour to be white</span>
+    <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+
+    <span class="c1"># load the image data</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Africa_IVC_20130316_final_MG_5pc.tif&quot;</span><span class="p">)</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">image_data</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">image_data</span><span class="p">)</span>  
+
+    <span class="c1"># determine image extent </span>
+    <span class="n">extent</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> 
+        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">top</span>
+    <span class="p">)</span>         
+
+    <span class="k">return</span> <span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span> <span class="n">crs_lonlat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">load_itn_coverage</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load ITN coverage data for a given year.&quot;&quot;&quot;</span>
+    
+    <span class="n">image</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">image_data</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">image_data</span><span class="p">)</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdYlGn&quot;</span>
+    <span class="n">extent</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> 
+        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">top</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span> <span class="n">crs_lonlat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sites</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;v3_wild&quot;</span><span class="p">,</span> <span class="n">sample_query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;osm&#39;</span><span class="p">,</span> 
+               <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bgstyle</span><span class="o">=</span><span class="s1">&#39;street&#39;</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">gridlines</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+               <span class="n">plot_kws</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot a map of mosquito collection sites.&quot;&quot;&quot;</span>
+
+    <span class="c1"># normalise background parameter to lower case</span>
+    <span class="n">background</span> <span class="o">=</span> <span class="n">background</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">extent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># default to the whole of Africa</span>
+        <span class="n">extent</span> <span class="o">=</span> <span class="o">-</span><span class="mi">26</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">38</span>
+
+    <span class="c1"># decide what projection to use</span>
+    <span class="k">if</span> <span class="n">background</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;osm&#39;</span><span class="p">,</span> <span class="s1">&#39;google&#39;</span><span class="p">}:</span>
+        <span class="c1"># these backgrounds use Mercator projection and look best in their</span>
+        <span class="c1"># native projection</span>
+        <span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">GOOGLE_MERCATOR</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># other backgrounds use Plate Carree, for simplicity use their</span>
+        <span class="c1"># native projection</span>
+        <span class="n">projection</span> <span class="o">=</span> <span class="n">crs_lonlat</span>
+        
+    <span class="c1"># create a figure and axes to plot on</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+
+    <span class="c1"># set the extent of the map</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">)</span>
+
+    <span class="c1"># plot the background image</span>
+
+    <span class="k">if</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;osm&#39;</span><span class="p">:</span>
+        <span class="c1"># use OpenStreetMap as background</span>
+        <span class="n">imagery</span> <span class="o">=</span> <span class="n">OSM</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">imagery</span><span class="p">,</span> <span class="n">bgzoom</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;google&#39;</span><span class="p">:</span>
+        <span class="c1"># use Google Maps as background</span>
+        <span class="n">imagery</span> <span class="o">=</span> <span class="n">GoogleTiles</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">bgstyle</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">imagery</span><span class="p">,</span> <span class="n">bgzoom</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;ecosystems&#39;</span><span class="p">:</span>
+        <span class="c1"># use African Ecosystems as background</span>
+        <span class="n">image_data</span><span class="p">,</span> <span class="n">image_cmap</span><span class="p">,</span> <span class="n">image_extent</span><span class="p">,</span> <span class="n">image_crs</span> <span class="o">=</span> <span class="n">load_ecosystems</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">image_cmap</span><span class="p">,</span> 
+                  <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">image_extent</span><span class="p">,</span>
+                  <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">image_crs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Ecosystems&#39;</span>
+        
+    <span class="k">elif</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;itn_coverage&#39;</span><span class="p">:</span>
+        <span class="c1"># use ITN coverage as background</span>
+        <span class="n">image_data</span><span class="p">,</span> <span class="n">image_cmap</span><span class="p">,</span> <span class="n">image_extent</span><span class="p">,</span> <span class="n">image_crs</span> <span class="o">=</span> <span class="n">load_itn_coverage</span><span class="p">(</span><span class="n">bgyear</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">image_cmap</span><span class="p">,</span> 
+                  <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">image_extent</span><span class="p">,</span>
+                  <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">image_crs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ITN coverage (</span><span class="si">{</span><span class="n">bgyear</span><span class="si">}</span><span class="s1">)&#39;</span>
+
+    <span class="k">if</span> <span class="n">background</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;ecosystems&quot;</span><span class="p">,</span> <span class="s2">&quot;itn_coverage&quot;</span><span class="p">}:</span>
+        <span class="c1"># add useful features</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;50m&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;itn_coverage&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAKES</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># draw gridlines</span>
+    <span class="k">if</span> <span class="n">gridlines</span><span class="p">:</span>
+        <span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">,</span> 
+                          <span class="n">xlocs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="n">gridlines</span><span class="p">),</span> 
+                          <span class="n">ylocs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="n">gridlines</span><span class="p">),</span> 
+                          <span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">None</span>
+        
+    <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="c1"># plot sampling sites</span>
+    <span class="n">df_summary</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">sample_sets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sample_query</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">df_samples</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">sample_query</span><span class="p">)</span>
+        <span class="n">df_sites</span> <span class="o">=</span> <span class="n">df_samples</span><span class="p">[[</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">df_sites</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">df_sites</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">df_sites</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">plot_kws</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">plot_kws</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;marker&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;linestyle&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;markeredgecolor&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;markerfacecolor&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;markersize&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;markeredgewidth&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">label_sites</span><span class="p">:</span>
+            <span class="c1"># trick to allow us to use the annotate() method</span>
+            <span class="n">xycoords</span> <span class="o">=</span> <span class="n">crs_lonlat</span><span class="o">.</span><span class="n">_as_mpl_transform</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="n">xycoords</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> 
+                                <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">backgroundcolor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">7</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_kws</span><span class="p">)</span>
+        
+        <span class="c1"># build a summary dataframe showing numbers of samples</span>
+        <span class="n">df_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;sample_set&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;n_samples&#39;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">df_summary</span>
+
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try out the map plotting function, with the different backgound options.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;osm&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_16_0.png" src="../../_images/collection-sites_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bgstyle</span><span class="o">=</span><span class="s1">&#39;street&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_17_0.png" src="../../_images/collection-sites_17_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bgstyle</span><span class="o">=</span><span class="s1">&#39;satellite&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_18_0.png" src="../../_images/collection-sites_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;ecosystems&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_19_0.png" src="../../_images/collection-sites_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;itn_coverage&#39;</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="mi">2019</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_20_0.png" src="../../_images/collection-sites_20_0.png" />
+</div>
+</div>
+<p>Let’s add a function to make a multi-panel plot, so we can see some of these maps side-by-side.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fig_sites</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">sample_query</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span> <span class="n">gridlines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+              <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;Make a multi-panel figure of collection sites with different map backgrounds.&quot;&quot;&quot;</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+        <span class="n">sample_query</span><span class="o">=</span><span class="n">sample_query</span><span class="p">,</span>
+        <span class="n">gridlines</span><span class="o">=</span><span class="n">gridlines</span><span class="p">,</span>
+        <span class="n">label_sites</span><span class="o">=</span><span class="n">label_sites</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+    <span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="n">bgzoom</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">)</span>
+    <span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;ecosystems&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">)</span>
+    <span class="n">df_summary</span> <span class="o">=</span> <span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;itn_coverage&#39;</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="n">bgyear</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_summary</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s zoom into some of the different collection sites, starting in East Africa and moving west.</p>
+<p>Please note that the plots below include ITN coverage estimated at the most recent date available (2019) but many of the samples included in Ag1000G phase 3 were collected well before that date, at a time when ITN coverage may have been very different. If you want to explore this, run this notebook changing the <code class="docutils literal notranslate"><span class="pre">bgyear</span></code> parameter.</p>
+</div>
+<div class="section" id="mozambique">
+<h2>Mozambique<a class="headerlink" href="#mozambique" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes were collected in the village of Furvela in 2003 and 2004 and are all <em>An. gambiae</em>. For more information about Furvela see <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/25088021/">Charlwood et al. (2014)</a> and references therein.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="o">-</span><span class="mi">28</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Mozambique&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">AG1000G-MZ</th>
+      <th rowspan="2" valign="top">Furvela</th>
+      <th rowspan="2" valign="top">35.299</th>
+      <th rowspan="2" valign="top">-23.716</th>
+      <th>2003</th>
+      <th>gambiae</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2004</th>
+      <th>gambiae</th>
+      <td>71</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_24_1.png" src="../../_images/collection-sites_24_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="malawi">
+<h2>Malawi<a class="headerlink" href="#malawi" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes were collected from several villages within the catchment of the Majete Malaria Project in Chikhwawa District in 2015, and are all <em>An. arabiensis</em>. More information about the collection site is available in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5610449/">McCann et al. (2017)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="o">-</span><span class="mi">18</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Malawi&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AG1000G-MW</th>
+      <th>Chikhwawa</th>
+      <th>34.755</th>
+      <th>-15.933</th>
+      <th>2015</th>
+      <th>arabiensis</th>
+      <td>41</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_26_1.png" src="../../_images/collection-sites_26_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="tanzania">
+<h2>Tanzania<a class="headerlink" href="#tanzania" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes were contributed from four different collection sites in north west and north east Tanzania. Most mosquitoes were <em>An. arabiensis</em> or <em>An. gambiae</em> but a subset of mosquitoes had an unexpected species genotype, being apparently intermediate between <em>An. gambiae</em> and <em>An. coluzzii</em>, which we’re investigating further. For more information about these locations see <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/22519840/">Kabula et al. (2012)</a>, <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/24946780/">Matowo et al. (2014)</a> and <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/s12936-019-2738-6">Matiya et al. (2019)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="o">-</span><span class="mi">13</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Tanzania&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="8" valign="top">AG1000G-TZ</th>
+      <th>Moshi</th>
+      <th>37.308</th>
+      <th>-3.482</th>
+      <th>2012</th>
+      <th>arabiensis</th>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Muheza</th>
+      <th rowspan="3" valign="top">38.948</th>
+      <th rowspan="3" valign="top">-4.940</th>
+      <th rowspan="3" valign="top">2013</th>
+      <th>arabiensis</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Muleba</th>
+      <th rowspan="3" valign="top">31.651</th>
+      <th rowspan="3" valign="top">-1.962</th>
+      <th rowspan="3" valign="top">2015</th>
+      <th>arabiensis</th>
+      <td>137</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Tarime</th>
+      <th>34.199</th>
+      <th>-1.431</th>
+      <th>2012</th>
+      <th>arabiensis</th>
+      <td>47</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_28_1.png" src="../../_images/collection-sites_28_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="kenya">
+<h2>Kenya<a class="headerlink" href="#kenya" title="Permalink to this headline">¶</a></h2>
+<p>The Kenyan mosquitoes were collected from villages in Kilifi County. Similar to eastern Tanzania, there are <em>An. gambiae</em> and <em>An. arabiensis</em> in addition to mosquitoes with apparent intermediate species genotypes. Some more information about malaria entomology in Kilifi is available in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3292715/">Midega et al. (2012)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Kenya&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">AG1000G-KE</th>
+      <th rowspan="5" valign="top">Kilifi</th>
+      <th rowspan="5" valign="top">39.909</th>
+      <th rowspan="5" valign="top">-3.511</th>
+      <th>2000</th>
+      <th>gambiae</th>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>2007</th>
+      <th>arabiensis</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">2012</th>
+      <th>arabiensis</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_30_1.png" src="../../_images/collection-sites_30_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="uganda">
+<h2>Uganda<a class="headerlink" href="#uganda" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes were collected from two sites in Uganda, with both <em>An. arabiensis</em> and <em>An. gambiae</em> collected in Nagongera in the east but almost exclusively <em>An. gambiae</em> from Kihihi in the west. More information about these collections is available in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/1475-2875-13-111">Kilama et al. (2014)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Uganda&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">AG1000G-UG</th>
+      <th rowspan="2" valign="top">Kihihi</th>
+      <th rowspan="2" valign="top">29.701</th>
+      <th rowspan="2" valign="top">-0.751</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>arabiensis</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Nagongera</th>
+      <th rowspan="3" valign="top">34.026</th>
+      <th rowspan="3" valign="top">0.770</th>
+      <th rowspan="3" valign="top">2012</th>
+      <th>arabiensis</th>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>112</td>
+    </tr>
+    <tr>
+      <th>intermediate_arabiensis_gambiae</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_32_1.png" src="../../_images/collection-sites_32_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="democratic-republic-of-the-congo">
+<h2>Democratic Republic of the Congo<a class="headerlink" href="#democratic-republic-of-the-congo" title="Permalink to this headline">¶</a></h2>
+<p><em>An. gambiae</em> mosquitoes were collected from the town of Gbadolite in the far north, close to the border with the Central African Republic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Democratic Republic of Congo&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AG1000G-CD</th>
+      <th>Gbadolite</th>
+      <th>21.017</th>
+      <th>4.283</th>
+      <th>2015</th>
+      <th>gambiae</th>
+      <td>76</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_34_1.png" src="../../_images/collection-sites_34_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="central-african-republic">
+<h2>Central African Republic<a class="headerlink" href="#central-african-republic" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes were collected in the capital Bangui. Both <em>An. gambiae</em> and <em>An. coluzzii</em> are represented. These are the oldest mosquitoes in Ag1000G, collected in 1993 and 1994.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Central African Republic&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">AG1000G-CF</th>
+      <th rowspan="4" valign="top">Bangui</th>
+      <th rowspan="4" valign="top">18.583</th>
+      <th rowspan="4" valign="top">4.367</th>
+      <th rowspan="2" valign="top">1993</th>
+      <th>coluzzii</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">1994</th>
+      <th>coluzzii</th>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>53</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_36_1.png" src="../../_images/collection-sites_36_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="cameroon">
+<h2>Cameroon<a class="headerlink" href="#cameroon" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes from Cameroon were collected by three separate studies, sampling a number of different locations. Here’s an overview of all Cameroon sites, then further details for each sample set are below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cameroon&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_38_0.png" src="../../_images/collection-sites_38_0.png" />
+</div>
+</div>
+<div class="section" id="ag1000g-cm-c">
+<h3>AG1000G-CM-C<a class="headerlink" href="#ag1000g-cm-c" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in this sample set were collected at 11 sites spread across Cameroon. Further details are given in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5400387/">Kamdem et al. (2017)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-C&quot;&#39;</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-CM-C&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="14" valign="top">AG1000G-CM-C</th>
+      <th>Afan-Essokye</th>
+      <th>9.983</th>
+      <th>2.367</th>
+      <th>2013</th>
+      <th>gambiae</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Campo</th>
+      <th>9.817</th>
+      <th>2.367</th>
+      <th>2013</th>
+      <th>coluzzii</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Douala</th>
+      <th>9.721</th>
+      <th>4.055</th>
+      <th>2013</th>
+      <th>coluzzii</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Lagdo</th>
+      <th rowspan="2" valign="top">13.656</th>
+      <th rowspan="2" valign="top">9.049</th>
+      <th rowspan="2" valign="top">2013</th>
+      <th>arabiensis</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Manchoutvi</th>
+      <th>11.110</th>
+      <th>5.880</th>
+      <th>2013</th>
+      <th>gambiae</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Manda</th>
+      <th>10.868</th>
+      <th>5.726</th>
+      <th>2013</th>
+      <th>gambiae</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Mfelap</th>
+      <th>10.868</th>
+      <th>5.726</th>
+      <th>2013</th>
+      <th>gambiae</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Mgbandji</th>
+      <th>11.141</th>
+      <th>6.097</th>
+      <th>2013</th>
+      <th>gambiae</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Nkolondom</th>
+      <th rowspan="2" valign="top">11.516</th>
+      <th rowspan="2" valign="top">3.972</th>
+      <th rowspan="2" valign="top">2013</th>
+      <th>coluzzii</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Tibati</th>
+      <th rowspan="2" valign="top">12.629</th>
+      <th rowspan="2" valign="top">6.469</th>
+      <th rowspan="2" valign="top">2013</th>
+      <th>coluzzii</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Yaounde</th>
+      <th>11.506</th>
+      <th>3.880</th>
+      <th>2013</th>
+      <th>coluzzii</th>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_40_1.png" src="../../_images/collection-sites_40_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ag1000g-cm-b">
+<h3>AG1000G-CM-B<a class="headerlink" href="#ag1000g-cm-b" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in this sample set were collected in 2005 from 64 locations covering a 1,500 km north-to-south transect crossing all eco-geographical areas of Cameroon. The original study and collection sites are described in <a class="reference external" href="https://bmcecol.biomedcentral.com/articles/10.1186/1472-6785-9-17">Simard et al. (2009)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-B&quot;&#39;</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-CM-B&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_42_0.png" src="../../_images/collection-sites_42_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ag1000g-cm-a">
+<h3>AG1000G-CM-A<a class="headerlink" href="#ag1000g-cm-a" title="Permalink to this headline">¶</a></h3>
+<p><em>An. gambiae</em> mosquitoes were collected from three villages comprising a transect from forest to savanna. Further details of the collections are in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2988034/">Lobo et al. (2010)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-A&quot;&#39;</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-CM-A&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">AG1000G-CM-A</th>
+      <th>Daiguene</th>
+      <th>13.844</th>
+      <th>4.777</th>
+      <th>2009</th>
+      <th>gambiae</th>
+      <td>96</td>
+    </tr>
+    <tr>
+      <th>Gado Badzere</th>
+      <th>14.442</th>
+      <th>5.747</th>
+      <th>2009</th>
+      <th>gambiae</th>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>Mayos</th>
+      <th>13.558</th>
+      <th>4.341</th>
+      <th>2009</th>
+      <th>gambiae</th>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>Zembe Borongo</th>
+      <th>14.442</th>
+      <th>5.747</th>
+      <th>2009</th>
+      <th>gambiae</th>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_44_1.png" src="../../_images/collection-sites_44_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gabon">
+<h2>Gabon<a class="headerlink" href="#gabon" title="Permalink to this headline">¶</a></h2>
+<p><em>An. gambiae</em> mosquitoes were collected from the capital city, Libreville. Further information about malaria entomology and epidemiology in Libreville is available in <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/16608487/">Pinto et al. (2006)</a> and <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3310827/">Mourou et al. (2012)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Gabon&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AG1000G-GA-A</th>
+      <th>Libreville</th>
+      <th>9.455</th>
+      <th>0.384</th>
+      <th>2000</th>
+      <th>gambiae</th>
+      <td>69</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_46_1.png" src="../../_images/collection-sites_46_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="angola">
+<h2>Angola<a class="headerlink" href="#angola" title="Permalink to this headline">¶</a></h2>
+<p><em>An. coluzzii</em> mosquitoes were collected from peri-urban areas in Luanda province, in the west of Angola. See <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/16420701/">Cuamba et al. (2006)</a> and <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/18187801/">Calzetta et al. (2008)</a> for more information about malaria vectors in Angola.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="o">-</span><span class="mi">19</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Angola&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AG1000G-AO</th>
+      <th>Luanda</th>
+      <th>13.302</th>
+      <th>-8.884</th>
+      <th>2009</th>
+      <th>coluzzii</th>
+      <td>81</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_48_1.png" src="../../_images/collection-sites_48_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ghana">
+<h2>Ghana<a class="headerlink" href="#ghana" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes were collected from four sites in southern Ghana during 2012. See <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/24206629/">Essandoh et al. (2013)</a> for more information about these collections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Ghana&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">AG1000G-GH</th>
+      <th rowspan="2" valign="top">Koforidua</th>
+      <th rowspan="2" valign="top">-0.261</th>
+      <th rowspan="2" valign="top">6.094</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Madina</th>
+      <th rowspan="2" valign="top">-0.219</th>
+      <th rowspan="2" valign="top">5.668</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>Takoradi</th>
+      <th>-1.774</th>
+      <th>4.912</th>
+      <th>2012</th>
+      <th>coluzzii</th>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>Twifo Praso</th>
+      <th>-1.549</th>
+      <th>5.609</th>
+      <th>2012</th>
+      <th>coluzzii</th>
+      <td>25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_50_1.png" src="../../_images/collection-sites_50_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="cote-d-ivoire">
+<h2>Côte d’Ivoire<a class="headerlink" href="#cote-d-ivoire" title="Permalink to this headline">¶</a></h2>
+<p><em>An. coluzzii</em> mosquitoes were collected in Tiassale in southern Côte d’Ivoire. Further information about these specimens is available in <a class="reference external" href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1009253">Grau-Bové et al. (2021)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cote d</span><span class="se">\&#39;</span><span class="s1">Ivoire&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AG1000G-CI</th>
+      <th>Tiassale</th>
+      <th>-4.823</th>
+      <th>5.898</th>
+      <th>2012</th>
+      <th>coluzzii</th>
+      <td>80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_52_1.png" src="../../_images/collection-sites_52_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="burkina-faso">
+<h2>Burkina Faso<a class="headerlink" href="#burkina-faso" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes were collected at four sites by two separate studies. Further details about the different collections is below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Burkina Faso&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_54_0.png" src="../../_images/collection-sites_54_0.png" />
+</div>
+</div>
+<div class="section" id="ag1000g-bf-a-ag1000g-bf-b">
+<h3>AG1000G-BF-A, AG1000G-BF-B<a class="headerlink" href="#ag1000g-bf-a-ag1000g-bf-b" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in these two sample sets were collected at three sites near to Bobo-Dioulasso, with sampling in both 2012 and 2014. These collections were performed as part of the <a class="reference external" href="https://targetmalaria.org/">Target Malaria project</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">11.5</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set in [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-BF-A, AG1000G-BF-B&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="7" valign="top">AG1000G-BF-A</th>
+      <th rowspan="3" valign="top">Bana</th>
+      <th rowspan="3" valign="top">-4.472</th>
+      <th rowspan="3" valign="top">11.233</th>
+      <th rowspan="3" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Pala</th>
+      <th rowspan="2" valign="top">-4.235</th>
+      <th rowspan="2" valign="top">11.150</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Souroukoudinga</th>
+      <th rowspan="2" valign="top">-4.535</th>
+      <th rowspan="2" valign="top">11.235</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th rowspan="7" valign="top">AG1000G-BF-B</th>
+      <th rowspan="3" valign="top">Bana</th>
+      <th rowspan="3" valign="top">-4.472</th>
+      <th rowspan="3" valign="top">11.233</th>
+      <th rowspan="3" valign="top">2014</th>
+      <th>arabiensis</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>coluzzii</th>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Pala</th>
+      <th rowspan="2" valign="top">-4.235</th>
+      <th rowspan="2" valign="top">11.150</th>
+      <th rowspan="2" valign="top">2014</th>
+      <th>arabiensis</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Souroukoudinga</th>
+      <th rowspan="2" valign="top">-4.535</th>
+      <th rowspan="2" valign="top">11.235</th>
+      <th rowspan="2" valign="top">2014</th>
+      <th>coluzzii</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_56_1.png" src="../../_images/collection-sites_56_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ag1000g-bf-c">
+<h3>AG1000G-BF-C<a class="headerlink" href="#ag1000g-bf-c" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in this sample set were collected from Monomtega in central Burkina Faso in 2004.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">11.9</span><span class="p">,</span> <span class="mf">12.5</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-BF-C&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-BF-C&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AG1000G-BF-C</th>
+      <th>Monomtenga</th>
+      <th>-1.17</th>
+      <th>12.06</th>
+      <th>2004</th>
+      <th>gambiae</th>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_58_1.png" src="../../_images/collection-sites_58_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="mali">
+<h2>Mali<a class="headerlink" href="#mali" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes from Mali were collected from several locations in the south west of the country in the context of three separate studies, described further below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Mali&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_60_0.png" src="../../_images/collection-sites_60_0.png" />
+</div>
+</div>
+<div class="section" id="ag1000g-gn-b-mali">
+<h3>AG1000G-GN-B (Mali)<a class="headerlink" href="#ag1000g-gn-b-mali" title="Permalink to this headline">¶</a></h3>
+<p>Malian mosquitoes in this sample set were collected at two sites to the south of Bamako, further details are given in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/s12936-016-1242-5">Coulibaly et al. (2016)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Mali&quot; and sample_set == &quot;AG1000G-GN-B&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">AG1000G-GN-B</th>
+      <th rowspan="2" valign="top">Takan</th>
+      <th rowspan="2" valign="top">-8.33</th>
+      <th rowspan="2" valign="top">11.47</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Toumani Oulena</th>
+      <th rowspan="3" valign="top">-7.81</th>
+      <th rowspan="3" valign="top">10.83</th>
+      <th rowspan="3" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_62_1.png" src="../../_images/collection-sites_62_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ag1000g-ml-a">
+<h3>AG1000G-ML-A<a class="headerlink" href="#ag1000g-ml-a" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in this sample set were collected at three sites in close proximity, located to the north of Bamako. These collections were performed as part of the <a class="reference external" href="https://targetmalaria.org/">Target Malaria project</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">8.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.8</span><span class="p">,</span> <span class="mf">12.6</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-ML-A&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-ML-A&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">AG1000G-ML-A</th>
+      <th rowspan="2" valign="top">Kababougou</th>
+      <th rowspan="2" valign="top">-8.15</th>
+      <th rowspan="2" valign="top">12.89</th>
+      <th rowspan="2" valign="top">2014</th>
+      <th>coluzzii</th>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Ouassorola</th>
+      <th rowspan="2" valign="top">-8.16</th>
+      <th rowspan="2" valign="top">12.90</th>
+      <th rowspan="2" valign="top">2014</th>
+      <th>coluzzii</th>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Tieneguebougou</th>
+      <th rowspan="2" valign="top">-8.08</th>
+      <th rowspan="2" valign="top">12.81</th>
+      <th rowspan="2" valign="top">2014</th>
+      <th>coluzzii</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_64_1.png" src="../../_images/collection-sites_64_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ag1000g-ml-b">
+<h3>AG1000G-ML-B<a class="headerlink" href="#ag1000g-ml-b" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in this sample set were collected from seven villages in southern Mali, further details are given in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/1475-2875-6-133">Coulibaly et al. (2007)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-ML-B&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-ML-B&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="9" valign="top">AG1000G-ML-B</th>
+      <th>Bancoumana</th>
+      <th>-8.20</th>
+      <th>12.20</th>
+      <th>2004</th>
+      <th>gambiae</th>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Douna</th>
+      <th rowspan="2" valign="top">-5.90</th>
+      <th rowspan="2" valign="top">13.21</th>
+      <th rowspan="2" valign="top">2004</th>
+      <th>arabiensis</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>coluzzii</th>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Fanzana</th>
+      <th rowspan="3" valign="top">-6.13</th>
+      <th rowspan="3" valign="top">13.20</th>
+      <th rowspan="3" valign="top">2004</th>
+      <th>arabiensis</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>coluzzii</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Kela</th>
+      <th>-8.45</th>
+      <th>11.88</th>
+      <th>2004</th>
+      <th>gambiae</th>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>Moribobougou</th>
+      <th>-7.87</th>
+      <th>12.69</th>
+      <th>2004</th>
+      <th>coluzzii</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>N'Gabakoro</th>
+      <th>-7.84</th>
+      <th>12.68</th>
+      <th>2004</th>
+      <th>coluzzii</th>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_66_1.png" src="../../_images/collection-sites_66_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="guinea">
+<h2>Guinea<a class="headerlink" href="#guinea" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes were collected from two sites in south eastern Guinea, further details are given in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/s12936-016-1242-5">Coulibaly et al. (2016)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Guinea&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">AG1000G-GN-A</th>
+      <th rowspan="2" valign="top">Koraboh</th>
+      <th rowspan="2" valign="top">-10.03</th>
+      <th rowspan="2" valign="top">9.28</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>gambiae</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Koundara</th>
+      <th rowspan="2" valign="top">-9.53</th>
+      <th rowspan="2" valign="top">8.48</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">AG1000G-GN-B</th>
+      <th rowspan="2" valign="top">Koraboh</th>
+      <th rowspan="2" valign="top">-10.03</th>
+      <th rowspan="2" valign="top">9.28</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>gambiae</th>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Koundara</th>
+      <th rowspan="2" valign="top">-9.53</th>
+      <th rowspan="2" valign="top">8.48</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_68_1.png" src="../../_images/collection-sites_68_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="guinea-bissau">
+<h2>Guinea-Bissau<a class="headerlink" href="#guinea-bissau" title="Permalink to this headline">¶</a></h2>
+<p>There are three collection sites in Guinea-Bissau, two coastal and one inland. Further details are available in <a class="reference external" href="https://www.nature.com/articles/srep46451">Vicente et al. (2017)</a>. At the coastal sites there are a significant fraction of mosquitoes with apparent intermediate <em>An. gambiae</em>/<em>An. coluzzii</em> species genotypes, which we’re investigating further.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Guinea-Bissau&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">AG1000G-GW</th>
+      <th rowspan="2" valign="top">Antula</th>
+      <th rowspan="2" valign="top">-15.582</th>
+      <th rowspan="2" valign="top">11.891</th>
+      <th rowspan="2" valign="top">2010</th>
+      <th>gambiae</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>Leibala</th>
+      <th>-14.222</th>
+      <th>12.272</th>
+      <th>2010</th>
+      <th>gambiae</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Safim</th>
+      <th rowspan="2" valign="top">-15.649</th>
+      <th rowspan="2" valign="top">11.957</th>
+      <th rowspan="2" valign="top">2010</th>
+      <th>gambiae</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>27</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_70_1.png" src="../../_images/collection-sites_70_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="the-gambia">
+<h2>The Gambia<a class="headerlink" href="#the-gambia" title="Permalink to this headline">¶</a></h2>
+<p>Mosquitoes from The Gambia were contributed from various collection sites via three separate studies, described further below. At almost all of these sites there are mosquitoes with apparent intermediate <em>An. gambiae</em>/<em>An. coluzzii</em> species genotypes, similar to coastal Guinea-Bissau.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mf">13.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Gambia, The&quot;&#39;</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">gridlines</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/collection-sites_72_0.png" src="../../_images/collection-sites_72_0.png" />
+</div>
+</div>
+<div class="section" id="ag1000g-gm-a">
+<h3>AG1000G-GM-A<a class="headerlink" href="#ag1000g-gm-a" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in this sample set were collected at Njabakunda, further details are given in <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/23335339/">Nwakanma et al. (2013)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-GM-A&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-GM-A&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">AG1000G-GM-A</th>
+      <th rowspan="3" valign="top">Njabakunda</th>
+      <th rowspan="3" valign="top">-15.9</th>
+      <th rowspan="3" valign="top">13.55</th>
+      <th rowspan="3" valign="top">2011</th>
+      <th>coluzzii</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_74_1.png" src="../../_images/collection-sites_74_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ag1000g-gm-b">
+<h3>AG1000G-GM-B<a class="headerlink" href="#ag1000g-gm-b" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in this sample set were collected from three sites along the Gambia River, further details are given in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/1475-2875-7-182">Caputo et al. (2008)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-GM-B&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-GM-B&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="6" valign="top">AG1000G-GM-B</th>
+      <th>Kalataba</th>
+      <th>-15.617</th>
+      <th>13.550</th>
+      <th>2012</th>
+      <th>coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Sare Samba Sowe</th>
+      <th rowspan="3" valign="top">-15.900</th>
+      <th rowspan="3" valign="top">13.583</th>
+      <th rowspan="3" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Tankular</th>
+      <th rowspan="2" valign="top">-16.033</th>
+      <th rowspan="2" valign="top">13.417</th>
+      <th rowspan="2" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_76_1.png" src="../../_images/collection-sites_76_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ag1000g-gm-c">
+<h3>AG1000G-GM-C<a class="headerlink" href="#ag1000g-gm-c" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes in this sample set were collected at Wali Kunda in the rural central river region of The Gambia. Further details are given in <a class="reference external" href="https://ora.ox.ac.uk/objects/uuid:1e65b4bf-48fb-4921-a20b-8d8f7d0bdd12">Fabrigar (2015)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-GM-C&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-GM-C&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">AG1000G-GM-C</th>
+      <th rowspan="3" valign="top">Wali Kunda</th>
+      <th rowspan="3" valign="top">-14.917</th>
+      <th rowspan="3" valign="top">13.567</th>
+      <th rowspan="3" valign="top">2012</th>
+      <th>coluzzii</th>
+      <td>148</td>
+    </tr>
+    <tr>
+      <th>gambiae</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>intermediate_gambiae_coluzzii</th>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_78_1.png" src="../../_images/collection-sites_78_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="mayotte-island">
+<h2>Mayotte Island<a class="headerlink" href="#mayotte-island" title="Permalink to this headline">¶</a></h2>
+<p>Returning to East Africa, Mayotte Island is one of the two oceanic islands represented. Seven collection sites were sampled.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mf">44.9</span><span class="p">,</span> <span class="mf">45.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">13.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.6</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Mayotte&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-FR&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="7" valign="top">AG1000G-FR</th>
+      <th>Bouyouni</th>
+      <th>45.142</th>
+      <th>-12.738</th>
+      <th>2011</th>
+      <th>gambiae</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Combani</th>
+      <th>45.143</th>
+      <th>-12.779</th>
+      <th>2011</th>
+      <th>gambiae</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Karihani Lake</th>
+      <th>45.122</th>
+      <th>-12.797</th>
+      <th>2011</th>
+      <th>gambiae</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Mont Benara</th>
+      <th>45.155</th>
+      <th>-12.857</th>
+      <th>2011</th>
+      <th>gambiae</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Mtsamboro Forest Reserve</th>
+      <th>45.081</th>
+      <th>-12.703</th>
+      <th>2011</th>
+      <th>gambiae</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Mtsanga Charifou</th>
+      <th>45.156</th>
+      <th>-12.991</th>
+      <th>2011</th>
+      <th>gambiae</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Sada</th>
+      <th>45.104</th>
+      <th>-12.852</th>
+      <th>2011</th>
+      <th>gambiae</th>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_80_1.png" src="../../_images/collection-sites_80_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="bioko-island">
+<h2>Bioko Island<a class="headerlink" href="#bioko-island" title="Permalink to this headline">¶</a></h2>
+<p><em>An. gambiae</em> mosquitoes were collected from a location in the north part of the island. Further information on malaria vector biology in Bioko is available in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/1475-2875-11-56">Overgaard et al. (2012)</a> and <a class="reference external" href="https://www.pnas.org/content/115/18/4619.short">Vontas et al. (2018)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mf">8.3</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">),</span>
+    <span class="n">gridlines</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Equatorial Guinea&quot;&#39;</span><span class="p">,</span>
+    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
+<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-GQ&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>n_samples</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>location</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>year</th>
+      <th>species</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AG1000G-GQ</th>
+      <th>Bioko</th>
+      <th>8.7</th>
+      <th>3.7</th>
+      <th>2002</th>
+      <th>gambiae</th>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/collection-sites_82_1.png" src="../../_images/collection-sites_82_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<p>Hopefully this notebook is a useful resource for exploring the locations sampled in Ag1000G phase 3. Further information on the people and research studies that contributed mosquito specimens and the collection sites is available in the <a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/ag1000g-phase3-contributing-studies.pdf">Ag1000G phase 3 contributing studies</a> document.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ag3/examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../examples.html" title="previous page">Ag3 analysis examples</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By MalariaGEN<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

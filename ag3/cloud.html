@@ -114,6 +114,20 @@
    Ag3 data downloads
   </a>
  </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="examples.html">
+   Ag3 analysis examples
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/collection-sites.html">
+     Mosquito collection sites
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -282,7 +296,7 @@
 <h1>Ag3 cloud data access<a class="headerlink" href="#ag3-cloud-data-access" title="Permalink to this headline">¶</a></h1>
 <p>This page provides information about how to access data from <a class="reference internal" href="intro.html"><span class="doc std std-doc"><em>Anopheles gambiae</em> 1000 Genomes project (Ag1000G) phase 3</span></a> via Google Cloud. This includes sample metadata and single nucleotide polymorphism (SNP) calls.</p>
 <p>This notebook illustrates how to read data directly from the cloud, without having to first download any data locally. This notebook can be run from any computer, but will work best when run from a compute node within Google Cloud, because it will be physically closer to the data and so data transfer is faster. For example, this notebook can be run via <a class="reference external" href="https://gke.mybinder.org">MyBinder</a> or <a class="reference external" href="https://colab.research.google.com/">Google Colab</a> which are free interactive computing service running in the cloud.</p>
-<p>To launch this notebook in the cloud and run it for yourself, click the rocket icon (<i class="fas fa-rocket"></i>) at the top of the page and select one of the cloud computing services available.</p>
+<p>To launch this notebook in the cloud and run it for yourself, click the launch icon (<i class="fas fa-rocket"></i>) at the top of the page and select one of the cloud computing services available.</p>
 <div class="section" id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
 <p>All data required for this notebook is hosted on Google Cloud Storage (GCS). Data are hosted in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted in GCS are publicly accessible and do not require any authentication to access.</p>
