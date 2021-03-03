@@ -8,4 +8,4 @@
     - file: ag3/examples
       sections:
         - file: ag3/examples/collection-sites
-        - file: ag3/examples/snps-alleles-filters
+        - file: ag3/examples/snps
