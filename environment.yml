@@ -17,6 +17,7 @@ dependencies:
   - scikit-allel
   - cartopy
   - rasterio
+  - plotly
   - pip
   - pip:
     - malariagen_data
