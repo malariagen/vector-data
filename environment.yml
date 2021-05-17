@@ -23,4 +23,4 @@ dependencies:
   - zarr=2.6.1
   - pip
   - pip:
-    - malariagen_data=0.7.0
+    - malariagen_data==0.7.0
