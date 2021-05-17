@@ -343,6 +343,11 @@
    Further reading
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#api-docs">
+   API docs
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -359,12 +364,32 @@
 <p>This notebook looks in more detail at how single nucleotide polymorphisms (SNPs) are represented in the Ag1000G phase 3 (Ag3) data release. We’ll also look at the different site filters that we’ve created to help select high quality SNPs for robust population genetic analyses. As always, this notebook is executable, click the launch icon (<i class="fas fa-rocket"></i>) at the top of the page and select a cloud computing service if you’d like to try running it for yourself.</p>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
-<p>Install some packages. (Skip this step if running on MyBinder, these will be already installed.)</p>
+<p>Install some packages. You can skip this step if running on MyBinder, these will be already installed.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q numpy pandas dask matplotlib seaborn
-<span class="o">!</span>pip install -q malariagen_data
-<span class="o">!</span>pip install -q scikit-allel  # this will take about a minute or so to compile 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -q \
+    zarr==2.6.1 \
+    fsspec==0.8.7 \
+    gcsfs==0.7.2 \
+    dask==2021.03.0 \
+    xarray==0.18.0 \
+    scikit-allel==1.3.5 \
+    malariagen_data==0.7.0 \
+    seaborn matplotlib
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |████████████████████████████████| 133kB 22.8MB/s 
+     |████████████████████████████████| 112kB 37.0MB/s 
+     |████████████████████████████████| 931kB 35.5MB/s 
+     |████████████████████████████████| 5.7MB 18.8MB/s 
+     |████████████████████████████████| 5.8MB 21.4MB/s 
+     |████████████████████████████████| 1.3MB 35.8MB/s 
+     |████████████████████████████████| 2.3MB 32.4MB/s 
+     |████████████████████████████████| 296kB 48.5MB/s 
+     |████████████████████████████████| 143kB 55.3MB/s 
+?25h  Building wheel for asciitree (setup.py) ... ?25l?25hdone
 </pre></div>
 </div>
 </div>
@@ -379,14 +404,15 @@
 <span class="kn">import</span> <span class="nn">dask</span>
 <span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
 <span class="c1"># silence some dask warnings</span>
-<span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;array.slicing.split_large_chunks&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+<span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;array.slicing.split_large_chunks&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">allel</span>
 <span class="kn">from</span> <span class="nn">dask.diagnostics.progress</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
 <span class="kn">import</span> <span class="nn">malariagen_data</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -406,7 +432,12 @@
 <p>For Ag1000G analyses we use the AgamP4 reference genome. This genome is comprised of five main sequences:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contigs</span> <span class="o">=</span> <span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="s2">&quot;2L&quot;</span><span class="p">,</span> <span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="s2">&quot;3L&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">contigs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;2R&#39;, &#39;2L&#39;, &#39;3R&#39;, &#39;3L&#39;, &#39;X&#39;)
 </pre></div>
 </div>
 </div>
@@ -414,7 +445,7 @@
 <p>Each of these identifiers (e.g., “2R”) refers to a sequence of nucleotides, i.e., a sequence of the letters “A”, “C”, “T” and “G”. Let’s see how long these sequences are.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">contig</span> <span class="ow">in</span> <span class="n">contigs</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">contig</span> <span class="ow">in</span> <span class="n">ag3</span><span class="o">.</span><span class="n">contigs</span><span class="p">:</span>
     <span class="n">seq</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">contig</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> bp&quot;</span><span class="p">)</span>
 </pre></div>
@@ -641,7 +672,7 @@ X: 24,393,108 bp
 <p>Let’s look at how these data are represented for chromosome arm 2R:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -662,8 +693,8 @@ X: 24,393,108 bp
 <p>Note that this is simply the positions 1-10. However, these positions <strong>do not</strong> continue increasing by 1 all the way through the array, i.e., there are gaps, because of gaps in the reference genome. We can quickly visualise that, by plotting the distance between adjacent sites:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_gaps</span><span class="p">():</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_gaps</span><span class="p">(</span><span class="n">contig</span><span class="p">):</span>
+    <span class="n">pos</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="n">contig</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="n">loc_gap</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">1</span>
@@ -677,12 +708,18 @@ X: 24,393,108 bp
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Position (Mbp)&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Gap size (bp)&#39;</span><span class="p">)</span>
     
-<span class="n">plot_gaps</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_gaps</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/snps_31_0.png" src="../../_images/snps_31_0.png" />
+<img alt="../../_images/snps_32_0.png" src="../../_images/snps_32_0.png" />
 </div>
 </div>
 <p>Note also that the length of the <code class="docutils literal notranslate"><span class="pre">pos</span></code> array is less than the length of the reference genome sequence:</p>
@@ -1040,9 +1077,9 @@ X: 24,393,108 bp
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 60.13 MB </td> <td> 300.00 kB </td></tr>
-    <tr><th> Shape </th><td> (60132453,) </td> <td> (300000,) </td></tr>
-    <tr><th> Count </th><td> 202 Tasks </td><td> 201 Chunks </td></tr>
+    <tr><th> Bytes </th><td> 60.13 MB </td> <td> 60.13 MB </td></tr>
+    <tr><th> Shape </th><td> (60132453,) </td> <td> (60132453,) </td></tr>
+    <tr><th> Count </th><td> 1 Tasks </td><td> 1 Chunks </td></tr>
     <tr><th> Type </th><td> bool </td><td> numpy.ndarray </td></tr>
   </tbody>
 </table>
@@ -1056,28 +1093,10 @@ X: 24,393,108 bp
 
   <!-- Vertical lines -->
   <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="5" y1="0" x2="5" y2="25" />
-  <line x1="12" y1="0" x2="12" y2="25" />
-  <line x1="18" y1="0" x2="18" y2="25" />
-  <line x1="25" y1="0" x2="25" y2="25" />
-  <line x1="31" y1="0" x2="31" y2="25" />
-  <line x1="37" y1="0" x2="37" y2="25" />
-  <line x1="44" y1="0" x2="44" y2="25" />
-  <line x1="50" y1="0" x2="50" y2="25" />
-  <line x1="56" y1="0" x2="56" y2="25" />
-  <line x1="62" y1="0" x2="62" y2="25" />
-  <line x1="69" y1="0" x2="69" y2="25" />
-  <line x1="75" y1="0" x2="75" y2="25" />
-  <line x1="82" y1="0" x2="82" y2="25" />
-  <line x1="88" y1="0" x2="88" y2="25" />
-  <line x1="94" y1="0" x2="94" y2="25" />
-  <line x1="101" y1="0" x2="101" y2="25" />
-  <line x1="107" y1="0" x2="107" y2="25" />
-  <line x1="113" y1="0" x2="113" y2="25" />
   <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >60132453</text>
@@ -1130,7 +1149,7 @@ X: 24,393,108 bp
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tabulate_filter_counts</span><span class="p">():</span>
 
     <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">contig</span> <span class="ow">in</span> <span class="n">contigs</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">contig</span> <span class="ow">in</span> <span class="n">ag3</span><span class="o">.</span><span class="n">contigs</span><span class="p">:</span>
         <span class="n">contig_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">contig</span><span class="p">))</span>
         <span class="n">n_sites</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="n">contig</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s2">&quot;POS&quot;</span><span class="p">))</span>
         <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">contig</span><span class="p">,</span> <span class="n">contig_length</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">]</span>
@@ -1275,7 +1294,7 @@ X: 24,393,108 bp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/snps_73_0.png" src="../../_images/snps_73_0.png" />
+<img alt="../../_images/snps_74_0.png" src="../../_images/snps_74_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1285,7 +1304,7 @@ X: 24,393,108 bp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/snps_74_0.png" src="../../_images/snps_74_0.png" />
+<img alt="../../_images/snps_75_0.png" src="../../_images/snps_75_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1295,7 +1314,7 @@ X: 24,393,108 bp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/snps_75_0.png" src="../../_images/snps_75_0.png" />
+<img alt="../../_images/snps_76_0.png" src="../../_images/snps_76_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1305,7 +1324,7 @@ X: 24,393,108 bp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/snps_76_0.png" src="../../_images/snps_76_0.png" />
+<img alt="../../_images/snps_77_0.png" src="../../_images/snps_77_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1315,7 +1334,7 @@ X: 24,393,108 bp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/snps_77_0.png" src="../../_images/snps_77_0.png" />
+<img alt="../../_images/snps_78_0.png" src="../../_images/snps_78_0.png" />
 </div>
 </div>
 <p>The methods in the <code class="docutils literal notranslate"><span class="pre">malariagen_data.Ag3</span></code> class allow you to access data on sites or genotypes with one of these filters already applied. E.g., let’s access the SNP positions with the <code class="docutils literal notranslate"><span class="pre">gamb_colu_arab</span></code> filter applied.</p>
@@ -1335,9 +1354,9 @@ X: 24,393,108 bp
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 162.25 MB </td> <td> 1.82 MB </td></tr>
-    <tr><th> Shape </th><td> (40561667,) </td> <td> (455384,) </td></tr>
-    <tr><th> Count </th><td> 231 Tasks </td><td> 115 Chunks </td></tr>
+    <tr><th> Bytes </th><td> 162.25 MB </td> <td> 98.99 MB </td></tr>
+    <tr><th> Shape </th><td> (40561667,) </td> <td> (24746331,) </td></tr>
+    <tr><th> Count </th><td> 11 Tasks </td><td> 2 Chunks </td></tr>
     <tr><th> Type </th><td> int32 </td><td> numpy.ndarray </td></tr>
   </tbody>
 </table>
@@ -1351,28 +1370,11 @@ X: 24,393,108 bp
 
   <!-- Vertical lines -->
   <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="7" y1="0" x2="7" y2="25" />
-  <line x1="15" y1="0" x2="15" y2="25" />
-  <line x1="22" y1="0" x2="22" y2="25" />
-  <line x1="28" y1="0" x2="28" y2="25" />
-  <line x1="34" y1="0" x2="34" y2="25" />
-  <line x1="41" y1="0" x2="41" y2="25" />
-  <line x1="48" y1="0" x2="48" y2="25" />
-  <line x1="56" y1="0" x2="56" y2="25" />
-  <line x1="62" y1="0" x2="62" y2="25" />
-  <line x1="69" y1="0" x2="69" y2="25" />
-  <line x1="75" y1="0" x2="75" y2="25" />
-  <line x1="80" y1="0" x2="80" y2="25" />
-  <line x1="87" y1="0" x2="87" y2="25" />
-  <line x1="92" y1="0" x2="92" y2="25" />
-  <line x1="98" y1="0" x2="98" y2="25" />
-  <line x1="104" y1="0" x2="104" y2="25" />
-  <line x1="109" y1="0" x2="109" y2="25" />
-  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="73" y1="0" x2="73" y2="25" />
   <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >40561667</text>
@@ -1400,9 +1402,9 @@ X: 24,393,108 bp
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 249.94 GB </td> <td> 26.25 MB </td></tr>
-    <tr><th> Shape </th><td> (40561667, 3081, 2) </td> <td> (262530, 50, 2) </td></tr>
-    <tr><th> Count </th><td> 44650 Tasks </td><td> 14874 Chunks </td></tr>
+    <tr><th> Bytes </th><td> 249.94 GB </td> <td> 103.66 MB </td></tr>
+    <tr><th> Shape </th><td> (40561667, 3081, 2) </td> <td> (508154, 102, 2) </td></tr>
+    <tr><th> Count </th><td> 27364 Tasks </td><td> 6240 Chunks </td></tr>
     <tr><th> Type </th><td> int8 </td><td> numpy.ndarray </td></tr>
   </tbody>
 </table>
@@ -1412,46 +1414,46 @@ X: 24,393,108 bp
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="10" y1="1" x2="80" y2="71" />
-  <line x1="10" y1="2" x2="80" y2="73" />
+  <line x1="10" y1="1" x2="80" y2="72" />
+  <line x1="10" y1="3" x2="80" y2="73" />
   <line x1="10" y1="3" x2="80" y2="74" />
   <line x1="10" y1="4" x2="80" y2="75" />
-  <line x1="10" y1="6" x2="80" y2="76" />
+  <line x1="10" y1="6" x2="80" y2="77" />
   <line x1="10" y1="7" x2="80" y2="78" />
   <line x1="10" y1="8" x2="80" y2="79" />
-  <line x1="10" y1="10" x2="80" y2="80" />
-  <line x1="10" y1="11" x2="80" y2="82" />
+  <line x1="10" y1="9" x2="80" y2="80" />
+  <line x1="10" y1="10" x2="80" y2="81" />
   <line x1="10" y1="12" x2="80" y2="83" />
-  <line x1="10" y1="14" x2="80" y2="84" />
-  <line x1="10" y1="15" x2="80" y2="85" />
-  <line x1="10" y1="16" x2="80" y2="87" />
-  <line x1="10" y1="17" x2="80" y2="88" />
-  <line x1="10" y1="18" x2="80" y2="89" />
-  <line x1="10" y1="20" x2="80" y2="91" />
-  <line x1="10" y1="22" x2="80" y2="92" />
-  <line x1="10" y1="23" x2="80" y2="94" />
+  <line x1="10" y1="13" x2="80" y2="84" />
+  <line x1="10" y1="14" x2="80" y2="85" />
+  <line x1="10" y1="16" x2="80" y2="86" />
+  <line x1="10" y1="17" x2="80" y2="87" />
+  <line x1="10" y1="18" x2="80" y2="88" />
+  <line x1="10" y1="19" x2="80" y2="90" />
+  <line x1="10" y1="21" x2="80" y2="91" />
+  <line x1="10" y1="22" x2="80" y2="93" />
   <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
-  <line x1="14" y1="4" x2="14" y2="29" />
-  <line x1="18" y1="8" x2="18" y2="34" />
-  <line x1="23" y1="13" x2="23" y2="38" />
-  <line x1="26" y1="16" x2="26" y2="42" />
+  <line x1="13" y1="3" x2="13" y2="29" />
+  <line x1="18" y1="8" x2="18" y2="33" />
+  <line x1="22" y1="12" x2="22" y2="38" />
+  <line x1="25" y1="15" x2="25" y2="41" />
   <line x1="30" y1="20" x2="30" y2="45" />
   <line x1="34" y1="24" x2="34" y2="50" />
   <line x1="38" y1="28" x2="38" y2="54" />
   <line x1="43" y1="33" x2="43" y2="58" />
-  <line x1="47" y1="37" x2="47" y2="62" />
+  <line x1="46" y1="36" x2="46" y2="61" />
   <line x1="51" y1="41" x2="51" y2="66" />
   <line x1="54" y1="44" x2="54" y2="69" />
   <line x1="57" y1="47" x2="57" y2="72" />
-  <line x1="61" y1="51" x2="61" y2="76" />
-  <line x1="64" y1="54" x2="64" y2="80" />
+  <line x1="60" y1="50" x2="60" y2="76" />
+  <line x1="64" y1="54" x2="64" y2="79" />
   <line x1="68" y1="58" x2="68" y2="83" />
-  <line x1="71" y1="61" x2="71" y2="87" />
-  <line x1="74" y1="64" x2="74" y2="90" />
-  <line x1="78" y1="68" x2="78" y2="93" />
+  <line x1="71" y1="61" x2="71" y2="86" />
+  <line x1="74" y1="64" x2="74" y2="89" />
+  <line x1="77" y1="67" x2="77" y2="93" />
   <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
@@ -1459,24 +1461,24 @@ X: 24,393,108 bp
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
-  <line x1="14" y1="4" x2="39" y2="4" />
-  <line x1="18" y1="8" x2="44" y2="8" />
-  <line x1="23" y1="13" x2="48" y2="13" />
-  <line x1="26" y1="16" x2="52" y2="16" />
+  <line x1="13" y1="3" x2="39" y2="3" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="22" y1="12" x2="48" y2="12" />
+  <line x1="25" y1="15" x2="51" y2="15" />
   <line x1="30" y1="20" x2="55" y2="20" />
   <line x1="34" y1="24" x2="60" y2="24" />
   <line x1="38" y1="28" x2="64" y2="28" />
   <line x1="43" y1="33" x2="68" y2="33" />
-  <line x1="47" y1="37" x2="72" y2="37" />
+  <line x1="46" y1="36" x2="71" y2="36" />
   <line x1="51" y1="41" x2="76" y2="41" />
   <line x1="54" y1="44" x2="79" y2="44" />
   <line x1="57" y1="47" x2="82" y2="47" />
-  <line x1="61" y1="51" x2="86" y2="51" />
-  <line x1="64" y1="54" x2="90" y2="54" />
+  <line x1="60" y1="50" x2="86" y2="50" />
+  <line x1="64" y1="54" x2="89" y2="54" />
   <line x1="68" y1="58" x2="93" y2="58" />
-  <line x1="71" y1="61" x2="97" y2="61" />
-  <line x1="74" y1="64" x2="100" y2="64" />
-  <line x1="78" y1="68" x2="103" y2="68" />
+  <line x1="71" y1="61" x2="96" y2="61" />
+  <line x1="74" y1="64" x2="99" y2="64" />
+  <line x1="77" y1="67" x2="103" y2="67" />
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1488,24 +1490,24 @@ X: 24,393,108 bp
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
-  <line x1="80" y1="71" x2="106" y2="71" />
+  <line x1="80" y1="72" x2="106" y2="72" />
   <line x1="80" y1="73" x2="106" y2="73" />
   <line x1="80" y1="74" x2="106" y2="74" />
   <line x1="80" y1="75" x2="106" y2="75" />
-  <line x1="80" y1="76" x2="106" y2="76" />
+  <line x1="80" y1="77" x2="106" y2="77" />
   <line x1="80" y1="78" x2="106" y2="78" />
   <line x1="80" y1="79" x2="106" y2="79" />
   <line x1="80" y1="80" x2="106" y2="80" />
-  <line x1="80" y1="82" x2="106" y2="82" />
+  <line x1="80" y1="81" x2="106" y2="81" />
   <line x1="80" y1="83" x2="106" y2="83" />
   <line x1="80" y1="84" x2="106" y2="84" />
   <line x1="80" y1="85" x2="106" y2="85" />
+  <line x1="80" y1="86" x2="106" y2="86" />
   <line x1="80" y1="87" x2="106" y2="87" />
   <line x1="80" y1="88" x2="106" y2="88" />
-  <line x1="80" y1="89" x2="106" y2="89" />
+  <line x1="80" y1="90" x2="106" y2="90" />
   <line x1="80" y1="91" x2="106" y2="91" />
-  <line x1="80" y1="92" x2="106" y2="92" />
-  <line x1="80" y1="94" x2="106" y2="94" />
+  <line x1="80" y1="93" x2="106" y2="93" />
   <line x1="80" y1="96" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2009,9 +2011,9 @@ X: 24,393,108 bp
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 299.02 GB </td> <td> 30.00 MB </td></tr>
-    <tr><th> Shape </th><td> (48525747, 3081, 2) </td> <td> (300000, 50, 2) </td></tr>
-    <tr><th> Count </th><td> 24004 Tasks </td><td> 11988 Chunks </td></tr>
+    <tr><th> Bytes </th><td> 299.02 GB </td> <td> 122.40 MB </td></tr>
+    <tr><th> Shape </th><td> (48525747, 3081, 2) </td> <td> (600000, 102, 2) </td></tr>
+    <tr><th> Count </th><td> 16972 Tasks </td><td> 5080 Chunks </td></tr>
     <tr><th> Type </th><td> int8 </td><td> numpy.ndarray </td></tr>
   </tbody>
 </table>
@@ -2021,46 +2023,46 @@ X: 24,393,108 bp
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="10" y1="1" x2="80" y2="71" />
-  <line x1="10" y1="2" x2="80" y2="73" />
+  <line x1="10" y1="1" x2="80" y2="72" />
+  <line x1="10" y1="3" x2="80" y2="73" />
   <line x1="10" y1="3" x2="80" y2="74" />
   <line x1="10" y1="4" x2="80" y2="75" />
-  <line x1="10" y1="6" x2="80" y2="76" />
+  <line x1="10" y1="6" x2="80" y2="77" />
   <line x1="10" y1="7" x2="80" y2="78" />
   <line x1="10" y1="8" x2="80" y2="79" />
-  <line x1="10" y1="10" x2="80" y2="80" />
-  <line x1="10" y1="11" x2="80" y2="82" />
+  <line x1="10" y1="9" x2="80" y2="80" />
+  <line x1="10" y1="10" x2="80" y2="81" />
   <line x1="10" y1="12" x2="80" y2="83" />
-  <line x1="10" y1="14" x2="80" y2="84" />
-  <line x1="10" y1="15" x2="80" y2="85" />
-  <line x1="10" y1="16" x2="80" y2="87" />
-  <line x1="10" y1="17" x2="80" y2="88" />
-  <line x1="10" y1="18" x2="80" y2="89" />
-  <line x1="10" y1="20" x2="80" y2="91" />
-  <line x1="10" y1="22" x2="80" y2="92" />
-  <line x1="10" y1="23" x2="80" y2="94" />
+  <line x1="10" y1="13" x2="80" y2="84" />
+  <line x1="10" y1="14" x2="80" y2="85" />
+  <line x1="10" y1="16" x2="80" y2="86" />
+  <line x1="10" y1="17" x2="80" y2="87" />
+  <line x1="10" y1="18" x2="80" y2="88" />
+  <line x1="10" y1="19" x2="80" y2="90" />
+  <line x1="10" y1="21" x2="80" y2="91" />
+  <line x1="10" y1="22" x2="80" y2="93" />
   <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
   <line x1="13" y1="3" x2="13" y2="28" />
-  <line x1="17" y1="7" x2="17" y2="32" />
+  <line x1="16" y1="6" x2="16" y2="32" />
   <line x1="20" y1="10" x2="20" y2="36" />
-  <line x1="24" y1="14" x2="24" y2="40" />
+  <line x1="24" y1="14" x2="24" y2="39" />
   <line x1="28" y1="18" x2="28" y2="43" />
   <line x1="32" y1="22" x2="32" y2="47" />
-  <line x1="35" y1="25" x2="35" y2="51" />
+  <line x1="35" y1="25" x2="35" y2="50" />
   <line x1="39" y1="29" x2="39" y2="55" />
-  <line x1="43" y1="33" x2="43" y2="58" />
+  <line x1="43" y1="33" x2="43" y2="59" />
   <line x1="47" y1="37" x2="47" y2="62" />
   <line x1="50" y1="40" x2="50" y2="65" />
   <line x1="54" y1="44" x2="54" y2="69" />
   <line x1="58" y1="48" x2="58" y2="73" />
   <line x1="61" y1="51" x2="61" y2="77" />
-  <line x1="65" y1="55" x2="65" y2="80" />
-  <line x1="69" y1="59" x2="69" y2="84" />
-  <line x1="72" y1="62" x2="72" y2="88" />
-  <line x1="76" y1="66" x2="76" y2="92" />
+  <line x1="65" y1="55" x2="65" y2="81" />
+  <line x1="68" y1="58" x2="68" y2="84" />
+  <line x1="73" y1="63" x2="73" y2="88" />
+  <line x1="77" y1="67" x2="77" y2="92" />
   <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
@@ -2069,23 +2071,23 @@ X: 24,393,108 bp
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
   <line x1="13" y1="3" x2="38" y2="3" />
-  <line x1="17" y1="7" x2="42" y2="7" />
+  <line x1="16" y1="6" x2="42" y2="6" />
   <line x1="20" y1="10" x2="46" y2="10" />
-  <line x1="24" y1="14" x2="50" y2="14" />
+  <line x1="24" y1="14" x2="49" y2="14" />
   <line x1="28" y1="18" x2="53" y2="18" />
   <line x1="32" y1="22" x2="57" y2="22" />
-  <line x1="35" y1="25" x2="61" y2="25" />
+  <line x1="35" y1="25" x2="60" y2="25" />
   <line x1="39" y1="29" x2="65" y2="29" />
-  <line x1="43" y1="33" x2="68" y2="33" />
+  <line x1="43" y1="33" x2="69" y2="33" />
   <line x1="47" y1="37" x2="72" y2="37" />
   <line x1="50" y1="40" x2="75" y2="40" />
   <line x1="54" y1="44" x2="79" y2="44" />
   <line x1="58" y1="48" x2="83" y2="48" />
   <line x1="61" y1="51" x2="87" y2="51" />
-  <line x1="65" y1="55" x2="90" y2="55" />
-  <line x1="69" y1="59" x2="94" y2="59" />
-  <line x1="72" y1="62" x2="98" y2="62" />
-  <line x1="76" y1="66" x2="102" y2="66" />
+  <line x1="65" y1="55" x2="91" y2="55" />
+  <line x1="68" y1="58" x2="94" y2="58" />
+  <line x1="73" y1="63" x2="98" y2="63" />
+  <line x1="77" y1="67" x2="102" y2="67" />
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2097,24 +2099,24 @@ X: 24,393,108 bp
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
-  <line x1="80" y1="71" x2="106" y2="71" />
+  <line x1="80" y1="72" x2="106" y2="72" />
   <line x1="80" y1="73" x2="106" y2="73" />
   <line x1="80" y1="74" x2="106" y2="74" />
   <line x1="80" y1="75" x2="106" y2="75" />
-  <line x1="80" y1="76" x2="106" y2="76" />
+  <line x1="80" y1="77" x2="106" y2="77" />
   <line x1="80" y1="78" x2="106" y2="78" />
   <line x1="80" y1="79" x2="106" y2="79" />
   <line x1="80" y1="80" x2="106" y2="80" />
-  <line x1="80" y1="82" x2="106" y2="82" />
+  <line x1="80" y1="81" x2="106" y2="81" />
   <line x1="80" y1="83" x2="106" y2="83" />
   <line x1="80" y1="84" x2="106" y2="84" />
   <line x1="80" y1="85" x2="106" y2="85" />
+  <line x1="80" y1="86" x2="106" y2="86" />
   <line x1="80" y1="87" x2="106" y2="87" />
   <line x1="80" y1="88" x2="106" y2="88" />
-  <line x1="80" y1="89" x2="106" y2="89" />
+  <line x1="80" y1="90" x2="106" y2="90" />
   <line x1="80" y1="91" x2="106" y2="91" />
-  <line x1="80" y1="92" x2="106" y2="92" />
-  <line x1="80" y1="94" x2="106" y2="94" />
+  <line x1="80" y1="93" x2="106" y2="93" />
   <line x1="80" y1="96" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2208,9 +2210,9 @@ Name: 100, dtype: object
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 97.05 MB </td> <td> 600.00 kB </td></tr>
-    <tr><th> Shape </th><td> (48525747, 2) </td> <td> (300000, 2) </td></tr>
-    <tr><th> Count </th><td> 24166 Tasks </td><td> 162 Chunks </td></tr>
+    <tr><th> Bytes </th><td> 97.05 MB </td> <td> 1.20 MB </td></tr>
+    <tr><th> Shape </th><td> (48525747, 2) </td> <td> (600000, 2) </td></tr>
+    <tr><th> Count </th><td> 17099 Tasks </td><td> 127 Chunks </td></tr>
     <tr><th> Type </th><td> int8 </td><td> numpy.ndarray </td></tr>
   </tbody>
 </table>
@@ -2221,23 +2223,23 @@ Name: 100, dtype: object
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
   <line x1="0" y1="5" x2="25" y2="5" />
-  <line x1="0" y1="12" x2="25" y2="12" />
+  <line x1="0" y1="11" x2="25" y2="11" />
   <line x1="0" y1="18" x2="25" y2="18" />
-  <line x1="0" y1="25" x2="25" y2="25" />
+  <line x1="0" y1="24" x2="25" y2="24" />
   <line x1="0" y1="31" x2="25" y2="31" />
   <line x1="0" y1="37" x2="25" y2="37" />
   <line x1="0" y1="43" x2="25" y2="43" />
   <line x1="0" y1="50" x2="25" y2="50" />
-  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="57" x2="25" y2="57" />
   <line x1="0" y1="63" x2="25" y2="63" />
   <line x1="0" y1="68" x2="25" y2="68" />
   <line x1="0" y1="75" x2="25" y2="75" />
-  <line x1="0" y1="81" x2="25" y2="81" />
+  <line x1="0" y1="82" x2="25" y2="82" />
   <line x1="0" y1="88" x2="25" y2="88" />
   <line x1="0" y1="94" x2="25" y2="94" />
   <line x1="0" y1="100" x2="25" y2="100" />
-  <line x1="0" y1="106" x2="25" y2="106" />
-  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="114" x2="25" y2="114" />
   <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2319,20 +2321,13 @@ Name: 100, dtype: object
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select An. gambiae samples from Burkina Faso collected in 2012</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;(country == &#39;Burkina Faso&#39;) and (year == 2012) and (species == &#39;gambiae&#39;)&quot;</span>
-<span class="n">loc_samples</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+<span class="n">loc_samples</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
 <span class="n">loc_samples</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 81,  82,  91,  97,  98, 106, 107, 108, 109, 114, 115, 116, 117,
-       118, 121, 122, 123, 124, 130, 131, 132, 133, 134, 135, 136, 137,
-       138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150,
-       151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 177, 178,
-       179, 180, 181, 182, 183, 185, 186, 187, 188, 191, 197, 198, 204,
-       207, 210, 211, 212, 214, 215, 217, 218, 220, 223, 229, 230, 231,
-       232, 233, 237, 238, 241, 242, 245, 246, 247, 248, 249, 250, 251,
-       252, 254, 255, 257, 258, 260, 261])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False, False, ..., False, False, False])
 </pre></div>
 </div>
 </div>
@@ -2340,7 +2335,7 @@ Name: 100, dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examing their metadata</span>
-<span class="n">df_samples_selected</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">loc_samples</span><span class="p">]</span>
+<span class="n">df_samples_selected</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">loc_samples</span><span class="p">]</span>
 <span class="n">df_samples_selected</span>
 </pre></div>
 </div>
@@ -2626,9 +2621,9 @@ Name: 100, dtype: object
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 9.51 GB </td> <td> 21.00 MB </td></tr>
-    <tr><th> Shape </th><td> (48525747, 98, 2) </td> <td> (300000, 35, 2) </td></tr>
-    <tr><th> Count </th><td> 24652 Tasks </td><td> 648 Chunks </td></tr>
+    <tr><th> Bytes </th><td> 9.51 GB </td> <td> 2.40 MB </td></tr>
+    <tr><th> Shape </th><td> (48525747, 98, 2) </td> <td> (600000, 2, 2) </td></tr>
+    <tr><th> Count </th><td> 23195 Tasks </td><td> 6223 Chunks </td></tr>
     <tr><th> Type </th><td> int8 </td><td> numpy.ndarray </td></tr>
   </tbody>
 </table>
@@ -2638,31 +2633,46 @@ Name: 100, dtype: object
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="10" y1="4" x2="80" y2="75" />
-  <line x1="10" y1="14" x2="80" y2="84" />
+  <line x1="10" y1="1" x2="80" y2="71" />
+  <line x1="10" y1="2" x2="80" y2="73" />
+  <line x1="10" y1="3" x2="80" y2="74" />
+  <line x1="10" y1="5" x2="80" y2="75" />
+  <line x1="10" y1="6" x2="80" y2="76" />
+  <line x1="10" y1="7" x2="80" y2="78" />
+  <line x1="10" y1="9" x2="80" y2="79" />
+  <line x1="10" y1="10" x2="80" y2="80" />
+  <line x1="10" y1="11" x2="80" y2="82" />
+  <line x1="10" y1="12" x2="80" y2="83" />
+  <line x1="10" y1="14" x2="80" y2="85" />
+  <line x1="10" y1="15" x2="80" y2="86" />
+  <line x1="10" y1="17" x2="80" y2="87" />
+  <line x1="10" y1="18" x2="80" y2="89" />
   <line x1="10" y1="19" x2="80" y2="90" />
+  <line x1="10" y1="21" x2="80" y2="91" />
+  <line x1="10" y1="22" x2="80" y2="92" />
+  <line x1="10" y1="23" x2="80" y2="94" />
   <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
   <line x1="13" y1="3" x2="13" y2="28" />
-  <line x1="17" y1="7" x2="17" y2="32" />
+  <line x1="16" y1="6" x2="16" y2="32" />
   <line x1="20" y1="10" x2="20" y2="36" />
-  <line x1="24" y1="14" x2="24" y2="40" />
+  <line x1="24" y1="14" x2="24" y2="39" />
   <line x1="28" y1="18" x2="28" y2="43" />
   <line x1="32" y1="22" x2="32" y2="47" />
-  <line x1="35" y1="25" x2="35" y2="51" />
+  <line x1="35" y1="25" x2="35" y2="50" />
   <line x1="39" y1="29" x2="39" y2="55" />
-  <line x1="43" y1="33" x2="43" y2="58" />
+  <line x1="43" y1="33" x2="43" y2="59" />
   <line x1="47" y1="37" x2="47" y2="62" />
   <line x1="50" y1="40" x2="50" y2="65" />
   <line x1="54" y1="44" x2="54" y2="69" />
   <line x1="58" y1="48" x2="58" y2="73" />
   <line x1="61" y1="51" x2="61" y2="77" />
-  <line x1="65" y1="55" x2="65" y2="80" />
-  <line x1="69" y1="59" x2="69" y2="84" />
-  <line x1="72" y1="62" x2="72" y2="88" />
-  <line x1="76" y1="66" x2="76" y2="92" />
+  <line x1="65" y1="55" x2="65" y2="81" />
+  <line x1="68" y1="58" x2="68" y2="84" />
+  <line x1="73" y1="63" x2="73" y2="88" />
+  <line x1="77" y1="67" x2="77" y2="92" />
   <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
@@ -2671,23 +2681,23 @@ Name: 100, dtype: object
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
   <line x1="13" y1="3" x2="38" y2="3" />
-  <line x1="17" y1="7" x2="42" y2="7" />
+  <line x1="16" y1="6" x2="42" y2="6" />
   <line x1="20" y1="10" x2="46" y2="10" />
-  <line x1="24" y1="14" x2="50" y2="14" />
+  <line x1="24" y1="14" x2="49" y2="14" />
   <line x1="28" y1="18" x2="53" y2="18" />
   <line x1="32" y1="22" x2="57" y2="22" />
-  <line x1="35" y1="25" x2="61" y2="25" />
+  <line x1="35" y1="25" x2="60" y2="25" />
   <line x1="39" y1="29" x2="65" y2="29" />
-  <line x1="43" y1="33" x2="68" y2="33" />
+  <line x1="43" y1="33" x2="69" y2="33" />
   <line x1="47" y1="37" x2="72" y2="37" />
   <line x1="50" y1="40" x2="75" y2="40" />
   <line x1="54" y1="44" x2="79" y2="44" />
   <line x1="58" y1="48" x2="83" y2="48" />
   <line x1="61" y1="51" x2="87" y2="51" />
-  <line x1="65" y1="55" x2="90" y2="55" />
-  <line x1="69" y1="59" x2="94" y2="59" />
-  <line x1="72" y1="62" x2="98" y2="62" />
-  <line x1="76" y1="66" x2="102" y2="66" />
+  <line x1="65" y1="55" x2="91" y2="55" />
+  <line x1="68" y1="58" x2="94" y2="58" />
+  <line x1="73" y1="63" x2="98" y2="63" />
+  <line x1="77" y1="67" x2="102" y2="67" />
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2699,9 +2709,24 @@ Name: 100, dtype: object
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
+  <line x1="80" y1="71" x2="106" y2="71" />
+  <line x1="80" y1="73" x2="106" y2="73" />
+  <line x1="80" y1="74" x2="106" y2="74" />
   <line x1="80" y1="75" x2="106" y2="75" />
-  <line x1="80" y1="84" x2="106" y2="84" />
+  <line x1="80" y1="76" x2="106" y2="76" />
+  <line x1="80" y1="78" x2="106" y2="78" />
+  <line x1="80" y1="79" x2="106" y2="79" />
+  <line x1="80" y1="80" x2="106" y2="80" />
+  <line x1="80" y1="82" x2="106" y2="82" />
+  <line x1="80" y1="83" x2="106" y2="83" />
+  <line x1="80" y1="85" x2="106" y2="85" />
+  <line x1="80" y1="86" x2="106" y2="86" />
+  <line x1="80" y1="87" x2="106" y2="87" />
+  <line x1="80" y1="89" x2="106" y2="89" />
   <line x1="80" y1="90" x2="106" y2="90" />
+  <line x1="80" y1="91" x2="106" y2="91" />
+  <line x1="80" y1="92" x2="106" y2="92" />
+  <line x1="80" y1="94" x2="106" y2="94" />
   <line x1="80" y1="96" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2709,7 +2734,7 @@ Name: 100, dtype: object
   <line x1="106" y1="70" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="80.58823529411765,70.58823529411765 106.00085180870013,70.58823529411765 106.00085180870013,96.00085180870013 80.58823529411765,96.00085180870013" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="80.58823529411765,70.58823529411765 106.00085180870013,70.58823529411765 106.00085180870013,96.00085180870013 80.58823529411765,96.00085180870013" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="93.294544" y="116.000852" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
@@ -2756,9 +2781,9 @@ Name: 100, dtype: object
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 13.65 MB </td> <td> 3.70 MB </td></tr>
-    <tr><th> Shape </th><td> (69667, 98, 2) </td> <td> (52802, 35, 2) </td></tr>
-    <tr><th> Count </th><td> 24160 Tasks </td><td> 8 Chunks </td></tr>
+    <tr><th> Bytes </th><td> 13.65 MB </td> <td> 5.70 MB </td></tr>
+    <tr><th> Shape </th><td> (69667, 98, 2) </td> <td> (52802, 54, 2) </td></tr>
+    <tr><th> Count </th><td> 17056 Tasks </td><td> 4 Chunks </td></tr>
     <tr><th> Type </th><td> int8 </td><td> numpy.ndarray </td></tr>
   </tbody>
 </table>
@@ -2768,9 +2793,7 @@ Name: 100, dtype: object
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="10" y1="4" x2="80" y2="75" />
   <line x1="10" y1="14" x2="80" y2="84" />
-  <line x1="10" y1="19" x2="80" y2="90" />
   <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2795,9 +2818,7 @@ Name: 100, dtype: object
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
-  <line x1="80" y1="75" x2="106" y2="75" />
   <line x1="80" y1="84" x2="106" y2="84" />
-  <line x1="80" y1="90" x2="106" y2="90" />
   <line x1="80" y1="96" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2956,6 +2977,214 @@ Name: 100, dtype: object
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
 <p>Hopefully the examples above have helped to give some sense of how to access and work with SNP data from Ag3. If you have any comments or questions, please <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">get in touch</a>.</p>
 <p>This notebook is part of the <a class="reference internal" href="../intro.html"><span class="doc std std-doc">Ag1000G phase 3 user guide</span></a>. See the menu at the left for more documentation and example analyses.</p>
+</div>
+<div class="section" id="api-docs">
+<h2>API docs<a class="headerlink" href="#api-docs" title="Permalink to this headline">¶</a></h2>
+<p>Here are the docstrings for the functions in the <code class="docutils literal notranslate"><span class="pre">malariagen_data</span></code> package we used in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method genome_sequence in module malariagen_data.ag3:
+
+genome_sequence(contig, inline_array=True, chunks=&#39;auto&#39;) method of malariagen_data.ag3.Ag3 instance
+    Access the reference genome sequence.
+    
+    Parameters
+    ----------
+    contig : str
+        Chromosome arm, e.g., &quot;3R&quot;.
+    inline_array : bool, optional
+        Passed through to dask.array.from_array().
+    chunks : str, optional
+        If &#39;auto&#39; let dask decide chunk size. If &#39;native&#39; use native zarr chunks.
+        Also can be a target size, e.g., &#39;200 MiB&#39;.
+    
+    Returns
+    -------
+    d : dask.array.Array
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method sample_metadata in module malariagen_data.ag3:
+
+sample_metadata(sample_sets=&#39;v3_wild&#39;, species_calls=(&#39;20200422&#39;, &#39;aim&#39;)) method of malariagen_data.ag3.Ag3 instance
+    Access sample metadata for one or more sample sets.
+    
+    Parameters
+    ----------
+    sample_sets : str or list of str
+        Can be a sample set identifier (e.g., &quot;AG1000G-AO&quot;) or a list of sample set
+        identifiers (e.g., [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]) or a release identifier (e.g.,
+        &quot;v3&quot;) or a list of release identifiers.
+    species_calls : (str, str), optional
+        Include species calls in metadata.
+    
+    Returns
+    -------
+    df : pandas.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method snp_sites in module malariagen_data.ag3:
+
+snp_sites(contig, field=None, site_mask=None, site_filters=&#39;dt_20200416&#39;, inline_array=True, chunks=&#39;auto&#39;) method of malariagen_data.ag3.Ag3 instance
+    Access SNP site data (positions and alleles).
+    
+    Parameters
+    ----------
+    contig : str
+        Chromosome arm, e.g., &quot;3R&quot;.
+    field : {&quot;POS&quot;, &quot;REF&quot;, &quot;ALT&quot;}, optional
+        Array to access. If not provided, all three arrays POS, REF, ALT will be returned as a
+        tuple.
+    site_mask : {&quot;gamb_colu_arab&quot;, &quot;gamb_colu&quot;, &quot;arab&quot;}
+        Site filters mask to apply.
+    site_filters : str
+        Site filters analysis version.
+    inline_array : bool, optional
+        Passed through to dask.array.from_array().
+    chunks : str, optional
+        If &#39;auto&#39; let dask decide chunk size. If &#39;native&#39; use native zarr chunks.
+        Also can be a target size, e.g., &#39;200 MiB&#39;.
+    
+    Returns
+    -------
+    d : dask.array.Array or tuple of dask.array.Array
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method site_filters in module malariagen_data.ag3:
+
+site_filters(contig, mask, field=&#39;filter_pass&#39;, analysis=&#39;dt_20200416&#39;, inline_array=True, chunks=&#39;auto&#39;) method of malariagen_data.ag3.Ag3 instance
+    Access SNP site filters.
+    
+    Parameters
+    ----------
+    contig : str
+        Chromosome arm, e.g., &quot;3R&quot;.
+    mask : {&quot;gamb_colu_arab&quot;, &quot;gamb_colu&quot;, &quot;arab&quot;}
+        Mask to use.
+    field : str, optional
+        Array to access.
+    analysis : str, optional
+        Site filters analysis version.
+    inline_array : bool, optional
+        Passed through to dask.from_array().
+    chunks : str, optional
+        If &#39;auto&#39; let dask decide chunk size. If &#39;native&#39; use native zarr chunks.
+        Also can be a target size, e.g., &#39;200 MiB&#39;.
+    
+    Returns
+    -------
+    d : dask.array.Array
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method snp_genotypes in module malariagen_data.ag3:
+
+snp_genotypes(contig, sample_sets=&#39;v3_wild&#39;, field=&#39;GT&#39;, site_mask=None, site_filters=&#39;dt_20200416&#39;, inline_array=True, chunks=&#39;auto&#39;) method of malariagen_data.ag3.Ag3 instance
+    Access SNP genotypes and associated data.
+    
+    Parameters
+    ----------
+    contig : str
+        Chromosome arm, e.g., &quot;3R&quot;.
+    sample_sets : str or list of str
+        Can be a sample set identifier (e.g., &quot;AG1000G-AO&quot;) or a list of sample set
+        identifiers (e.g., [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]) or a release identifier (e.g.,
+        &quot;v3&quot;) or a list of release identifiers.
+    field : {&quot;GT&quot;, &quot;GQ&quot;, &quot;AD&quot;, &quot;MQ&quot;}
+        Array to access.
+    site_mask : {&quot;gamb_colu_arab&quot;, &quot;gamb_colu&quot;, &quot;arab&quot;}
+        Site filters mask to apply.
+    site_filters : str, optional
+        Site filters analysis version.
+    inline_array : bool, optional
+        Passed through to dask.array.from_array().
+    chunks : str, optional
+        If &#39;auto&#39; let dask decide chunk size. If &#39;native&#39; use native zarr chunks.
+        Also can be a target size, e.g., &#39;200 MiB&#39;.
+    
+    Returns
+    -------
+    d : dask.array.Array
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method snp_calls in module malariagen_data.ag3:
+
+snp_calls(contig, sample_sets=&#39;v3_wild&#39;, site_mask=None, site_filters=&#39;dt_20200416&#39;, inline_array=True, chunks=&#39;auto&#39;) method of malariagen_data.ag3.Ag3 instance
+    Access SNP sites, site filters and genotype calls.
+    
+    Parameters
+    ----------
+    contig : str
+        Chromosome arm, e.g., &quot;3R&quot;.
+    sample_sets : str or list of str
+        Can be a sample set identifier (e.g., &quot;AG1000G-AO&quot;) or a list of sample set
+        identifiers (e.g., [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]) or a release identifier (e.g.,
+        &quot;v3&quot;) or a list of release identifiers.
+    site_mask : {&quot;gamb_colu_arab&quot;, &quot;gamb_colu&quot;, &quot;arab&quot;}
+        Site filters mask to apply.
+    site_filters : str
+        Site filters analysis version.
+    inline_array : bool, optional
+        Passed through to dask.array.from_array().
+    chunks : str, optional
+        If &#39;auto&#39; let dask decide chunk size. If &#39;native&#39; use native zarr chunks.
+        Also can be a target size, e.g., &#39;200 MiB&#39;.
+    
+    Returns
+    -------
+    ds : xarray.Dataset
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
