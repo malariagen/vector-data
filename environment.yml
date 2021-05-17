@@ -3,21 +3,24 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python
+  - python=3.7
   - numpy
   - scipy
   - pandas
-  - dask
+  - dask=2021.03.0
   - matplotlib
-  - fsspec
-  - gcsfs
+  - fsspec=0.8.7
+  - gcsfs=0.7.2
   - jupyterlab
   - jupyter-book
   - gsutil
-  - scikit-allel
+  - scikit-allel=1.3.5
   - cartopy
   - rasterio
-  - plotly
+  - bokeh=2.3.2
+  - plotly=4.14.3
+  - xarray=0.18.0
+  - zarr=2.6.1
   - pip
   - pip:
-    - malariagen_data
+    - malariagen_data=0.7.0
