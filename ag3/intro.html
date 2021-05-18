@@ -332,7 +332,8 @@ the course of their own research. In total, 26 studies contributed samples to Ag
 <p>The samples included in Ag3 have been organised into 28 sample sets. Each of these sample sets corresponds to a set of mosquito specimens from a contributing study. Depending on your objectives, you may want to access data from only specific sample sets, or all sample sets. Here is a list of the sample sets included in Ag3:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q <span class="nv">malariagen_data</span><span class="o">==</span><span class="m">0</span>.8.0
+<span class="kn">import</span> <span class="nn">malariagen_data</span>
 <span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
 <span class="n">df_sample_sets</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_sets</span><span class="p">()</span>
 <span class="n">df_sample_sets</span>

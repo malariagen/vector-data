@@ -436,7 +436,7 @@
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>apt-get -q install libgdal-dev libproj-dev libgeos-dev proj-data proj-bin
-<span class="o">!</span>pip install -q cython numpy scipy pyshp six matplotlib pandas malariagen_data
+<span class="o">!</span>pip install -q cython numpy scipy pyshp six matplotlib pandas <span class="nv">malariagen_data</span><span class="o">==</span><span class="m">0</span>.8.0
 <span class="o">!</span>pip uninstall -q -y shapely  # make sure we have a fresh install
 <span class="o">!</span>pip install -q shapely --no-binary shapely
 <span class="o">!</span>pip install -q --upgrade cartopy
