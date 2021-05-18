@@ -45,14 +45,14 @@
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Investigating population structure with PCA" href="pca.html" />
+    <link rel="next" title="Genes and SNP effects" href="snp-effects.html" />
     <link rel="prev" title="Mosquito collection sites" href="collection-sites.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -129,6 +129,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Single nucleotide polymorphisms (SNPs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="snp-effects.html">
+     Genes and SNP effects
     </a>
    </li>
    <li class="toctree-l2">
@@ -220,7 +225,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=tree/docs/ag3/examples/snps.ipynb"><button type="button"
+        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/examples/snps.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -233,6 +238,9 @@
                     src="../../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -381,7 +389,7 @@
 </div>
 </div>
 <p>Import the packages we’ll need.</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
@@ -404,7 +412,7 @@
 </div>
 </div>
 <p>Set up access to the Ag3 data.</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
 </pre></div>
@@ -478,7 +486,7 @@ X: 24,393,108 bp
 </div>
 <p>This nucleotide is a “T” (thymine).</p>
 <p>Note that there are also some “gaps” in the reference genome, where we don’t know what the nucleotide is. These are represented in the sequence with the letter “N”. Let’s take a look at how common these are, for chromosome arm 2R:</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_nucleotides</span><span class="p">(</span><span class="n">contig</span><span class="p">):</span>
     <span class="n">seq</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
@@ -510,7 +518,7 @@ X: 24,393,108 bp
 </div>
 <p>There are two things to notice here. First, there are both upper case and lower case letters. For most purposes you can ignore this, e.g., both “T” and “t” mean the same thing. Second, there are 1,412,652 nucleotides which are unknown (either “N” or “n”).</p>
 <p>To gain a bit more intuition for how the genome is structured and the relative sizes of the different sequences, let’s make a plot of the five chromosome arms, summarising the relative abundance of the different nucleotides.</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sequence_composition</span><span class="p">(</span><span class="n">seq_id</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">100_000</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     
@@ -677,7 +685,7 @@ X: 24,393,108 bp
 </div>
 </div>
 <p>Note that this is simply the positions 1-10. However, these positions <strong>do not</strong> continue increasing by 1 all the way through the array, i.e., there are gaps, because of gaps in the reference genome. We can quickly visualise that, by plotting the distance between adjacent sites:</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_gaps</span><span class="p">(</span><span class="n">contig</span><span class="p">):</span>
     <span class="n">pos</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="n">contig</span><span class="p">)</span>
@@ -1238,7 +1246,7 @@ X: 24,393,108 bp
 <li><p>The percentage of sites passing the <code class="docutils literal notranslate"><span class="pre">gamb_colu</span></code> and <code class="docutils literal notranslate"><span class="pre">arab</span></code> filters is similar on all chromosome arms, except for the X chromosome. This is because of a large inversion on the X chromosome known as Xag which is a fixed difference between <em>An. arabiensis</em> and the other two species, and where there is a higher level of divergence in <em>An. arabiensis</em> relative to the reference genome we’ve used.</p></li>
 </ol>
 <p>To gain a bit more intuition for these filters, let’s plot the fraction of genome sites that pass the site filters in moving windows over each of the chromosome arms.</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_site_filters</span><span class="p">(</span><span class="n">contig</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">200_000</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
@@ -3178,7 +3186,7 @@ snp_calls(contig, sample_sets=&#39;v3_wild&#39;, site_mask=None, site_filters=&#
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "malariagen/vector-data",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -3200,7 +3208,7 @@ snp_calls(contig, sample_sets=&#39;v3_wild&#39;, site_mask=None, site_filters=&#
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="collection-sites.html" title="previous page">Mosquito collection sites</a>
-    <a class='right-next' id="next-link" href="pca.html" title="next page">Investigating population structure with PCA</a>
+    <a class='right-next' id="next-link" href="snp-effects.html" title="next page">Genes and SNP effects</a>
 
         </div>
         

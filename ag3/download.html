@@ -45,9 +45,9 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -129,6 +129,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="examples/snps.html">
      Single nucleotide polymorphisms (SNPs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/snp-effects.html">
+     Genes and SNP effects
     </a>
    </li>
    <li class="toctree-l2">
@@ -220,7 +225,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=tree/docs/ag3/download.ipynb"><button type="button"
+        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/download.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -233,6 +238,9 @@
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -1986,7 +1994,7 @@ dtype: int64
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "malariagen/vector-data",
             ref: "master",
         },
         codeMirrorConfig: {

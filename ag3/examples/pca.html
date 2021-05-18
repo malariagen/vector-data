@@ -45,14 +45,14 @@
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Single nucleotide polymorphisms (SNPs)" href="snps.html" />
+    <link rel="prev" title="Genes and SNP effects" href="snp-effects.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -128,6 +128,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="snps.html">
      Single nucleotide polymorphisms (SNPs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="snp-effects.html">
+     Genes and SNP effects
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -219,7 +224,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=tree/docs/ag3/examples/pca.ipynb"><button type="button"
+        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/examples/pca.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -232,6 +237,9 @@
                     src="../../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -356,7 +364,7 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -377,7 +385,7 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># register a progress bar for longer-running dask computations</span>
 <span class="c1"># N.B., run this cell only once!</span>
@@ -386,7 +394,7 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup access to malariagen data in google cloud</span>
 <span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
@@ -399,7 +407,7 @@
 <h2>Aside: saving PCA results<a class="headerlink" href="#aside-saving-pca-results" title="Permalink to this headline">¶</a></h2>
 <p>Some PCA runs may take a while to complete if you’re running this code on a service with modest computational resources such as Google Colab or MyBinder, because genotype calls from tens of millions of SNPs may need to be scanned to identify and extract the data for PCA. The run time will depend on the number of samples included in the analysis, but may take 20 mins or more for larger analyses.</p>
 <p>To avoid having to rerun these analyses, we’ll save the results so we can come back to them later. If you’re running this notebook on Google Colab, you can save results to your Google Drive, which will mean you don’t lose results even if you leave the notebook and come back several days later. To mount your Google Drive, run the following code, and follow the authorization instructions:</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mount Google Drive if running on Google Colab</span>
 <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
@@ -407,14 +415,9 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mounted at /content/drive
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now create a directory to hold PCA results:</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a directory to hold PCA results - change this to something suitable</span>
 <span class="c1"># if not running on Google Colab</span>
@@ -428,7 +431,7 @@
 <div class="section" id="pca-functions">
 <h2>PCA functions<a class="headerlink" href="#pca-functions" title="Permalink to this headline">¶</a></h2>
 <p>Now define some functions for running a PCA.</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hash_params</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Helper function to hash analysis parameters.&quot;&quot;&quot;</span>
@@ -600,7 +603,7 @@
 <div class="section" id="plotting-functions">
 <h2>Plotting functions<a class="headerlink" href="#plotting-functions" title="Permalink to this headline">¶</a></h2>
 <p>Before we starting running PCAs, define some plotting functions to help visualise the results.</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_variance</span><span class="p">(</span><span class="n">evr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Plot a bar chart showing variance explained by each principal</span>
@@ -631,7 +634,7 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jitter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
@@ -734,7 +737,7 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose colours for species</span>
 <span class="n">species_palette</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Plotly</span>
@@ -1466,7 +1469,7 @@ if (outputEl) {{
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "malariagen/vector-data",
             ref: "master",
         },
         codeMirrorConfig: {
@@ -1487,7 +1490,7 @@ if (outputEl) {{
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="snps.html" title="previous page">Single nucleotide polymorphisms (SNPs)</a>
+    <a class='left-prev' id="prev-link" href="snp-effects.html" title="previous page">Genes and SNP effects</a>
 
         </div>
         

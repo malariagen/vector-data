@@ -45,9 +45,9 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -129,6 +129,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="examples/snps.html">
      Single nucleotide polymorphisms (SNPs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/snp-effects.html">
+     Genes and SNP effects
     </a>
    </li>
    <li class="toctree-l2">
@@ -238,6 +243,7 @@ know</a>.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/collection-sites.html">Mosquito collection sites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/snps.html">Single nucleotide polymorphisms (SNPs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/snp-effects.html">Genes and SNP effects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/pca.html">Investigating population structure with PCA</a></li>
 </ul>
 </div>
@@ -249,7 +255,7 @@ know</a>.</p>
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "malariagen/vector-data",
             ref: "master",
         },
         codeMirrorConfig: {

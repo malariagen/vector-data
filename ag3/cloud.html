@@ -45,9 +45,9 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -129,6 +129,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="examples/snps.html">
      Single nucleotide polymorphisms (SNPs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/snp-effects.html">
+     Genes and SNP effects
     </a>
    </li>
    <li class="toctree-l2">
@@ -220,7 +225,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=tree/docs/ag3/cloud.ipynb"><button type="button"
+        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/cloud.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -233,6 +238,9 @@
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -346,7 +354,7 @@
 </div>
 <p>To make accessing these data more convenient, we’ve created the <a class="reference external" href="https://github.com/malariagen/malariagen-data-python">malariagen_data Python package</a>, which is available from PyPI. This is experimental so please let us know if you find any bugs or have any suggestions.</p>
 <p>Now import the packages we’ll need to use here.</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">dask</span>
@@ -361,7 +369,7 @@
 </div>
 </div>
 <p>Ag3 data access from Google Cloud is set up with the following code:</p>
-<div class="cell docutils container">
+<div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
 </pre></div>
@@ -3271,7 +3279,7 @@ snp_calls(contig, sample_sets=&#39;v3_wild&#39;, site_mask=None, site_filters=&#
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "malariagen/vector-data",
             ref: "master",
         },
         codeMirrorConfig: {
