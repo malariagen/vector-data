@@ -12,6 +12,7 @@ launch_buttons:
   notebook_interface: "jupyterlab"
   colab_url: "https://colab.research.google.com"
   binderhub_url: "https://gke.mybinder.org"
+  thebe: true
 html:
   use_repository_button : true
   use_issues_button: true
