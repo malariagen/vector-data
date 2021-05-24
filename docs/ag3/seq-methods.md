@@ -189,3 +189,97 @@ computed the fraction of coluzzii-like alleles at these
 AIMs. Individuals were called as *An. gambiae* where this fraction was
 <0.12 and *An. coluzzii* where this fraction was >0.9, with
 individuals in between classed as intermediate.
+
+
+### Species calling via PCA
+
+To provide a complementary view of species assignments, we also used
+the results of the principal components analysis of Chromosome 3
+computed during the outlier analysis described above. Based on a
+comparison with the AIM species calls, it was apparent that the first
+two principal components could be used to assign species. Individuals
+where PC1 >150 were called as *An. arabiensis*.  Individuals where PC1
+<0 and PC2 >-7 were called as *An. gambiae*.  Individuals where PC1 <0
+and PC2 <-24 were called as *An. coluzzii*.  All other individuals
+were called as intermediate. The results of the PCA and AIM species
+calls were highly concordant in most sample sets, except for the Far
+West (Guinea-Bissau, The Gambia) and Far East (Kenya,
+Tanzania). Further investigation is required to resolve the species
+status of these individuals.
+
+
+## Site filtering
+
+We developed filters that identify genomic sites where SNP calling and
+genotyping is likely to be less reliable in one or more mosquito
+species. To guide the design and calibration of the site filters, we
+made use of the 15 colony crosses included in Ag1000G phase 3. Each
+cross comprises two parents and up to 20 progeny, and thus it is
+possible to identify sites where genotypes in one or more progeny are
+not consistent with Mendelian inheritance (Mendelian errors). A small
+number of Mendelian errors may be due to *de novo* mutation, but the
+vast majority of Mendelian errors are likely to be due to errors in
+sequencing, alignment or SNP calling. The general approach we took
+was to use Mendelian consistency to identify sets of positive and
+negative training sites, then used these to train a machine learning
+model that classified all genomic sites as either PASS or FAIL.
+
+
+### Site filters for use with *An. gambiae* and/or *An. coluzzii*
+
+All the 15 crosses involved *An. gambiae* and/or *An. coluzzii*
+parents, and none of the crosses involved *An. arabiensis*, so we used
+the crosses to first develop site filters suitable for use with
+*An. gambiae* and/or *An. coluzzii*. Hereafter we refer to these
+filters as the "gamb_colu" site filters. Five of the 15 crosses were
+held out for validation, so performance could be evaluated
+objectively. Sites were assigned to the positive training set where
+all genotypes across all 10 crosses were called, and no Mendelian
+errors were observed. Sites were assigned to negative training set
+where one or more Mendelian errors were observed in any cross. All
+other sites were not considered eligible for inclusion in model
+training. A balanced training set was then generated containing
+100,000 autosomal sites from each of the positive and negative
+training sets.
+
+
+The inputs to the machine learning model were a set of per-site
+summary statistics computed from the sequence read alignments and SNP
+genotypes across all wild-caught *An. gambiae* and *An. coluzzii*
+individuals. These input summary statistics are described further in
+the appendix. Male individuals were excluded from the summary
+statistic calculations, so that the model could also be applied
+without modification to the X chromosome. We used these summary
+statistics, together with the positive and negative training sites, to
+train a decision tree model. We initially trained a set of trees with
+different hyperparameter values, exploring the depth of trees, and the
+number of samples allowed at a terminal node. Each of these trees was
+evaluated on an unbalanced set of sites randomly sampled from the
+whole genome (2% of all sites, without replacement). Leaves of these
+trees contained different proportions of positive and negative
+training sites, and by increasing the cutoff for these proportions
+required to label a leaf as PASS, we were able to compute the area
+under the receiver operating curve (AUROC) for each set of
+hyperparameter values. The best performing hyperparameter set based on
+AUROC was selected as the final model, and the leaf classification
+cutoff used was optimised based on the Youden statistic. The resulting
+model was a decision tree of depth 8, where leaves were assigned to
+PASS where > 0.533 of training data in that leaf were positive
+training sites. All sites in the genome were then assigned to PASS or
+FAIL via this model.
+
+The 5 remaining cross pedigrees were used to perform a final
+evaluation of the approach. For each of these crosses, we computed the
+Mendelian error rate (fraction of variants with one or more Mendelian
+errors among progeny) before and after applying the site filters, to
+provide five independent evaluation results. We also evaluated
+performance on the X chromosome using heterozygote calls in males as
+an error indicator. The fraction of variants with a heterozygous
+genotype call in or more males was computed before and after applying
+site filters. Male error rates were estimated from genotype calls with
+a minimum Genotype Quality (GQ) value of 30. Performance of the
+decision tree model was better than the hand-crafted site filters
+created during the previous project phase (Ag1000G phase 2), with
+lower Mendelian error rates, and a larger number of sites passing the
+filter. Full performance metrics will be reported in a future
+publication.
