@@ -11,4 +11,4 @@
         - file: ag3/examples/snps
         - file: ag3/examples/snp-effects
         - file: ag3/examples/pca
-    - file: ag3/seq-methods
+    - file: ag3/methods
