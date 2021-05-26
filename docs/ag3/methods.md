@@ -285,3 +285,83 @@ filter. Full performance metrics will be reported in a future
 publication.
 
 
+### Site filters for use with *An. arabiensis*
+
+To generate site filters for use with *An. arabiensis*, we recomputed
+site summary statistics using only wild-caught *An. arabiensis*
+individuals, then applied the decision tree model described
+above. These filters, which we refer to as the "arab"" site filters,
+are appropriate when working with *An. arabiensis* samples only.
+
+
+### Site filters for joint analyses of all three species
+
+We created site filters suitable for joint analysis of individuals
+from all three species by taking the intersection of the "gamb_colu"
+and the "arab" site filters. We refer to these filters as the
+"gamb_colu_arab"" site filters.
+
+
+## Acknowledgments
+
+We would like to thank the staff of the Wellcome Sanger Institute
+Sample Logistics, Sequencing and Informatics facilities for their
+contributions to the production of this data release.
+
+We would like to thank the members of the Data Engineering team of the
+Broad Institute of Harvard and MIT for their work on open source
+implementations of the alignment and SNP calling pipelines used in
+Ag1000G phase 3.
+
+
+## Appendices
+
+
+### Summary statistics used as input to site filter models
+
+* **No Coverage** -- Number of samples with no coverage whatsoever at
+  the given position.
+
+* **Low Coverage** -- Number of samples with low depth of coverage at
+  the given position (less than half modal coverage for whole
+  chromosome).
+
+* **Low Coverage GC normalised** -- Number of samples with low depth
+  of GC-normalised coverage at the given position (less than half
+  modal GC-normalised coverage for whole chromosome).
+
+* **High Coverage** -- Number of samples with high depth of coverage
+  at the given position (more than twice modal coverage for the whole
+  chromosome).
+
+* **High Coverage GC normed** -- Number of samples with high depth of
+  GC-normalised coverage at the given position (more than twice modal
+  GC-normalised coverage for the whole chromosome).
+
+* **Mean GQ** -- Mean of genotype quality across samples.
+
+* **Median GQ** -- Median of genotype quality across samples.
+
+* **Variance GQ** -- Variance of genotype quality across samples.
+
+* **Low GQ 30** -- Number of samples with a genotype quality <30.
+
+* **Low GQ 10** -- Number of samples with a genotype quality <10.
+
+* **Low MQ** -- Number of samples with root-mean-square mapping
+  quality <30.
+
+* **Median MQ** -- Median of root-mean-square mapping quality across
+  samples.
+
+* **Mean MQ** -- Mean of root-mean-square mapping quality across
+  samples.
+
+* **Variance MQ** -- Variance of root-mean-square mapping quality
+  across samples.
+
+* **Error Fraction** -- Fraction of samples with an allele not called
+  in the genotype.
+
+* **Allele Balance Het** -- Product of binomial probability of read
+  counts at het calls.
