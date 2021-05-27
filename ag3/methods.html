@@ -331,6 +331,33 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cnv-calling">
+   CNV calling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculation-and-normalization-of-coverage">
+     Calculation and normalization of coverage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hmm-inference-of-copy-number-state">
+     HMM inference of copy number state
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#genome-wide-cnv-discovery-and-filtering-coverage-calls">
+     Genome-wide CNV discovery and filtering (“coverage calls”)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls">
+     Identifying CNV alleles at insecticide resistance loci (“discordant read calls”)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acknowledgments">
    Acknowledgments
   </a>
@@ -638,6 +665,126 @@ are appropriate when working with <em>An. arabiensis</em> samples only.</p>
 from all three species by taking the intersection of the “gamb_colu”
 and the “arab” site filters. We refer to these filters as the
 “gamb_colu_arab”” site filters.</p>
+</div>
+</div>
+<div class="section" id="cnv-calling">
+<h2>CNV calling<a class="headerlink" href="#cnv-calling" title="Permalink to this headline">¶</a></h2>
+<p>Copy number variant (CNV) calling methods followed those described in
+<a class="reference external" href="https://genome.cshlp.org/content/29/8/1250.full#sec-8">Lucas et
+al. (2019)</a>
+with some adaptations to accommodate the different mosquito species
+being analysed, described further below.</p>
+<div class="section" id="calculation-and-normalization-of-coverage">
+<h3>Calculation and normalization of coverage<a class="headerlink" href="#calculation-and-normalization-of-coverage" title="Permalink to this headline">¶</a></h3>
+<p>For each individual, we used
+<a class="reference external" href="https://github.com/pysam-developers/pysam">pysam</a> to count the number
+of aligned reads (coverage) in non-overlapping 300 bp windows over the
+nuclear genome. The position of each read was considered to be its
+alignment start point; thus, each read was only counted once.</p>
+<p>Sequencing coverage can be biased by variation in local nucleotide
+composition. To account for this, we computed a normalized coverage
+from the read counts based on the expected coverage of each window
+given its GC content (<a class="reference external" href="https://doi.org/10.1101/gr.114876.110">Abyzov et
+al. 2011</a>). For each 300 bp
+window we computed the percentage of (G+C) nucleotides to the nearest
+percentage point within the reference sequence and then divided the
+read counts in each window by the median read count over all autosomal
+windows with the same (G+C) percentage. To minimize the impact of copy
+number variation when calculating these normalizing constants, we
+excluded windows from the calculation of mean read counts with &lt;90%
+sites passing site filters or with &gt;50% reads aligned with zero
+mapping quality. The normalized coverage values were then multiplied
+by a factor of 2, so that genome regions with a normal diploid copy
+number should have an expected normalized coverage of 2.</p>
+<p>Before examining the normalized coverage data for evidence of copy
+number variation, we applied two filters to exclude windows for which
+coverage may be an unreliable indicator of copy number. The first
+filter removed windows in which &gt;50% of reads were aligned with
+mapping quality 0, which indicates that a read is mapped ambiguously
+and could be mapped equally well to a different genomic location. This
+filter was calculated separately for <em>An. arabiensis</em> and
+(<em>An. gambiae</em> + <em>An. coluzzii</em>). The second filter removed windows
+for which the percentage (G+C) content was extreme and rarely
+represented within the accessible reference sequence, that is, fewer
+than 100 accessible windows with the same (G+C) percentage, because
+the small number of windows makes the calculation of a (G+C)
+normalizing constant unreliable. Windows retained for analysis were
+referred to as “filtered windows”. The filtered windows were computed
+separately for <em>An. arabiensis</em> and for (<em>An. gambiae</em> +
+<em>An. coluzzii</em>), based on the AIM species calls, to account for
+differences between the species.  One individual with an intermediate
+species call between these two groups were excluded.</p>
+</div>
+<div class="section" id="hmm-inference-of-copy-number-state">
+<h3>HMM inference of copy number state<a class="headerlink" href="#hmm-inference-of-copy-number-state" title="Permalink to this headline">¶</a></h3>
+<p>To infer the most likely copy number state (CN) at each window in each
+individual, we applied a Gaussian hidden Markov model (HMM) to the
+individual’s normalized windowed coverage data, following a similar
+approach to <a class="reference external" href="https://doi.org/10.1101/gr.203711.115">Miles et
+al. (2016)</a> and <a class="reference external" href="https://doi.org/10.1126/science.aam6393">Leffler et
+al. (2017)</a>. The HMM was
+implemented using the <code class="docutils literal notranslate"><span class="pre">GaussianHMM</span></code> function from
+<a class="reference external" href="https://hmmlearn.readthedocs.io/en/latest/">hmmlearn</a>. The HMM
+contained 13 hidden states (<em>c</em>), representing CN from 0 to 12 in
+increments of 1, allowing the detection of up to 6-fold amplication of
+a genetic region (the normal diploid complement of two copies of a
+genetic region is represented by a CN of 2, a single duplication on
+one chromosome is represented by 3, and so on). The Gaussian emission
+probability distribution for each copy number state <em>n</em> had a mean
+<em>c<sub>n</sub></em> (<em>c<sub>n</sub></em> = <em>n</em>), with variance <em>v<sub>n</sub></em>
+= 0.01 + <em>a<sub>n</sub>c<sub>n</sub></em>, where <em>a<sub>n</sub></em> is the
+variance in normalised coverage for all autosomal windows, excluding
+the top 1% of windows with the highest normalised coverage. We
+determined the variance empirically for each individual because
+variance in coverage can differ between individuals, presumably due to
+stochastic variation in library preparation and/or sequencing
+runs. Following <a class="reference external" href="https://genome.cshlp.org/content/29/8/1250.full#sec-8">Lucas et
+al. (2019)</a> we
+set the HMM transition probability <em>t</em> = 0.00001. After parameter
+calibration, we fitted a Gaussian HMM to normalised windowed coverage
+data for each individual, to obtain a predicted copy number state
+within each window.</p>
+</div>
+<div class="section" id="genome-wide-cnv-discovery-and-filtering-coverage-calls">
+<h3>Genome-wide CNV discovery and filtering (“coverage calls”)<a class="headerlink" href="#genome-wide-cnv-discovery-and-filtering-coverage-calls" title="Permalink to this headline">¶</a></h3>
+<p>Using the results of the HMM, we obtained a set of CNV calls for each
+individual by locating contiguous runs of at least five windows with
+amplified copy number (CN &gt; 2, or CN &gt; 1 for Chromosome X in
+males). This set of per-individual CNV calls was filtered by computing
+likelihoods for each CNV call for both the copy number state predicted
+by the HMM and for a null model of copy number = 2, and removing CNV
+calls for which the likelihood ratio was &lt;1000.</p>
+<p>From the per-individual CNV call set, we created a merged set CNV
+calls. We first removed individuals with high coverage variance, where
+the variance in normalized coverage was greater than 0.2, because high
+variance could lead to erratic CNV calls. We then clustered the CNV
+calls across individuals, merging two CNV calls into the same variant
+if their breakpoints (inferred from the change in CN state) occurred
+within one 300 bp window of each other. Merged CNVs were annotated to
+record a confidence interval for the start and end breakpoints,
+calculated as the 5-95 percentiles within each cluster. A filter
+annotation was added to the final output VCF file where this
+confidence interval was greater than 1200 bp for either the start or
+end breakpoint.</p>
+<p>The CNV merging process was performed separately for wild-caught
+<em>An. arabiensis</em>, wild-caught (<em>An. gambiae</em> + <em>An. coluzzii</em>), and
+the crosses, producing three sets of “CNV coverage calls”.</p>
+</div>
+<div class="section" id="identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls">
+<h3>Identifying CNV alleles at insecticide resistance loci (“discordant read calls”)<a class="headerlink" href="#identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls" title="Permalink to this headline">¶</a></h3>
+<p>We characterized in detail the different duplication events (CNV
+alleles) at six loci containing genes of particular interest
+(Cyp6aa1–Cyp6p2, Gstu4–Gste3, Cyp6m2–Cyp6m4, Cyp6z3–Cyp6z1, Cyp9k1,
+Ace1) using their unique patterns of discordant read pairs and reads
+crossing the CNV breakpoint (“breakpoint reads”). We manually
+inspected the six regions of interest in all individuals to identify
+patterns of discordant and breakpoint reads (“diagnostic reads”)
+consistently associated with changes in coverage. The start and end
+point of each CNV allele could usually be precisely determined by the
+breakpoint reads and was otherwise determined by discordant read pairs
+or the point of change in coverage. Once the diagnostic reads were
+identified for a CNV allele, we recorded the presence of that allele
+in all samples with at least four supporting diagnostic reads.</p>
 </div>
 </div>
 <div class="section" id="acknowledgments">
