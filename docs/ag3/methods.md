@@ -324,34 +324,35 @@ composition. To account for this, we computed a normalized coverage
 from the read counts based on the expected coverage of each window
 given its GC content ([Abyzov et
 al. 2011](https://doi.org/10.1101/gr.114876.110)). For each 300 bp
-window we computed the percentage of (G + C) nucleotides to the
-nearest percentage point within the reference sequence and then
-divided the read counts in each window by the mean read count over all
-autosomal windows with the same (G + C) percentage. To minimize the
-impact of copy number variation when calculating these normalizing
-constants, we excluded windows from the calculation of mean read
-counts for which previous analyses of genome accessibility have found
-evidence for excessively high or low coverage or ambiguous alignment
-(windows with <90% sites passing site filters, referred to as
-"accessible windows"). The normalized coverage values were then
-multiplied by a factor of 2, so that genome regions with a normal
-diploid copy number should have an expected normalized coverage of 2.
+window we computed the percentage of (G+C) nucleotides to the nearest
+percentage point within the reference sequence and then divided the
+read counts in each window by the median read count over all autosomal
+windows with the same (G+C) percentage. To minimize the impact of copy
+number variation when calculating these normalizing constants, we
+excluded windows from the calculation of mean read counts with <90%
+sites passing site filters or with >50% reads aligned with zero
+mapping quality. The normalized coverage values were then multiplied
+by a factor of 2, so that genome regions with a normal diploid copy
+number should have an expected normalized coverage of 2.
 
 Before examining the normalized coverage data for evidence of copy
 number variation, we applied two filters to exclude windows for which
 coverage may be an unreliable indicator of copy number. The first
-filter removed windows in which >2% of reads were aligned with mapping
-quality 0, which indicates that a read is mapped ambiguously and could
-be mapped equally well to a different genomic location. The second
-filter removed windows for which the percentage (G+C) content was
-extreme and rarely represented within the accessible reference
-sequence, that is, fewer than 100 accessible windows with the same
-(G+C) percentage, because the small number of windows makes the
-calculation of a (G+C) normalizing constant unreliable. Windows
-retained for analysis were referred to as "filtered windows". The
-filtered windows were computed separately for *An. arabiensis* and for
-(*An. gambiae* + *An. coluzzii*), to account for differences between
-the species.
+filter removed windows in which >50% of reads were aligned with
+mapping quality 0, which indicates that a read is mapped ambiguously
+and could be mapped equally well to a different genomic location. This
+filter was calculated separately for *An. arabiensis* and
+(*An. gambiae* + *An. coluzzii*). The second filter removed windows
+for which the percentage (G+C) content was extreme and rarely
+represented within the accessible reference sequence, that is, fewer
+than 100 accessible windows with the same (G+C) percentage, because
+the small number of windows makes the calculation of a (G+C)
+normalizing constant unreliable. Windows retained for analysis were
+referred to as "filtered windows". The filtered windows were computed
+separately for *An. arabiensis* and for (*An. gambiae* +
+*An. coluzzii*), based on the AIM species calls, to account for
+differences between the species.  One individual with an intermediate
+species call between these two groups were excluded.
 
 
 ### HMM inference of copy number state
@@ -372,11 +373,12 @@ one chromosome is represented by 3, and so on). The Gaussian emission
 probability distribution for each copy number state *n* had a mean
 *c<sub>n</sub>* (*c<sub>n</sub>* = *n*), with variance *v<sub>n</sub>*
 = 0.01 + *a<sub>n</sub>c<sub>n</sub>*, where *a<sub>n</sub>* is the
-variance in normalised coverage for all windows with at least 90%
-accessible sites. We determined the variance empirically for each
-individual because variance in coverage can differ between
-individuals, presumably due to stochastic variation in library
-preparation and/or sequencing runs. Following [Lucas et
+variance in normalised coverage for all autosomal windows, excluding
+the top 1% of windows with the highest normalised coverage. We
+determined the variance empirically for each individual because
+variance in coverage can differ between individuals, presumably due to
+stochastic variation in library preparation and/or sequencing
+runs. Following [Lucas et
 al. (2019)](https://genome.cshlp.org/content/29/8/1250.full#sec-8) we
 set the HMM transition probability *t* = 0.00001. After parameter
 calibration, we fitted a Gaussian HMM to normalised windowed coverage
@@ -388,12 +390,11 @@ within each window.
 
 Using the results of the HMM, we obtained a set of CNV calls for each
 individual by locating contiguous runs of at least five windows with
-amplified copy number (CN > 2, or CN > 1 for Chromosome X in males).
-
-This set of per-individual CNV calls was filtered by computing
+amplified copy number (CN > 2, or CN > 1 for Chromosome X in
+males). This set of per-individual CNV calls was filtered by computing
 likelihoods for each CNV call for both the copy number state predicted
 by the HMM and for a null model of copy number = 2, and removing CNV
-calls for which the likelihood ratio was <1000. @@TODO check this
+calls for which the likelihood ratio was <1000.
 
 From the per-individual CNV call set, we created a merged set CNV
 calls. We first removed individuals with high coverage variance, where
@@ -401,9 +402,12 @@ the variance in normalized coverage was greater than 0.2, because high
 variance could lead to erratic CNV calls. We then clustered the CNV
 calls across individuals, merging two CNV calls into the same variant
 if their breakpoints (inferred from the change in CN state) occurred
-within one 300 bp window of each other. Merged CNVs were then filtered
-if the distance between the minimum and maximum position of either the
-start or the end breakpoint was greater than @@TODO.
+within one 300 bp window of each other. Merged CNVs were annotated to
+record a confidence interval for the start and end breakpoints,
+calculated as the 5-95 percentiles within each cluster. A filter
+annotation was added to the final output VCF file where this
+confidence interval was greater than 1200 bp for either the start or
+end breakpoint.
 
 The CNV merging process was performed separately for wild-caught
 *An. arabiensis*, wild-caught (*An. gambiae* + *An. coluzzii*), and
@@ -424,7 +428,7 @@ point of each CNV allele could usually be precisely determined by the
 breakpoint reads and was otherwise determined by discordant read pairs
 or the point of change in coverage. Once the diagnostic reads were
 identified for a CNV allele, we recorded the presence of that allele
-in all samples with at least two supporting diagnostic reads.
+in all samples with at least four supporting diagnostic reads.
 
 
 ## Acknowledgments
