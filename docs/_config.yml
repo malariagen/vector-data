@@ -1,7 +1,7 @@
 title: MalariaGEN vector data user guide
 author: MalariaGEN
 copyright: "2021"
-logo: images/logo.png
+logo: images/vobs-logo.png
 execute:
   execute_notebooks: "off"
 repository:
