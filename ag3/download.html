@@ -52,7 +52,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ag3 analysis examples" href="examples.html" />
+    <link rel="next" title="Ag3 sequencing and variant calling methods" href="methods.html" />
     <link rel="prev" title="Ag3 cloud data access" href="cloud.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -111,6 +111,11 @@
    Ag3 data downloads
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="methods.html">
+   Ag3 sequencing and variant calling methods
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="examples.html">
    Ag3 analysis examples
@@ -141,12 +146,12 @@
      Investigating population structure with PCA
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/cnv-explore.html">
+     Exploring copy number variation (CNV)
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="methods.html">
-   Ag3 sequencing and variant calling methods
-  </a>
  </li>
 </ul>
 
@@ -334,6 +339,28 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#copy-number-variation-cnv-data">
+   Copy number variation (CNV) data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cnv-hmm">
+     CNV HMM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cnv-coverage-calls">
+     CNV coverage calls
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cnv-discordant-read-calls">
+     CNV discordant read calls
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accessing-downloaded-data-from-python">
    Accessing downloaded data from Python
   </a>
@@ -376,13 +403,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir -pv ~/vo_agam_release/v3/
 <span class="o">!</span>gsutil cp gs://vo_agam_release/v3/manifest.tsv ~/vo_agam_release/v3/
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Copying gs://vo_agam_release/v3/manifest.tsv...
-/ [1 files][  453.0 B/  453.0 B]                                                
-Operation completed over 1 objects/453.0 B.                                      
 </pre></div>
 </div>
 </div>
@@ -444,12 +464,6 @@ AG1000G-X	297
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir -pv ~/vo_agam_release/v3/metadata/
 <span class="o">!</span>gsutil -m rsync -r gs://vo_agam_release/v3/metadata/ ~/vo_agam_release/v3/metadata/
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building synchronization state...
-Starting synchronization...
 </pre></div>
 </div>
 </div>
@@ -553,34 +567,6 @@ AR0004-C,ERR343468
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2021-01-15 18:22:59--  ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR352/ERR352136/ERR352136_1.fastq.gz
-           =&gt; &#39;ERR352136_1.fastq.gz&#39;
-Resolving ftp.sra.ebi.ac.uk (ftp.sra.ebi.ac.uk)... 193.62.193.138
-Connecting to ftp.sra.ebi.ac.uk (ftp.sra.ebi.ac.uk)|193.62.193.138|:21... connected.
-Logging in as anonymous ... Logged in!
-==&gt; SYST ... done.    ==&gt; PWD ... done.
-==&gt; TYPE I ... done.  ==&gt; CWD (1) /vol1/fastq/ERR352/ERR352136 ... done.
-==&gt; SIZE ERR352136_1.fastq.gz ... 1696843494
-==&gt; PASV ... done.    ==&gt; RETR ERR352136_1.fastq.gz ... done.
-Length: 1696843494 (1.6G) (unauthoritative)
-
-ERR352136_1.fastq.g   0%[                    ]       0  --.-KB/s               ^C
---2021-01-15 18:23:02--  ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR352/ERR352136/ERR352136_2.fastq.gz
-           =&gt; &#39;ERR352136_2.fastq.gz&#39;
-Resolving ftp.sra.ebi.ac.uk (ftp.sra.ebi.ac.uk)... 193.62.193.138
-Connecting to ftp.sra.ebi.ac.uk (ftp.sra.ebi.ac.uk)|193.62.193.138|:21... connected.
-Logging in as anonymous ... Logged in!
-==&gt; SYST ... done.    ==&gt; PWD ... done.
-==&gt; TYPE I ... done.  ==&gt; CWD (1) /vol1/fastq/ERR352/ERR352136 ... done.
-==&gt; SIZE ERR352136_2.fastq.gz ... 1708977716
-==&gt; PASV ... done.    ==&gt; RETR ERR352136_2.fastq.gz ... done.
-Length: 1708977716 (1.6G) (unauthoritative)
-
-ERR352136_2.fastq.g   0%[                    ]   9.67M  4.27MB/s               ^C
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note that FASTQ files are relatively large, several GB per sample, so they may take a long time to download, and may require a substantial amount of disk space on your local system.</p>
 </div>
@@ -619,22 +605,6 @@ AR0011-C,ERZ1695283
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2021-01-15 18:23:20--  ftp://ftp.sra.ebi.ac.uk/vol1/ERZ169/ERZ1695275/AR0001-C.bam
-           =&gt; &#39;AR0001-C.bam&#39;
-Resolving ftp.sra.ebi.ac.uk (ftp.sra.ebi.ac.uk)... 193.62.193.138
-Connecting to ftp.sra.ebi.ac.uk (ftp.sra.ebi.ac.uk)|193.62.193.138|:21... connected.
-Logging in as anonymous ... Logged in!
-==&gt; SYST ... done.    ==&gt; PWD ... done.
-==&gt; TYPE I ... done.  ==&gt; CWD (1) /vol1/ERZ169/ERZ1695275 ... done.
-==&gt; SIZE AR0001-C.bam ... 12012079462
-==&gt; PASV ... done.    ==&gt; RETR AR0001-C.bam ... done.
-Length: 12012079462 (11G) (unauthoritative)
-
-AR0001-C.bam          0%[                    ]  19.18M  6.43MB/s               ^C
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note that BAM files are relatively large, approximately 10G per sample, so they may take a long time to download, and may require a substantial amount of disk space on your local system.</p>
 </div>
@@ -647,31 +617,6 @@ AR0001-C.bam          0%[                    ]  19.18M  6.43MB/s               ^
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0001-C.vcf.gz
 <span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0001-C.vcf.gz.tbi
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2021-03-03 17:39:58--  https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0001-C.vcf.gz
-Resolving storage.googleapis.com (storage.googleapis.com)... 216.58.211.176, 216.58.204.80, 216.58.204.48, ...
-Connecting to storage.googleapis.com (storage.googleapis.com)|216.58.211.176|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 3418774867 (3.2G) [text/vcard]
-Saving to: ‘AR0001-C.vcf.gz’
-
-AR0001-C.vcf.gz     100%[===================&gt;]   3.18G  8.70MB/s    in 6m 21s  
-
-2021-03-03 17:46:19 (8.56 MB/s) - ‘AR0001-C.vcf.gz’ saved [3418774867/3418774867]
-
---2021-03-03 17:46:20--  https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0001-C.vcf.gz.tbi
-Resolving storage.googleapis.com (storage.googleapis.com)... 216.58.204.240, 216.58.213.16, 172.217.169.16, ...
-Connecting to storage.googleapis.com (storage.googleapis.com)|216.58.204.240|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 258749 (253K) [application/octet-stream]
-Saving to: ‘AR0001-C.vcf.gz.tbi’
-
-AR0001-C.vcf.gz.tbi 100%[===================&gt;] 252.68K  --.-KB/s    in 0.05s   
-
-2021-03-03 17:46:21 (5.44 MB/s) - ‘AR0001-C.vcf.gz.tbi’ saved [258749/258749]
 </pre></div>
 </div>
 </div>
@@ -698,28 +643,6 @@ AR0001-C.vcf.gz.tbi 100%[===================&gt;] 252.68K  --.-KB/s    in 0.05s
 <span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0004-C.vcf.gz
 <span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0004-C.vcf.gz.tbi
 <span class="o">!</span>bcftools merge --output-type z --regions 3R:1-1000000 --output merged.vcf.gz AR0001-C.vcf.gz AR0002-C.vcf.gz AR0004-C.vcf.gz 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File ‘AR0001-C.vcf.gz’ already there; not retrieving.
-
-File ‘AR0001-C.vcf.gz.tbi’ already there; not retrieving.
-
-File ‘AR0002-C.vcf.gz’ already there; not retrieving.
-
-File ‘AR0002-C.vcf.gz.tbi’ already there; not retrieving.
-
-File ‘AR0004-C.vcf.gz’ already there; not retrieving.
-
-File ‘AR0004-C.vcf.gz.tbi’ already there; not retrieving.
-
-[W::hts_idx_load2] The index file is older than the data file: AR0001-C.vcf.gz.tbi
-[W::hts_idx_load2] The index file is older than the data file: AR0001-C.vcf.gz.tbi
-[W::hts_idx_load2] The index file is older than the data file: AR0002-C.vcf.gz.tbi
-[W::hts_idx_load2] The index file is older than the data file: AR0002-C.vcf.gz.tbi
-[W::hts_idx_load2] The index file is older than the data file: AR0004-C.vcf.gz.tbi
-[W::hts_idx_load2] The index file is older than the data file: AR0004-C.vcf.gz.tbi
 </pre></div>
 </div>
 </div>
@@ -773,46 +696,6 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: created directory &#39;/home/aliman/vo_agam_release/v3/site_filters/dt_20200416/vcf/&#39;
-Building synchronization state...
-Starting synchronization...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/2L_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/2R_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/2L_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/3L_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/X_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/2R_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/2L_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/X_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/2L_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/3R_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/3L_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/2R_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3L_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/3R_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/2R_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/3L_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/X_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3R_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/2R_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/2L_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3L_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/3R_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/3R_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/X_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/X_sitefilters.vcf.gz.tbi...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/3L_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/2R_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu/2L_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/arab/X_sitefilters.vcf.gz...
-Copying gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3R_sitefilters.vcf.gz.tbi...
-^C[15/30 files][173.3 MiB/  1.8 GiB]   9% Done   8.4 MiB/s ETA 00:03:15         
-Exception in UIThread: 
-Caught CTRL-C (signal 2) - exiting
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -832,12 +715,6 @@ Caught CTRL-C (signal 2) - exiting
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building synchronization state...
-Starting synchronization...
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="id1">
@@ -850,12 +727,6 @@ Starting synchronization...
     -x &#39;.*vcf.*|.*crosses_stats.*|.*[MG]Q10.*|.*[MG]Q30.*|.*[MG]Q_mean.*|.*[MG]Q_std.*|.*/lo_.*|.*/hi_.*|.*no_cov.*|.*allele_consistency.*|.*heterozygosity.*&#39; \
     gs://vo_agam_release/v3/site_filters/ \
     ~/vo_agam_release/v3/site_filters/
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building synchronization state...
-Starting synchronization...
 </pre></div>
 </div>
 </div>
@@ -874,9 +745,102 @@ Starting synchronization...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building synchronization state...
-Starting synchronization...
+</div>
+</div>
+</div>
+<div class="section" id="copy-number-variation-cnv-data">
+<h2>Copy number variation (CNV) data<a class="headerlink" href="#copy-number-variation-cnv-data" title="Permalink to this headline">¶</a></h2>
+<p>Data on copy number variation within the Ag3 cohort are available as three separate data types:</p>
+<ul class="simple">
+<li><p><strong>HMM</strong> – Genome-wide inferences of copy number state within each individual mosquito in 300 bp non-overlapping windows.</p></li>
+<li><p><strong>Coverage calls</strong> – Genome-wide copy number variant calls, derived from the HMM outputs by analysing contiguous regions of elevated copy number state then clustering of variants across individuals based on breakpoint proximity.</p></li>
+<li><p><strong>Discordant read calls</strong> – Copy number variant calls at selected insecticide resistance loci, based on analysis of read alignments at CNV breakpoints.</p></li>
+</ul>
+<p>For more information on the methods used to generate these data, see the <a class="reference internal" href="methods.html"><span class="doc std std-doc">variant-calling methods</span></a> page.</p>
+<p>For each of these data types, data can be downloaded from Google Cloud Storage, and are available in either VCF or Zarr format.</p>
+<div class="section" id="cnv-hmm">
+<h3>CNV HMM<a class="headerlink" href="#cnv-hmm" title="Permalink to this headline">¶</a></h3>
+<p>The HMM inferences of copy number state are available in VCF, Zarr and text formats, and are organised by sample set.</p>
+<p>For example, the VCF file for sample set AG1000G-AO can be downloaded from the following URL:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/hmm/vcf/AG1000G-AO_cnv_hmm.vcf.gz">https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/hmm/vcf/AG1000G-AO_cnv_hmm.vcf.gz</a></p></li>
+</ul>
+<p>VCF files for all samples sets can be downloaded via gsutil as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a local directory to hold downloaded CNV data</span>
+<span class="o">!</span>mkdir -pv ~/vo_agam_release/v3/cnv/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download the HMM data in VCF format for all sample sets
+!gsutil -m rsync -r \
+    -x &#39;.*/coverage_calls/.*|.*/discordant_read_calls/.*|.*/hmm/zarr/.*|.*/hmm/per_sample/.*&#39; \
+    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zarr files for all sample sets can be downloaded as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download HMM data in Zarr format for all sample sets
+!gsutil -m rsync -r \
+    -x &#39;.*/coverage_calls/.*|.*/discordant_read_calls/.*|.*/hmm/vcf/.*|.*/hmm/per_sample/.*&#39; \
+    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cnv-coverage-calls">
+<h3>CNV coverage calls<a class="headerlink" href="#cnv-coverage-calls" title="Permalink to this headline">¶</a></h3>
+<p>Coverage-based CNV calls are available in VCF and Zarr formats, and are organised by sample set. Additionally the coverage calls were performed separately for <em>An. arabiensis</em> and (<em>An. gambiae</em> + <em>An. coluzzii</em>), and so are subdivided into “arab” and “gamb_colu” datasets, depending on which species are present in a given sample set.</p>
+<p>Note that some samples were excluded from coverage calling because of high coverage variance.</p>
+<p>For example, the VCF file for sample set AG1000G-AO and the gamb_colu callset can be downloaded from:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/coverage_calls/gamb_colu/vcf/AG1000G-AO_gamb_colu_cnv_coverage_calls.vcf.gz">https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/coverage_calls/gamb_colu/vcf/AG1000G-AO_gamb_colu_cnv_coverage_calls.vcf.gz</a></p></li>
+</ul>
+<p>VCF files for all sample sets can be downloaded with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download coverage calls in VCF format for all sample sets
+!gsutil -m rsync -r \
+    -x &#39;.*/hmm/.*|.*/discordant_read_calls/.*|.*/coverage_calls/.*/zarr/.*&#39; \
+    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zarr files for all sample sets can be downloaded with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download coverage calls in Zarr format for all sample sets
+!gsutil -m rsync -r \
+    -x &#39;.*/hmm/.*|.*/discordant_read_calls/.*|.*/coverage_calls/.*/vcf/.*&#39; \
+    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cnv-discordant-read-calls">
+<h3>CNV discordant read calls<a class="headerlink" href="#cnv-discordant-read-calls" title="Permalink to this headline">¶</a></h3>
+<p>CNV calls for selected insecticide resistance loci are available in VCF and Zarr formats, and are organised by sample set.</p>
+<p>For example, the VCF file for sample set AG1000G-AO can be downloaded from:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/discordant_read_calls/vcf/AG1000G-AO_cnv_discordant_read_calls.vcf.gz">https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/discordant_read_calls/vcf/AG1000G-AO_cnv_discordant_read_calls.vcf.gz</a></p></li>
+</ul>
+<p>VCF and Zarr files for all sample sets can be downloaded with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download discordant read calls for all sample sets
+!gsutil -m rsync -r \
+    -x &#39;.*/hmm/.*|.*/coverage_calls/.*&#39; \
+    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
 </pre></div>
 </div>
 </div>
@@ -912,7 +876,7 @@ Starting synchronization...
     gs://vo_agam_release/v3/site_filters/ \
     ~/vo_agam_release/v3/site_filters/
 
-# download SNP genotype data for two sample sets
+# download SNP genotype data for selected sample sets
 !mkdir -pv ~/vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-A/
 !gsutil -m rsync -r \
         -x &#39;.*/calldata/(AD|GQ|MQ)/.*&#39; \
@@ -923,23 +887,12 @@ Starting synchronization...
         -x &#39;.*/calldata/(AD|GQ|MQ)/.*&#39; \
         gs://vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-B/ \
         ~/vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-B/
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Copying gs://vo_agam_release/v3/manifest.tsv...
-/ [1 files][  453.0 B/  453.0 B]                                                
-Operation completed over 1 objects/453.0 B.                                      
-Building synchronization state...
-Starting synchronization...
-Building synchronization state...
-Starting synchronization...
-Building synchronization state...
-Starting synchronization...
-Building synchronization state...
-Starting synchronization...
-Building synchronization state...
-Starting synchronization...
+    
+# download CNV HMM data for all sample sets
+!mkdir -pv ~/vo_agam_release/v3/cnv/
+!gsutil -m rsync -r \
+    -x &#39;.*/coverage_calls/.*|.*/discordant_read_calls/.*|.*/hmm/vcf/.*|.*/hmm/per_sample/.*&#39; \
+    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
 </pre></div>
 </div>
 </div>
@@ -2018,7 +1971,7 @@ dtype: int64
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="cloud.html" title="previous page">Ag3 cloud data access</a>
-    <a class='right-next' id="next-link" href="examples.html" title="next page">Ag3 analysis examples</a>
+    <a class='right-next' id="next-link" href="methods.html" title="next page">Ag3 sequencing and variant calling methods</a>
 
         </div>
         
