@@ -18,9 +18,12 @@ parts:
       - file: ag3/examples/snp-effects
       - file: ag3/examples/pca
       - file: ag3/examples/cnv-explore
-  - caption: Partners and community
+  - caption: Partner studies
     chapters:
-    - file: studies
+    - file: studies/AO
       sections:
-      - file: studies/AG1000G-Angola
-      - file: studies/1191-Burkina-Faso
+      - file: studies/AG1000G-AO-troco
+    - file: studies/BF
+      sections:
+      - file: studies/1191-BF
+      - file: studies/AG1000G-BF-costantini
