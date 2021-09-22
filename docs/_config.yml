@@ -27,3 +27,246 @@ sphinx:
   config:
     bibtex_reference_style: label
     bibtex_default_style: unsrt
+    myst_enable_extensions:
+    - substitution
+    myst_substitutions:
+      # affiliations
+      affiltmuent: "Department of Medical Entomology and Parasitology, Faculty of Medical Sciences, Tarbiat Modares University, Tehran, Iran."
+      affillstmvec: "Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom."
+      affilnmcpangola: "Programa Nacional de Controle da Malária, Direcção Nacional de Saúde Pública, Ministério da Saúde, Luanda, Angola."
+      affilghtmlisbon: "Global Health and Tropical Medicine, GHTM, Instituto de Higiene e Medicina Tropical, IHMT, Universidade Nova de Lisboa, UNL, Rua da Junqueira 100, 1349--008 Lisbon, Portugal."
+      affilentvtech: "Department of Entomology, Virginia Tech, Blacksburg, Virginia 24061, USA."
+      affilcyttomsk: "Department of Genetics and Cell Biology, Tomsk State University, Tomsk 634050, Russia."
+      affillshtm: "London School of Hygiene and Tropical Medicine, Keppel Street, Bloomsbury, London WC1E 7HT, UK."
+      affilecknd: "Eck Institute for Global Health & Department of Biological Sciences, University of Notre Dame, IN 46556, USA."
+      affilirssbf: "Institut de Recherche en Sciences de la Santé (IRSS), Bobo Dioulasso, B.P. 545, Burkina Faso."
+      affildlsimp: "Department of Life Sciences, Imperial College, Silwood Park, Ascot, Berkshire SL5 7PY, UK."
+      affilirdmivegec: "UMR MIVEGEC, Univ. Montpellier, CNRS, IRD, Montpellier, France."
+      affillrpyaounde: "Laboratoire de Recherche sur le Paludisme, Organisation de Coordination pour la lutte contre les Endémies en Afrique Centrale (OCEAC), B.P. 288, Yaoundé, Cameroon."
+      affilirdlin: "Laboratoire de Lutte contre les Insectes Nuisibles (LIN), Institut de Recherche pour le Développement (IRD), UR016, 911 Av. Agropolis, Cedex 5, 34394, Montpellier, France."
+      affilincyaounde: "Institut National de Cartographie (INC), Département de Recherches Géographiques, B.P. 157, Yaoundé, Cameroun."
+      affilirdguyane: "Institut de Recherche pour le Développement (IRD), US140, BP 165, Cayenne, Guyane française."
+      affilentucr: "Department of Entomology, University of California, Riverside, CA, USA."
+      affilcdvrucr: "Center for Disease Vector Research, Institute for Integrative Genome Biology, University of California, Riverside, CA."
+      affilverily: "Verily Life Sciences, South San Francisco, CA 94080, USA."
+      affilipsapienza: "Istituto Pasteur Italia–Fondazione Cenci Bolognetti, Dipartimento di Sanita Pubblica e Malattie Infettive, Università di Roma SAPIENZA, Rome, Italy."
+      affilljmubio: "School of Biological and Environmental Sciences, Liverpool John Moores University, Liverpool L3 3AF, UK."
+      affilcsrsabidjan: "Centre Suisse de Recherches Scientifiques. Yopougon, Abidjan - 01 BP 1303 Abidjan, Côte d'Ivoire."
+      affiluesvfranceville: "Unit d’Ecologie des Systèmes Vectoriels, Centre International de Recherches Médicales de Franceville, Franceville, Gabon."
+      affildwecapecoast: "Department of Wildlife and Entomology, University of Cape Coast, Cape Coast, Ghana."
+      affilinspbissau: "Instituto Nacional de Saaúde Paública, Ministaério da Saaúde Paública, Bissau, Guinaé-Bissau"
+      affilmrtcbamako: "Malaria Research and Training Centre (MRTC), Faculty of Medicine and Dentistry, University of Mali, BP: E 423 Bamako, Mali."
+      affilmicrowisc: "Department of Microbiology and Immunology, Medical College of Wisconsin, Milwaukee, WI 53226, USA."
+      affilggivupasteur: "Unit for Genetics and Genomics of Insect Vectors, Institut Pasteur, 75015, Paris, France."
+      affilkemrikilifi: "KEMRI-Wellcome Trust Research Programme, 80108 Kilifi, Kenya."
+      affilcomblantyre: "College of Medicine, University of Malawi, Blantyre, Malawi."
+      affilentwag: "Laboratory of Entomology, Wageningen University and Research, Wageningen, The Netherlands."
+      affilirdmarseille: "Institut de Recherche pour le Développement, 44, boulevard de Dunkerque - CS 90009, F-13572, Marseille, France."
+      affilnimrtz: "National Institute for Medical Research (NIMR), Dar es Salaam, Tanzania."
+      affilkcmuctz: "Kilimanjaro Christian Medical University College, Tumaini University, Makumira, Tanzania."
+      affilmrcgambia: "Medical Research Council Unit, The Gambia at the London School of Hygiene & Tropical Medicine (MRCG at LSHTM), Banjul, The Gambia."
+      affiloxzoo: "Department of Zoology, University of Oxford, Oxford OX1 3SZ, UK."
+      affilidrckampala: "Infectious Diseases Research Collaboration, 2C Nakasero Hill Road, PO Box 7475, Kampala, Uganda."
+      affilpamsanger: "Parasites and Microbes Programme, Wellcome Sanger Institute, Hinxton, Cambridge CB10 1SA, UK."
+      affilipmad: "Institut Pasteur de Madagascar, Avaradoha, BP 1274, 101 Antananarivo, Madagascar."
+      affilmlwtcrpblantyre: "Malawi-Liverpool Wellcome Trust Clinical Research Programme, Blantyre, Malawi."
+      affilmacblantyre: "Malaria Alert Centre (MAC), P/ Bag 360, Chichiri, Blantyre 3, Malawi."
+      affilcnrfp: "Centre National de Recherche et Formation sur le Paludisme (CNRFP), 01 BP 2208 Ouagadougou 01, Burkina Faso."
+      affillabent: "Laboratory of Entomology, Wageningen University and Research, Wageningen, The Netherlands."
+      affilvacdev: "Center for Vaccine Development and Global Health, University of Maryland School of Medicine, Baltimore, USA."
+      affilentvir: "Department of Entomology, Virginia Tech, Blacksburg, Virginia 24061, USA."
+      affildurham: "Department of Biosciences, Durham University, Durham, UK."
+      # people
+      persontmzilahowa: |
+        **Themba Mzilahowa**
+        * {{ affillstmvec }}
+        * {{ affilmlwtcrpblantyre }}
+        * {{ affilmacblantyre }}
+      personmkamali: |
+        **Maryam Kamali**
+        * {{ affiltmuent }}
+        * {{ affilentvir }}
+      personhmawejje: |
+        **Henry D. Mawejje**
+        * {{ affilidrckampala }}
+      personcgodfray: |
+        **H. Charles J. Godfray** (charles.godfray@oxfordmartin.ox.ac.uk)
+        * {{ affiloxzoo }}
+      persondconway: |
+        **David Conway**
+        * {{ affillshtm }}
+      persondnwakanma: |
+        **Davis C. Nwakanma**
+        * {{ affilmrcgambia }}
+      personmjawara: |
+        **Musa Jawara**
+        * {{ affilmrcgambia }}
+      personbcaputo: |
+        **Beniamino Caputo** (beniamino.caputo@uniroma1.it)
+        * {{ affilipsapienza }}
+      personbkabula: |
+        **Bilali Kabula** (Bika72@gmail.com)
+        * {{ affilnimrtz }}
+      personjmatowo: |
+        **Johnson Matowo**
+        * {{ affilkcmuctz }}
+      personglegoff: |
+        **Gilbert Le Goff** (gilbert.legoff@ird.fr)
+        * {{ affilirdmivegec }}
+      personvrobert: |
+        **Vincent Robert** (vincent.robert@ird.fr)
+        * {{ affilirdmivegec }}
+      personmdonnelly: |
+        **Martin J. Donnelly** (Martin.Donnelly@lstmed.ac.uk)
+        * {{ affillstmvec }}
+        * {{ affilpamsanger }}
+      personrmccann: |
+        **Robert McCann**
+        * {{ affilcomblantyre }}
+        * {{ affilentwag }}
+        * {{ affilvacdev }}
+      personjmidega: |
+        **Janet Midega** (tjmidega@yahoo.com)
+        * {{ affilkemrikilifi }}
+      personjmwangangi: |
+        **Joseph Mwangangi**
+        * {{ affilkemrikilifi }}
+      personcmbogo: |
+        **Charles Mbogo**
+        * {{ affilkemrikilifi }}
+      personpbejon: |
+        **Philip Bejon**
+        * {{ affilkemrikilifi }}
+      personkvernick: |
+        **Kenneth D. Vernick** (kenneth.vernick@pasteur.fr)
+        * {{ affilggivupasteur }}
+      personmriehle: |
+        **Michelle M. Riehle**
+        * {{ affilmicrowisc }}
+      personbcoulibaly: |
+        **Boubacar Coulibaly**
+        * {{ affilmrtcbamako }}
+      personarodrigues: |
+        **Amabélia Rodrigues**
+        * {{ affilinspbissau }}
+      personjdinis: |
+        **João Dinis**
+        * {{ affilinspbissau }}
+      personjessandoh: |
+        **John Essandoh**
+        * {{ affildwecapecoast }}
+      personnelissa: |
+        **Nohal Elissa**
+        * {{ affilipmad }}
+      personeconstant: |
+        **Edi Constant**
+        * {{ affilcsrsabidjan }}
+      personcwilding: |
+        **Craig S. Wilding** (C.S.Wilding@ljmu.ac.uk)
+        * {{ affilljmubio }}
+      personadellatorre: |
+        **Alessandra della Torre** (alessandra.dellatorre@uniroma1.it)
+        * {{ affilipsapienza }}
+      personbwhite: |
+        **Bradley J. White** (bradwhite@verily.com)
+        * {{ affilverily }}
+      personcfouet: |
+        **Caroline Fouet**
+        * {{ affilentucr }}
+      persondfontenille: |
+        **Didier Fontenille**
+        * {{ affilirdlin }}
+      personjmfotsing: |
+        **Jean-Marie Fotsing**
+        * {{ affilirdguyane }}
+      personkose: |
+        **Kenji Ose**
+        * {{ affilirdguyane }}
+      personjetouna: |
+        **Joachim Etouna**
+        * {{ affilincyaounde }}
+      personmpombi: |
+        **Marco Pombi**
+        * {{ affilipsapienza }}
+      personckamdem: |
+        **Colince Kamdem**
+        * {{ affillrpyaounde }}
+      persondayala: |
+        **Diego Ayala** (diego.ayala@ird.fr)
+        * {{ affilirdmivegec }}
+      personfsimard: |
+        **Frédéric Simard** (frederic.simard@ird.fr)
+        * {{ affilirdmivegec }}
+      personkrohatgi: |
+        **Kyanne R. Rohatgi**
+        * {{ affilecknd }}
+      personccostantini: |
+        **Carlo Costantini** (carlo.costantini@ird.fr)
+        * {{ affilirdmivegec }}
+      persondweetman: |
+        **David Weetman** (david.weetman@lstmed.ac.uk)
+        * {{ affillstmvec }}
+      personjpinto: |
+        **João Pinto** (jpinto@ihmt.unl.pt)
+        * {{ affilghtmlisbon }}
+      personisharakhov: |
+        **Igor Sharakhov** (igor@vt.edu)
+        * {{ affilentvtech }}
+        * {{ affilcyttomsk }}
+      personatroco: |
+        **Arlete D. Troco**
+        * {{ affilnmcpangola }}
+      personjcano: |
+        **Jorge Cano**
+        * {{ affillshtm }}
+      personnbesansky: |
+        **Nora J. Besansky** (nbesansk@nd.edu)
+        * {{ affilecknd }}
+      personadiabate: |
+        **Abdoulaye Diabaté**
+        * {{ affilirssbf }}
+      personsoloughlin: |
+        **Samantha O'Loughlin** (s.oloughlin@imperial.ac.uk)
+        * {{ affildlsimp }}
+      personaburt: |
+        **Austin Burt**
+        * {{ affildlsimp }}
+      persondfabrigar: |
+        **Danica Fabrigar**
+        * {{ affiloxzoo }}
+      personaguindo: |
+        **Amadou Guindo**
+        * {{ affilmrtcbamako }}
+      personsdoumbia: |
+        **Sidy Doumbia**
+        * {{ affilmrtcbamako }}
+      personmkeita: |
+        **Moussa Keita**
+        * {{ affilmrtcbamako }}
+      personmbcoulibaly: |
+        **Mamadou B. Coulibaly**
+        * {{ affilmrtcbamako }}
+      personctraore: |
+        **Cheick Traore**
+        * {{ affilmrtcbamako }}
+      personpsepopa: |
+        **Patric Stephane Epopa**
+        * {{ affilirssbf }}
+      personfyao: |
+        **Franck Yao**
+        * {{ affilirssbf }}
+      personnsagnon: |
+        **N'Fale Sagnon**
+        * {{ affilcnrfp }}
+      personakabaghe: |
+        **Alinune Kabaghe**
+        * {{ affilcomblantyre }}
+      personwtakken: |
+        **Willem Takken**
+        * {{ affillabent }}
+      personslindsay: |
+        **Steve Lindsay**
+        * {{ affildurham }}
+      personudalessandro: |
+        **Umberto D'Alessandro**
+        * {{ affilmrcgambia }}

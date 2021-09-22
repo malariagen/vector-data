@@ -4,13 +4,6 @@
 
 * AG1000G-AO (in {doc}`Ag3 </ag3/intro>`)
 
-## Contributors
-
-* ```{include} /people/atroco.md
-  ```
-* ```{include} /people/jpinto.md
-  ```
-
 ## Study information
 
 Adult mosquitoes were obtained by rearing larvae collected from breeding sites along the main roads connecting the municipalities of Kilamba-Kiaxi and Viana, Luanda province (-8.821, 13.291), in April/May 2009.
@@ -21,6 +14,11 @@ Specimens were stored on silica gel and DNA extraction was performed by a phenol
 ## Related publications and resources
 
 * A. Troco. Resistência a insecticidas em Anopheles gambiae s.l. na região de Luanda, Angola. *IHMT: PM - Dissertações de Mestrado*, 2012. URL: http://hdl.handle.net/10362/11354
+
+## Contributors
+
+* {{ personatroco }}
+* {{ personjpinto }}
 
 ## References
 
