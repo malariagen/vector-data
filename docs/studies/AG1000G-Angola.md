@@ -1,13 +1,15 @@
 # Insecticide resistance in *Anopheles gambiae* s.l. in Luanda region, Angola
 
-## Contributors
-
-* {doc}`../people/Arlete-Troco`
-* {doc}`../people/Joao-Pinto` - jpinto@ihmt.unl.pt
-
 ## Sample sets
 
-* AG1000G-AO (in {doc}`Ag3 <../ag3/intro>`)
+* AG1000G-AO (in {doc}`Ag3 </ag3/intro>`)
+
+## Contributors
+
+* ```{include} /people/atroco.md
+  ```
+* ```{include} /people/jpinto.md
+  ```
 
 ## Study information
 
