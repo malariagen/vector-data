@@ -1,0 +1,3 @@
+[submodule "malvecbib"]
+	path = malvecbib
+	url = git@github.com:malariagen/malvecbib.git

@@ -6,8 +6,8 @@ execute:
   execute_notebooks: "off"
 repository:
   url: https://github.com/malariagen/vector-data
-  path_to_book              : docs
-  branch                    : master
+  path_to_book: docs
+  branch: master
 launch_buttons:
   notebook_interface: "jupyterlab"
   colab_url: "https://colab.research.google.com"
@@ -21,3 +21,9 @@ html:
       issue-term: "pathname"
       label: "comment"
       theme: "github-light" 
+bibtex_bibfiles:
+  - refs.bib
+sphinx:
+  config:
+    bibtex_reference_style: label
+    bibtex_default_style: unsrt
