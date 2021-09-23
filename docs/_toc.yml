@@ -27,3 +27,62 @@ parts:
       sections:
       - file: studies/1191-BF
       - file: studies/AG1000G-BF-costantini
+    - file: studies/CD
+      sections:
+      - file: studies/AG1000G-CD-weetman
+    - file: studies/CF
+      sections:
+      - file: studies/AG1000G-CF-dellatorre
+    - file: studies/CI
+      sections:
+      - file: studies/AG1000G-CI-weetman
+    - file: studies/CM
+      sections:
+      - file: studies/AG1000G-CM-costantini
+      - file: studies/AG1000G-CM-kamdem
+      - file: studies/AG1000G-CM-simard
+    - file: studies/FR
+      sections:
+      - file: studies/AG1000G-FR-legoff
+    - file: studies/GA
+      sections:
+      - file: studies/AG1000G-GA-elissa
+    - file: studies/GH
+      sections:
+      - file: studies/AG1000G-GH-weetman
+    - file: studies/GM
+      sections:
+      - file: studies/AG1000G-GM-caputo
+      - file: studies/AG1000G-GM-fabrigar
+      - file: studies/AG1000G-GM-nwakanma
+    - file: studies/GN
+      sections:
+      - file: studies/AG1000G-GN-coulibaly
+    - file: studies/GQ
+      sections:
+      - file: studies/AG1000G-GQ-cano
+    - file: studies/GW
+      sections:
+      - file: studies/AG1000G-GW-rodrigues
+    - file: studies/KE
+      sections:
+      - file: studies/AG1000G-KE-midega
+    - file: studies/ML
+      sections:
+      - file: studies/1191-ML
+      - file: studies/AG1000G-ML-coulibaly
+    - file: studies/MW
+      sections:
+      - file: studies/AG1000G-MW-mccann
+    - file: studies/MZ
+      sections:
+      - file: studies/AG1000G-MZ-pinto
+    - file: studies/TZ
+      sections:
+      - file: studies/AG1000G-TZ-kabula
+    - file: studies/UG
+      sections:
+      - file: studies/AG1000G-UG-mawejje
+    - file: studies/X
+      sections:
+      - file: studies/AG1000G-X-wilding

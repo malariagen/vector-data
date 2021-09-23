@@ -4,15 +4,15 @@
 
 * @@SSET (in {doc}`Ag3 </ag3/intro>`)
 
+## Contributors
+
+* @@TODO
+
 ## Study information
 
 @@TODO
 
-## Related publications and resources
-
-* @@TODO
-
-## Contributors
+## Publications and resources
 
 * @@TODO
 
