@@ -30,6 +30,14 @@ sphinx:
     myst_enable_extensions:
     - substitution
     myst_substitutions:
+      # species
+      gamb: "*An. gambiae*"
+      colu: "*An. coluzzii*"
+      arab: "*An. arabiensis*"
+      mela: "*An. melas*"
+      meru: "*An. merus*"
+      quad: "*An. quadriannulatus*"
+      fune: "*An. funestus*"
       # affiliations
       affiltmuent: "Department of Medical Entomology and Parasitology, Faculty of Medical Sciences, Tarbiat Modares University, Tehran, Iran."
       affillstmvec: "Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom."
