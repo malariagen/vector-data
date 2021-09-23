@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -105,6 +105,10 @@ commentsRunWhenDOMLoaded(addUtterances);
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../../_static/logo.png" class="logo" alt="logo">
       
@@ -485,7 +489,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>apt-get -q install libgdal-dev libproj-dev libgeos-dev proj-data proj-bin
-<span class="o">!</span>pip install -q cython numpy scipy pyshp six matplotlib pandas <span class="nv">malariagen_data</span><span class="o">==</span><span class="m">0</span>.8.0
+<span class="o">!</span>pip install -q cython numpy scipy pyshp six matplotlib pandas malariagen_data
 <span class="o">!</span>pip uninstall -q -y shapely  # make sure we have a fresh install
 <span class="o">!</span>pip install -q shapely --no-binary shapely
 <span class="o">!</span>pip install -q --upgrade cartopy
@@ -503,7 +507,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.18.0&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.19.0.post1&#39;
 </pre></div>
 </div>
 </div>
@@ -526,13 +530,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File ‘Africa_IVC_20130316_final_MG_5pc.tif’ already there; not retrieving.
-
-File ‘Africa_IVC_20130316_final_MG.tif.vat.csv’ already there; not retrieving.
-</pre></div>
-</div>
-</div>
 </div>
 <p>Data from the Malaria Atlas Project can be downloaded from their <a class="reference external" href="https://malariaatlas.org/explorer/">data explorer site</a>. Let’s download the most recent ITN coverage model.</p>
 <div class="cell tag_hide-output tag_thebe-init docutils container">
@@ -542,9 +539,13 @@ File ‘Africa_IVC_20130316_final_MG.tif.vat.csv’ already there; not retrievin
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File ‘2020_Africa_ITN_Use.zip’ already there; not retrieving.
-Archive:  2020_Africa_ITN_Use.zip
+</div>
+<p>Let’s also get data for country boundaries and physical features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber https://raw.githubusercontent.com/SciTools/cartopy/master/tools/cartopy_feature_download.py
+<span class="o">!</span>python cartopy_feature_download.py physical --no-warn
+<span class="o">!</span>python cartopy_feature_download.py cultural --no-warn
 </pre></div>
 </div>
 </div>
@@ -756,7 +757,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_16_0.png" src="../../_images/collection-sites_16_0.png" />
+<img alt="../../_images/collection-sites_18_0.png" src="../../_images/collection-sites_18_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -766,7 +767,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_17_0.png" src="../../_images/collection-sites_17_0.png" />
+<img alt="../../_images/collection-sites_19_0.png" src="../../_images/collection-sites_19_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -776,7 +777,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_18_0.png" src="../../_images/collection-sites_18_0.png" />
+<img alt="../../_images/collection-sites_20_0.png" src="../../_images/collection-sites_20_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -786,7 +787,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_19_0.png" src="../../_images/collection-sites_19_0.png" />
+<img alt="../../_images/collection-sites_21_0.png" src="../../_images/collection-sites_21_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -796,7 +797,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_20_0.png" src="../../_images/collection-sites_20_0.png" />
+<img alt="../../_images/collection-sites_22_0.png" src="../../_images/collection-sites_22_0.png" />
 </div>
 </div>
 <p>Let’s add a function to make a multi-panel plot, so we can see some of these maps side-by-side.</p>
@@ -894,7 +895,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_24_1.png" src="../../_images/collection-sites_24_1.png" />
+</div></div><img alt="../../_images/collection-sites_26_1.png" src="../../_images/collection-sites_26_1.png" />
 </div>
 </div>
 </div>
@@ -960,7 +961,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_26_1.png" src="../../_images/collection-sites_26_1.png" />
+</div></div><img alt="../../_images/collection-sites_28_1.png" src="../../_images/collection-sites_28_1.png" />
 </div>
 </div>
 </div>
@@ -1066,7 +1067,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_28_1.png" src="../../_images/collection-sites_28_1.png" />
+</div></div><img alt="../../_images/collection-sites_30_1.png" src="../../_images/collection-sites_30_1.png" />
 </div>
 </div>
 </div>
@@ -1150,7 +1151,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_30_1.png" src="../../_images/collection-sites_30_1.png" />
+</div></div><img alt="../../_images/collection-sites_32_1.png" src="../../_images/collection-sites_32_1.png" />
 </div>
 </div>
 </div>
@@ -1236,7 +1237,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_32_1.png" src="../../_images/collection-sites_32_1.png" />
+</div></div><img alt="../../_images/collection-sites_34_1.png" src="../../_images/collection-sites_34_1.png" />
 </div>
 </div>
 </div>
@@ -1302,7 +1303,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_34_1.png" src="../../_images/collection-sites_34_1.png" />
+</div></div><img alt="../../_images/collection-sites_36_1.png" src="../../_images/collection-sites_36_1.png" />
 </div>
 </div>
 </div>
@@ -1381,7 +1382,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_36_1.png" src="../../_images/collection-sites_36_1.png" />
+</div></div><img alt="../../_images/collection-sites_38_1.png" src="../../_images/collection-sites_38_1.png" />
 </div>
 </div>
 </div>
@@ -1401,7 +1402,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_38_0.png" src="../../_images/collection-sites_38_0.png" />
+<img alt="../../_images/collection-sites_40_0.png" src="../../_images/collection-sites_40_0.png" />
 </div>
 </div>
 <div class="section" id="ag1000g-cm-c">
@@ -1561,7 +1562,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_40_1.png" src="../../_images/collection-sites_40_1.png" />
+</div></div><img alt="../../_images/collection-sites_42_1.png" src="../../_images/collection-sites_42_1.png" />
 </div>
 </div>
 </div>
@@ -1583,7 +1584,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_42_0.png" src="../../_images/collection-sites_42_0.png" />
+<img alt="../../_images/collection-sites_44_0.png" src="../../_images/collection-sites_44_0.png" />
 </div>
 </div>
 </div>
@@ -1677,7 +1678,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_44_1.png" src="../../_images/collection-sites_44_1.png" />
+</div></div><img alt="../../_images/collection-sites_46_1.png" src="../../_images/collection-sites_46_1.png" />
 </div>
 </div>
 </div>
@@ -1744,7 +1745,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_46_1.png" src="../../_images/collection-sites_46_1.png" />
+</div></div><img alt="../../_images/collection-sites_48_1.png" src="../../_images/collection-sites_48_1.png" />
 </div>
 </div>
 </div>
@@ -1810,7 +1811,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_48_1.png" src="../../_images/collection-sites_48_1.png" />
+</div></div><img alt="../../_images/collection-sites_50_1.png" src="../../_images/collection-sites_50_1.png" />
 </div>
 </div>
 </div>
@@ -1908,7 +1909,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_50_1.png" src="../../_images/collection-sites_50_1.png" />
+</div></div><img alt="../../_images/collection-sites_52_1.png" src="../../_images/collection-sites_52_1.png" />
 </div>
 </div>
 </div>
@@ -1974,7 +1975,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_52_1.png" src="../../_images/collection-sites_52_1.png" />
+</div></div><img alt="../../_images/collection-sites_54_1.png" src="../../_images/collection-sites_54_1.png" />
 </div>
 </div>
 </div>
@@ -1994,7 +1995,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_54_0.png" src="../../_images/collection-sites_54_0.png" />
+<img alt="../../_images/collection-sites_56_0.png" src="../../_images/collection-sites_56_0.png" />
 </div>
 </div>
 <div class="section" id="ag1000g-bf-a-ag1000g-bf-b">
@@ -2136,7 +2137,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_56_1.png" src="../../_images/collection-sites_56_1.png" />
+</div></div><img alt="../../_images/collection-sites_58_1.png" src="../../_images/collection-sites_58_1.png" />
 </div>
 </div>
 </div>
@@ -2206,7 +2207,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_58_1.png" src="../../_images/collection-sites_58_1.png" />
+</div></div><img alt="../../_images/collection-sites_60_1.png" src="../../_images/collection-sites_60_1.png" />
 </div>
 </div>
 </div>
@@ -2227,7 +2228,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_60_0.png" src="../../_images/collection-sites_60_0.png" />
+<img alt="../../_images/collection-sites_62_0.png" src="../../_images/collection-sites_62_0.png" />
 </div>
 </div>
 <div class="section" id="ag1000g-gn-b-mali">
@@ -2316,7 +2317,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_62_1.png" src="../../_images/collection-sites_62_1.png" />
+</div></div><img alt="../../_images/collection-sites_64_1.png" src="../../_images/collection-sites_64_1.png" />
 </div>
 </div>
 </div>
@@ -2414,7 +2415,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_64_1.png" src="../../_images/collection-sites_64_1.png" />
+</div></div><img alt="../../_images/collection-sites_66_1.png" src="../../_images/collection-sites_66_1.png" />
 </div>
 </div>
 </div>
@@ -2536,7 +2537,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_66_1.png" src="../../_images/collection-sites_66_1.png" />
+</div></div><img alt="../../_images/collection-sites_68_1.png" src="../../_images/collection-sites_68_1.png" />
 </div>
 </div>
 </div>
@@ -2645,7 +2646,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_68_1.png" src="../../_images/collection-sites_68_1.png" />
+</div></div><img alt="../../_images/collection-sites_70_1.png" src="../../_images/collection-sites_70_1.png" />
 </div>
 </div>
 </div>
@@ -2736,7 +2737,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_70_1.png" src="../../_images/collection-sites_70_1.png" />
+</div></div><img alt="../../_images/collection-sites_72_1.png" src="../../_images/collection-sites_72_1.png" />
 </div>
 </div>
 </div>
@@ -2756,7 +2757,7 @@ Archive:  2020_Africa_ITN_Use.zip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/collection-sites_72_0.png" src="../../_images/collection-sites_72_0.png" />
+<img alt="../../_images/collection-sites_74_0.png" src="../../_images/collection-sites_74_0.png" />
 </div>
 </div>
 <div class="section" id="ag1000g-gm-a">
@@ -2833,7 +2834,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_74_1.png" src="../../_images/collection-sites_74_1.png" />
+</div></div><img alt="../../_images/collection-sites_76_1.png" src="../../_images/collection-sites_76_1.png" />
 </div>
 </div>
 </div>
@@ -2931,7 +2932,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_76_1.png" src="../../_images/collection-sites_76_1.png" />
+</div></div><img alt="../../_images/collection-sites_78_1.png" src="../../_images/collection-sites_78_1.png" />
 </div>
 </div>
 </div>
@@ -3009,7 +3010,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_78_1.png" src="../../_images/collection-sites_78_1.png" />
+</div></div><img alt="../../_images/collection-sites_80_1.png" src="../../_images/collection-sites_80_1.png" />
 </div>
 </div>
 </div>
@@ -3128,7 +3129,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_80_1.png" src="../../_images/collection-sites_80_1.png" />
+</div></div><img alt="../../_images/collection-sites_82_1.png" src="../../_images/collection-sites_82_1.png" />
 </div>
 </div>
 </div>
@@ -3198,7 +3199,7 @@ Archive:  2020_Africa_ITN_Use.zip
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/collection-sites_82_1.png" src="../../_images/collection-sites_82_1.png" />
+</div></div><img alt="../../_images/collection-sites_84_1.png" src="../../_images/collection-sites_84_1.png" />
 </div>
 </div>
 </div>
@@ -3260,7 +3261,7 @@ Archive:  2020_Africa_ITN_Use.zip
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
