@@ -522,7 +522,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check we have cartopy 0.18.0 or greater, needed to get tiles from google maps</span>
 <span class="kn">import</span> <span class="nn">cartopy</span>
@@ -537,7 +537,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <p>Setup access to MalariaGEN data via Google Cloud.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
 <span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
@@ -547,7 +547,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <p>To plot the extra geographical data, we’ll need to download some files.</p>
 <p>The ecosystem classifications in full resolution are available from the <a class="reference external" href="http://rmgsc.cr.usgs.gov/outgoing/ecosystems/AfricaData/">USGS website</a>, but these are large files and higher resolution than we need. For convenience we’ve precomputed a downsampled version of these data, let’s download it.</p>
-<div class="cell tag_hide-output tag_thebe-init docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG_5pc.tif
 <span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG.tif.vat.csv
@@ -556,7 +556,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <p>Data from the Malaria Atlas Project can be downloaded from their <a class="reference external" href="https://malariaatlas.org/explorer/">data explorer site</a>. Let’s download the most recent ITN coverage model.</p>
-<div class="cell tag_hide-output tag_thebe-init docutils container">
+<div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber -O 2020_Africa_ITN_Use.zip <span class="s2">&quot;https://malariaatlas.org/geoserver/Explorer/ows?service=CSW&amp;version=2.0.1&amp;request=DirectDownload&amp;ResourceId=Explorer:2020_Africa_ITN_Use&quot;</span>
 <span class="o">!</span>unzip -n -d 2020_Africa_ITN_Use 2020_Africa_ITN_Use.zip
@@ -575,7 +575,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <p>Now let’s define some functions for loading the map data and plotting a map, with support for different background options.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -592,7 +592,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup some geographical projections</span>
 <span class="n">crs_lonlat</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
@@ -601,7 +601,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">load_ecosystems</span><span class="p">():</span>
@@ -634,7 +634,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">load_itn_coverage</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
@@ -655,7 +655,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sites</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;v3_wild&quot;</span><span class="p">,</span> <span class="n">sample_query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;osm&#39;</span><span class="p">,</span> 
                <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bgstyle</span><span class="o">=</span><span class="s1">&#39;street&#39;</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">gridlines</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
@@ -3230,6 +3230,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
 <p>Hopefully this notebook is a useful resource for exploring the locations sampled in Ag1000G phase 3. Further information on the people and research studies that contributed mosquito specimens and the collection sites is available in the <a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/ag1000g-phase3-contributing-studies.pdf">Ag1000G phase 3 contributing studies</a> document.</p>
+<hr class="docutils" />
 </div>
 </div>
 

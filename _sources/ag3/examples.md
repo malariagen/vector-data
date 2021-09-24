@@ -8,4 +8,4 @@ know](https://github.com/malariagen/vector-data/discussions/new).
 ```{tableofcontents}
 ```
 
-
+---

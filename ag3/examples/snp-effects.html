@@ -391,22 +391,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>Install the packages we’ll need. If you’re working on MyBinder, you can skip this step, packages will already be installed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># recommended package installs for Google Colab
-!pip install -q \
-    zarr==2.6.1 \
-    fsspec==0.8.7 \
-    gcsfs==0.7.2 \
-    dask==2021.03.0 \
-    xarray==0.18.0 \
-    scikit-allel==1.3.5 \
-    bokeh==2.3.2 \
-    malariagen_data==0.8.0
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># recommended package installs for Google Colab</span>
+<span class="o">!</span>pip install -q malariagen_data bokeh
 </pre></div>
 </div>
 </div>
 </div>
 <p>Import packages.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">bokeh.plotting</span>
@@ -422,7 +414,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <p>In this notebook we’ll be making some interactive plots using the <a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">bokeh</a> package. Previously, in some of the other analysis notebooks, we used a different plotting package called <a class="reference external" href="https://plotly.com/python/">plotly</a>. We’re using bokeh here rather than plotly simply because for some of the plots we want to create here, bokeh has slightly better functionality. Each of these plotting libraries has its own strengths and limitations, and it’s worth having some familiarity with both, so you can pick the best tool for the job at hand.</p>
 <p>Set up plotting with bokeh in the notebook.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bokeh</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">output_notebook</span><span class="p">()</span>
 </pre></div>
@@ -430,7 +422,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <p>Setup access to MalariaGEN data in Google Cloud.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
 </pre></div>
@@ -442,7 +434,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h2>Preamble: gene annotations<a class="headerlink" href="#preamble-gene-annotations" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook we’ll be making use of gene annotations. Gene annotations provide information on which regions of the genome contain DNA sequences that encode genes, which are transcribed and spliced into messenger RNA (mRNA) and then translated to make proteins.</p>
 <p>Gene annotations for the <em>Anopheles gambiae</em> (AgamP4) genome are available from <a class="reference external" href="https://vectorbase.org/vectorbase/app/">VectorBase</a>. For convenience, we’ve added some functionality to the <code class="docutils literal notranslate"><span class="pre">malariagen_data</span></code> package for loading these gene annotations into a pandas data frame. Let’s take a look.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_geneset</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">geneset</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">)</span>
 <span class="n">df_geneset</span>
@@ -660,7 +652,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="genes">
 <h3>Genes<a class="headerlink" href="#genes" title="Permalink to this headline">¶</a></h3>
 <p>To get a bit more intuition for gene annotations, let’s make an interactive plot of all the gene annotations in the geneset. We will plot each gene as a rectangle showing it’s location on a chromosome arm.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_genes</span><span class="p">(</span><span class="n">contig</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">):</span>
 
@@ -1156,7 +1148,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <p>Note that there are two rows here, each with <code class="docutils literal notranslate"><span class="pre">type</span></code> “mRNA”. This means that the doublesex gene has two mRNA transcripts. This is a complexity that arises for many genes, where the gene may be transcribed and then spliced in different ways. Each transcript may include different exons, or exons may vary in length. The purpose of alternative splicing is to allow the same gene to encode different proteins, which may perform different functions. In this case, the gene is part of the sex determination pathway, and which of these two transcripts is produced will determine whether a mosquito is male or female.</p>
 <p>Let’s make a function to visualise these transcripts.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_transcript</span><span class="p">(</span><span class="n">transcript</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">x_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">toolbar_location</span><span class="o">=</span><span class="s1">&#39;above&#39;</span><span class="p">):</span>
@@ -4695,6 +4687,7 @@ snp_allele_frequencies(transcript, cohorts, site_mask=None, site_filters=&#39;dt
 </div>
 </div>
 </div>
+<hr class="docutils" />
 </div>
 </div>
 

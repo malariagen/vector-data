@@ -421,20 +421,12 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>Set up the environment by installing and importing some packages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -q \
-    zarr==2.6.1 \
-    fsspec==0.8.7 \
-    gcsfs==0.7.2 \
-    dask==2021.03.0 \
-    xarray==0.18.0 \
-    scikit-allel==1.3.5 \
-    malariagen_data==0.8.0 \
-    plotly==4.14.3
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen_data plotly
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -455,7 +447,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># register a progress bar for longer-running dask computations</span>
 <span class="c1"># N.B., run this cell only once!</span>
@@ -464,7 +456,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup access to malariagen data in google cloud</span>
 <span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
@@ -487,7 +479,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <p>Now create a directory to hold PCA results:</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a directory to hold PCA results - change this to something suitable</span>
 <span class="c1"># if not running on Google Colab</span>
@@ -501,7 +493,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="pca-functions">
 <h2>PCA functions<a class="headerlink" href="#pca-functions" title="Permalink to this headline">¶</a></h2>
 <p>Now define some functions for running a PCA.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hash_params</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Helper function to hash analysis parameters.&quot;&quot;&quot;</span>
@@ -673,7 +665,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="plotting-functions">
 <h2>Plotting functions<a class="headerlink" href="#plotting-functions" title="Permalink to this headline">¶</a></h2>
 <p>Before we starting running PCAs, define some plotting functions to help visualise the results.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_variance</span><span class="p">(</span><span class="n">evr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Plot a bar chart showing variance explained by each principal</span>
@@ -704,7 +696,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jitter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
@@ -807,7 +799,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose colours for species</span>
 <span class="n">species_palette</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Plotly</span>
@@ -1532,6 +1524,7 @@ if (outputEl) {{
 </ul>
 <p>Hopefully this notebook has been a useful introduction to PCA. If you have any comments, questions or suggestions, please <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">get in touch</a>.</p>
 <p>This notebook is part of the <a class="reference internal" href="../intro.html"><span class="doc std std-doc">Ag1000G phase 3 user guide</span></a>. See the menu at the left for more documentation and example analyses.</p>
+<hr class="docutils" />
 </div>
 </div>
 

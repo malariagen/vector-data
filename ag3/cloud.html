@@ -431,21 +431,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>Running this notebook requires some Python packages to be installed. These packages can be installed via pip or conda. E.g.:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -q \
-    zarr==2.6.1 \
-    fsspec==0.8.7 \
-    gcsfs==0.7.2 \
-    dask==2021.03.0 \
-    xarray==0.18.0 \
-    scikit-allel==1.3.5 \
-    malariagen_data==0.8.0
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen_data
 </pre></div>
 </div>
 </div>
 </div>
 <p>To make accessing these data more convenient, we’ve created the <a class="reference external" href="https://github.com/malariagen/malariagen-data-python">malariagen_data Python package</a>, which is available from PyPI. This is experimental so please let us know if you find any bugs or have any suggestions.</p>
 <p>Now import the packages we’ll need to use here.</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">dask</span>
@@ -460,7 +453,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <p>Ag3 data access from Google Cloud is set up with the following code:</p>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
 </pre></div>
@@ -6494,6 +6487,7 @@ cnv_discordant_read_calls(contig, sample_sets=&#39;v3_wild&#39;, inline_array=Tr
 </div>
 </div>
 </div>
+<hr class="docutils" />
 </div>
 </div>
 
