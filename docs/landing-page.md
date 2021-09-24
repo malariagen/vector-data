@@ -4,3 +4,5 @@ Welcome to this guide to accessing analysis-ready genomic data resources on mala
 
 ```{tableofcontents}
 ```
+
+---

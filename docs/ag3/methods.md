@@ -495,3 +495,5 @@ Ag1000G phase 3.
 
 * **Allele Balance Het** -- Product of binomial probability of read
   counts at het calls.
+
+---
