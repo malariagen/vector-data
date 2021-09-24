@@ -1,0 +1,2255 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ag1000G partner studies &#8212; MalariaGEN vector data user guide</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "malariagen/vector-data");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Exploring copy number variation (CNV)" href="ag3/examples/cnv-explore.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MalariaGEN vector data user guide</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="landing-page.html">
+   MalariaGEN vector data user guide
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Ag3 (Ag1000G phase 3)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ag3/intro.html">
+   Introduction to Ag3
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ag3/data.html">
+   Ag3 data availability and methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ag3/cloud.html">
+     Ag3 cloud data access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ag3/download.html">
+     Ag3 data downloads
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ag3/methods.html">
+     Ag3 methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ag3/examples.html">
+   Ag3 analysis examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ag3/examples/collection-sites.html">
+     Mosquito collection sites
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ag3/examples/snps.html">
+     Single nucleotide polymorphisms (SNPs)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ag3/examples/snp-effects.html">
+     Genes and SNP effects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ag3/examples/pca.html">
+     Investigating population structure with PCA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ag3/examples/cnv-explore.html">
+     Exploring copy number variation (CNV)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partners and community
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Ag1000G partner studies
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/studies-ag1000g.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/malariagen/vector-data"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fstudies-ag1000g.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#angola">
+   Angola
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-sets">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contributors">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#study-information">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#publications-and-resources">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bioko-island">
+   Bioko Island
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#burkina-faso-1">
+   Burkina Faso (1)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acknowledgments">
+     Acknowledgments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#burkina-faso-2">
+   Burkina Faso (2)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cameroon-1">
+   Cameroon (1)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id27">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cameroon-2">
+   Cameroon (2)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id29">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id30">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id31">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id35">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cameroon-3">
+   Cameroon (3)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id37">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id38">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id39">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id42">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#central-african-republic">
+   Central African Republic
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id44">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id45">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id46">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cote-d-ivoire">
+   Côte d’Ivoire
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id47">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id48">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id49">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id51">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#democratic-republic-of-the-congo">
+   Democratic Republic of the Congo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id53">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id54">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id55">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gabon">
+   Gabon
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id56">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id57">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id58">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ghana">
+   Ghana
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id63">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id64">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id65">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id67">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guinea-bissau">
+   Guinea Bissau
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id69">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id70">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id71">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id77">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guinea-and-mali-1">
+   Guinea and Mali (1)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id79">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id80">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id81">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id82">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kenya">
+   Kenya
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id84">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id85">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id86">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id89">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mali-2">
+   Mali (2)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id91">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id92">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id93">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id95">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mali-3">
+   Mali (3)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id96">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id97">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id98">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id100">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#malawi">
+   Malawi
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id102">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id103">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id104">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id108">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mayotte-island">
+   Mayotte Island
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id110">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id111">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id112">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mozambique">
+   Mozambique
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id115">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id116">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id117">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tanzania">
+   Tanzania
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id122">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id123">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id124">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-gambia-1">
+   The Gambia (1)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id132">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id133">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id134">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id136">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-gambia-2">
+   The Gambia (2)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id138">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id139">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id140">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id146">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-gambia-3">
+   The Gambia (3)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id148">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id149">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id150">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uganda">
+   Uganda
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id152">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id153">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id154">
+     Study information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id159">
+     Publications and resources
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colony-crosses">
+   Colony crosses
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id161">
+     Sample sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id162">
+     Contributors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id163">
+     Study information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="ag1000g-partner-studies">
+<h1>Ag1000G partner studies<a class="headerlink" href="#ag1000g-partner-studies" title="Permalink to this headline">¶</a></h1>
+<p>The Ag1000G project is coordinated by a consortium of partners from a range of different research institutions and countries.
+This includes consortium members who are carrying out independent research studies in malaria endemic regions, and who have contributed mosquito specimens or mosquito DNA samples collected in the course of their own research.
+This page describes the studies that have contributed samples to the Ag1000G project, which includes wild-caught samples from 19 African countries.
+This page also provides information about the collection locations and methods, the people involved in the studies, and references to any published articles providing further information about the studies.</p>
+<p>Throughout this page we use species nomenclature following <span id="id1">[]</span>.
+Unless otherwise stated, the DNA extraction method used for the collections described below was Qiagen DNeasy Blood and Tissue Kit (Qiagen Science, MD, USA).</p>
+<hr class="docutils" />
+<div class="section" id="angola">
+<h2>Angola<a class="headerlink" href="#angola" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sample-sets">
+<h3>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-AO</p></li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Arlete D. Troco</strong></p>
+<ul>
+<li><p>Programa Nacional de Controle da Malária, Direcção Nacional de Saúde Pública, Ministério da Saúde, Luanda, Angola.</p></li>
+</ul>
+</li>
+<li><p><strong>João Pinto</strong> (jpinto&#64;ihmt.unl.pt)</p>
+<ul>
+<li><p>Global Health and Tropical Medicine, GHTM, Instituto de Higiene e Medicina Tropical, IHMT, Universidade Nova de Lisboa, UNL, Rua da Junqueira 100, 1349–008 Lisbon, Portugal.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="study-information">
+<h3>Study information<a class="headerlink" href="#study-information" title="Permalink to this headline">¶</a></h3>
+<p>Adult mosquitoes were obtained by rearing larvae collected from breeding sites along the main roads connecting the municipalities of Kilamba-Kiaxi and Viana, Luanda province (-8.821, 13.291), in April/May 2009.
+These are peri-urban areas where malaria reaches hyperendemic levels.
+All specimens collected in the study area were typed as <em>An. coluzzii</em> <span id="id2">[]</span> although <em>An. melas</em> and <em>An. arabiensis</em> have also been recorded in the province <span id="id3">[]</span>.
+Specimens were stored on silica gel and DNA extraction was performed by a phenol-chloroform protocol described in <span id="id4">[]</span>.</p>
+</div>
+<div class="section" id="publications-and-resources">
+<h3>Publications and resources<a class="headerlink" href="#publications-and-resources" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id5">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="bioko-island">
+<h2>Bioko Island<a class="headerlink" href="#bioko-island" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Sample sets<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-GQ</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>Contributors<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Jorge Cano</strong></p>
+<ul>
+<li><p>London School of Hygiene and Tropical Medicine, Keppel Street, Bloomsbury, London WC1E 7HT, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>Maryam Kamali</strong></p>
+<ul>
+<li><p>Department of Medical Entomology and Parasitology, Faculty of Medical Sciences, Tarbiat Modares University, Tehran, Iran.</p></li>
+<li><p>Department of Entomology, Virginia Tech, Blacksburg, Virginia 24061, USA.</p></li>
+</ul>
+</li>
+<li><p><strong>Igor Sharakhov</strong> (igor&#64;vt.edu)</p>
+<ul>
+<li><p>Department of Entomology, Virginia Tech, Blacksburg, Virginia 24061, USA.</p></li>
+<li><p>Department of Genetics and Cell Biology, Tomsk State University, Tomsk 634050, Russia.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Study information<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>Collections were performed during the rainy season in September 2002 by overnight CDC light traps in Sacriba of Bioko island (3.7, 8.7).
+Specimens were stored dry on silica gel before DNA extraction.
+Specimens contributed from this site were <em>An. gambiae</em> females, genotype determined by two assays <span id="id9">[]</span>.
+These mosquitoes represent a population that inhabited Bioko Island before a comprehensive malaria control intervention initiated in February 2004 <span id="id10">[]</span>.
+After the intervention <em>An. gambiae</em> was declining, and more recently almost only <em>An. coluzzii</em> can be found <span id="id11">[]</span>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="burkina-faso-1">
+<h2>Burkina Faso (1)<a class="headerlink" href="#burkina-faso-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3>Sample sets<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-BF-A</p></li>
+<li><p>AG1000G-BF-B</p></li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>Contributors<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Abdoulaye Diabaté</strong></p>
+<ul>
+<li><p>Institut de Recherche en Sciences de la Santé (IRSS), Bobo Dioulasso, B.P. 545, Burkina Faso.</p></li>
+</ul>
+</li>
+<li><p><strong>Patric Stephane Epopa</strong></p>
+<ul>
+<li><p>Institut de Recherche en Sciences de la Santé (IRSS), Bobo Dioulasso, B.P. 545, Burkina Faso.</p></li>
+</ul>
+</li>
+<li><p><strong>Franck Yao</strong></p>
+<ul>
+<li><p>Institut de Recherche en Sciences de la Santé (IRSS), Bobo Dioulasso, B.P. 545, Burkina Faso.</p></li>
+</ul>
+</li>
+<li><p><strong>Samantha O’Loughlin</strong> (s.oloughlin&#64;imperial.ac.uk)</p>
+<ul>
+<li><p>Department of Life Sciences, Imperial College, Silwood Park, Ascot, Berkshire SL5 7PY, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>Austin Burt</strong></p>
+<ul>
+<li><p>Department of Life Sciences, Imperial College, Silwood Park, Ascot, Berkshire SL5 7PY, UK.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>Study information<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>The Target Malaria project contributed samples from collections made in three villages separated by at most 30km: Bana (11.233, -4.472), Souroukoudinga (11.235, -4.535) and Pala (11.150, -4.235).
+These collections were made in July-August 2012, July and October 2014, and January, February and April 2015.
+The area is agricultural, with rice-growing areas near Bana and Souroukoudinga, and a large mango grove near Pala.
+Female mosquitoes were collected by human landing catch, pyrethrum spray collection or aspiration.
+Males were collected by swarm netting.
+Both <em>An. gambiae</em> and <em>An. coluzzii</em> <span id="id15">[]</span> were collected.
+Specimens were stored in 80% ethanol and DNA was extracted using the DNeasy Tissue Kit (Qiagen) or using a simple CTAB method.</p>
+</div>
+<div class="section" id="acknowledgments">
+<h3>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline">¶</a></h3>
+<p>We would like to thank the technicians of the Institute de Recherche en Sciences de la Santé/Target Malaria Burkina Faso, including Guel Hyacinthe, Diabate Brama, Ilboudo Seni, Kabre Rasmane, Diabate Noufou and Yeye Pascal, for their contributions to sample collections.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="burkina-faso-2">
+<h2>Burkina Faso (2)<a class="headerlink" href="#burkina-faso-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h3>Sample sets<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-BF-C</p></li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h3>Contributors<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Carlo Costantini</strong> (carlo.costantini&#64;ird.fr)</p>
+<ul>
+<li><p>UMR MIVEGEC, Univ. Montpellier, CNRS, IRD, Montpellier, France.</p></li>
+</ul>
+</li>
+<li><p><strong>N’Fale Sagnon</strong></p>
+<ul>
+<li><p>Centre National de Recherche et Formation sur le Paludisme (CNRFP), 01 BP 2208 Ouagadougou 01, Burkina Faso.</p></li>
+</ul>
+</li>
+<li><p><strong>Nora J. Besansky</strong> (nbesansk&#64;nd.edu)</p>
+<ul>
+<li><p>Eck Institute for Global Health &amp; Department of Biological Sciences, University of Notre Dame, IN 46556, USA.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h3>Study information<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>Samples were contributed from collections of indoor resting adults made by spray catch from Monomtenga in central Burkina Faso (12.06, -1.17).
+These specimens were sorted morphologically to <em>An. gambiae</em> s.l..
+Ovaries of half-gravid females were dissected and placed in numbered individual micro-tubes containing modified Carnoy’s solution (1:3 glacial acetic acid: 100% ethanol).
+Carcasses were placed in correspondingly numbered micro-tubes over desiccant.
+Genomic DNA was isolated from individual mosquitoes using one of the following: DNeasy Extraction Kit (Qiagen, Valencia, CA), Puregene kit (Gentra Systems, Inc., Minneapolis, MN), DNAzol kit (Molecular Research Center, Inc., Cincinnati, OH.) or Easy-DNA kit (Invitrogen, Carlsbad, CA).
+<em>An. gambiae</em> s.s. and its molecular forms were identified using one of two rDNA-based PCR/RFLP assays, <span id="id19">[]</span> or <span id="id20">[]</span>.
+Ovaries from specimens of the desired species were subject to polytene chromosome analysis.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="cameroon-1">
+<h2>Cameroon (1)<a class="headerlink" href="#cameroon-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id21">
+<h3>Sample sets<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-CM-A</p></li>
+</ul>
+</div>
+<div class="section" id="id22">
+<h3>Contributors<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Carlo Costantini</strong> (carlo.costantini&#64;ird.fr)</p>
+<ul>
+<li><p>UMR MIVEGEC, Univ. Montpellier, CNRS, IRD, Montpellier, France.</p></li>
+</ul>
+</li>
+<li><p><strong>Kyanne R. Rohatgi</strong></p>
+<ul>
+<li><p>Eck Institute for Global Health &amp; Department of Biological Sciences, University of Notre Dame, IN 46556, USA.</p></li>
+</ul>
+</li>
+<li><p><strong>Nora J. Besansky</strong> (nbesansk&#64;nd.edu)</p>
+<ul>
+<li><p>Eck Institute for Global Health &amp; Department of Biological Sciences, University of Notre Dame, IN 46556, USA.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id23">
+<h3>Study information<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>Pyrethrum spray collections were conducted in three villages in Cameroon during September and October 2009.
+These villages comprise a transect from forest (village of Mayos: 4.341, 13.558) to forest/savanna transition (village of Daiguene: 4.777, 13.844) to savanna (villages of Gado-Badzere and Zembe-Borongo: 5.747, 14.442) <span id="id24">[]</span>.
+All contributed specimens were <em>An. gambiae</em> s.s. <span id="id25">[]</span>.
+A proportion of specimens were karyotyped via scoring of polytene chromosomes <span id="id26">[]</span>.
+Specimens were stored on silica gel, and DNA was extracted using a simple CTAB protocol and run over Qiagen columns.</p>
+</div>
+<div class="section" id="id27">
+<h3>Publications and resources<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id28">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="cameroon-2">
+<h2>Cameroon (2)<a class="headerlink" href="#cameroon-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id29">
+<h3>Sample sets<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-CM-B</p></li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h3>Contributors<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Frédéric Simard</strong> (frederic.simard&#64;ird.fr)</p>
+<ul>
+<li><p>UMR MIVEGEC, Univ. Montpellier, CNRS, IRD, Montpellier, France.</p></li>
+</ul>
+</li>
+<li><p><strong>Diego Ayala</strong> (diego.ayala&#64;ird.fr)</p>
+<ul>
+<li><p>UMR MIVEGEC, Univ. Montpellier, CNRS, IRD, Montpellier, France.</p></li>
+</ul>
+</li>
+<li><p><strong>Nora J. Besansky</strong> (nbesansk&#64;nd.edu)</p>
+<ul>
+<li><p>Eck Institute for Global Health &amp; Department of Biological Sciences, University of Notre Dame, IN 46556, USA.</p></li>
+</ul>
+</li>
+<li><p><strong>Carlo Costantini</strong> (carlo.costantini&#64;ird.fr)</p>
+<ul>
+<li><p>UMR MIVEGEC, Univ. Montpellier, CNRS, IRD, Montpellier, France.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id31">
+<h3>Study information<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<p>These samples were collected as part of a study which took place in Cameroon in Central Africa.
+The country is commonly referred to as “miniature Africa”, owing to the diversity of its climate, topography, landscape, and bio-ecological settings: arid savannas in the north gradually turn into rain forest in the south, along with highland areas, contribute to increase diversity of ecological settings.
+Anopheline mosquitoes were collected in 2005 from 64 locations covering a 1,500 km north-to-south transect that crossed all eco-geographical areas of Cameroon <span id="id32">[]</span>.
+Mosquito collection involved spraying aerosols of pyrethroid insecticides inside human dwellings, dead mosquitoes were retrieved from white sheets that were laid on the floor.
+Anopheline mosquitoes were identified using morphological identification keys <span id="id33">[]</span>.
+Ovaries from half-gravid <em>An. gambiae</em> s.l. females were dissected and stored in Carnoy’s fixative solution (absolute ethanol:glacial acetic acid 3:1) for cytogenetic analyses.
+Carcasses were stored individually in tubes containing a desiccant and kept at -20C until they were processed for molecular analysis.
+All half-gravid specimens collected in each village were identified to species and molecular forms using PCR-RFLP <span id="id34">[]</span>.</p>
+</div>
+<div class="section" id="id35">
+<h3>Publications and resources<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id36">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="cameroon-3">
+<h2>Cameroon (3)<a class="headerlink" href="#cameroon-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id37">
+<h3>Sample sets<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-CM-C</p></li>
+</ul>
+</div>
+<div class="section" id="id38">
+<h3>Contributors<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Colince Kamdem</strong></p>
+<ul>
+<li><p>Laboratoire de Recherche sur le Paludisme, Organisation de Coordination pour la lutte contre les Endémies en Afrique Centrale (OCEAC), B.P. 288, Yaoundé, Cameroon.</p></li>
+</ul>
+</li>
+<li><p><strong>Caroline Fouet</strong></p>
+<ul>
+<li><p>Department of Entomology, University of California, Riverside, CA, USA.</p></li>
+</ul>
+</li>
+<li><p><strong>Bradley J. White</strong> (bradwhite&#64;verily.com)</p>
+<ul>
+<li><p>Verily Life Sciences, South San Francisco, CA 94080, USA.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id39">
+<h3>Study information<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<p>Samples were contributed from pyrethrum spray collections, larval sampling and human landing catches conducted in twenty locations during October 2013.
+These villages are scattered throughout the country and reflect a gradient of human-dominated environments, for example, forest (Manda (5.726, 10.868) and Campo (2.367, 9.817)); forest/savanna transition (Tibati (6.469, 12.629)); savanna (Lagdo (9.049, 13.656)); suburban area (Nkolondom (3.972, 11.516)) and urban areas (Douala (4.055, 9.721) and Yaoundé (3.880, 11.506)).
+Contributed specimens were <em>An. gambiae</em> or <em>An. coluzzii</em> <span id="id40">[]</span>.
+Population genomics studies indicated the presence of relatively differentiated subgroups within both species as well as clusters thriving in polluted breeding sites in large cities <span id="id41">[]</span>.
+Specimens were stored on silica gel.
+DNA was extracted using a Zymo research kit for adults, and a Qiagen kit for larvae.</p>
+</div>
+<div class="section" id="id42">
+<h3>Publications and resources<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id43">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="central-african-republic">
+<h2>Central African Republic<a class="headerlink" href="#central-african-republic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id44">
+<h3>Sample sets<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-CF</p></li>
+</ul>
+</div>
+<div class="section" id="id45">
+<h3>Contributors<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Alessandra della Torre</strong> (alessandra.dellatorre&#64;uniroma1.it)</p>
+<ul>
+<li><p>Istituto Pasteur Italia–Fondazione Cenci Bolognetti, Dipartimento di Sanita Pubblica e Malattie Infettive, Università di Roma SAPIENZA, Rome, Italy.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id46">
+<h3>Study information<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<p>Collections were carried out in Bangui (4.367, 18.583), during December 1993, by indoor resting aspiration or pyrethrum spray catch.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="cote-d-ivoire">
+<h2>Côte d’Ivoire<a class="headerlink" href="#cote-d-ivoire" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id47">
+<h3>Sample sets<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-CI</p></li>
+</ul>
+</div>
+<div class="section" id="id48">
+<h3>Contributors<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>David Weetman</strong> (david.weetman&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+</ul>
+</li>
+<li><p><strong>Edi Constant</strong></p>
+<ul>
+<li><p>Centre Suisse de Recherches Scientifiques. Yopougon, Abidjan - 01 BP 1303 Abidjan, Côte d’Ivoire.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id49">
+<h3>Study information<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<p>Samples were collected in Tiassale (5.898, -4.823), located in the evergreen forest zone of southern Côte d’Ivoire.
+The primary agricultural activity is rice cultivation in irrigated fields.
+High malaria transmission occurs during the rainy seasons, between May and November.
+Samples were collected as larvae from irrigated rice fields by dipping between May and September 2012.
+All larvae were reared to adults and females preserved over silica for DNA extraction.
+Specimens from this site were all <em>An. coluzzii</em>, determined by PCR assay <span id="id50">[]</span>.</p>
+</div>
+<div class="section" id="id51">
+<h3>Publications and resources<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id52">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="democratic-republic-of-the-congo">
+<h2>Democratic Republic of the Congo<a class="headerlink" href="#democratic-republic-of-the-congo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id53">
+<h3>Sample sets<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-CD</p></li>
+</ul>
+</div>
+<div class="section" id="id54">
+<h3>Contributors<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>David Weetman</strong> (david.weetman&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id55">
+<h3>Study information<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<p>Samples were collected from Gbadolite (4.283, 21.017), a town located in the far north of the Democratic Republic of Congo (DRC) near the border with the Central African Republic, surrounded by forest.
+In common with much of DRC, malaria transmission rates are high, and the samples are <em>An. gambiae</em> s.s., which is the dominant vector.
+Samples were collected as larvae from temporary pools within and around the town by dipping in early August 2015.
+All larvae were reared to adults and females preserved over silica for DNA extraction using Qiagen DNAEasy kits.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="gabon">
+<h2>Gabon<a class="headerlink" href="#gabon" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id56">
+<h3>Sample sets<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-GA-A</p></li>
+</ul>
+</div>
+<div class="section" id="id57">
+<h3>Contributors<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Nohal Elissa</strong></p>
+<ul>
+<li><p>Institut Pasteur de Madagascar, Avaradoha, BP 1274, 101 Antananarivo, Madagascar.</p></li>
+</ul>
+</li>
+<li><p><strong>João Pinto</strong> (jpinto&#64;ihmt.unl.pt)</p>
+<ul>
+<li><p>Global Health and Tropical Medicine, GHTM, Instituto de Higiene e Medicina Tropical, IHMT, Universidade Nova de Lisboa, UNL, Rua da Junqueira 100, 1349–008 Lisbon, Portugal.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id58">
+<h3>Study information<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<p>Mosquitoes were collected by landing catches in the capital city Libreville (0.384, 9.455) in December 2000 <span id="id59">[]</span>, an urban and polluted site.
+Malaria is endemic throughout the year.
+Specimens were stored in alcohol at -20C.
+Co-occurrence of both <em>kdr</em> resistance alleles and absence of wild-type susceptible alleles have been reported in this population <span id="id60">[]</span>.
+<em>An. coluzzii</em> and <em>An. melas</em> are also present in the region but at frequencies <span class="math notranslate nohighlight">\(&lt;1\)</span>% <span id="id61">[]</span>.
+Specimens were stored on silica gel and DNA extraction was performed by a phenol-chloroform protocol described in <span id="id62">[]</span>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="ghana">
+<h2>Ghana<a class="headerlink" href="#ghana" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id63">
+<h3>Sample sets<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-GH</p></li>
+</ul>
+</div>
+<div class="section" id="id64">
+<h3>Contributors<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>David Weetman</strong> (david.weetman&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+</ul>
+</li>
+<li><p><strong>John Essandoh</strong></p>
+<ul>
+<li><p>Department of Wildlife and Entomology, University of Cape Coast, Cape Coast, Ghana.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id65">
+<h3>Study information<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
+<p>Samples were collected in Twifo Praso (5.609, -1.549), a peri-urban community located in semi-deciduous forest in the Central Region of Ghana.
+It is an extensive agricultural area characterised by small-scale (vegetable growing) and large-scale commercial farms such as oil palm and cocoa plantations.
+Mosquito samples were collected as larvae from puddles near farms between September and October 2012.
+Madina (5.668, -0.219) is suburb of Accra within a coastal savanna zone of Ghana.
+It is an urban community characterised by myriad vegetable-growing areas.
+The vegetation consists of mainly grassland interspersed with dense short thickets often less than 5m high with a few trees.
+Specimens were sampled from puddles near roadsides and farms between October and December 2012.
+Takoradi (4.912, -1.774) is the capital city of the Western Region of Ghana.
+It is an urban community located in the coastal savanna zone.
+Mosquito samples were collected from puddles near road construction and farms between August and September 2012.
+Koforidua (6.094, -0.261) is the capital city of the Eastern Region of Southern Ghana and is located in semi-deciduous forest.
+It is an urban community characterized by numerous small-scale vegetable farms.
+Samples were collected from puddles near road construction sites and farms between August and September 2012.
+Larvae from all collection sites were reared to adults and females preserved over silica for DNA extraction.
+Both <em>An. gambiae</em> and <em>An. coluzzii</em> were collected from these sites, determined by PCR assay <span id="id66">[]</span>.</p>
+</div>
+<div class="section" id="id67">
+<h3>Publications and resources<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id68">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="guinea-bissau">
+<h2>Guinea Bissau<a class="headerlink" href="#guinea-bissau" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id69">
+<h3>Sample sets<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-GW</p></li>
+</ul>
+</div>
+<div class="section" id="id70">
+<h3>Contributors<a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Amabélia Rodrigues</strong></p>
+<ul>
+<li><p>Instituto Nacional de Saaúde Paública, Ministaério da Saaúde Paública, Bissau, Guinaé-Bissau</p></li>
+</ul>
+</li>
+<li><p><strong>João Dinis</strong></p>
+<ul>
+<li><p>Instituto Nacional de Saaúde Paública, Ministaério da Saaúde Paública, Bissau, Guinaé-Bissau</p></li>
+</ul>
+</li>
+<li><p><strong>Marco Pombi</strong></p>
+<ul>
+<li><p>Istituto Pasteur Italia–Fondazione Cenci Bolognetti, Dipartimento di Sanita Pubblica e Malattie Infettive, Università di Roma SAPIENZA, Rome, Italy.</p></li>
+</ul>
+</li>
+<li><p><strong>Beniamino Caputo</strong> (beniamino.caputo&#64;uniroma1.it)</p>
+<ul>
+<li><p>Istituto Pasteur Italia–Fondazione Cenci Bolognetti, Dipartimento di Sanita Pubblica e Malattie Infettive, Università di Roma SAPIENZA, Rome, Italy.</p></li>
+</ul>
+</li>
+<li><p><strong>João Pinto</strong> (jpinto&#64;ihmt.unl.pt)</p>
+<ul>
+<li><p>Global Health and Tropical Medicine, GHTM, Instituto de Higiene e Medicina Tropical, IHMT, Universidade Nova de Lisboa, UNL, Rua da Junqueira 100, 1349–008 Lisbon, Portugal.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id71">
+<h3>Study information<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h3>
+<p>Guinea Bissau samples were collected from three sites in October 2010 by indoor CDC light traps.
+Safim (11.957, -15.649) and Antula (11.891, -15.582), from a south-western coastal region, characterised mainly by mixed flooded forests and croplands.
+Leibala is a neighbourhood of the eastern town of Gabu where shrubland and open deciduous forest predominate (12.272, -14.222).
+According to PCR-RFLP of the IGS <span id="id72">[]</span> and SINEX <span id="id73">[]</span> all samples were identified as <em>An. gambiae</em>.
+The <em>kdr</em> pyrethroid target site resistance mutation L995F occurs at high frequency in Leibala but at very low frequency in the western coastal region <span id="id74">[]</span>.
+Malaria is meso-hyperendemic <span id="id75">[]</span> and sporozoite rates are below 1% in the region.
+Specimens were stored on silica gel and DNA extraction was performed by a phenol-chloroform protocol described in <span id="id76">[]</span>.</p>
+</div>
+<div class="section" id="id77">
+<h3>Publications and resources<a class="headerlink" href="#id77" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id78">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="guinea-and-mali-1">
+<h2>Guinea and Mali (1)<a class="headerlink" href="#guinea-and-mali-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id79">
+<h3>Sample sets<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-GN-A</p></li>
+<li><p>AG1000G-GN-B</p></li>
+</ul>
+</div>
+<div class="section" id="id80">
+<h3>Contributors<a class="headerlink" href="#id80" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Boubacar Coulibaly</strong></p>
+<ul>
+<li><p>Malaria Research and Training Centre (MRTC), Faculty of Medicine and Dentistry, University of Mali, BP: E 423 Bamako, Mali.</p></li>
+</ul>
+</li>
+<li><p><strong>Kenneth D. Vernick</strong> (kenneth.vernick&#64;pasteur.fr)</p>
+<ul>
+<li><p>Unit for Genetics and Genomics of Insect Vectors, Institut Pasteur, 75015, Paris, France.</p></li>
+</ul>
+</li>
+<li><p><strong>Michelle M. Riehle</strong></p>
+<ul>
+<li><p>Department of Microbiology and Immunology, Medical College of Wisconsin, Milwaukee, WI 53226, USA.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id81">
+<h3>Study information<a class="headerlink" href="#id81" title="Permalink to this headline">¶</a></h3>
+<p>Collections were made from four different study sites around the border between Guinea and Mali.
+From Mali; Takan (11.47, -8.33) and Toumani Oulena (10.83, -7.81) are both small villages in the Yanfolila district of southern Mali and represent the Sudanian savannah ecological zone.
+Takan is arid savannah, while Toumani Oulena is humid savannah.
+In Guinea Conakry, mosquitoes were sampled from Koraboh (9.28, -10.03), a small village in the Kissidougou district in the Faranah region representing a semi-forest site with intermediate ecology, a mix of savannah and forest, and in Koundara (8.48, -9.53), a small village in the Macenta district in the Nzerekore region representing deep forest ecology.
+All reported collections occurred in October and November 2012.
+At each site, mosquitoes were collected using three different methods: human-landing capture, indoor manual aspirator or pyrethroid spray catch, and larval capture - where the first and second instar larvae were raised to adult in a field insectary under standard insectary conditions prior to DNA isolation from the adults, and the third and fourth instar larvae were preserved directly for DNA isolation, without rearing in the insectary.
+The two distinct methods of larval collection were used to control for possible genetic bias inherent in lab rearing of captured larvae.
+Across sites, all types of larval sites were sampled, including both temporary and permanent sites.
+Human-landing captures were performed both inside dwellings and outside (<span class="math notranslate nohighlight">\(&gt;10\)</span>m from dwelling) at night between 18:00 and 06:30.
+The indoor aspirator or spray catches were done in the morning between 06:00 and 12:00.
+Adult specimens or third and fourth instar larvae were preserved immediately in 80% ethanol until later DNA extraction.
+First and second instar larvae were raised to adults in nearby field insectaries and upon emergence were preserved in 80% ethanol.
+DNA was extracted from mosquitoes using DNAzol by the provided protocol (Invitrogen, CA, USA).</p>
+</div>
+<div class="section" id="id82">
+<h3>Publications and resources<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id83">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="kenya">
+<h2>Kenya<a class="headerlink" href="#kenya" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id84">
+<h3>Sample sets<a class="headerlink" href="#id84" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-KE</p></li>
+</ul>
+</div>
+<div class="section" id="id85">
+<h3>Contributors<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Janet Midega</strong> (tjmidega&#64;yahoo.com)</p>
+<ul>
+<li><p>KEMRI-Wellcome Trust Research Programme, 80108 Kilifi, Kenya.</p></li>
+</ul>
+</li>
+<li><p><strong>Joseph Mwangangi</strong></p>
+<ul>
+<li><p>KEMRI-Wellcome Trust Research Programme, 80108 Kilifi, Kenya.</p></li>
+</ul>
+</li>
+<li><p><strong>Charles Mbogo</strong></p>
+<ul>
+<li><p>KEMRI-Wellcome Trust Research Programme, 80108 Kilifi, Kenya.</p></li>
+</ul>
+</li>
+<li><p><strong>Philip Bejon</strong></p>
+<ul>
+<li><p>KEMRI-Wellcome Trust Research Programme, 80108 Kilifi, Kenya.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id86">
+<h3>Study information<a class="headerlink" href="#id86" title="Permalink to this headline">¶</a></h3>
+<p>Kenyan specimens were obtained from villages located in Kilifi County near the Kenyan coast between 2000 and 2014.
+All <em>Anopheles</em> mosquito sampling was conducted indoors using CDC light traps which were hung at 6pm and collected at 6am the following morning during the rainy season in September.
+Specimens were stored in 80% ethanol.
+All specimens contributed to the project were identified as <em>An. gambiae</em> using the species complex diagnostic assay of <span id="id87">[]</span>
+<em>An. gambiae</em>, <em>An. funestus</em>,  <em>An. arabiensis</em>, <em>An. merus</em> were present at sampling locations
+Sporozoite rates for the area during previous studies were 1.47% <span id="id88">[]</span>.</p>
+</div>
+<div class="section" id="id89">
+<h3>Publications and resources<a class="headerlink" href="#id89" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id90">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="mali-2">
+<h2>Mali (2)<a class="headerlink" href="#mali-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id91">
+<h3>Sample sets<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-ML-A</p></li>
+</ul>
+</div>
+<div class="section" id="id92">
+<h3>Contributors<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Mamadou B. Coulibaly</strong></p>
+<ul>
+<li><p>Malaria Research and Training Centre (MRTC), Faculty of Medicine and Dentistry, University of Mali, BP: E 423 Bamako, Mali.</p></li>
+</ul>
+</li>
+<li><p><strong>Amadou Guindo</strong></p>
+<ul>
+<li><p>Malaria Research and Training Centre (MRTC), Faculty of Medicine and Dentistry, University of Mali, BP: E 423 Bamako, Mali.</p></li>
+</ul>
+</li>
+<li><p><strong>Sidy Doumbia</strong></p>
+<ul>
+<li><p>Malaria Research and Training Centre (MRTC), Faculty of Medicine and Dentistry, University of Mali, BP: E 423 Bamako, Mali.</p></li>
+</ul>
+</li>
+<li><p><strong>Samantha O’Loughlin</strong> (s.oloughlin&#64;imperial.ac.uk)</p>
+<ul>
+<li><p>Department of Life Sciences, Imperial College, Silwood Park, Ascot, Berkshire SL5 7PY, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>Austin Burt</strong></p>
+<ul>
+<li><p>Department of Life Sciences, Imperial College, Silwood Park, Ascot, Berkshire SL5 7PY, UK.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id93">
+<h3>Study information<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h3>
+<p>Collections were made in four villages in the Koulikoro region; Tieneguebougou (12.810, -8.080) approximately 20 km north of Bamako, and Kababougou (12.890, -8.150), Ouassorola (12.900, -8.160), Sogolombougou (12.880, -8.140), approximately 30 km north of Bamako.
+The collections were made in August 2014 by human landing catch and pyrethrum spray catch.
+Both <em>An. gambiae</em> and <em>An. coluzzii</em> <span id="id94">[]</span> were collected.
+Specimens were stored in 80% ethanol.</p>
+</div>
+<div class="section" id="id95">
+<h3>Publications and resources<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>https://targetmalaria.org/</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="mali-3">
+<h2>Mali (3)<a class="headerlink" href="#mali-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id96">
+<h3>Sample sets<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-ML-B</p></li>
+</ul>
+</div>
+<div class="section" id="id97">
+<h3>Contributors<a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Mamadou B. Coulibaly</strong></p>
+<ul>
+<li><p>Malaria Research and Training Centre (MRTC), Faculty of Medicine and Dentistry, University of Mali, BP: E 423 Bamako, Mali.</p></li>
+</ul>
+</li>
+<li><p><strong>Moussa Keita</strong></p>
+<ul>
+<li><p>Malaria Research and Training Centre (MRTC), Faculty of Medicine and Dentistry, University of Mali, BP: E 423 Bamako, Mali.</p></li>
+</ul>
+</li>
+<li><p><strong>Cheick Traore</strong></p>
+<ul>
+<li><p>Malaria Research and Training Centre (MRTC), Faculty of Medicine and Dentistry, University of Mali, BP: E 423 Bamako, Mali.</p></li>
+</ul>
+</li>
+<li><p><strong>Nora J. Besansky</strong> (nbesansk&#64;nd.edu)</p>
+<ul>
+<li><p>Eck Institute for Global Health &amp; Department of Biological Sciences, University of Notre Dame, IN 46556, USA.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id98">
+<h3>Study information<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h3>
+<p>Collections of indoor resting adults were made by spray catch from seven villages in the southern part of Mali in August-September 2004: Banambani (12.800, -8.050), Bancoumana (12.200, -8.200), Douna (13.210, -5.900), Fanzana (13.200, -6.130), Kela (11.880, -8.450), Moribobougou (12.690, -7.870) and N’Gabakoro (12.680, -7.840).
+Specimens were sorted morphologically to <em>An. gambiae</em> s.l..
+Ovaries of half-gravid females were dissected and placed in numbered individual micro-tubes containing modified Carnoy’s solution (1:3 glacial acetic acid: 100% ethanol).
+Carcasses were placed in correspondingly numbered micro-tubes over desiccant.
+Genomic DNA was isolated from individual mosquitoes using one of the following: DNeasy Extraction Kit (Qiagen, Valencia, CA), Puregene kit (Gentra Systems, Inc., Minneapolis, MN), DNAzol kit (Molecular Research Center, Inc., Cincinnati, OH.) or Easy-DNA kit (Invitrogen, Carlsbad, CA).
+<em>An. gambiae</em> s.s. and its molecular forms were identified using one of two rDNA-based PCR/RFLP assays <span id="id99">[]</span>.
+Ovaries from specimens of the desired species were subject to polytene chromosome analysis.</p>
+</div>
+<div class="section" id="id100">
+<h3>Publications and resources<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id101">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="malawi">
+<h2>Malawi<a class="headerlink" href="#malawi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id102">
+<h3>Sample sets<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-MW</p></li>
+</ul>
+</div>
+<div class="section" id="id103">
+<h3>Contributors<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Robert McCann</strong></p>
+<ul>
+<li><p>College of Medicine, University of Malawi, Blantyre, Malawi.</p></li>
+<li><p>Laboratory of Entomology, Wageningen University and Research, Wageningen, The Netherlands.</p></li>
+<li><p>Center for Vaccine Development and Global Health, University of Maryland School of Medicine, Baltimore, USA.</p></li>
+</ul>
+</li>
+<li><p><strong>Themba Mzilahowa</strong></p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+<li><p>Malawi-Liverpool Wellcome Trust Clinical Research Programme, Blantyre, Malawi.</p></li>
+<li><p>Malaria Alert Centre (MAC), P/ Bag 360, Chichiri, Blantyre 3, Malawi.</p></li>
+</ul>
+</li>
+<li><p><strong>Alinune Kabaghe</strong></p>
+<ul>
+<li><p>College of Medicine, University of Malawi, Blantyre, Malawi.</p></li>
+</ul>
+</li>
+<li><p><strong>Willem Takken</strong></p>
+<ul>
+<li><p>Laboratory of Entomology, Wageningen University and Research, Wageningen, The Netherlands.</p></li>
+</ul>
+</li>
+<li><p><strong>Martin J. Donnelly</strong> (Martin.Donnelly&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+<li><p>Parasites and Microbes Programme, Wellcome Sanger Institute, Hinxton, Cambridge CB10 1SA, UK.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id104">
+<h3>Study information<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h3>
+<p>Specimens were obtained from villages within the catchment of the Majete Malaria Project, Chikhwawa District, Malawi (-15.933, 34.755) <span id="id105">[]</span>.
+Mosquitoes were collected indoors and outdoors by Suna light trap from April through August 2015.
+Chickhwawa District is an area with perennial and intense malaria transmission <span id="id106">[]</span>.
+All specimens were  <em>An. arabiensis</em> <span id="id107">[]</span>
+Specimens were stored over silica and DNA was extracted using the Qiagen plate protocol.</p>
+</div>
+<div class="section" id="id108">
+<h3>Publications and resources<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id109">[]</span> for further details of this study.</p></li>
+<li><p>https://mesamalaria.org/mesa-track/majete-integrated-malaria-control-project-mmp</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="mayotte-island">
+<h2>Mayotte Island<a class="headerlink" href="#mayotte-island" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id110">
+<h3>Sample sets<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-FR</p></li>
+</ul>
+</div>
+<div class="section" id="id111">
+<h3>Contributors<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Gilbert Le Goff</strong> (gilbert.legoff&#64;ird.fr)</p>
+<ul>
+<li><p>UMR MIVEGEC, Univ. Montpellier, CNRS, IRD, Montpellier, France.</p></li>
+</ul>
+</li>
+<li><p><strong>Vincent Robert</strong> (vincent.robert&#64;ird.fr)</p>
+<ul>
+<li><p>UMR MIVEGEC, Univ. Montpellier, CNRS, IRD, Montpellier, France.</p></li>
+</ul>
+</li>
+<li><p><strong>Maryam Kamali</strong></p>
+<ul>
+<li><p>Department of Medical Entomology and Parasitology, Faculty of Medical Sciences, Tarbiat Modares University, Tehran, Iran.</p></li>
+<li><p>Department of Entomology, Virginia Tech, Blacksburg, Virginia 24061, USA.</p></li>
+</ul>
+</li>
+<li><p><strong>Igor Sharakhov</strong> (igor&#64;vt.edu)</p>
+<ul>
+<li><p>Department of Entomology, Virginia Tech, Blacksburg, Virginia 24061, USA.</p></li>
+<li><p>Department of Genetics and Cell Biology, Tomsk State University, Tomsk 634050, Russia.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id112">
+<h3>Study information<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h3>
+<p>Collections were taken from multiple sites on the island of Mayotte.
+Samples were collected as larvae during March-April 2011 in temporary pools by dipping.
+Sites included Mtsanga Charifou (-12.991, 45.156) and Combani (-12.779, 45.143).
+Larvae were stored in 80% ethanol prior to DNA extraction.
+All specimens contributed were <em>An. gambiae</em> <span id="id113">[]</span>.
+Samples were identified as males or females by the sequencing read coverage of the X chromosome using LookSeq <span id="id114">[]</span>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="mozambique">
+<h2>Mozambique<a class="headerlink" href="#mozambique" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id115">
+<h3>Sample sets<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-MZ</p></li>
+</ul>
+</div>
+<div class="section" id="id116">
+<h3>Contributors<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>João Pinto</strong> (jpinto&#64;ihmt.unl.pt)</p>
+<ul>
+<li><p>Global Health and Tropical Medicine, GHTM, Instituto de Higiene e Medicina Tropical, IHMT, Universidade Nova de Lisboa, UNL, Rua da Junqueira 100, 1349–008 Lisbon, Portugal.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id117">
+<h3>Study information<a class="headerlink" href="#id117" title="Permalink to this headline">¶</a></h3>
+<p>Mosquito samples were collected in Furvela (-23.716, 35.299), Mozambique, by CDC light traps between December 2003 and April 2004.
+Specimens were stored on silica gel and DNA was extracted according to <span id="id118">[]</span>.
+Contributed specimens consisted of <em>An. gambiae</em> individuals identified according to <span id="id119">[]</span>.
+Furvela is a rural village located in Inhambane Province, where malaria is transmitted mainly by <em>An. gambiae</em> and <em>An. funestus</em> <span id="id120">[]</span>.
+<em>An. arabiensis</em> and <em>An. merus</em> are also found at low frequency.
+Sporozoite rates around 4% have been reported in <em>An. gambiae</em> from Furvela <span id="id121">[]</span>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="tanzania">
+<h2>Tanzania<a class="headerlink" href="#tanzania" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id122">
+<h3>Sample sets<a class="headerlink" href="#id122" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-TZ</p></li>
+</ul>
+</div>
+<div class="section" id="id123">
+<h3>Contributors<a class="headerlink" href="#id123" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Bilali Kabula</strong> (Bika72&#64;gmail.com)</p>
+<ul>
+<li><p>National Institute for Medical Research (NIMR), Dar es Salaam, Tanzania.</p></li>
+</ul>
+</li>
+<li><p><strong>Johnson Matowo</strong></p>
+<ul>
+<li><p>Kilimanjaro Christian Medical University College, Tumaini University, Makumira, Tanzania.</p></li>
+</ul>
+</li>
+<li><p><strong>David Weetman</strong> (david.weetman&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+</ul>
+</li>
+<li><p><strong>Martin J. Donnelly</strong> (Martin.Donnelly&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+<li><p>Parasites and Microbes Programme, Wellcome Sanger Institute, Hinxton, Cambridge CB10 1SA, UK.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id124">
+<h3>Study information<a class="headerlink" href="#id124" title="Permalink to this headline">¶</a></h3>
+<p>Tanzanian samples were collected from four distinct locations.
+Moshi samples came from lower Mabogini (-3.400, 37.350), rice fields near lower Moshi on the southern slope of Mount Kilimanjaro, a region shown to have increasing resistance to pyrethroids <span id="id125">[]</span>.
+Mosquitoes were collected as larvae, during the rice growing season in August-September 2012, raised to adults and females bioassayed in WHO tubes for one hour with 0.05% lambda cyhalothrin.
+Alive and dead mosquitoes were preserved over silica.
+In Tanzanian samples screened in Kabula et al. <span id="id126">[]</span>, Moshi was the most pyrethroid resistant population, they were found to be completely DDT susceptible, only in one out of 642 mosquitoes assayed by <span id="id127">[]</span> was found to carry a <em>kdr</em> resistance mutation (Vgsc-995F).</p>
+<p>Tarime collections took place in the village of Komaswa (-1.417, 34.183) about 410 km north west of Moshi, during August 2012.
+Mosquito larvae were collected, raised to adults and females bioassayed with a range of insecticides in WHO tubes for one hour finding almost complete multi-insecticide susceptibility: permethrin (100% mortality), lambda cyhalothrin (97%), fenitrothion (100%), DDT (100%) and bendiocarb (100%) <span id="id128">[]</span>.</p>
+<p>Muheza samples were collected from Zeneti village (-5.217, 38.650), northeast Tanzania.
+Malaria is intense and perennial with transmission peaking after the rainy season in May and June <span id="id129">[]</span>.
+Mosquitoes were sampled between November 2012 and May 2013.
+Indoor resting collections were used to obtain live females for deltamethrin susceptibility testing and pyrethrum spray catches were used for mosquitoes that were collected for blood meal analysis.
+Collections were conducted between 06:00 and 09:00 from randomly selected houses.
+Live mosquitoes collected for susceptibility testing were provided with 10% glucose solution and transported to the field insectary.
+Mosquitoes were sorted and morphologically identified to species, carcasses were stored individually over desiccant for laboratory processing.</p>
+<p>Muleba (1.750, 31.667), the final collection region, is in the North-western part of Tanzania.
+The district is known to be a malaria epidemic prone area with unstable transmission of varying seasonality.
+The highest peak of malaria transmission is usually reached between May-July and November-January, which results from proceeding rain seasons.
+There have been malaria vector control efforts since 2007 when indoor residual spraying using lambda cyhalothrin was introduced.
+Insecticide resistance in this district is coupled with high frequency of <em>kdr</em> pyrethroid target site mutations in the <em>An. gambiae</em> s.s. population (<span id="id130">[]</span>, <span id="id131">[]</span>).
+Sampling was conducted over six months, which include both dry and rainy season and covers 6 villages selected to represent all major ecological systems in the district.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="the-gambia-1">
+<h2>The Gambia (1)<a class="headerlink" href="#the-gambia-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id132">
+<h3>Sample sets<a class="headerlink" href="#id132" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-GM-A</p></li>
+</ul>
+</div>
+<div class="section" id="id133">
+<h3>Contributors<a class="headerlink" href="#id133" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Davis C. Nwakanma</strong></p>
+<ul>
+<li><p>Medical Research Council Unit, The Gambia at the London School of Hygiene &amp; Tropical Medicine (MRCG at LSHTM), Banjul, The Gambia.</p></li>
+</ul>
+</li>
+<li><p><strong>Musa Jawara</strong></p>
+<ul>
+<li><p>Medical Research Council Unit, The Gambia at the London School of Hygiene &amp; Tropical Medicine (MRCG at LSHTM), Banjul, The Gambia.</p></li>
+</ul>
+</li>
+<li><p><strong>David Conway</strong></p>
+<ul>
+<li><p>London School of Hygiene and Tropical Medicine, Keppel Street, Bloomsbury, London WC1E 7HT, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>Martin J. Donnelly</strong> (Martin.Donnelly&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+<li><p>Parasites and Microbes Programme, Wellcome Sanger Institute, Hinxton, Cambridge CB10 1SA, UK.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id134">
+<h3>Study information<a class="headerlink" href="#id134" title="Permalink to this headline">¶</a></h3>
+<p>Indoor resting female mosquitoes were collected by pyrethrum spray catch from four hamlets around Njabakunda (13.55, -15.90), North Bank Region, The Gambia between August and October 2011.
+The four hamlets were Maria Samba Nyado, Sare Illo Buya, Kerr Birom Kardo, and Kerr Sama Kuma; all are within 1 km of each other.
+This is an area of unusually high hybridization rates between <em>An. gambiae</em> s.s. and <em>An. coluzzii</em> <span id="id135">[]</span>.
+Njabakunda village is approximately 30km to the west of Farafenni town and 4km away from the Gambia River.
+The vegetation is a mix of open savannah woodland and farmland.
+With apparent high gene-flow in the region, it is problematic to assign species to these samples.</p>
+</div>
+<div class="section" id="id136">
+<h3>Publications and resources<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id137">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="the-gambia-2">
+<h2>The Gambia (2)<a class="headerlink" href="#the-gambia-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id138">
+<h3>Sample sets<a class="headerlink" href="#id138" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-GM-B</p></li>
+</ul>
+</div>
+<div class="section" id="id139">
+<h3>Contributors<a class="headerlink" href="#id139" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Beniamino Caputo</strong> (beniamino.caputo&#64;uniroma1.it)</p>
+<ul>
+<li><p>Istituto Pasteur Italia–Fondazione Cenci Bolognetti, Dipartimento di Sanita Pubblica e Malattie Infettive, Università di Roma SAPIENZA, Rome, Italy.</p></li>
+</ul>
+</li>
+<li><p><strong>Musa Jawara</strong></p>
+<ul>
+<li><p>Medical Research Council Unit, The Gambia at the London School of Hygiene &amp; Tropical Medicine (MRCG at LSHTM), Banjul, The Gambia.</p></li>
+</ul>
+</li>
+<li><p><strong>Davis C. Nwakanma</strong></p>
+<ul>
+<li><p>Medical Research Council Unit, The Gambia at the London School of Hygiene &amp; Tropical Medicine (MRCG at LSHTM), Banjul, The Gambia.</p></li>
+</ul>
+</li>
+<li><p><strong>David Conway</strong></p>
+<ul>
+<li><p>London School of Hygiene and Tropical Medicine, Keppel Street, Bloomsbury, London WC1E 7HT, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>Alessandra della Torre</strong> (alessandra.dellatorre&#64;uniroma1.it)</p>
+<ul>
+<li><p>Istituto Pasteur Italia–Fondazione Cenci Bolognetti, Dipartimento di Sanita Pubblica e Malattie Infettive, Università di Roma SAPIENZA, Rome, Italy.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id140">
+<h3>Study information<a class="headerlink" href="#id140" title="Permalink to this headline">¶</a></h3>
+<p>Specimens were collected along the Gambia River from the western coastal region of The Gambia <span id="id141">[]</span>, in August 2006.
+<em>An. gambiae</em> and <em>An. coluzzii</em> specimens were identified to species following the PCR-RFLP protocol <span id="id142">[]</span> using DNA extracted from the mosquito leg.
+Only <em>An. coluzzii</em> specimens were collected from villages of Tankular (13.417, -16.033) and Kalataba (13.550, -15.617).
+<em>An. gambiae</em> and <em>An. coluzzii</em> specimens were found in sympatry and collected from villages of Yallal Tankonjala (13.550, -15.700), Sare Samba Sowe (13.583, -15.900) and Hamdalai (13.567, -16.0167).
+PCR-RFLP protocol also revealed the presence of mosquitoes with hybrid <em>An. gambiae</em>/<em>An. coluzzii</em> genotype in Yallal Tankonjala and Sare Samba Sowe.
+Collections of indoor daytime-resting half gravid mosquitoes were carried out mainly in human dwellings and, in few cases, in animal shelters.
+Collections were carried out by pyrethroid and/or paper-cup mouth aspirators from 12 AM to sunset, and kept in vials with desiccant.
+Ovaries were dissected, maintained into Carnoy fixative (three parts pure ethanol:one part glacial acetic acid) and stored at -20C before polytene chromosome preparations <span id="id143">[]</span>
+Chromosome scoring was carried out under a phase‐contrast optical microscope.
+Paracentric inversion karyotypes were scored according to the nomenclature and conventions of <span id="id144">[]</span> and <span id="id145">[]</span>.</p>
+</div>
+<div class="section" id="id146">
+<h3>Publications and resources<a class="headerlink" href="#id146" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id147">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="the-gambia-3">
+<h2>The Gambia (3)<a class="headerlink" href="#the-gambia-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id148">
+<h3>Sample sets<a class="headerlink" href="#id148" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-GM-C</p></li>
+</ul>
+</div>
+<div class="section" id="id149">
+<h3>Contributors<a class="headerlink" href="#id149" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Danica Fabrigar</strong></p>
+<ul>
+<li><p>Department of Zoology, University of Oxford, Oxford OX1 3SZ, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>Musa Jawara</strong></p>
+<ul>
+<li><p>Medical Research Council Unit, The Gambia at the London School of Hygiene &amp; Tropical Medicine (MRCG at LSHTM), Banjul, The Gambia.</p></li>
+</ul>
+</li>
+<li><p><strong>Steve Lindsay</strong></p>
+<ul>
+<li><p>Department of Biosciences, Durham University, Durham, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>Umberto D’Alessandro</strong></p>
+<ul>
+<li><p>Medical Research Council Unit, The Gambia at the London School of Hygiene &amp; Tropical Medicine (MRCG at LSHTM), Banjul, The Gambia.</p></li>
+</ul>
+</li>
+<li><p><strong>H. Charles J. Godfray</strong> (charles.godfray&#64;oxfordmartin.ox.ac.uk)</p>
+<ul>
+<li><p>Department of Zoology, University of Oxford, Oxford OX1 3SZ, UK.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id150">
+<h3>Study information<a class="headerlink" href="#id150" title="Permalink to this headline">¶</a></h3>
+<p>Adult mosquitoes were collected at Wali Kunda in the rural, central river region of The Gambia (13.567, -14.917).
+The area is 180 km from the sea, on the south bank of the River Gambia, in flat Sudan savannah with a small fishing village (and a research field station) as well as rice fields and swamplands.
+The dominant <em>Anopheles</em> vector species in this region is <em>An. coluzzii</em> <span id="id151">[]</span>.
+Mosquitoes were captured using human landing collections both inside and outside huts for 19 days in October and November 2012.
+Mosquitoes were stored in RNAlater or dried over silica gel and stored at -20C.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="uganda">
+<h2>Uganda<a class="headerlink" href="#uganda" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id152">
+<h3>Sample sets<a class="headerlink" href="#id152" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-UG</p></li>
+</ul>
+</div>
+<div class="section" id="id153">
+<h3>Contributors<a class="headerlink" href="#id153" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Henry D. Mawejje</strong></p>
+<ul>
+<li><p>Infectious Diseases Research Collaboration, 2C Nakasero Hill Road, PO Box 7475, Kampala, Uganda.</p></li>
+</ul>
+</li>
+<li><p><strong>Martin J. Donnelly</strong> (Martin.Donnelly&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+<li><p>Parasites and Microbes Programme, Wellcome Sanger Institute, Hinxton, Cambridge CB10 1SA, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>David Weetman</strong> (david.weetman&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+</ul>
+</li>
+<li><p><strong>Craig S. Wilding</strong> (C.S.Wilding&#64;ljmu.ac.uk)</p>
+<ul>
+<li><p>School of Biological and Environmental Sciences, Liverpool John Moores University, Liverpool L3 3AF, UK.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id154">
+<h3>Study information<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h3>
+<p>Specimens were obtained from two locations in Uganda: Nagongera, 30km to the North of Lake Victoria near the border with Kenya, and Kihihi, in the very South-West of the country.
+In Nagongera, Tororo District (0.77, 34.026), mosquitoes were collected by CDC light trap, resting and window trap collections, during October 2012.
+This is an area of intense perennial malaria transmission <span id="id155">[]</span>.
+Additional details of vector population bionomics may be found in <span id="id156">[]</span>.
+Specimens were stored in 80% ethanol and DNA was extracted using the Qiagen plate protocol.
+In Kihihi subcounty, Kanungu District (-0.751, 29.701), resting mosquitoes were collected during October and November 2012.
+Kihihi is located in an  upland area with seasonal malaria transmission <span id="id157">[]</span>.
+Specimens were stored in 80% ethanol and DNA was extracted using the Qiagen plate protocol.
+All specimens from both collections were <em>An. gambiae</em> <span id="id158">[]</span>.</p>
+</div>
+<div class="section" id="id159">
+<h3>Publications and resources<a class="headerlink" href="#id159" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>See <span id="id160">[]</span> for further details of this study.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="colony-crosses">
+<h2>Colony crosses<a class="headerlink" href="#colony-crosses" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id161">
+<h3>Sample sets<a class="headerlink" href="#id161" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AG1000G-X</p></li>
+</ul>
+</div>
+<div class="section" id="id162">
+<h3>Contributors<a class="headerlink" href="#id162" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Craig S. Wilding</strong> (C.S.Wilding&#64;ljmu.ac.uk)</p>
+<ul>
+<li><p>School of Biological and Environmental Sciences, Liverpool John Moores University, Liverpool L3 3AF, UK.</p></li>
+</ul>
+</li>
+<li><p><strong>David Weetman</strong> (david.weetman&#64;lstmed.ac.uk)</p>
+<ul>
+<li><p>Department of Vector Biology, Liverpool School of Tropical Medicine, Liverpool, United Kingdom.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id163">
+<h3>Study information<a class="headerlink" href="#id163" title="Permalink to this headline">¶</a></h3>
+<p>15 crosses were contributed to Ag1000G phase 3, 11 of which were previously released in Ag1000G phase 2.
+Crosses were generated using parents from eight different colonies: G3 (MRA-112); Kisumu (MRA-762); Pimperena (canonical representative of <em>An. gambiae</em> species; MRA-861); Ghana (recent colony of <em>An. coluzzii</em> from Okyereko, southern Ghana <span id="id164">[]</span>; Mali-NIH (canonical representative of <em>An. coluzzii</em> species; Niono, MRA-860); (P)Akron (Benin, MRA-913); Nagongera (Tororo, Uganda); and Tiassalé (southern Côte d’Ivoire <span id="id165">[]</span>.
+The cross family labels, e.g. “29-2”, are identifiers used for each of the crosses within the contributor project and have no special meaning.</p>
+<p><em>Anopheles gambiae</em> is a swarm-mater and crosses were therefore undertaken in mixed groups involving 4-10 females from a single colony with 1-4 males from each from a different colony in plastic cups covered with netting with 10% sugar water provided ad libitum.
+Females were fed on human blood. After 3 days, males were removed and individually preserved in 95% ethanol.
+Gravid or half-gravid females were then removed and placed in 1.5ml Eppendorf tubes.
+Females that did not appear gravid were given a second blood meal before placing in Eppendorf tubes for egg laying.
+Following egg deposition, females were removed and stored in tubes containing ethanol for subsequent DNA extraction.
+Eggs were floated in clear plastic trays (15x10x5cm) and, following hatching, larvae were raised on finely-ground fish food (Tetramin).
+Trays were checked daily and pupae were placed individually into small, labelled centrifuge tubes.
+Offspring were removed on eclosion and stored in individual tubes containing ethanol.
+DNA was extracted from parents and offspring using the Qiagen DNeasy kit.</p>
+<p>A preliminary assessment of the father of each cross was obtained by genotyping seven microsatellite loci in the mother, potential fathers and five or six offspring.
+Where possible, the colony of origin of each father was established using individual clustering of the mothers and fathers in BAPS version 5.2, with cluster identity mapped to colony of origin via the mothers (for which the colony was known).
+The four crosses that are novel to phase 3: B5, K2, K4 and K6, required further analysis to ascertain the true father of each cross, given mother and offspring.
+For each cross for which the father was in doubt, the list of potential parental pairs was determined.
+For each of these pairs Mendelian error was computed for every sample of the progeny and the median value (among samples) was plotted.
+In these four crosses (B5, K2, K4 and K6) one pair yielded median Mendelian errors significantly lower for every autosome than all other pairs, identifying the parsimonious parents.
+Two of the novel crosses, K4 and K6, were found to be fathered by the same male, <code class="docutils literal notranslate"><span class="pre">AC0398</span></code>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="id166"></span></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ag3/examples/cnv-explore.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Exploring copy number variation (CNV)</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By MalariaGEN<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

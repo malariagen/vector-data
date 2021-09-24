@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ag3 sequencing and variant calling methods &#8212; MalariaGEN vector data user guide</title>
+    <title>Ag3 methods &#8212; MalariaGEN vector data user guide</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -139,27 +139,39 @@ commentsRunWhenDOMLoaded(addUtterances);
    Introduction to Ag3
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cloud.html">
-   Ag3 cloud data access
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="data.html">
+   Ag3 data availability and methods
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="download.html">
-   Ag3 data downloads
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Ag3 sequencing and variant calling methods
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloud.html">
+     Ag3 cloud data access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="download.html">
+     Ag3 data downloads
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Ag3 methods
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="examples.html">
    Ag3 analysis examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -190,6 +202,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partners and community
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../studies-ag1000g.html">
+   Ag1000G partner studies
+  </a>
  </li>
 </ul>
 
@@ -278,6 +302,11 @@ commentsRunWhenDOMLoaded(addUtterances);
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partner-studies-and-population-sampling">
+   Partner studies and population sampling
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#whole-genome-sequencing">
    Whole-genome sequencing
@@ -429,30 +458,30 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="ag3-sequencing-and-variant-calling-methods">
-<h1>Ag3 sequencing and variant calling methods<a class="headerlink" href="#ag3-sequencing-and-variant-calling-methods" title="Permalink to this headline">¶</a></h1>
-<p>This page contains a brief description of sequencing and variant
-calling methods used in phase 3 of the <em>Anopheles gambiae</em> 1000
-Genomes Project (Ag1000G). This is a preliminary version of methods
-that will be released in final form as part of a future publication by
-the Ag1000G Consortium.</p>
+  <div class="section" id="ag3-methods">
+<h1>Ag3 methods<a class="headerlink" href="#ag3-methods" title="Permalink to this headline">¶</a></h1>
+<p>This page contains a description of methods used in phase 3 of the <em>Anopheles gambiae</em> 1000 Genomes Project (Ag1000G).</p>
+<div class="section" id="partner-studies-and-population-sampling">
+<h2>Partner studies and population sampling<a class="headerlink" href="#partner-studies-and-population-sampling" title="Permalink to this headline">¶</a></h2>
+<p>Ag1000G phase 3 includes data from 3,081 individual mosquitoes, including 2,784 mosquitoes collected from natural populations in 19 countries.
+Three species are represented within the cohort: <em>An. gambiae</em>, <em>An. coluzzii</em> and <em>An. arabiensis</em>.
+Further details of studies which contributed these samples and specimen collection locations and methods are provided in the <a class="reference internal" href="../studies-ag1000g.html"><span class="doc">Ag1000G partner studies</span></a> page.</p>
+</div>
 <div class="section" id="whole-genome-sequencing">
 <h2>Whole-genome sequencing<a class="headerlink" href="#whole-genome-sequencing" title="Permalink to this headline">¶</a></h2>
 <p>All library preparation and sequencing was performed at the Wellcome
-Sanger Institute. Paired-end multiplex libraries were prepared using
+Sanger Institute.
+Paired-end multiplex libraries were prepared using
 the manufacturer’s protocol, with the exception that genomic DNA was
 fragmented using Covaris Adaptive Focused Acoustics rather than
-nebulization. Multiplexes comprised 12 tagged individual mosquitoes
-and three lanes of sequencing were generated for each multiplex to
-even out variations in yield between sequencing runs. Cluster
-generation and sequencing were undertaken according to the
-manufacturer’s protocol for paired-end sequence reads with insert size
-in the range 100–200 bp. 4,693 individual mosquitoes were sequenced
-in total, of which 3,130 were sequenced using the Illumina HiSeq 2000
-platform and 1,563 were sequenced using the Illumina HiSeq X platform.
-All individuals were sequenced to a target coverage of 30×.  The HiSeq
-2000 sequencing runs generated 100 bp paired-end reads, and the HiSeq
-X sequencing runs generated 150 bp paired-end reads.</p>
+nebulization.
+Multiplexes comprised 12 tagged individual mosquitoes and three lanes of sequencing were generated for each multiplex to
+even out variations in yield between sequencing runs.
+Cluster generation and sequencing were undertaken according to the
+manufacturer’s protocol for paired-end sequence reads with insert size in the range 100–200 bp.
+4,693 individual mosquitoes were sequenced in total, of which 3,130 were sequenced using the Illumina HiSeq 2000 platform and 1,563 were sequenced using the Illumina HiSeq X platform.
+All individuals were sequenced to a target coverage of 30×.
+The HiSeq 2000 sequencing runs generated 100 bp paired-end reads, and the HiSeq X sequencing runs generated 150 bp paired-end reads.</p>
 </div>
 <div class="section" id="alignment-and-snp-calling">
 <h2>Alignment and SNP calling<a class="headerlink" href="#alignment-and-snp-calling" title="Permalink to this headline">¶</a></h2>

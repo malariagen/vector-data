@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -86,7 +86,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ag3 cloud data access" href="cloud.html" />
+    <link rel="next" title="Ag3 data availability and methods" href="data.html" />
     <link rel="prev" title="MalariaGEN vector data user guide" href="../landing-page.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -139,27 +139,39 @@ commentsRunWhenDOMLoaded(addUtterances);
    Introduction to Ag3
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cloud.html">
-   Ag3 cloud data access
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="data.html">
+   Ag3 data availability and methods
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="download.html">
-   Ag3 data downloads
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="methods.html">
-   Ag3 sequencing and variant calling methods
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloud.html">
+     Ag3 cloud data access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="download.html">
+     Ag3 data downloads
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="methods.html">
+     Ag3 methods
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="examples.html">
    Ag3 analysis examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -190,6 +202,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partners and community
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../studies-ag1000g.html">
+   Ag1000G partner studies
+  </a>
  </li>
 </ul>
 
@@ -306,8 +330,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contributing-studies">
-   Contributing studies
+  <a class="reference internal nav-link" href="#partner-studies">
+   Partner studies
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -352,16 +376,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>This page provides an introduction to open data resources released as part of the third phase of the Ag1000G project, known as “Ag3” for short. We hope the data from Ag3 will be a valuable resource for research and surveillance of malaria vectors. If you have any questions about this guide or how to use the data, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions/new">start a new discussion</a> on the malariagen/vector-open-data repo on GitHub. If you find any bugs, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/issues/new/choose">raise an issue</a>.</p>
 <div class="section" id="terms-of-use">
 <h2>Terms of use<a class="headerlink" href="#terms-of-use" title="Permalink to this headline">¶</a></h2>
-<p>Data from Ag3 are released openly and can be downloaded and analysed for any purpose. The data have been released prior to publication by the Ag1000G Consortium, and are currently subject to a publication embargo described further in the <a class="reference external" href="https://www.malariagen.net/data/terms-use/ag1000g-terms-use">Ag1000G terms of use</a>. If you have any questions about the terms of use, please email <a class="reference external" href="mailto:data&#37;&#52;&#48;malariagen&#46;net">data<span>&#64;</span>malariagen<span>&#46;</span>net</a>.</p>
+<p>Data from Ag3 are released openly and can be downloaded and analysed for any purpose. The data have been released prior to publication by the Ag1000G Consortium, and are currently subject to a publication embargo described further in the <a class="reference external" href="https://www.malariagen.net/data/terms-use/ag1000g-terms-use">Ag1000G terms of use</a>. If you have any questions about the terms of use, please email data&#64;malariagen.net.</p>
 </div>
-<div class="section" id="contributing-studies">
-<h2>Contributing studies<a class="headerlink" href="#contributing-studies" title="Permalink to this headline">¶</a></h2>
-<p>The Ag1000G project is coordinated by a consortium of partners from a range
-of different research institutions and countries. This includes consortium members
-who are carrying out independent research studies in malaria-endemic regions, and
-who have contributed mosquito specimens or mosquito DNA samples collected in
-the course of their own research. In total, 26 studies contributed samples to Ag3, including wild-caught specimens from 19 countries.</p>
-<p>For further information about these contributing studies, the researchers involved, and the collection sites and methods, please see the <a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/ag1000g-phase3-contributing-studies.pdf">contributing studies document</a>.</p>
+<div class="section" id="partner-studies">
+<h2>Partner studies<a class="headerlink" href="#partner-studies" title="Permalink to this headline">¶</a></h2>
+<p>The Ag1000G project is coordinated by a consortium of partners from a range of different research institutions and countries. This includes consortium members who are carrying out independent research studies in malaria-endemic regions, and who have contributed mosquito specimens or mosquito DNA samples collected in the course of their own research. In total, 26 studies contributed samples to Ag3, including wild-caught specimens from 19 countries. For further information about these contributing studies, the researchers involved, and the collection sites and methods, see the <a class="reference internal" href="../studies-ag1000g.html"><span class="doc">Ag1000G partner studies</span></a> page.</p>
 </div>
 <div class="section" id="population-sampling">
 <h2>Population sampling<a class="headerlink" href="#population-sampling" title="Permalink to this headline">¶</a></h2>
@@ -385,12 +404,12 @@ the course of their own research. In total, 26 studies contributed samples to Ag
 <p>The samples included in Ag3 have been organised into 28 sample sets. Each of these sample sets corresponds to a set of mosquito specimens from a contributing study. Depending on your objectives, you may want to access data from only specific sample sets, or all sample sets. Here is a list of the sample sets included in Ag3:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q <span class="nv">malariagen_data</span><span class="o">==</span><span class="m">0</span>.8.0
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen_data
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell tag_thebe-init docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
 <span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
@@ -1036,10 +1055,10 @@ the course of their own research. In total, 26 studies contributed samples to Ag
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="cloud.html" title="next page">
+        <a class="right-next" href="data.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Ag3 cloud data access</p>
+                <p class="prevnext-title">Ag3 data availability and methods</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -86,7 +86,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ag3 sequencing and variant calling methods" href="methods.html" />
+    <link rel="next" title="Ag3 methods" href="methods.html" />
     <link rel="prev" title="Ag3 cloud data access" href="cloud.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -139,27 +139,39 @@ commentsRunWhenDOMLoaded(addUtterances);
    Introduction to Ag3
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cloud.html">
-   Ag3 cloud data access
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="data.html">
+   Ag3 data availability and methods
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Ag3 data downloads
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="methods.html">
-   Ag3 sequencing and variant calling methods
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloud.html">
+     Ag3 cloud data access
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Ag3 data downloads
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="methods.html">
+     Ag3 methods
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="examples.html">
    Ag3 analysis examples
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -190,6 +202,18 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Partners and community
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../studies-ag1000g.html">
+   Ag1000G partner studies
+  </a>
  </li>
 </ul>
 
@@ -434,7 +458,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">¶</a></h2>
 <p>Data in this release are organised into 28 sample sets. Each of these sample sets corresponds to a set of mosquito specimens contributed by a collaborating study. Depending on your objectives, you may want to download data from only specific sample sets, or all sample sets. For convenience there is a tab-delimited manifest file listing all sample sets in the release. Here is a direct download link for the sample set manifest:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/manifest.tsv">https://storage.googleapis.com/vo_agam_release/v3/manifest.tsv</a></p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/manifest.tsv</p></li>
 </ul>
 <p>The sample set manifest can also be downloaded via <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> to a directory on the local file system, e.g.:</p>
 <div class="cell tag_hide-output docutils container">
@@ -495,7 +519,7 @@ AG1000G-X	297
 <h3>Specimen collection metadata<a class="headerlink" href="#specimen-collection-metadata" title="Permalink to this headline">¶</a></h3>
 <p>Specimen collection metadata can be downloaded from GCS. E.g., here is the download link for the sample metadata for sample set AG1000G-BF-A:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/metadata/general/AG1000G-BF-A/samples.meta.csv">https://storage.googleapis.com/vo_agam_release/v3/metadata/general/AG1000G-BF-A/samples.meta.csv</a></p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/general/AG1000G-BF-A/samples.meta.csv</p></li>
 </ul>
 <p>Sample metadata for all sample sets can also be downloaded using <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>:</p>
 <div class="cell tag_hide-output docutils container">
@@ -538,8 +562,8 @@ AB0094-Cx,BF3-17,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
 <p>We have made a call for each specimen as to which species it belongs to (<em>Anopheles gambiae</em>, <em>Anopheles coluzzii</em>, <em>Anopheles arabiensis</em>) based on the genotypes of the samples. These calls were made from the sequence data, and there are cases where the species is not easy to determine. We report species calls using two methods, principal components analysis (PCA) and ancestry informative markers (AIMs).</p>
 <p>Species calls can be downloaded from GCS, e.g., for sample set AG1000G-BF-A:</p>
 <ul class="simple">
-<li><p>PCA species calls - <a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_pca.csv">https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_pca.csv</a></p></li>
-<li><p>AIM species calls - <a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_aim.csv">https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_aim.csv</a></p></li>
+<li><p>PCA species calls - https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_pca.csv</p></li>
+<li><p>AIM species calls - https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_aim.csv</p></li>
 </ul>
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system.</p>
 <p>Here are the first few rows of the AIM species calls for sample set AG1000G-BF-A:</p>
@@ -573,7 +597,7 @@ AB0094-Cx,0.986,0.002,gamb_colu,coluzzii
 <p>The raw sequence reads used in this data release can be downloaded from ENA. Note that for most samples there were multiple sequencing runs, and hence there are usually multiple ENA run accessions per sample. For most samples there were 3 sequencing runs, but some samples have 4 and some have a single sequencing run.</p>
 <p>To find the ENA run accessions for a given sample, first download the catalog of run accessions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_runs.csv">https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_runs.csv</a></p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_runs.csv</p></li>
 </ul>
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system. Inspect the file:</p>
 <div class="cell docutils container">
@@ -597,7 +621,7 @@ AR0004-C,ERR343468
 </div>
 </div>
 </div>
-<p>For example, the sequence reads for sample AR0001-C are available from three ENA accessions: ERR347035, ERR347047 and ERR352136. To download the sequence reads, visit the ENA website and search for these accessions. E.g., links to download sequence reads for run ERR352136 are available from this web page: <a class="reference external" href="https://www.ebi.ac.uk/ena/browser/view/ERR352136">https://www.ebi.ac.uk/ena/browser/view/ERR352136</a>. To download the FASTQ files for this run via <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
+<p>For example, the sequence reads for sample AR0001-C are available from three ENA accessions: ERR347035, ERR347047 and ERR352136. To download the sequence reads, visit the ENA website and search for these accessions. E.g., links to download sequence reads for run ERR352136 are available from this web page: https://www.ebi.ac.uk/ena/browser/view/ERR352136. To download the FASTQ files for this run via <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR352/ERR352136/ERR352136_1.fastq.gz
@@ -612,7 +636,7 @@ AR0004-C,ERR343468
 <h2>Sequence read alignments (BAM format)<a class="headerlink" href="#sequence-read-alignments-bam-format" title="Permalink to this headline">¶</a></h2>
 <p>Analysis-ready sequence read alignments are available in BAM format for all samples in the release and can be downloaded from ENA. A catalog file mapping sample identifiers to ENA accessions is available at this link:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_alignments.csv">https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_alignments.csv</a></p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_alignments.csv</p></li>
 </ul>
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system. Here are the first few rows:</p>
 <div class="cell docutils container">
@@ -636,7 +660,7 @@ AR0011-C,ERZ1695283
 </div>
 </div>
 </div>
-<p>Each row in this file provides a mapping from Ag1000G sample identifiers to ENA analysis accessions. To find links for downloading the data, visit the ENA website and search for the corresponding analysis accession. E.g., the analysis-ready BAM file for sample AR0001-C can be downloaded from this web page: <a class="reference external" href="https://www.ebi.ac.uk/ena/browser/view/ERZ1695275">https://www.ebi.ac.uk/ena/browser/view/ERZ1695275</a>. To download the BAM file via <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
+<p>Each row in this file provides a mapping from Ag1000G sample identifiers to ENA analysis accessions. To find links for downloading the data, visit the ENA website and search for the corresponding analysis accession. E.g., the analysis-ready BAM file for sample AR0001-C can be downloaded from this web page: https://www.ebi.ac.uk/ena/browser/view/ERZ1695275. To download the BAM file via <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget ftp://ftp.sra.ebi.ac.uk/vol1/ERZ169/ERZ1695275/AR0001-C.bam
@@ -718,7 +742,7 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </ul>
 <p>Each filter is available as a set of VCF files, one per chromosome arm. E.g., here is the direct download link for the gamb_colu_arab filters on chromosome arm 3R:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3R_sitefilters.vcf.gz">https://storage.googleapis.com/vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3R_sitefilters.vcf.gz</a></p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3R_sitefilters.vcf.gz</p></li>
 </ul>
 <p>Alternatively, all site filters VCFs can be downloaded using <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, e.g.:</p>
 <!--
@@ -801,7 +825,7 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 <p>The HMM inferences of copy number state are available in VCF, Zarr and text formats, and are organised by sample set.</p>
 <p>For example, the VCF file for sample set AG1000G-AO can be downloaded from the following URL:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/hmm/vcf/AG1000G-AO_cnv_hmm.vcf.gz">https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/hmm/vcf/AG1000G-AO_cnv_hmm.vcf.gz</a></p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/hmm/vcf/AG1000G-AO_cnv_hmm.vcf.gz</p></li>
 </ul>
 <p>VCF files for all samples sets can be downloaded via gsutil as follows:</p>
 <div class="cell docutils container">
@@ -840,7 +864,7 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 <p>Note that some samples were excluded from coverage calling because of high coverage variance.</p>
 <p>For example, the VCF file for sample set AG1000G-AO and the gamb_colu callset can be downloaded from:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/coverage_calls/gamb_colu/vcf/AG1000G-AO_gamb_colu_cnv_coverage_calls.vcf.gz">https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/coverage_calls/gamb_colu/vcf/AG1000G-AO_gamb_colu_cnv_coverage_calls.vcf.gz</a></p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/coverage_calls/gamb_colu/vcf/AG1000G-AO_gamb_colu_cnv_coverage_calls.vcf.gz</p></li>
 </ul>
 <p>VCF files for all sample sets can be downloaded with:</p>
 <div class="cell docutils container">
@@ -870,7 +894,7 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 <p>CNV calls for selected insecticide resistance loci are available in VCF and Zarr formats, and are organised by sample set.</p>
 <p>For example, the VCF file for sample set AG1000G-AO can be downloaded from:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/discordant_read_calls/vcf/AG1000G-AO_cnv_discordant_read_calls.vcf.gz">https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/discordant_read_calls/vcf/AG1000G-AO_cnv_discordant_read_calls.vcf.gz</a></p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/discordant_read_calls/vcf/AG1000G-AO_cnv_discordant_read_calls.vcf.gz</p></li>
 </ul>
 <p>VCF and Zarr files for all sample sets can be downloaded with:</p>
 <div class="cell docutils container">
@@ -2025,7 +2049,7 @@ dtype: int64
         <a class="right-next" href="methods.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Ag3 sequencing and variant calling methods</p>
+                <p class="prevnext-title">Ag3 methods</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
