@@ -8,6 +8,8 @@ This page also provides information about the collection locations and methods, 
 Throughout this page we use species nomenclature following {cite}`Coetzee2013`.
 Unless otherwise stated, the DNA extraction method used for the collections described below was Qiagen DNeasy Blood and Tissue Kit (Qiagen Science, MD, USA).
 
+---
+
 ## Angola
 
 ### Sample sets
@@ -30,6 +32,7 @@ Specimens were stored on silica gel and DNA extraction was performed by a phenol
 
 * See {cite}`Troco2012` for further details of this study.
 
+---
 
 ## Bioko Island
 
@@ -51,6 +54,7 @@ Specimens contributed from this site were {{ gamb }} females, genotype determine
 These mosquitoes represent a population that inhabited Bioko Island before a comprehensive malaria control intervention initiated in February 2004 {cite}`Sharp2007`.
 After the intervention {{ gamb }} was declining, and more recently almost only {{ colu }} can be found {cite}`Overgaard2012`.
 
+---
 
 ## Burkina Faso (1)
 
@@ -81,6 +85,7 @@ Specimens were stored in 80% ethanol and DNA was extracted using the DNeasy Tiss
 
 We would like to thank the technicians of the Institute de Recherche en Sciences de la Santé/Target Malaria Burkina Faso, including Guel Hyacinthe, Diabate Brama, Ilboudo Seni, Kabre Rasmane, Diabate Noufou and Yeye Pascal, for their contributions to sample collections.
 
+---
 
 ## Burkina Faso (2)
 
@@ -104,6 +109,7 @@ Genomic DNA was isolated from individual mosquitoes using one of the following: 
 {{ gamb }} s.s. and its molecular forms were identified using one of two rDNA-based PCR/RFLP assays, {cite}`Fanello2002` or {cite}`Santolamazza2004`.
 Ovaries from specimens of the desired species were subject to polytene chromosome analysis.
 
+---
 
 ## Cameroon (1)
 
@@ -129,6 +135,7 @@ Specimens were stored on silica gel, and DNA was extracted using a simple CTAB p
 
 * See {cite}`Lobo2010` for further details of this study.
 
+---
 
 ## Cameroon (2)
 
@@ -158,6 +165,7 @@ All half-gravid specimens collected in each village were identified to species a
 
 * See {cite}`Simard2009` for further details of this study.
 
+---
 
 ## Cameroon (3)
 
@@ -184,6 +192,7 @@ DNA was extracted using a Zymo research kit for adults, and a Qiagen kit for lar
 
 * See {cite}`Kamdem2017` for further details of this study.
 
+---
 
 ## Central African Republic
 
@@ -199,6 +208,7 @@ DNA was extracted using a Zymo research kit for adults, and a Qiagen kit for lar
 
 Collections were carried out in Bangui (4.367, 18.583), during December 1993, by indoor resting aspiration or pyrethrum spray catch.
 
+---
 
 ## Côte d'Ivoire
 
@@ -224,6 +234,7 @@ Specimens from this site were all {{ colu }}, determined by PCR assay {cite}`San
 
 * See {cite}`GrauBove2021` for further details of this study.
 
+---
 
 ## Democratic Republic of the Congo
 
@@ -242,6 +253,7 @@ In common with much of DRC, malaria transmission rates are high, and the samples
 Samples were collected as larvae from temporary pools within and around the town by dipping in early August 2015.
 All larvae were reared to adults and females preserved over silica for DNA extraction using Qiagen DNAEasy kits.
 
+---
 
 ## Gabon
 
@@ -263,6 +275,7 @@ Co-occurrence of both *kdr* resistance alleles and absence of wild-type suscepti
 {{ colu }} and {{ mela }} are also present in the region but at frequencies {math}`<1`% {cite}`Mourou2012`.
 Specimens were stored on silica gel and DNA extraction was performed by a phenol-chloroform protocol described in {cite}`Donnelly1999`.
 
+---
 
 ## Ghana
 
@@ -297,6 +310,7 @@ Both {{ gamb }} and {{ colu }} were collected from these sites, determined by PC
 
 * See {cite}`Essandoh2013` for further details of this study.
 
+---
 
 ## Guinea Bissau
 
@@ -326,6 +340,7 @@ Specimens were stored on silica gel and DNA extraction was performed by a phenol
 
 * See {cite}`Vicente2017` for further details of this study.
 
+---
 
 ## Guinea and Mali (1)
 
@@ -360,6 +375,7 @@ DNA was extracted from mosquitoes using DNAzol by the provided protocol (Invitro
 
 * See {cite}`Coulibaly2016` for further details of this study.
 
+---
 
 ## Kenya
 
@@ -387,6 +403,7 @@ Sporozoite rates for the area during previous studies were 1.47% {cite}`Midega20
 
 * See {cite}`Midega2012` for further details of this study.
 
+---
 
 ## Mali (2)
 
@@ -413,6 +430,7 @@ Specimens were stored in 80% ethanol.
 
 * https://targetmalaria.org/
 
+---
 
 ## Mali (3)
 
@@ -441,6 +459,7 @@ Ovaries from specimens of the desired species were subject to polytene chromosom
 
 * See {cite}`Coulibaly2007` for further details of this study.
 
+---
 
 ## Malawi
 
@@ -469,6 +488,7 @@ Specimens were stored over silica and DNA was extracted using the Qiagen plate p
 * See {cite}`McCann2017` for further details of this study.
 * https://mesamalaria.org/mesa-track/majete-integrated-malaria-control-project-mmp
 
+---
 
 ## Mayotte Island
 
@@ -492,6 +512,7 @@ Larvae were stored in 80% ethanol prior to DNA extraction.
 All specimens contributed were {{ gamb }} {cite}`Santolamazza2004`.
 Samples were identified as males or females by the sequencing read coverage of the X chromosome using LookSeq {cite}`Manske2009`.
 
+---
 
 ## Mozambique
 
@@ -512,6 +533,7 @@ Furvela is a rural village located in Inhambane Province, where malaria is trans
  {{ arab }} and {{ meru }} are also found at low frequency.
 Sporozoite rates around 4% have been reported in {{ gamb }} from Furvela {cite}`Charlwood2014`.
 
+---
 
 ## Tanzania
 
@@ -552,6 +574,7 @@ There have been malaria vector control efforts since 2007 when indoor residual s
 Insecticide resistance in this district is coupled with high frequency of *kdr* pyrethroid target site mutations in the {{ gamb }} s.s. population ({cite}`Kabula2012`, {cite}`Protopopoff2013`).
 Sampling was conducted over six months, which include both dry and rainy season and covers 6 villages selected to represent all major ecological systems in the district. 
 
+---
 
 ## The Gambia (1)
 
@@ -579,6 +602,7 @@ With apparent high gene-flow in the region, it is problematic to assign species 
 
 * See {cite}`Nwakanma2013` for further details of this study.
 
+---
 
 ## The Gambia (2)
 
@@ -611,6 +635,7 @@ Paracentric inversion karyotypes were scored according to the nomenclature and c
 
 * See {cite}`Caputo2008` for further details of this study.
 
+---
 
 ## The Gambia (3)
 
@@ -634,6 +659,7 @@ The dominant *Anopheles* vector species in this region is {{ colu }} {cite}`Opon
 Mosquitoes were captured using human landing collections both inside and outside huts for 19 days in October and November 2012. 
 Mosquitoes were stored in RNAlater or dried over silica gel and stored at -20C.
 
+---
 
 ## Uganda
 
@@ -664,6 +690,7 @@ All specimens from both collections were {{ gamb }} {cite}`Fanello2002`.
 
 * See {cite}`Kilama2014` for further details of this study.
 
+---
 
 ## Colony crosses
 
@@ -702,6 +729,7 @@ For each of these pairs Mendelian error was computed for every sample of the pro
 In these four crosses (B5, K2, K4 and K6) one pair yielded median Mendelian errors significantly lower for every autosome than all other pairs, identifying the parsimonious parents.
 Two of the novel crosses, K4 and K6, were found to be fathered by the same male, `AC0398`.
 
+---
 
 ## References
 

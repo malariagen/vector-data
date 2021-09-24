@@ -1,29 +1,30 @@
-# Ag3 sequencing and variant calling methods
+# Ag3 methods
 
-This page contains a brief description of sequencing and variant
-calling methods used in phase 3 of the *Anopheles gambiae* 1000
-Genomes Project (Ag1000G). This is a preliminary version of methods
-that will be released in final form as part of a future publication by
-the Ag1000G Consortium.
+This page contains a description of methods used in phase 3 of the *Anopheles gambiae* 1000 Genomes Project (Ag1000G). 
+
+
+## Partner studies and population sampling
+
+Ag1000G phase 3 includes data from 3,081 individual mosquitoes, including 2,784 mosquitoes collected from natural populations in 19 countries. 
+Three species are represented within the cohort: {{ gamb }}, {{ colu }} and {{ arab }}.
+Further details of studies which contributed these samples and specimen collection locations and methods are provided in the {doc}`../studies-ag1000g` page.
 
 
 ## Whole-genome sequencing
 
 All library preparation and sequencing was performed at the Wellcome
-Sanger Institute. Paired-end multiplex libraries were prepared using
+Sanger Institute.
+Paired-end multiplex libraries were prepared using
 the manufacturer's protocol, with the exception that genomic DNA was
 fragmented using Covaris Adaptive Focused Acoustics rather than
-nebulization. Multiplexes comprised 12 tagged individual mosquitoes
-and three lanes of sequencing were generated for each multiplex to
-even out variations in yield between sequencing runs. Cluster
-generation and sequencing were undertaken according to the
-manufacturer's protocol for paired-end sequence reads with insert size
-in the range 100--200 bp. 4,693 individual mosquitoes were sequenced
-in total, of which 3,130 were sequenced using the Illumina HiSeq 2000
-platform and 1,563 were sequenced using the Illumina HiSeq X platform.
-All individuals were sequenced to a target coverage of 30×.  The HiSeq
-2000 sequencing runs generated 100 bp paired-end reads, and the HiSeq
-X sequencing runs generated 150 bp paired-end reads.
+nebulization. 
+Multiplexes comprised 12 tagged individual mosquitoes and three lanes of sequencing were generated for each multiplex to
+even out variations in yield between sequencing runs. 
+Cluster generation and sequencing were undertaken according to the
+manufacturer's protocol for paired-end sequence reads with insert size in the range 100--200 bp.
+4,693 individual mosquitoes were sequenced in total, of which 3,130 were sequenced using the Illumina HiSeq 2000 platform and 1,563 were sequenced using the Illumina HiSeq X platform.
+All individuals were sequenced to a target coverage of 30×.
+The HiSeq 2000 sequencing runs generated 100 bp paired-end reads, and the HiSeq X sequencing runs generated 150 bp paired-end reads.
 
 
 ## Alignment and SNP calling
