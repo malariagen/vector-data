@@ -29,6 +29,7 @@ sphinx:
     bibtex_default_style: unsrt
     myst_enable_extensions:
     - substitution
+    - dollarmath
     myst_substitutions:
       # species
       gamb: "*An. gambiae*"
