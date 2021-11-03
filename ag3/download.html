@@ -423,6 +423,28 @@ commentsRunWhenDOMLoaded(addUtterances);
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#haplotypes">
+   Haplotypes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#haplotype-reference-panels-vcf-format">
+     Haplotype reference panels (VCF format)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-set-haplotypes-vcf-format">
+     Sample set haplotypes (VCF format)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-set-haplotypes-zarr-format">
+     Sample set haplotypes (Zarr format)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#accessing-downloaded-data-from-python">
    Accessing downloaded data from Python
   </a>
@@ -903,6 +925,99 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 !gsutil -m rsync -r \
     -x &#39;.*/hmm/.*|.*/coverage_calls/.*&#39; \
     gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="haplotypes">
+<h2>Haplotypes<a class="headerlink" href="#haplotypes" title="Permalink to this headline">¶</a></h2>
+<p>The Ag3 data resource also includes haplotype reference panels, which were obtained by <a class="reference external" href="https://en.wikipedia.org/wiki/Haplotype_estimation">phasing</a> the SNP calls. To allow for a range of different analyses, three different haplotype reference panels were constructed, each using a different subset of samples and applying different site filters:</p>
+<ul class="simple">
+<li><p><strong>“gamb_colu_arab”</strong> - This haplotype reference panel includes <strong>all wild-caught samples</strong>, and phases biallelic SNPs passing the “gamb_colu_arab” site filters.</p></li>
+<li><p><strong>“gamb_colu”</strong> - This haplotype reference panel includes <strong>wild-caught samples assigned as either <em>An. gambiae</em>, <em>An. coluzzii</em> or intermediate <em>An. gambiae/An. coluzzii</em></strong> via the AIM species calling method, and phases biallelic SNPs passing the “gamb_colu” site filters.</p></li>
+<li><p><strong>“arab”</strong> - This haplotype reference panel includes <strong>wild-caught samples assigned as <em>An. arabiensis</em></strong> via the AIM species calling method, and phases biallelic SNPs passing the “arab” site filters.</p></li>
+</ul>
+<p>Haplotype data can be downloaded in either VCF or Zarr format. See the subsections below for further details</p>
+<div class="section" id="haplotype-reference-panels-vcf-format">
+<h3>Haplotype reference panels (VCF format)<a class="headerlink" href="#haplotype-reference-panels-vcf-format" title="Permalink to this headline">¶</a></h3>
+<p>These are the VCFs created by the phasing pipeline, containing all samples included each of the phasing runs. There is one VCF per phasing analysis per chromosome arm. The URL for each file has the following structure:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/panel/{analysis}/ag3_{analysis}_{contig}_phased.vcf.gz</span></code></p></li>
+</ul>
+<p>…where <code class="docutils literal notranslate"><span class="pre">{analysis}</span></code> is one of “gamb_colu_arab”, “gamb_colu” or “arab”; and <code class="docutils literal notranslate"><span class="pre">{contig}</span></code> is one of “2R”, “2L”, “3R”, “3L”, “X”.</p>
+<p>E.g., the panel VCF for the <code class="docutils literal notranslate"><span class="pre">gamb_colu_arab</span></code> analysis for chromosome arm 3L can be downloaded here:</p>
+<ul class="simple">
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/panel/gamb_colu_arab/ag3_gamb_colu_arab_3L_phased.vcf.gz</p></li>
+</ul>
+<p>Note that these files can be large, up to ~50 GB.</p>
+<p>If you’d like to download all of the panel files, you could also use <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, e.g.:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a local directory to store the data
+!mkdir -pv ~/vo_agam_release/v3/snp_haplotypes/panel/
+
+# copy files from cloud to local file system
+!gsutil -m rsync -r \
+    -x &#39;.*/.*zarr.zip&#39; \
+    gs://vo_agam_release/v3/snp_haplotypes/panel/ \
+    ~/vo_agam_release/v3/snp_haplotypes/panel/
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sample-set-haplotypes-vcf-format">
+<h3>Sample set haplotypes (VCF format)<a class="headerlink" href="#sample-set-haplotypes-vcf-format" title="Permalink to this headline">¶</a></h3>
+<p>These VCFs are subsets of the panel VCFs, containing only samples in a given sample set. There is one VCF per sample set, per phasing analysis, per chromosome arm. The URL for each file has the following structure:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/{sample_set}/{analysis}/vcf/AG1000G-AO_{analysis}_{contig}_phased.vcf.gz</span></code></p></li>
+</ul>
+<p>…where <code class="docutils literal notranslate"><span class="pre">{analysis}</span></code> is one of “gamb_colu_arab”, “gamb_colu” or “arab”; <code class="docutils literal notranslate"><span class="pre">{contig}</span></code> is one of “2R”, “2L”, “3R”, “3L”, “X”; and <code class="docutils literal notranslate"><span class="pre">{sample_set}</span></code> is one of the <a class="reference external" href="intro.html#sample-sets">Ag1000G phase 3 sample sets</a>.</p>
+<p>E.g., the VCF for sample set AG1000G-AO, for the <code class="docutils literal notranslate"><span class="pre">gamb_colu</span></code> analysis, for chromosome arm 2L, can be downloaded here:</p>
+<ul class="simple">
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/AG1000G-AO/gamb_colu/vcf/AG1000G-AO_gamb_colu_2L_phased.vcf.gz</p></li>
+</ul>
+<p>If you’d like to download all of the VCF files for a given sample set, you could also use gsutil, e.g.:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a local directory to store the data
+!mkdir -pv ~/vo_agam_release/v3/snp_haplotypes/AG1000G-AO/
+
+# copy files from cloud to local file system
+!gsutil -m rsync -r \
+    -x &#39;.*/zarr/.*&#39; \
+    gs://vo_agam_release/v3/snp_haplotypes/AG1000G-AO/ \
+    ~/vo_agam_release/v3/snp_haplotypes/AG1000G-AO/
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sample-set-haplotypes-zarr-format">
+<h3>Sample set haplotypes (Zarr format)<a class="headerlink" href="#sample-set-haplotypes-zarr-format" title="Permalink to this headline">¶</a></h3>
+<p>These contain the haplotype data in Zarr format, with one Zarr hierarchy per sample set. The root zarr path for a given hierarchy has the following structure:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_agam_release/v3/snp_haplotypes/{sample_set}/{analysis}/zarr</span></code></p></li>
+</ul>
+<p>Data can be downloaded with gsutil. E.g., download the Zarr data for sample set AG1000G. Note that the sites are stored in a separate hierarchy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create local directories to store the data
+!mkdir -pv ~/vo_agam_release/v3/snp_haplotypes/sites
+!mkdir -pv ~/vo_agam_release/v3/snp_haplotypes/AG1000G-AO
+
+# copy haplotype data from cloud to local file system
+!gsutil -m rsync -r \
+    -x &#39;.*/vcf/.*&#39; \
+    gs://vo_agam_release/v3/snp_haplotypes/AG1000G-AO/ \
+    ~/vo_agam_release/v3/snp_haplotypes/AG1000G-AO/
+
+# copy phased sites data from cloud to local file system
+!gsutil -m rsync -rn \
+    gs://vo_agam_release/v3/snp_haplotypes/sites/ \
+    ~/vo_agam_release/v3/snp_haplotypes/sites/ 
 </pre></div>
 </div>
 </div>

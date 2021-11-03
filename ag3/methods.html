@@ -431,6 +431,11 @@ commentsRunWhenDOMLoaded(addUtterances);
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#haplotype-phasing">
+   Haplotype phasing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acknowledgments">
    Acknowledgments
   </a>
@@ -481,7 +486,8 @@ Cluster generation and sequencing were undertaken according to the
 manufacturer’s protocol for paired-end sequence reads with insert size in the range 100–200 bp.
 4,693 individual mosquitoes were sequenced in total, of which 3,130 were sequenced using the Illumina HiSeq 2000 platform and 1,563 were sequenced using the Illumina HiSeq X platform.
 All individuals were sequenced to a target coverage of 30×.
-The HiSeq 2000 sequencing runs generated 100 bp paired-end reads, and the HiSeq X sequencing runs generated 150 bp paired-end reads.</p>
+The HiSeq 2000 sequencing runs generated 100 bp paired-end reads, and the HiSeq X sequencing runs generated 150 bp paired-end reads.
+Library preparation and sequencing was performed at the Wellcome Sanger Institute by the Sample Logistics, Sequencing and Informatics facilities.</p>
 </div>
 <div class="section" id="alignment-and-snp-calling">
 <h2>Alignment and SNP calling<a class="headerlink" href="#alignment-and-snp-calling" title="Permalink to this headline">¶</a></h2>
@@ -504,12 +510,11 @@ and
 <a class="reference external" href="https://github.com/malariagen/pipelines/tree/v0.0.4/pipelines/SNP-genotyping-vector">genotyping</a>
 pipelines are also available from GitHub. Following successful
 completion of these pipelines, samples entered the sample quality
-control (QC) process described below.</p>
+control (QC) process described below. Alignment and SNP calling was performed by the MalariaGEN Resource Centre Team. Open source pipeline implementations were developed by the Broad Institute Data Engineering Team.</p>
 </div>
 <div class="section" id="sample-qc">
 <h2>Sample QC<a class="headerlink" href="#sample-qc" title="Permalink to this headline">¶</a></h2>
-<p>The following subsections describe analyses performed to identify and
-exclude samples from the final dataset.</p>
+<p>The following subsections describe analyses performed to identify and exclude samples from the final dataset. Sample QC was performed by the MalariaGEN Resource Centre Team.</p>
 <div class="section" id="coverage">
 <h3>Coverage<a class="headerlink" href="#coverage" title="Permalink to this headline">¶</a></h3>
 <p>For each sample, depth of coverage was computed at all genome
@@ -667,7 +672,7 @@ vast majority of Mendelian errors are likely to be due to errors in
 sequencing, alignment or SNP calling. The general approach we took
 was to use Mendelian consistency to identify sets of positive and
 negative training sites, then used these to train a machine learning
-model that classified all genomic sites as either PASS or FAIL.</p>
+model that classified all genomic sites as either PASS or FAIL. Site filtering was performed by the MalariaGEN Resource Centre Team.</p>
 <div class="section" id="site-filters-for-use-with-an-gambiae-and-or-an-coluzzii">
 <h3>Site filters for use with <em>An. gambiae</em> and/or <em>An. coluzzii</em><a class="headerlink" href="#site-filters-for-use-with-an-gambiae-and-or-an-coluzzii" title="Permalink to this headline">¶</a></h3>
 <p>All the 15 crosses involved <em>An. gambiae</em> and/or <em>An. coluzzii</em>
@@ -746,7 +751,7 @@ and the “arab” site filters. We refer to these filters as the
 <a class="reference external" href="https://genome.cshlp.org/content/29/8/1250.full#sec-8">Lucas et
 al. (2019)</a>
 with some adaptations to accommodate the different mosquito species
-being analysed, described further below.</p>
+being analysed, described further below. CNV calling was performed by the Liverpool School of Tropical Medicine.</p>
 <div class="section" id="calculation-and-normalization-of-coverage">
 <h3>Calculation and normalization of coverage<a class="headerlink" href="#calculation-and-normalization-of-coverage" title="Permalink to this headline">¶</a></h3>
 <p>For each individual, we used
@@ -860,6 +865,16 @@ identified for a CNV allele, we recorded the presence of that allele
 in all samples with at least four supporting diagnostic reads.</p>
 </div>
 </div>
+<div class="section" id="haplotype-phasing">
+<h2>Haplotype phasing<a class="headerlink" href="#haplotype-phasing" title="Permalink to this headline">¶</a></h2>
+<p>Genotypes at biallelic SNPs passing site filters were phased into haplotypes using a combination of read-backed and statistical phasing. Read-backed phasing was performed for each individual using <a class="reference external" href="https://whatshap.readthedocs.io/en/latest/">WhatsHap</a> version 1.0. Statistical phasing was then performed using <a class="reference external" href="https://odelaneau.github.io/shapeit4/">SHAPEIT4</a> version 4.2.1. An <a class="reference external" href="https://github.com/malariagen/pipelines/tree/master/pipelines/phasing-vector/gcp">open source WDL implementation of this phasing pipeline</a> is available from the <a class="reference external" href="https://github.com/malariagen/pipelines">malariagen/pipelines GitHub repository</a>. The phasing pipeline was developed by the Broad Institute Data Engineering Team and run using the <a class="reference external" href="https://app.terra.bio/">Terra platform</a>.</p>
+<p>To allow for a range of different analyses, three different haplotype reference panels were constructed, each using a different subset of samples and applying different site filters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gamb_colu_arab</span></code> - This haplotype reference panel included all wild-caught samples, and phased biallelic SNPs passing the <code class="docutils literal notranslate"><span class="pre">gamb_colu_arab</span></code> site filters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gamb_colu</span></code> - This haplotype reference panel included all wild-caught samples assigned as either <em>An. gambiae</em>, <em>An. coluzzii</em> or intermediate <em>An. gambiae/An. coluzzii</em> via the AIM species calling method, and phased biallelic SNPs passing the <code class="docutils literal notranslate"><span class="pre">gamb_colu</span></code> site filters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arab</span></code> - This haplotype reference panel included all wild-caught samples assigned as <em>An. arabiensis</em> via the AIM species calling method, and phased biallelic SNPs passing the <code class="docutils literal notranslate"><span class="pre">arab</span></code> site filters.</p></li>
+</ul>
+</div>
 <div class="section" id="acknowledgments">
 <h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline">¶</a></h2>
 <p>We would like to thank the staff of the Wellcome Sanger Institute
@@ -867,8 +882,7 @@ Sample Logistics, Sequencing and Informatics facilities for their
 contributions to the production of this data release.</p>
 <p>We would like to thank the members of the Data Engineering team of the
 Broad Institute of Harvard and MIT for their work on open source
-implementations of the alignment and SNP calling pipelines used in
-Ag1000G phase 3.</p>
+implementations of the alignment, SNP calling and haplotype phasing pipelines used in Ag1000G phase 3.</p>
 </div>
 <div class="section" id="appendices">
 <h2>Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">¶</a></h2>
