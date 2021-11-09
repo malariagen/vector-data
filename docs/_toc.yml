@@ -18,6 +18,9 @@ parts:
   - caption: Anopheles minimus
     chapters:
     - file: amin1/intro
+      sections:
+      - file: amin1/cloud
+      - file: amin1/download
   - caption: Partners and community
     chapters:
     - file: studies-ag1000g
