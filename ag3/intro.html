@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Ag3 &#8212; MalariaGEN vector data user guide</title>
+    <title>Ag3 (Ag1000G phase 3) &#8212; MalariaGEN vector data user guide</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -86,7 +86,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ag3 data availability and methods" href="data.html" />
+    <link rel="next" title="Ag3 cloud data access" href="cloud.html" />
     <link rel="prev" title="MalariaGEN vector data user guide" href="../landing-page.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -130,20 +130,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Ag3 (Ag1000G phase 3)
+  Anopheles gambiae complex
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   Introduction to Ag3
+   Ag3 (Ag1000G phase 3)
   </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="data.html">
-   Ag3 data availability and methods
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -164,41 +159,70 @@ commentsRunWhenDOMLoaded(addUtterances);
      Ag3 methods
     </a>
    </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="examples.html">
+     Ag3 analysis examples
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="examples/collection-sites.html">
+       Mosquito collection sites
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="examples/snps.html">
+       Single nucleotide polymorphisms (SNPs)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="examples/snp-effects.html">
+       Genes and SNP effects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="examples/pca.html">
+       Investigating population structure with PCA
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="examples/cnv-explore.html">
+       Exploring copy number variation (CNV)
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Anopheles minimus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="examples.html">
-   Ag3 analysis examples
+  <a class="reference internal" href="../amin1/intro.html">
+   Amin1
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/collection-sites.html">
-     Mosquito collection sites
+    <a class="reference internal" href="../amin1/cloud.html">
+     Amin1 cloud data access
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/snps.html">
-     Single nucleotide polymorphisms (SNPs)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/snp-effects.html">
-     Genes and SNP effects
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/pca.html">
-     Investigating population structure with PCA
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/cnv-explore.html">
-     Exploring copy number variation (CNV)
+    <a class="reference internal" href="../amin1/download.html">
+     Amin1 data downloads
     </a>
    </li>
   </ul>
@@ -370,8 +394,8 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="introduction-to-ag3">
-<h1>Introduction to Ag3<a class="headerlink" href="#introduction-to-ag3" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="ag3-ag1000g-phase-3">
+<h1>Ag3 (Ag1000G phase 3)<a class="headerlink" href="#ag3-ag1000g-phase-3" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference external" href="https://www.malariagen.net/ag1000g"><em>Anopheles gambiae</em> 1000 Genomes Project (Ag1000G)</a> is a collaborative project using whole-genome sequencing to study genetic variation and evolution in natural populations of mosquitoes in the <em>Anopheles gambiae</em> species complex.</p>
 <p>This page provides an introduction to open data resources released as part of the third phase of the Ag1000G project, known as “Ag3” for short. We hope the data from Ag3 will be a valuable resource for research and surveillance of malaria vectors. If you have any questions about this guide or how to use the data, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions/new">start a new discussion</a> on the malariagen/vector-open-data repo on GitHub. If you find any bugs, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/issues/new/choose">raise an issue</a>.</p>
 <div class="section" id="terms-of-use">
@@ -1013,7 +1037,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
 <p>Hopefully this page has provided a useful introduction to the Ag3 data resource. If you would like to start working with these data, please visit the <a class="reference internal" href="cloud.html"><span class="doc std std-doc">cloud data access guide</span></a> or the <a class="reference internal" href="download.html"><span class="doc std std-doc">data download guide</span></a> or continue browsing the other documentation on this site.</p>
 <p>If you have any questions about the data and how to use them, please do get in touch by <a class="reference external" href="https://github.com/malariagen/vector-data/discussions/new">starting a new discussion</a> on the malariagen/vector-data repo on GitHub.</p>
+</div>
 <hr class="docutils" />
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -1056,10 +1082,10 @@ commentsRunWhenDOMLoaded(addUtterances);
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="data.html" title="next page">
+        <a class="right-next" href="cloud.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Ag3 data availability and methods</p>
+                <p class="prevnext-title">Ag3 cloud data access</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
