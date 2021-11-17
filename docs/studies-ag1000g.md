@@ -736,5 +736,3 @@ Two of the novel crosses, K4 and K6, were found to be fathered by the same male,
 ```{bibliography}
 :filter: docname in docnames
 ```
-
----

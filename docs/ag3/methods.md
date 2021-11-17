@@ -506,5 +506,3 @@ implementations of the alignment, SNP calling and haplotype phasing pipelines us
 
 * **Allele Balance Het** -- Product of binomial probability of read
   counts at het calls.
-
----

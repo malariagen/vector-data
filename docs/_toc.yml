@@ -8,6 +8,7 @@ parts:
       - file: ag3/cloud
       - file: ag3/download
       - file: ag3/methods
+      - file: ag3/api
       - file: ag3/examples
         sections:
         - file: ag3/examples/collection-sites
@@ -21,6 +22,7 @@ parts:
       sections:
       - file: amin1/cloud
       - file: amin1/download
+      - file: amin1/api
   - caption: Partners and community
     chapters:
     - file: studies-ag1000g
