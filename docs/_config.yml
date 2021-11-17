@@ -24,6 +24,9 @@ html:
 bibtex_bibfiles:
   - refs.bib
 sphinx:
+  extra_extensions:
+    - 'sphinx.ext.autodoc'
+    - 'numpydoc'
   config:
     bibtex_reference_style: label
     bibtex_default_style: unsrt
