@@ -11,10 +11,3 @@ div.cell_output table.dataframe {
     /* make pandas dataframes smaller */
     font-size: 80%;
 }
-
-dt span.classifier {
-    margin-left: .5em;
-    padding-left: .5em;
-    border-left: 1px solid #555555;
-    font-family: monospace;
-}
