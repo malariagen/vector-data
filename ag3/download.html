@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ag3 data downloads &#8212; MalariaGEN vector data user guide</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -75,10 +75,10 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -89,7 +89,10 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="next" title="Ag3 methods" href="methods.html" />
     <link rel="prev" title="Ag3 cloud data access" href="cloud.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -128,7 +131,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles gambiae complex
  </span>
@@ -157,6 +160,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2">
     <a class="reference internal" href="methods.html">
      Ag3 methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api.html">
+     Ag3 API
     </a>
    </li>
    <li class="toctree-l2 has-children">
@@ -199,7 +207,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles minimus
  </span>
@@ -225,10 +233,15 @@ commentsRunWhenDOMLoaded(addUtterances);
      Amin1 data downloads
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../amin1/api.html">
+     Amin1 API
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Partners and community
  </span>
@@ -489,14 +502,14 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="ag3-data-downloads">
+  <div class="tex2jax_ignore mathjax_ignore section" id="ag3-data-downloads">
 <h1>Ag3 data downloads<a class="headerlink" href="#ag3-data-downloads" title="Permalink to this headline">¶</a></h1>
 <p>This notebook provides information about how to download data from the <a class="reference internal" href="intro.html"><span class="doc std std-doc"><em>Anopheles gambiae</em> 1000 Genomes project (Ag1000G) phase 3</span></a>. This includes sample metadata, raw sequence reads, sequence read alignments, and single nucleotide polymorphism (SNP) calls.</p>
 <p>Code examples that are intended to be run via a Linux command line are prefixed with an exclamation mark (!). If you are running these commands directly from a terminal, remove the exclamation mark.</p>
 <p>Examples in this notebook assume you are downloading data to a local folder within your home directory at the path <code class="docutils literal notranslate"><span class="pre">~/vo_agam_release/</span></code>. Change this if you want to download to a different folder on the local file system.</p>
 <div class="section" id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
-<p>Ag3 data are hosted by several different services.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data are hosted by several different services.</p>
 <p>Raw sequence reads in FASTQ format and sequence read alignments in BAM format are hosted by the European Nucleotide Archive (ENA). This guide provides examples of downloading data from ENA via FTP using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command line tool, but please note that there are several other options for downloading data, see the <a class="reference external" href="https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html">ENA documentation on how to download data files</a> for more information.</p>
 <p>Sample metadata in CSV format and SNP calls in VCF and Zarr formats are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
 </div>
@@ -858,7 +871,7 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 <div class="section" id="copy-number-variation-cnv-data">
 <h2>Copy number variation (CNV) data<a class="headerlink" href="#copy-number-variation-cnv-data" title="Permalink to this headline">¶</a></h2>
-<p>Data on copy number variation within the Ag3 cohort are available as three separate data types:</p>
+<p>Data on copy number variation within the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> cohort are available as three separate data types:</p>
 <ul class="simple">
 <li><p><strong>HMM</strong> – Genome-wide inferences of copy number state within each individual mosquito in 300 bp non-overlapping windows.</p></li>
 <li><p><strong>Coverage calls</strong> – Genome-wide copy number variant calls, derived from the HMM outputs by analysing contiguous regions of elevated copy number state then clustering of variants across individuals based on breakpoint proximity.</p></li>
@@ -957,7 +970,7 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 <div class="section" id="haplotypes">
 <h2>Haplotypes<a class="headerlink" href="#haplotypes" title="Permalink to this headline">¶</a></h2>
-<p>The Ag3 data resource also includes haplotype reference panels, which were obtained by <a class="reference external" href="https://en.wikipedia.org/wiki/Haplotype_estimation">phasing</a> the SNP calls. To allow for a range of different analyses, three different haplotype reference panels were constructed, each using a different subset of samples and applying different site filters:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data resource also includes haplotype reference panels, which were obtained by <a class="reference external" href="https://en.wikipedia.org/wiki/Haplotype_estimation">phasing</a> the SNP calls. To allow for a range of different analyses, three different haplotype reference panels were constructed, each using a different subset of samples and applying different site filters:</p>
 <ul class="simple">
 <li><p><strong>“gamb_colu_arab”</strong> - This haplotype reference panel includes <strong>all wild-caught samples</strong>, and phases biallelic SNPs passing the “gamb_colu_arab” site filters.</p></li>
 <li><p><strong>“gamb_colu”</strong> - This haplotype reference panel includes <strong>wild-caught samples assigned as either <em>An. gambiae</em>, <em>An. coluzzii</em> or intermediate <em>An. gambiae/An. coluzzii</em></strong> via the AIM species calling method, and phases biallelic SNPs passing the “gamb_colu” site filters.</p></li>
@@ -1098,7 +1111,7 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-<p>The following Python packages need to be installed on the local system: numpy, dask, zarr, gcsfs, fsspec, scikit-allel. These packages can be installed via pip or conda. E.g.:</p>
+<p>The following Python packages need to be installed on the local system:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen_data
@@ -1106,7 +1119,7 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-<p>To make accessing these data more convenient, we’ve also created a <a class="reference external" href="https://github.com/malariagen/malariagen-data-python">malariagen_data Python package</a>, which is available from PyPI. This is experimental so please let us know if you find any bugs or have any suggestions. The <code class="docutils literal notranslate"><span class="pre">malariagen_data</span></code> package can be installed via pip, e.g.:</p>
+<p>To make accessing these data more convenient, we’ve created the <a class="reference external" href="https://github.com/malariagen/malariagen-data-python">malariagen_data</a> Python package. This is experimental so please let us know if you find any bugs or have any suggestions. See the <a class="reference internal" href="api.html"><span class="doc std std-doc">Ag3 API docs</span></a> for documentation of all functions available from this package.</p>
 <p>Set up access to the Ag1000G phase 3 data, at the local path where data were downloaded:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2138,7 +2151,6 @@ dtype: int64
 <div class="section" id="feedback-and-suggestions">
 <h2>Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">¶</a></h2>
 <p>If there are particular analyses you would like to run, or if you have other suggestions for useful documentation we could add to this site, we would love to know, please get in touch via the <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">malariagen/vector-data GitHub discussion board</a>.</p>
-<hr class="docutils" />
 </div>
 </div>
 
@@ -2165,31 +2177,22 @@ dtype: int64
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="cloud.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Ag3 cloud data access</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="cloud.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Ag3 cloud data access</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="methods.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ag3 methods</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="methods.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Ag3 methods</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -2210,8 +2213,7 @@ dtype: int64
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

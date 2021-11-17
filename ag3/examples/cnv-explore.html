@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exploring copy number variation (CNV) &#8212; MalariaGEN vector data user guide</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -75,10 +75,10 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -89,7 +89,10 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="next" title="Amin1" href="../../amin1/intro.html" />
     <link rel="prev" title="Investigating population structure with PCA" href="pca.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -128,7 +131,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles gambiae complex
  </span>
@@ -157,6 +160,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2">
     <a class="reference internal" href="../methods.html">
      Ag3 methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../api.html">
+     Ag3 API
     </a>
    </li>
    <li class="toctree-l2 current active has-children">
@@ -199,7 +207,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles minimus
  </span>
@@ -225,10 +233,15 @@ commentsRunWhenDOMLoaded(addUtterances);
      Amin1 data downloads
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../amin1/api.html">
+     Amin1 API
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Partners and community
  </span>
@@ -396,11 +409,6 @@ commentsRunWhenDOMLoaded(addUtterances);
    Further reading
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#api-docs">
-   API docs
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -412,7 +420,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="exploring-copy-number-variation-cnv">
+  <div class="tex2jax_ignore mathjax_ignore section" id="exploring-copy-number-variation-cnv">
 <h1>Exploring copy number variation (CNV)<a class="headerlink" href="#exploring-copy-number-variation-cnv" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook we will explore copy number variation (CNV) within the Ag1000G phase 3 samples, focusing on some specific genome regions of interest. We will use the copy number state data for each individual sample, inferred from fitting an HMM to windowed coverage data, to visualise evidence for copy number variation. We will also estimate the frequency of copy number variation in different genes and populations.</p>
 <p>As usual this notebook is executable, click the launch icon above (<i class="fas fa-rocket"></i>) to run it for yourself. Note in particular that, although this notebook investigates the <em>Cyp9k1</em> and <em>Cyp6p/aa</em> genome regions as examples, if you run this notebook yourself you can change this to investigate any genome region you are interested in.</p>
@@ -454,7 +462,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<p>Finally, setup access to Ag3 data in Google Cloud.</p>
+<p>Finally, setup access to <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data in Google Cloud.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;gs://vo_agam_release/&quot;</span><span class="p">)</span>
@@ -473,7 +481,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="accessing-cnv-hmm-data">
 <h2>Accessing CNV HMM data<a class="headerlink" href="#accessing-cnv-hmm-data" title="Permalink to this headline">¶</a></h2>
-<p>The CNV HMM results for a given chromosome and given sample sets can be accessed using the <code class="docutils literal notranslate"><span class="pre">cnv_hmm</span></code> method. Let’s access the data for chromosome arm 2R, for two of the Ag3 sample sets from Burkina Faso.</p>
+<p>The CNV HMM results for a given chromosome and given sample sets can be accessed using the <code class="docutils literal notranslate"><span class="pre">cnv_hmm</span></code> method. Let’s access the data for chromosome arm 2R, for two of the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> sample sets from Burkina Faso.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_hmm</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">cnv_hmm</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">])</span>
@@ -1850,7 +1858,7 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 </div>
 <div class="section" id="cyp9k1-region">
 <h3><em>Cyp9k1</em> region<a class="headerlink" href="#cyp9k1-region" title="Permalink to this headline">¶</a></h3>
-<p>In our previous analysis of Ag1000G phase 2, we found that the region surrounding the <em>Cyp9k1</em> gene on the X chromosome was a CNV hotspot. Let’s explore that in the Ag3 data resource.</p>
+<p>In our previous analysis of Ag1000G phase 2, we found that the region surrounding the <em>Cyp9k1</em> gene on the X chromosome was a CNV hotspot. Let’s explore that in the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data resource.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hmm_cnv</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">15_230_000</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">15_260_000</span><span class="p">,</span> 
@@ -3659,7 +3667,7 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
-<p>Hopefully this notebook has been a useful introduction to exploring CNVs in the Ag3 data resource. Don’t forget you can use this notebook to analyse any genome region of interest. If you have any comments, questions or suggestions, please feel free to <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">get in touch</a>.</p>
+<p>Hopefully this notebook has been a useful introduction to exploring CNVs in the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data resource. Don’t forget you can use this notebook to analyse any genome region of interest. If you have any comments, questions or suggestions, please feel free to <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">get in touch</a>.</p>
 <p>This notebook is part of the <a class="reference internal" href="../intro.html"><span class="doc std std-doc">Ag1000G phase 3 user guide</span></a>. See the menu at the left for more documentation and example analyses.</p>
 <p>If you’re interested to read more about CNVs in general and in <em>Anopheles</em> mosquitoes, check out the following links:</p>
 <ul class="simple">
@@ -3668,76 +3676,6 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <li><p><a class="reference external" href="https://genome.cshlp.org/content/29/8/1250.full">Lucas et al. (2019)</a> Whole-genome sequencing reveals high complexity of copy number variation at insecticide resistance loci in malaria mosquitoes</p></li>
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6926047/">Adolfi et al. (2019)</a> Functional genetic validation of key genes conferring insecticide resistance in the major African malaria vector, Anopheles gambiae</p></li>
 </ul>
-</div>
-<div class="section" id="api-docs">
-<h2>API docs<a class="headerlink" href="#api-docs" title="Permalink to this headline">¶</a></h2>
-<p>Here are the docstrings for the methods used in this notebook.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">cnv_hmm</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method cnv_hmm in module malariagen_data.ag3:
-
-cnv_hmm(contig, sample_sets=&#39;v3_wild&#39;, inline_array=True, chunks=&#39;auto&#39;) method of malariagen_data.ag3.Ag3 instance
-    Access CNV HMM data.
-    
-    Parameters
-    ----------
-    contig : str
-        Chromosome arm, e.g., &quot;3R&quot;.
-    sample_sets : str or list of str
-        Can be a sample set identifier (e.g., &quot;AG1000G-AO&quot;) or a list of sample set
-        identifiers (e.g., [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]) or a release identifier (e.g.,
-        &quot;v3&quot;) or a list of release identifiers.
-    inline_array : bool, optional
-        Passed through to dask.array.from_array().
-    chunks : str, optional
-        If &#39;auto&#39; let dask decide chunk size. If &#39;native&#39; use native zarr chunks.
-        Also can be a target size, e.g., &#39;200 MiB&#39;.
-    
-    Returns
-    -------
-    ds : xarray.Dataset
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">gene_cnv_frequencies</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method gene_cnv_frequencies in module malariagen_data.ag3:
-
-gene_cnv_frequencies(contig, cohorts=None, sample_sets=&#39;v3_wild&#39;) method of malariagen_data.ag3.Ag3 instance
-    Compute modal copy number by gene, then compute the frequency of
-    amplifications and deletions in one or more cohorts, from HMM data.
-    
-    Parameters
-    ----------
-    contig : str
-        Chromosome arm, e.g., &quot;3R&quot;.
-    cohorts : dict
-        Dictionary to map cohort IDs to sample queries, e.g.,
-        {&quot;bf_2012_col&quot;: &quot;country == &#39;Burkina Faso&#39; and year == 2012 and species == &#39;coluzzii&#39;&quot;}
-    sample_sets : str or list of str
-        Can be a sample set identifier (e.g., &quot;AG1000G-AO&quot;) or a list of sample set
-        identifiers (e.g., [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]) or a release identifier (e.g.,
-        &quot;v3&quot;) or a list of release identifiers.
-    
-    Returns
-    -------
-    df : pandas.DataFrame
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
 </div>
 </div>
 
@@ -3764,31 +3702,22 @@ gene_cnv_frequencies(contig, cohorts=None, sample_sets=&#39;v3_wild&#39;) method
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="pca.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Investigating population structure with PCA</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="pca.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Investigating population structure with PCA</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../amin1/intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Amin1</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="../../amin1/intro.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Amin1</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -3809,8 +3738,7 @@ gene_cnv_frequencies(contig, cohorts=None, sample_sets=&#39;v3_wild&#39;) method
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

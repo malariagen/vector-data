@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amin1 &#8212; MalariaGEN vector data user guide</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -75,10 +75,10 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -89,7 +89,10 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="next" title="Amin1 cloud data access" href="cloud.html" />
     <link rel="prev" title="Exploring copy number variation (CNV)" href="../ag3/examples/cnv-explore.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -128,7 +131,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles gambiae complex
  </span>
@@ -157,6 +160,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2">
     <a class="reference internal" href="../ag3/methods.html">
      Ag3 methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ag3/api.html">
+     Ag3 API
     </a>
    </li>
    <li class="toctree-l2 has-children">
@@ -199,7 +207,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles minimus
  </span>
@@ -225,10 +233,15 @@ commentsRunWhenDOMLoaded(addUtterances);
      Amin1 data downloads
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api.html">
+     Amin1 API
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Partners and community
  </span>
@@ -384,16 +397,17 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="amin1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="amin1">
 <h1>Amin1<a class="headerlink" href="#amin1" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> resource comprises data from whole-genome sequencing of <em>Anopheles minimus</em> mosquitoes, which are a major vector of malaria in Southeast Asia. The mosquitoes were collected from sites in Cambodia in the context of a study of malaria vector species diversity led by Brandy St. Laurent.</p>
 <p>This page provides an introduction to the <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> data, which we hope will be a valuable resource for research and surveillance of malaria vectors in Southeast Asia. If you have any questions about this guide or how to use the data, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions/new">start a new discussion</a> on the malariagen/vector-open-data repo on GitHub. If you find any bugs, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/issues/new/choose">raise an issue</a>.</p>
 <div class="section" id="citation-and-terms-of-use">
 <h2>Citation and terms of use<a class="headerlink" href="#citation-and-terms-of-use" title="Permalink to this headline">¶</a></h2>
 <p>Data from <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> are released openly and can be downloaded and analysed for any purpose. If you use these data as part of a publication, please cite the following paper:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[coming</span> <span class="pre">soon]</span></code></p></li>
-</ul>
+<div class="admonition-citation admonition">
+<p class="admonition-title">Citation</p>
+<p>Brandyce St. Laurent et al. (2021) Population genomics reveal distinct and diverging populations of <em>An. minimus</em> in Cambodia – a widespread malaria vector in Southeast Asia. bioRxiv. <a class="reference external" href="https://doi.org/10.1101/2021.11.11.468219">https://doi.org/10.1101/2021.11.11.468219</a></p>
+</div>
 </div>
 <div class="section" id="partner-studies-and-population-sampling">
 <h2>Partner studies and population sampling<a class="headerlink" href="#partner-studies-and-population-sampling" title="Permalink to this headline">¶</a></h2>
@@ -487,7 +501,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="whole-genome-sequencing-and-variant-calling">
 <h2>Whole-genome sequencing and variant calling<a class="headerlink" href="#whole-genome-sequencing-and-variant-calling" title="Permalink to this headline">¶</a></h2>
 <p>All samples in <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> have been sequenced individually to high coverage using Illumina technology at the Wellcome Sanger Institute. These sequence data have then been analysed to identify genetic variants such as single nucleotide polymorphisms (SNPs). After variant calling, both the samples and the variants have been through a range of quality control analyses, to ensure the data are of high quality. Both the raw sequence data and the curated variant calls are openly available for download and analysis.</p>
-<p>For further information about the sequencing and variant calling methods used, please see the associated publication <code class="docutils literal notranslate"><span class="pre">[coming</span> <span class="pre">soon]</span></code>.</p>
+<p>For further information about the sequencing and variant calling methods used, please see please see <a class="reference external" href="https://doi.org/10.1101/2021.11.11.468219">St. Laurent et al. (2021)</a>.</p>
 </div>
 <div class="section" id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
@@ -498,12 +512,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
 <p>If you would like to start working with the <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> data, please visit the <a class="reference internal" href="cloud.html"><span class="doc std std-doc">cloud data access guide</span></a> or the <a class="reference internal" href="download.html"><span class="doc std std-doc">data download guide</span></a> or continue browsing the other documentation on this site.</p>
-<p>For further information about the dataset and results of population genetic analyses, see the following publication:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[coming</span> <span class="pre">soon]</span></code></p></li>
-</ul>
+<p>For further information about the dataset and results of population genetic analyses, please see <a class="reference external" href="https://doi.org/10.1101/2021.11.11.468219">St. Laurent et al. (2021)</a>.</p>
 </div>
-<hr class="docutils" />
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -531,31 +541,22 @@ commentsRunWhenDOMLoaded(addUtterances);
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../ag3/examples/cnv-explore.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Exploring copy number variation (CNV)</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../ag3/examples/cnv-explore.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Exploring copy number variation (CNV)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cloud.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Amin1 cloud data access</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="cloud.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Amin1 cloud data access</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -576,8 +577,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

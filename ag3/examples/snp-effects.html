@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Genes and SNP effects &#8212; MalariaGEN vector data user guide</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -75,10 +75,10 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -89,7 +89,10 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="next" title="Investigating population structure with PCA" href="pca.html" />
     <link rel="prev" title="Single nucleotide polymorphisms (SNPs)" href="snps.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -128,7 +131,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles gambiae complex
  </span>
@@ -157,6 +160,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2">
     <a class="reference internal" href="../methods.html">
      Ag3 methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../api.html">
+     Ag3 API
     </a>
    </li>
    <li class="toctree-l2 current active has-children">
@@ -199,7 +207,7 @@ commentsRunWhenDOMLoaded(addUtterances);
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles minimus
  </span>
@@ -225,10 +233,15 @@ commentsRunWhenDOMLoaded(addUtterances);
      Amin1 data downloads
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../amin1/api.html">
+     Amin1 API
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Partners and community
  </span>
@@ -390,11 +403,6 @@ commentsRunWhenDOMLoaded(addUtterances);
    Further reading
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#api-docs">
-   API docs
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -406,7 +414,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="genes-and-snp-effects">
+  <div class="tex2jax_ignore mathjax_ignore section" id="genes-and-snp-effects">
 <h1>Genes and SNP effects<a class="headerlink" href="#genes-and-snp-effects" title="Permalink to this headline">¶</a></h1>
 <p>This notebook illustrates how to use data from Ag1000G phase 3 to investigate SNPs in a gene of interest. This includes computing the effects of SNPs on the protein sequence, and computing allele frequencies in different mosquito populations.</p>
 <p>As usual this notebook is executable, click the launch icon above (<i class="fas fa-rocket"></i>) to run it for yourself. Note in particular that, although this notebook uses the <em>Rdl</em> gene as an example, if you run this notebook yourself you can change this to investigate any gene you are interested in.</p>
@@ -415,8 +423,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>Install the packages we’ll need. If you’re working on MyBinder, you can skip this step, packages will already be installed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># recommended package installs for Google Colab</span>
-<span class="o">!</span>pip install -q malariagen_data bokeh
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen_data bokeh
 </pre></div>
 </div>
 </div>
@@ -3057,7 +3064,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 </ul>
-<p>To compute SNP effects for a given gene transcript, we’ve added a <code class="docutils literal notranslate"><span class="pre">snp_effects()</span></code> method to the Ag3 Python API. Let’s see it in action, again using the <em>Rdl</em> gene (AGAP006028) as an example.</p>
+<p>To compute SNP effects for a given gene transcript, we’ve added a <code class="docutils literal notranslate"><span class="pre">snp_effects()</span></code> method to the <a class="reference internal" href="../api.html"><span class="doc std std-doc">Ag3 Python API</span></a>. Let’s see it in action, again using the <em>Rdl</em> gene (AGAP006028) as an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rdl gene, first transcript - change this to investigate a different gene or transcript</span>
@@ -3335,7 +3342,7 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Note that there are SNPs here that could alter the protein function. However, it is important to note that <strong>not all of the SNPs will have been observed in the Ag3 dataset</strong>. In other words, we also need some information about the <strong>allele frequencies</strong> in order to determine if any of these SNPs are present in natural mosquito populations.</p>
+<p>Note that there are SNPs here that could alter the protein function. However, it is important to note that <strong>not all of the SNPs will have been observed in the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> dataset</strong>. In other words, we also need some information about the <strong>allele frequencies</strong> in order to determine if any of these SNPs are present in natural mosquito populations.</p>
 </div>
 <div class="section" id="snp-allele-frequencies">
 <h2>SNP allele frequencies<a class="headerlink" href="#snp-allele-frequencies" title="Permalink to this headline">¶</a></h2>
@@ -4616,103 +4623,6 @@ dtype: int64
 <li><p><a class="reference external" href="https://academic.oup.com/mbe/article/37/10/2900/5843798?login=true">Grau-Bové et al. (2020)</a> <em>Evolution of the Insecticide Target Rdl in African Anopheles Is Driven by Interspecific and Interkaryotypic Introgression</em></p></li>
 </ul>
 </div>
-<div class="section" id="api-docs">
-<h2>API docs<a class="headerlink" href="#api-docs" title="Permalink to this headline">¶</a></h2>
-<p>Here’s the API docs for the functions we used in this notebook.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">geneset</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method geneset in module malariagen_data.ag3:
-
-geneset(attributes=(&#39;ID&#39;, &#39;Parent&#39;, &#39;Name&#39;, &#39;description&#39;)) method of malariagen_data.ag3.Ag3 instance
-    Access genome feature annotations (AgamP4.12).
-    
-    Parameters
-    ----------
-    attributes : list of str, optional
-        Attribute keys to unpack into columns. Provide &quot;*&quot; to unpack all attributes.
-    
-    Returns
-    -------
-    df : pandas.DataFrame
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">snp_effects</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method snp_effects in module malariagen_data.ag3:
-
-snp_effects(transcript, site_mask=None, site_filters=&#39;dt_20200416&#39;) method of malariagen_data.ag3.Ag3 instance
-    Compute variant effects for a gene transcript.
-    
-    Parameters
-    ----------
-    transcript : str
-        Gene transcript ID (AgamP4.12), e.g., &quot;AGAP004707-RA&quot;.
-    site_mask : {&quot;gamb_colu_arab&quot;, &quot;gamb_colu&quot;, &quot;arab&quot;}, optional
-        Site filters mask to apply.
-    site_filters : str, optional
-        Site filters analysis version.
-    
-    Returns
-    -------
-    df : pandas.DataFrame
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">snp_allele_frequencies</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on method snp_allele_frequencies in module malariagen_data.ag3:
-
-snp_allele_frequencies(transcript, cohorts, site_mask=None, site_filters=&#39;dt_20200416&#39;, species_calls=(&#39;20200422&#39;, &#39;aim&#39;), sample_sets=&#39;v3_wild&#39;, drop_invariant=True) method of malariagen_data.ag3.Ag3 instance
-    Compute per variant allele frequencies for a gene transcript.
-    
-    Parameters
-    ----------
-    transcript : str
-        Gene transcript ID (AgamP4.12), e.g., &quot;AGAP004707-RA&quot;.
-    cohorts : dict
-        Dictionary to map cohort IDs to sample queries, e.g.,
-        {&quot;bf_2012_col&quot;: &quot;country == &#39;Burkina Faso&#39; and year == 2012 and species == &#39;coluzzii&#39;&quot;}
-    site_mask : {&quot;gamb_colu_arab&quot;, &quot;gamb_colu&quot;, &quot;arab&quot;}
-        Site filters mask to apply.
-    site_filters : str, optional
-        Site filters analysis version.
-    species_calls : (str, str), optional
-        Include species calls in metadata.
-    sample_sets : str or list of str, optional
-        Can be a sample set identifier (e.g., &quot;AG1000G-AO&quot;) or a list of sample set
-        identifiers (e.g., [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]) or a release identifier (e.g.,
-        &quot;v3&quot;) or a list of release identifiers.
-    drop_invariant : bool, optional
-        If True, variants with no alternate allele calls in any cohorts are dropped from
-        the result.
-    
-    Returns
-    -------
-    df_snps : pandas.DataFrame
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -4738,31 +4648,22 @@ snp_allele_frequencies(transcript, cohorts, site_mask=None, site_filters=&#39;dt
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="snps.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Single nucleotide polymorphisms (SNPs)</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="snps.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Single nucleotide polymorphisms (SNPs)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="pca.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Investigating population structure with PCA</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="pca.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Investigating population structure with PCA</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -4783,8 +4684,7 @@ snp_allele_frequencies(transcript, cohorts, site_mask=None, site_filters=&#39;dt
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
