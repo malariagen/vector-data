@@ -1,6 +1,6 @@
 # Ag3 API
 
-This page provides documentation for functions in the [malariagen_data](https://github.com/malariagen/malariagen-data-python) Python package for accessing `Ag3` data.
+This page provides documentation for functions in the [malariagen_data](https://github.com/malariagen/malariagen-data-python) Python package for accessing *Anopheles gambiae* data.
 
 ## Ag3()
 
