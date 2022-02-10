@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ag3 analysis examples &#8212; MalariaGEN vector data user guide</title>
+    <title>Ag3.0 analysis examples &#8212; MalariaGEN vector data user guide</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -76,7 +76,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -87,7 +87,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Mosquito collection sites" href="examples/collection-sites.html" />
-    <link rel="prev" title="Ag3 API" href="api.html" />
+    <link rel="prev" title="Ag3.0 sequencing and variant calling methods" href="methods.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -139,7 +139,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   Ag3 (Ag1000G phase 3)
+   Ag3.0 (Ag1000G phase 3)
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -149,27 +149,22 @@ commentsRunWhenDOMLoaded(addUtterances);
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="cloud.html">
-     Ag3 cloud data access
+     Ag3.0 cloud data access
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="download.html">
-     Ag3 data downloads
+     Ag3.0 data downloads
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="methods.html">
-     Ag3 methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api.html">
-     Ag3 API
+     Ag3.0 sequencing and variant calling methods
     </a>
    </li>
    <li class="toctree-l2 current active has-children">
     <a class="current reference internal" href="#">
-     Ag3 analysis examples
+     Ag3.0 analysis examples
     </a>
     <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
@@ -206,6 +201,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api.html">
+   Ag3 API
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -215,7 +215,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../amin1/intro.html">
-   Amin1
+   Amin1.0
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -225,20 +225,20 @@ commentsRunWhenDOMLoaded(addUtterances);
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../amin1/cloud.html">
-     Amin1 cloud data access
+     Amin1.0 cloud data access
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../amin1/download.html">
-     Amin1 data downloads
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../amin1/api.html">
-     Amin1 API
+     Amin1.0 data downloads
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../amin1/api.html">
+   Amin1 API
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -298,7 +298,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -332,20 +332,30 @@ commentsRunWhenDOMLoaded(addUtterances);
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Ag3.0 analysis examples</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="ag3-analysis-examples">
-<h1>Ag3 analysis examples<a class="headerlink" href="#ag3-analysis-examples" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="ag3-0-analysis-examples">
+<h1>Ag3.0 analysis examples<a class="headerlink" href="#ag3-0-analysis-examples" title="Permalink to this headline">¶</a></h1>
 <p>The notebooks below provide examples of analyses that explore
-different facets of the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data in more depth. If there are any other
+different facets of the <code class="docutils literal notranslate"><span class="pre">Ag3.0</span></code> data in more depth. If there are any other
 examples you’d like to see, please <a class="reference external" href="https://github.com/malariagen/vector-data/discussions/new">let us
 know</a>.</p>
 <div class="toctree-wrapper compound">
@@ -381,14 +391,14 @@ know</a>.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="api.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="methods.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Ag3 API</p>
+            <p class="prev-next-title">Ag3.0 sequencing and variant calling methods</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="examples/collection-sites.html" title="next page">
@@ -399,19 +409,17 @@ know</a>.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By MalariaGEN<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By MalariaGEN<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

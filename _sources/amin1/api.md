@@ -1,6 +1,6 @@
 # Amin1 API
 
-This page provides documentation for functions in the [malariagen_data](https://github.com/malariagen/malariagen-data-python) Python package for accessing `Amin1` data.
+This page provides documentation for functions in the [malariagen_data](https://github.com/malariagen/malariagen-data-python) Python package for accessing *Anopheles minimus* data.
 
 ## Amin1()
 

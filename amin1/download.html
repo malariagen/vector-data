@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amin1 data downloads &#8212; MalariaGEN vector data user guide</title>
+    <title>Amin1.0 data downloads &#8212; MalariaGEN vector data user guide</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -76,7 +76,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -87,7 +87,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Amin1 API" href="api.html" />
-    <link rel="prev" title="Amin1 cloud data access" href="cloud.html" />
+    <link rel="prev" title="Amin1.0 cloud data access" href="cloud.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -139,7 +139,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ag3/intro.html">
-   Ag3 (Ag1000G phase 3)
+   Ag3.0 (Ag1000G phase 3)
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -149,27 +149,22 @@ commentsRunWhenDOMLoaded(addUtterances);
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ag3/cloud.html">
-     Ag3 cloud data access
+     Ag3.0 cloud data access
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ag3/download.html">
-     Ag3 data downloads
+     Ag3.0 data downloads
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ag3/methods.html">
-     Ag3 methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ag3/api.html">
-     Ag3 API
+     Ag3.0 sequencing and variant calling methods
     </a>
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../ag3/examples.html">
-     Ag3 analysis examples
+     Ag3.0 analysis examples
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
@@ -206,6 +201,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/api.html">
+   Ag3 API
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -215,7 +215,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   Amin1
+   Amin1.0
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -225,20 +225,20 @@ commentsRunWhenDOMLoaded(addUtterances);
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="cloud.html">
-     Amin1 cloud data access
+     Amin1.0 cloud data access
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Amin1 data downloads
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api.html">
-     Amin1 API
+     Amin1.0 data downloads
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api.html">
+   Amin1 API
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -298,7 +298,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -354,7 +354,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -394,17 +394,60 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Amin1.0 data downloads</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-hosting">
+   Data hosting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-metadata">
+   Sample metadata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequence-read-alignments-bam-format-and-snp-calls-vcf-format">
+   Sequence read alignments (BAM format) and SNP calls (VCF format)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snp-calls-zarr-format">
+   SNP calls (Zarr format)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback-and-suggestions">
+   Feedback and suggestions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="amin1-data-downloads">
-<h1>Amin1 data downloads<a class="headerlink" href="#amin1-data-downloads" title="Permalink to this headline">¶</a></h1>
-<p>This notebook provides information about how to download data from the <a class="reference internal" href="intro.html"><span class="doc std std-doc">Amin1 resource</span></a>. This includes sample metadata, sequence read alignments and single nucleotide polymorphism (SNP) calls.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="amin1-0-data-downloads">
+<h1>Amin1.0 data downloads<a class="headerlink" href="#amin1-0-data-downloads" title="Permalink to this headline">¶</a></h1>
+<p>This notebook provides information about how to download data from the <a class="reference internal" href="intro.html"><span class="doc std std-doc">Amin1.0 resource</span></a>. This includes sample metadata, sequence read alignments and single nucleotide polymorphism (SNP) calls.</p>
 <p>Code examples that are intended to be run via a Linux command line are prefixed with an exclamation mark (!). If you are running these commands directly from a terminal, remove the exclamation mark.</p>
 <p>Examples in this notebook assume you are downloading data to a local folder within your home directory at the path <code class="docutils literal notranslate"><span class="pre">~/vo_amin_release/</span></code>. Change this if you want to download to a different folder on the local file system.</p>
 <div class="section" id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Amin1</span></code> data are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_amin_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> data are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_amin_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
 </div>
 <div class="section" id="sample-metadata">
 <h2>Sample metadata<a class="headerlink" href="#sample-metadata" title="Permalink to this headline">¶</a></h2>
@@ -561,14 +604,14 @@ VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/snp_g
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="cloud.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Amin1 cloud data access</p>
+            <p class="prev-next-title">Amin1.0 cloud data access</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="api.html" title="next page">
@@ -579,19 +622,17 @@ VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/snp_g
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By MalariaGEN<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By MalariaGEN<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

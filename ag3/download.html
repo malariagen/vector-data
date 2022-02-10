@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ag3 data downloads &#8212; MalariaGEN vector data user guide</title>
+    <title>Ag3.0 data downloads &#8212; MalariaGEN vector data user guide</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -76,7 +76,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -86,8 +86,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ag3 methods" href="methods.html" />
-    <link rel="prev" title="Ag3 cloud data access" href="cloud.html" />
+    <link rel="next" title="Ag3.0 sequencing and variant calling methods" href="methods.html" />
+    <link rel="prev" title="Ag3.0 cloud data access" href="cloud.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -139,7 +139,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   Ag3 (Ag1000G phase 3)
+   Ag3.0 (Ag1000G phase 3)
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -149,27 +149,22 @@ commentsRunWhenDOMLoaded(addUtterances);
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="cloud.html">
-     Ag3 cloud data access
+     Ag3.0 cloud data access
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Ag3 data downloads
+     Ag3.0 data downloads
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="methods.html">
-     Ag3 methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api.html">
-     Ag3 API
+     Ag3.0 sequencing and variant calling methods
     </a>
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="examples.html">
-     Ag3 analysis examples
+     Ag3.0 analysis examples
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
@@ -206,6 +201,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api.html">
+   Ag3 API
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -215,7 +215,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../amin1/intro.html">
-   Amin1
+   Amin1.0
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -225,20 +225,20 @@ commentsRunWhenDOMLoaded(addUtterances);
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../amin1/cloud.html">
-     Amin1 cloud data access
+     Amin1.0 cloud data access
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../amin1/download.html">
-     Amin1 data downloads
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../amin1/api.html">
-     Amin1 API
+     Amin1.0 data downloads
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../amin1/api.html">
+   Amin1 API
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -298,7 +298,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -354,7 +354,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -499,17 +499,165 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Ag3.0 data downloads</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-hosting">
+   Data hosting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-sets">
+   Sample sets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-metadata">
+   Sample metadata
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specimen-collection-metadata">
+     Specimen collection metadata
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#species-calls">
+     Species calls
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#raw-sequence-reads-fastq-format">
+   Raw sequence reads (FASTQ format)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequence-read-alignments-bam-format">
+   Sequence read alignments (BAM format)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snp-calls-vcf-format">
+   SNP calls (VCF format)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#snp-genotypes">
+     SNP genotypes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#site-filters">
+     Site filters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snp-calls-zarr-format">
+   SNP calls (Zarr format)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#snp-sites-and-alleles">
+     SNP sites and alleles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Site filters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     SNP genotypes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#copy-number-variation-cnv-data">
+   Copy number variation (CNV) data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cnv-hmm">
+     CNV HMM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cnv-coverage-calls">
+     CNV coverage calls
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cnv-discordant-read-calls">
+     CNV discordant read calls
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#haplotypes">
+   Haplotypes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#haplotype-reference-panels-vcf-format">
+     Haplotype reference panels (VCF format)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-set-haplotypes-vcf-format">
+     Sample set haplotypes (VCF format)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-set-haplotypes-zarr-format">
+     Sample set haplotypes (Zarr format)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-downloaded-data-from-python">
+   Accessing downloaded data from Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback-and-suggestions">
+   Feedback and suggestions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="ag3-data-downloads">
-<h1>Ag3 data downloads<a class="headerlink" href="#ag3-data-downloads" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="ag3-0-data-downloads">
+<h1>Ag3.0 data downloads<a class="headerlink" href="#ag3-0-data-downloads" title="Permalink to this headline">¶</a></h1>
 <p>This notebook provides information about how to download data from the <a class="reference internal" href="intro.html"><span class="doc std std-doc"><em>Anopheles gambiae</em> 1000 Genomes project (Ag1000G) phase 3</span></a>. This includes sample metadata, raw sequence reads, sequence read alignments, and single nucleotide polymorphism (SNP) calls.</p>
 <p>Code examples that are intended to be run via a Linux command line are prefixed with an exclamation mark (!). If you are running these commands directly from a terminal, remove the exclamation mark.</p>
 <p>Examples in this notebook assume you are downloading data to a local folder within your home directory at the path <code class="docutils literal notranslate"><span class="pre">~/vo_agam_release/</span></code>. Change this if you want to download to a different folder on the local file system.</p>
 <div class="section" id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data are hosted by several different services.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ag3.0</span></code> data are hosted by several different services.</p>
 <p>Raw sequence reads in FASTQ format and sequence read alignments in BAM format are hosted by the European Nucleotide Archive (ENA). This guide provides examples of downloading data from ENA via FTP using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command line tool, but please note that there are several other options for downloading data, see the <a class="reference external" href="https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html">ENA documentation on how to download data files</a> for more information.</p>
 <p>Sample metadata in CSV format and SNP calls in VCF and Zarr formats are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
 </div>
@@ -524,6 +672,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir -pv ~/vo_agam_release/v3/
 <span class="o">!</span>gsutil cp gs://vo_agam_release/v3/manifest.tsv ~/vo_agam_release/v3/
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: created directory &#39;/root/vo_agam_release&#39;
+mkdir: created directory &#39;/root/vo_agam_release/v3/&#39;
+Copying gs://vo_agam_release/v3/manifest.tsv...
+/ [1 files][  453.0 B/  453.0 B]                                                
+Operation completed over 1 objects/453.0 B.                                      
 </pre></div>
 </div>
 </div>
@@ -585,6 +742,357 @@ AG1000G-X	297
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir -pv ~/vo_agam_release/v3/metadata/
 <span class="o">!</span>gsutil -m rsync -r gs://vo_agam_release/v3/metadata/ ~/vo_agam_release/v3/metadata/
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: created directory &#39;/root/vo_agam_release/v3/metadata/&#39;
+Building synchronization state...
+Starting synchronization...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-AO/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-AO/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-AO/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-BF-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CD/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CD/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CD/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CF/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CF/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CF/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CI/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CI/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CI/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-CM-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-FR/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-FR/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-FR/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GA-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GA-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GH/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GA-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GH/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GH/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GM-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GN-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GN-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GN-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GN-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GN-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GN-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GQ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GQ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GW/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GW/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GW/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-GQ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-KE/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-KE/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-KE/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-ML-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-ML-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-ML-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-ML-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-ML-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-ML-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-MW/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-MW/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-MW/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-MZ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-MZ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-TZ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-MZ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-TZ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-TZ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-UG/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-UG/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-UG/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-X/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-X/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-AO/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210702/AG1000G-X/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-AO/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-AO/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-BF-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CD/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CD/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CD/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CF/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CF/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CI/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CF/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CI/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CI/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-CM-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-FR/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-FR/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-FR/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GA-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GA-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GA-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GH/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GH/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GH/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GN-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GM-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GN-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GN-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GN-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GN-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GN-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GQ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GQ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GQ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GW/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GW/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-GW/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-KE/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-KE/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-KE/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-ML-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-ML-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-ML-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-ML-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-ML-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-ML-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-MW/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-MZ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-MW/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-MW/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-MZ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-TZ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-MZ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-TZ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-TZ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-UG/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-UG/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-UG/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-X/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-X/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-AO/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-AO/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-AO/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20210927/AG1000G-X/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-BF-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CD/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CD/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CD/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CF/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CF/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CF/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CI/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CI/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CI/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-CM-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-FR/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-FR/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-FR/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GA-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GA-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GA-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GH/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GH/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GH/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-C/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-C/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GM-C/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GN-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GN-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GN-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GN-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GN-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GN-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GQ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GQ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GQ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GW/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GW/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-GW/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-KE/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-KE/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-ML-A/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-KE/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-ML-A/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-ML-A/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-ML-B/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-ML-B/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-ML-B/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-MW/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-MW/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-MW/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-MZ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-MZ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-MZ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-TZ/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-TZ/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-UG/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-TZ/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-UG/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-UG/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-X/samples.admin_units.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-X/samples.cohorts.csv...
+Copying gs://vo_agam_release/v3/metadata/cohorts_20211101/AG1000G-X/samples.taxa.csv...
+Copying gs://vo_agam_release/v3/metadata/crosses/README.md...
+Copying gs://vo_agam_release/v3/metadata/ena_runs.csv...
+Copying gs://vo_agam_release/v3/metadata/crosses/crosses.fam...
+Copying gs://vo_agam_release/v3/metadata/ena_alignments.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-AO/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-BF-A/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-BF-B/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-BF-C/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-CD/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-CF/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-CI/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-CM-A/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-CM-B/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-CM-C/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GA-A/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GH/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-FR/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GM-A/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GM-B/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GN-A/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GM-C/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GQ/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GN-B/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-KE/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-GW/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-ML-A/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-MW/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-TZ/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-MZ/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-ML-B/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-UG/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/AG1000G-X/samples.meta.csv...
+Copying gs://vo_agam_release/v3/metadata/general/README.md...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-AO/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-AO/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-B/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-B/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-C/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-C/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CD/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CD/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CF/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CI/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CF/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CM-A/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CI/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CM-B/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CM-A/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CM-C/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CM-C/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-CM-B/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-FR/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-FR/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GA-A/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GA-A/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GH/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GH/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GM-A/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GM-A/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GM-B/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GM-B/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GM-C/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GM-C/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GN-A/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GN-B/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GN-B/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GQ/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GQ/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GW/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GW/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-KE/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-KE/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-ML-A/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-ML-A/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-ML-B/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-ML-B/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-MW/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-MW/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-TZ/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-MZ/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-UG/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-MZ/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-TZ/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-UG/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-X/samples.species_aim.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/README.md...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-X/samples.species_pca.csv...
+Copying gs://vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-GN-A/samples.species_pca.csv...
+/ [342/342 files][  2.2 MiB/  2.2 MiB] 100% Done                                
+Operation completed over 342 objects/2.2 MiB.                                    
 </pre></div>
 </div>
 </div>
@@ -1133,13 +1641,16 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read sample set manifest into a pandas dataframe</span>
-<span class="n">df_sample_sets</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_sets</span><span class="p">()</span>
+<span class="n">df_sample_sets</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_sets</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
 <span class="n">df_sample_sets</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
+<div class="output text_html">
+  <div id="df-b2e096c0-633b-4397-bebd-e8a80c3a36d2">
+    <div class="colab-df-container">
+      <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1167,173 +1678,249 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <th>0</th>
       <td>AG1000G-AO</td>
       <td>81</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>AG1000G-BF-A</td>
       <td>181</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>AG1000G-BF-B</td>
       <td>102</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>AG1000G-BF-C</td>
       <td>13</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>AG1000G-CD</td>
       <td>76</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>5</th>
       <td>AG1000G-CF</td>
       <td>73</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>6</th>
       <td>AG1000G-CI</td>
       <td>80</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>7</th>
       <td>AG1000G-CM-A</td>
       <td>303</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>8</th>
       <td>AG1000G-CM-B</td>
       <td>97</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>9</th>
       <td>AG1000G-CM-C</td>
       <td>44</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>10</th>
       <td>AG1000G-FR</td>
       <td>23</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>11</th>
       <td>AG1000G-GA-A</td>
       <td>69</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>12</th>
       <td>AG1000G-GH</td>
       <td>100</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>13</th>
       <td>AG1000G-GM-A</td>
       <td>74</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>14</th>
       <td>AG1000G-GM-B</td>
       <td>31</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>15</th>
       <td>AG1000G-GM-C</td>
       <td>174</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>16</th>
       <td>AG1000G-GN-A</td>
       <td>45</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>17</th>
       <td>AG1000G-GN-B</td>
       <td>185</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>18</th>
       <td>AG1000G-GQ</td>
       <td>10</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>19</th>
       <td>AG1000G-GW</td>
       <td>101</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>20</th>
       <td>AG1000G-KE</td>
       <td>86</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>21</th>
       <td>AG1000G-ML-A</td>
       <td>60</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>22</th>
       <td>AG1000G-ML-B</td>
       <td>71</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>23</th>
       <td>AG1000G-MW</td>
       <td>41</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>24</th>
       <td>AG1000G-MZ</td>
       <td>74</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>25</th>
       <td>AG1000G-TZ</td>
       <td>300</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>26</th>
       <td>AG1000G-UG</td>
       <td>290</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>27</th>
       <td>AG1000G-X</td>
       <td>297</td>
-      <td>v3</td>
+      <td>3.0</td>
     </tr>
   </tbody>
 </table>
-</div></div></div>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-b2e096c0-633b-4397-bebd-e8a80c3a36d2')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-b2e096c0-633b-4397-bebd-e8a80c3a36d2 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-b2e096c0-633b-4397-bebd-e8a80c3a36d2');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1344,7 +1931,10 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
+<div class="output text_html">
+  <div id="df-6c31320f-2f6e-492a-8105-b540ad1a1434">
+    <div class="colab-df-container">
+      <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1374,11 +1964,20 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <th>sex_call</th>
       <th>sample_set</th>
       <th>release</th>
-      <th>aim_fraction_colu</th>
-      <th>aim_fraction_arab</th>
-      <th>species_gambcolu_arabiensis</th>
-      <th>species_gambiae_coluzzii</th>
-      <th>species</th>
+      <th>aim_species_fraction_colu</th>
+      <th>aim_species_fraction_arab</th>
+      <th>aim_species_gambcolu_arabiensis</th>
+      <th>aim_species_gambiae_coluzzii</th>
+      <th>aim_species</th>
+      <th>country_ISO</th>
+      <th>adm1_name</th>
+      <th>adm1_ISO</th>
+      <th>adm2_name</th>
+      <th>taxon</th>
+      <th>cohort_admin1_year</th>
+      <th>cohort_admin1_month</th>
+      <th>cohort_admin2_year</th>
+      <th>cohort_admin2_month</th>
     </tr>
   </thead>
   <tbody>
@@ -1395,12 +1994,21 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.235</td>
       <td>F</td>
       <td>AG1000G-BF-A</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.024</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>gambiae</td>
       <td>gambiae</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>gambiae</td>
+      <td>BF-09_gamb_2012</td>
+      <td>BF-09_gamb_2012_07</td>
+      <td>BF-09_Houet_gamb_2012</td>
+      <td>BF-09_Houet_gamb_2012_07</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1415,12 +2023,21 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.235</td>
       <td>F</td>
       <td>AG1000G-BF-A</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.038</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>gambiae</td>
       <td>gambiae</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>gambiae</td>
+      <td>BF-09_gamb_2012</td>
+      <td>BF-09_gamb_2012_07</td>
+      <td>BF-09_Houet_gamb_2012</td>
+      <td>BF-09_Houet_gamb_2012_07</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1435,12 +2052,21 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.472</td>
       <td>F</td>
       <td>AG1000G-BF-A</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.982</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>coluzzii</td>
       <td>coluzzii</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>coluzzii</td>
+      <td>BF-09_colu_2012</td>
+      <td>BF-09_colu_2012_07</td>
+      <td>BF-09_Houet_colu_2012</td>
+      <td>BF-09_Houet_colu_2012_07</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1455,12 +2081,21 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.472</td>
       <td>F</td>
       <td>AG1000G-BF-A</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.990</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>coluzzii</td>
       <td>coluzzii</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>coluzzii</td>
+      <td>BF-09_colu_2012</td>
+      <td>BF-09_colu_2012_07</td>
+      <td>BF-09_Houet_colu_2012</td>
+      <td>BF-09_Houet_colu_2012_07</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1475,15 +2110,33 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.472</td>
       <td>F</td>
       <td>AG1000G-BF-A</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.975</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>coluzzii</td>
       <td>coluzzii</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>coluzzii</td>
+      <td>BF-09_colu_2012</td>
+      <td>BF-09_colu_2012_07</td>
+      <td>BF-09_Houet_colu_2012</td>
+      <td>BF-09_Houet_colu_2012_07</td>
     </tr>
     <tr>
       <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1515,12 +2168,21 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.535</td>
       <td>F</td>
       <td>AG1000G-BF-B</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.021</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>gambiae</td>
       <td>gambiae</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>gambiae</td>
+      <td>BF-09_gamb_2014</td>
+      <td>BF-09_gamb_2014_07</td>
+      <td>BF-09_Houet_gamb_2014</td>
+      <td>BF-09_Houet_gamb_2014_07</td>
     </tr>
     <tr>
       <th>279</th>
@@ -1535,12 +2197,21 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.535</td>
       <td>F</td>
       <td>AG1000G-BF-B</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.025</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>gambiae</td>
       <td>gambiae</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>gambiae</td>
+      <td>BF-09_gamb_2014</td>
+      <td>BF-09_gamb_2014_07</td>
+      <td>BF-09_Houet_gamb_2014</td>
+      <td>BF-09_Houet_gamb_2014_07</td>
     </tr>
     <tr>
       <th>280</th>
@@ -1555,12 +2226,21 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.535</td>
       <td>F</td>
       <td>AG1000G-BF-B</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.029</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>gambiae</td>
       <td>gambiae</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>gambiae</td>
+      <td>BF-09_gamb_2014</td>
+      <td>BF-09_gamb_2014_07</td>
+      <td>BF-09_Houet_gamb_2014</td>
+      <td>BF-09_Houet_gamb_2014_07</td>
     </tr>
     <tr>
       <th>281</th>
@@ -1575,12 +2255,21 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.535</td>
       <td>F</td>
       <td>AG1000G-BF-B</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.018</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>gambiae</td>
       <td>gambiae</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>gambiae</td>
+      <td>BF-09_gamb_2014</td>
+      <td>BF-09_gamb_2014_07</td>
+      <td>BF-09_Houet_gamb_2014</td>
+      <td>BF-09_Houet_gamb_2014_07</td>
     </tr>
     <tr>
       <th>282</th>
@@ -1595,27 +2284,112 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
       <td>-4.472</td>
       <td>F</td>
       <td>AG1000G-BF-B</td>
-      <td>v3</td>
+      <td>3.0</td>
       <td>0.986</td>
       <td>0.002</td>
       <td>gamb_colu</td>
       <td>coluzzii</td>
       <td>coluzzii</td>
+      <td>BFA</td>
+      <td>Hauts-Bassins</td>
+      <td>BF-09</td>
+      <td>Houet</td>
+      <td>coluzzii</td>
+      <td>BF-09_colu_2014</td>
+      <td>BF-09_colu_2014_07</td>
+      <td>BF-09_Houet_colu_2014</td>
+      <td>BF-09_Houet_colu_2014_07</td>
     </tr>
   </tbody>
 </table>
-<p>283 rows × 17 columns</p>
-</div></div></div>
+<p>283 rows × 26 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-6c31320f-2f6e-492a-8105-b540ad1a1434')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-6c31320f-2f6e-492a-8105-b540ad1a1434 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-6c31320f-2f6e-492a-8105-b540ad1a1434');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect number of samples by species</span>
-<span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;taxon&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>species
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>taxon
 arabiensis                         3
 coluzzii                         135
 gambiae                          144
@@ -1627,8 +2401,8 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access SNP positions and alleles for chromosome arm 3R as dask arrays</span>
-<span class="n">pos</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="s2">&quot;3R&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access SNP positions and alleles for chromosome arm 3R as dask array</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s2">&quot;POS&quot;</span><span class="p">)</span>
 <span class="n">pos</span>
 </pre></div>
 </div>
@@ -1658,156 +2432,113 @@ dtype: int64
 
   <!-- Vertical lines -->
   <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="1" y1="0" x2="1" y2="25" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="3" y1="0" x2="3" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
   <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="8" y1="0" x2="8" y2="25" />
+  <line x1="9" y1="0" x2="9" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
   <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="13" y1="0" x2="13" y2="25" />
+  <line x1="14" y1="0" x2="14" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="16" y1="0" x2="16" y2="25" />
   <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="20" y1="0" x2="20" y2="25" />
+  <line x1="21" y1="0" x2="21" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
   <line x1="25" y1="0" x2="25" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="27" y1="0" x2="27" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
   <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="32" y1="0" x2="32" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="34" y1="0" x2="34" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
   <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="38" y1="0" x2="38" y2="25" />
+  <line x1="39" y1="0" x2="39" y2="25" />
+  <line x1="40" y1="0" x2="40" y2="25" />
+  <line x1="42" y1="0" x2="42" y2="25" />
   <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="46" y1="0" x2="46" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="49" y1="0" x2="49" y2="25" />
   <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="51" y1="0" x2="51" y2="25" />
+  <line x1="53" y1="0" x2="53" y2="25" />
+  <line x1="54" y1="0" x2="54" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
   <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="59" y1="0" x2="59" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="61" y1="0" x2="61" y2="25" />
   <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="63" y1="0" x2="63" y2="25" />
+  <line x1="65" y1="0" x2="65" y2="25" />
+  <line x1="66" y1="0" x2="66" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
   <line x1="68" y1="0" x2="68" y2="25" />
+  <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="71" y1="0" x2="71" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="73" y1="0" x2="73" y2="25" />
+  <line x1="74" y1="0" x2="74" y2="25" />
   <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="77" y1="0" x2="77" y2="25" />
+  <line x1="78" y1="0" x2="78" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
   <line x1="81" y1="0" x2="81" y2="25" />
+  <line x1="83" y1="0" x2="83" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="85" y1="0" x2="85" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
   <line x1="87" y1="0" x2="87" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="91" y1="0" x2="91" y2="25" />
+  <line x1="92" y1="0" x2="92" y2="25" />
   <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="95" y1="0" x2="95" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="98" y1="0" x2="98" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
   <line x1="101" y1="0" x2="101" y2="25" />
+  <line x1="102" y1="0" x2="102" y2="25" />
+  <line x1="103" y1="0" x2="103" y2="25" />
+  <line x1="104" y1="0" x2="104" y2="25" />
+  <line x1="106" y1="0" x2="106" y2="25" />
   <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="109" y1="0" x2="109" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
   <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="114" y1="0" x2="114" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="116" y1="0" x2="116" y2="25" />
+  <line x1="118" y1="0" x2="118" y2="25" />
+  <line x1="119" y1="0" x2="119" y2="25" />
   <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >52226568</text>
   <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-</td>
-</tr>
-</table></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 52.23 MB </td> <td> 524.29 kB </td></tr>
-    <tr><th> Shape </th><td> (52226568,) </td> <td> (524288,) </td></tr>
-    <tr><th> Count </th><td> 101 Tasks </td><td> 100 Chunks </td></tr>
-    <tr><th> Type </th><td> |S1 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="6" y1="0" x2="6" y2="25" />
-  <line x1="12" y1="0" x2="12" y2="25" />
-  <line x1="18" y1="0" x2="18" y2="25" />
-  <line x1="25" y1="0" x2="25" y2="25" />
-  <line x1="31" y1="0" x2="31" y2="25" />
-  <line x1="37" y1="0" x2="37" y2="25" />
-  <line x1="43" y1="0" x2="43" y2="25" />
-  <line x1="50" y1="0" x2="50" y2="25" />
-  <line x1="56" y1="0" x2="56" y2="25" />
-  <line x1="62" y1="0" x2="62" y2="25" />
-  <line x1="68" y1="0" x2="68" y2="25" />
-  <line x1="75" y1="0" x2="75" y2="25" />
-  <line x1="81" y1="0" x2="81" y2="25" />
-  <line x1="87" y1="0" x2="87" y2="25" />
-  <line x1="93" y1="0" x2="93" y2="25" />
-  <line x1="101" y1="0" x2="101" y2="25" />
-  <line x1="107" y1="0" x2="107" y2="25" />
-  <line x1="113" y1="0" x2="113" y2="25" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >52226568</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-</td>
-</tr>
-</table></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 156.68 MB </td> <td> 1.57 MB </td></tr>
-    <tr><th> Shape </th><td> (52226568, 3) </td> <td> (524288, 3) </td></tr>
-    <tr><th> Count </th><td> 101 Tasks </td><td> 100 Chunks </td></tr>
-    <tr><th> Type </th><td> |S1 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="6" x2="25" y2="6" />
-  <line x1="0" y1="12" x2="25" y2="12" />
-  <line x1="0" y1="18" x2="25" y2="18" />
-  <line x1="0" y1="25" x2="25" y2="25" />
-  <line x1="0" y1="31" x2="25" y2="31" />
-  <line x1="0" y1="37" x2="25" y2="37" />
-  <line x1="0" y1="43" x2="25" y2="43" />
-  <line x1="0" y1="50" x2="25" y2="50" />
-  <line x1="0" y1="56" x2="25" y2="56" />
-  <line x1="0" y1="62" x2="25" y2="62" />
-  <line x1="0" y1="68" x2="25" y2="68" />
-  <line x1="0" y1="75" x2="25" y2="75" />
-  <line x1="0" y1="81" x2="25" y2="81" />
-  <line x1="0" y1="87" x2="25" y2="87" />
-  <line x1="0" y1="93" x2="25" y2="93" />
-  <line x1="0" y1="101" x2="25" y2="101" />
-  <line x1="0" y1="107" x2="25" y2="107" />
-  <line x1="0" y1="113" x2="25" y2="113" />
-  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
-  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >3</text>
-  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">52226568</text>
 </svg>
 </td>
 </tr>
@@ -1829,46 +2560,8 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read first 10 SNP reference alleles</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">ref</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">r</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([b&#39;C&#39;, b&#39;C&#39;, b&#39;T&#39;, b&#39;C&#39;, b&#39;T&#39;, b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;, b&#39;T&#39;, b&#39;T&#39;],
-      dtype=&#39;|S1&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read first 10 SNP alternate alleles</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">alt</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">a</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[b&#39;A&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;],
-       [b&#39;C&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;C&#39;, b&#39;T&#39;],
-       [b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;]], dtype=&#39;|S1&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access gamb_colu_arab site filters for chromosome arm 3R as a dask array</span>
-<span class="n">filter_pass</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">)</span>
+<span class="n">filter_pass</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">)</span>
 <span class="n">filter_pass</span>
 </pre></div>
 </div>
@@ -1898,28 +2591,184 @@ dtype: int64
 
   <!-- Vertical lines -->
   <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="0" y1="0" x2="0" y2="25" />
+  <line x1="1" y1="0" x2="1" y2="25" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="3" y1="0" x2="3" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
+  <line x1="5" y1="0" x2="5" y2="25" />
   <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="8" y1="0" x2="8" y2="25" />
+  <line x1="8" y1="0" x2="8" y2="25" />
+  <line x1="9" y1="0" x2="9" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="11" y1="0" x2="11" y2="25" />
+  <line x1="11" y1="0" x2="11" y2="25" />
   <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="13" y1="0" x2="13" y2="25" />
+  <line x1="13" y1="0" x2="13" y2="25" />
+  <line x1="14" y1="0" x2="14" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="15" y1="0" x2="15" y2="25" />
+  <line x1="16" y1="0" x2="16" y2="25" />
+  <line x1="17" y1="0" x2="17" y2="25" />
+  <line x1="17" y1="0" x2="17" y2="25" />
   <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="20" y1="0" x2="20" y2="25" />
+  <line x1="21" y1="0" x2="21" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="22" y1="0" x2="22" y2="25" />
+  <line x1="23" y1="0" x2="23" y2="25" />
   <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="25" y1="0" x2="25" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="27" y1="0" x2="27" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="29" y1="0" x2="29" y2="25" />
+  <line x1="30" y1="0" x2="30" y2="25" />
   <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="32" y1="0" x2="32" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="34" y1="0" x2="34" y2="25" />
+  <line x1="35" y1="0" x2="35" y2="25" />
+  <line x1="35" y1="0" x2="35" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
   <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="38" y1="0" x2="38" y2="25" />
+  <line x1="39" y1="0" x2="39" y2="25" />
+  <line x1="39" y1="0" x2="39" y2="25" />
+  <line x1="40" y1="0" x2="40" y2="25" />
+  <line x1="41" y1="0" x2="41" y2="25" />
+  <line x1="42" y1="0" x2="42" y2="25" />
+  <line x1="42" y1="0" x2="42" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
   <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="46" y1="0" x2="46" y2="25" />
+  <line x1="46" y1="0" x2="46" y2="25" />
+  <line x1="47" y1="0" x2="47" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="49" y1="0" x2="49" y2="25" />
   <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="51" y1="0" x2="51" y2="25" />
+  <line x1="51" y1="0" x2="51" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="53" y1="0" x2="53" y2="25" />
+  <line x1="53" y1="0" x2="53" y2="25" />
+  <line x1="54" y1="0" x2="54" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
   <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="58" y1="0" x2="58" y2="25" />
+  <line x1="59" y1="0" x2="59" y2="25" />
+  <line x1="59" y1="0" x2="59" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="61" y1="0" x2="61" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
   <line x1="63" y1="0" x2="63" y2="25" />
+  <line x1="64" y1="0" x2="64" y2="25" />
+  <line x1="64" y1="0" x2="64" y2="25" />
+  <line x1="65" y1="0" x2="65" y2="25" />
+  <line x1="66" y1="0" x2="66" y2="25" />
+  <line x1="66" y1="0" x2="66" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="68" y1="0" x2="68" y2="25" />
+  <line x1="68" y1="0" x2="68" y2="25" />
   <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="70" y1="0" x2="70" y2="25" />
+  <line x1="71" y1="0" x2="71" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="73" y1="0" x2="73" y2="25" />
+  <line x1="73" y1="0" x2="73" y2="25" />
+  <line x1="74" y1="0" x2="74" y2="25" />
   <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="76" y1="0" x2="76" y2="25" />
+  <line x1="77" y1="0" x2="77" y2="25" />
+  <line x1="77" y1="0" x2="77" y2="25" />
+  <line x1="78" y1="0" x2="78" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="80" y1="0" x2="80" y2="25" />
+  <line x1="81" y1="0" x2="81" y2="25" />
   <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="82" y1="0" x2="82" y2="25" />
+  <line x1="83" y1="0" x2="83" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="85" y1="0" x2="85" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="87" y1="0" x2="87" y2="25" />
   <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="89" y1="0" x2="89" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="90" y1="0" x2="90" y2="25" />
+  <line x1="91" y1="0" x2="91" y2="25" />
+  <line x1="92" y1="0" x2="92" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
   <line x1="95" y1="0" x2="95" y2="25" />
+  <line x1="95" y1="0" x2="95" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="97" y1="0" x2="97" y2="25" />
+  <line x1="98" y1="0" x2="98" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="99" y1="0" x2="99" y2="25" />
+  <line x1="100" y1="0" x2="100" y2="25" />
   <line x1="101" y1="0" x2="101" y2="25" />
+  <line x1="102" y1="0" x2="102" y2="25" />
+  <line x1="102" y1="0" x2="102" y2="25" />
+  <line x1="103" y1="0" x2="103" y2="25" />
+  <line x1="104" y1="0" x2="104" y2="25" />
+  <line x1="104" y1="0" x2="104" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="106" y1="0" x2="106" y2="25" />
+  <line x1="106" y1="0" x2="106" y2="25" />
   <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="109" y1="0" x2="109" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="111" y1="0" x2="111" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
   <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="114" y1="0" x2="114" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="116" y1="0" x2="116" y2="25" />
+  <line x1="117" y1="0" x2="117" y2="25" />
+  <line x1="117" y1="0" x2="117" y2="25" />
+  <line x1="118" y1="0" x2="118" y2="25" />
+  <line x1="119" y1="0" x2="119" y2="25" />
+  <line x1="119" y1="0" x2="119" y2="25" />
   <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >52226568</text>
@@ -1947,7 +2796,7 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access SNP genotypes for AG1000G-BF-A and AG1000G-BF-B as a dask array</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">])</span>
+<span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">])</span>
 <span class="n">gt</span>
 </pre></div>
 </div>
@@ -1983,49 +2832,361 @@ dtype: int64
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="10" y2="25" />
+  <line x1="10" y1="0" x2="10" y2="26" />
+  <line x1="11" y1="1" x2="11" y2="26" />
+  <line x1="11" y1="1" x2="11" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="27" />
+  <line x1="12" y1="2" x2="12" y2="28" />
+  <line x1="13" y1="3" x2="13" y2="28" />
   <line x1="13" y1="3" x2="13" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="29" />
+  <line x1="14" y1="4" x2="14" y2="30" />
+  <line x1="15" y1="5" x2="15" y2="30" />
+  <line x1="15" y1="5" x2="15" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="31" />
+  <line x1="16" y1="6" x2="16" y2="32" />
   <line x1="17" y1="7" x2="17" y2="32" />
+  <line x1="17" y1="7" x2="17" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="33" />
+  <line x1="18" y1="8" x2="18" y2="34" />
+  <line x1="19" y1="9" x2="19" y2="34" />
+  <line x1="19" y1="9" x2="19" y2="35" />
+  <line x1="20" y1="10" x2="20" y2="35" />
+  <line x1="20" y1="10" x2="20" y2="35" />
   <line x1="20" y1="10" x2="20" y2="36" />
+  <line x1="21" y1="11" x2="21" y2="36" />
+  <line x1="21" y1="11" x2="21" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="37" />
+  <line x1="22" y1="12" x2="22" y2="38" />
+  <line x1="23" y1="13" x2="23" y2="38" />
+  <line x1="23" y1="13" x2="23" y2="39" />
+  <line x1="24" y1="14" x2="24" y2="39" />
   <line x1="24" y1="14" x2="24" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="40" />
+  <line x1="25" y1="15" x2="25" y2="41" />
+  <line x1="26" y1="16" x2="26" y2="41" />
+  <line x1="26" y1="16" x2="26" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="42" />
+  <line x1="27" y1="17" x2="27" y2="43" />
+  <line x1="28" y1="18" x2="28" y2="43" />
   <line x1="28" y1="18" x2="28" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="44" />
+  <line x1="29" y1="19" x2="29" y2="45" />
+  <line x1="30" y1="20" x2="30" y2="45" />
+  <line x1="30" y1="20" x2="30" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="46" />
+  <line x1="31" y1="21" x2="31" y2="47" />
   <line x1="32" y1="22" x2="32" y2="47" />
+  <line x1="32" y1="22" x2="32" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="48" />
+  <line x1="33" y1="23" x2="33" y2="49" />
+  <line x1="34" y1="24" x2="34" y2="49" />
+  <line x1="34" y1="24" x2="34" y2="50" />
+  <line x1="35" y1="25" x2="35" y2="50" />
+  <line x1="35" y1="25" x2="35" y2="50" />
   <line x1="35" y1="25" x2="35" y2="51" />
+  <line x1="36" y1="26" x2="36" y2="51" />
+  <line x1="36" y1="26" x2="36" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="52" />
+  <line x1="37" y1="27" x2="37" y2="53" />
+  <line x1="38" y1="28" x2="38" y2="53" />
+  <line x1="38" y1="28" x2="38" y2="54" />
+  <line x1="39" y1="29" x2="39" y2="54" />
   <line x1="39" y1="29" x2="39" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="55" />
+  <line x1="40" y1="30" x2="40" y2="56" />
+  <line x1="41" y1="31" x2="41" y2="56" />
+  <line x1="41" y1="31" x2="41" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="57" />
+  <line x1="42" y1="32" x2="42" y2="58" />
   <line x1="43" y1="33" x2="43" y2="58" />
+  <line x1="43" y1="33" x2="43" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="59" />
+  <line x1="44" y1="34" x2="44" y2="60" />
+  <line x1="45" y1="35" x2="45" y2="60" />
+  <line x1="45" y1="35" x2="45" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="61" />
+  <line x1="46" y1="36" x2="46" y2="62" />
   <line x1="47" y1="37" x2="47" y2="62" />
+  <line x1="47" y1="37" x2="47" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="63" />
+  <line x1="48" y1="38" x2="48" y2="64" />
+  <line x1="49" y1="39" x2="49" y2="64" />
+  <line x1="49" y1="39" x2="49" y2="65" />
+  <line x1="50" y1="40" x2="50" y2="65" />
+  <line x1="50" y1="40" x2="50" y2="65" />
   <line x1="50" y1="40" x2="50" y2="66" />
+  <line x1="51" y1="41" x2="51" y2="66" />
+  <line x1="51" y1="41" x2="51" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="67" />
+  <line x1="52" y1="42" x2="52" y2="68" />
+  <line x1="53" y1="43" x2="53" y2="68" />
+  <line x1="53" y1="43" x2="53" y2="69" />
+  <line x1="54" y1="44" x2="54" y2="69" />
   <line x1="54" y1="44" x2="54" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="70" />
+  <line x1="55" y1="45" x2="55" y2="71" />
+  <line x1="56" y1="46" x2="56" y2="71" />
+  <line x1="56" y1="46" x2="56" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="72" />
+  <line x1="57" y1="47" x2="57" y2="73" />
   <line x1="58" y1="48" x2="58" y2="73" />
+  <line x1="58" y1="48" x2="58" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="74" />
+  <line x1="59" y1="49" x2="59" y2="75" />
+  <line x1="60" y1="50" x2="60" y2="75" />
+  <line x1="60" y1="50" x2="60" y2="76" />
+  <line x1="61" y1="51" x2="61" y2="76" />
+  <line x1="61" y1="51" x2="61" y2="76" />
   <line x1="61" y1="51" x2="61" y2="77" />
+  <line x1="62" y1="52" x2="62" y2="77" />
+  <line x1="62" y1="52" x2="62" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="78" />
+  <line x1="63" y1="53" x2="63" y2="79" />
+  <line x1="64" y1="54" x2="64" y2="79" />
+  <line x1="64" y1="54" x2="64" y2="80" />
+  <line x1="65" y1="55" x2="65" y2="80" />
+  <line x1="65" y1="55" x2="65" y2="80" />
   <line x1="65" y1="55" x2="65" y2="81" />
+  <line x1="66" y1="56" x2="66" y2="81" />
+  <line x1="66" y1="56" x2="66" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="82" />
+  <line x1="67" y1="57" x2="67" y2="83" />
+  <line x1="68" y1="58" x2="68" y2="83" />
+  <line x1="68" y1="58" x2="68" y2="84" />
+  <line x1="69" y1="59" x2="69" y2="84" />
   <line x1="69" y1="59" x2="69" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="85" />
+  <line x1="70" y1="60" x2="70" y2="86" />
+  <line x1="71" y1="61" x2="71" y2="86" />
+  <line x1="71" y1="61" x2="71" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="87" />
+  <line x1="72" y1="62" x2="72" y2="88" />
   <line x1="73" y1="63" x2="73" y2="88" />
+  <line x1="73" y1="63" x2="73" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="89" />
+  <line x1="74" y1="64" x2="74" y2="90" />
+  <line x1="75" y1="65" x2="75" y2="90" />
+  <line x1="75" y1="65" x2="75" y2="91" />
+  <line x1="76" y1="66" x2="76" y2="91" />
+  <line x1="76" y1="66" x2="76" y2="91" />
   <line x1="76" y1="66" x2="76" y2="92" />
+  <line x1="77" y1="67" x2="77" y2="92" />
+  <line x1="77" y1="67" x2="77" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="93" />
+  <line x1="78" y1="68" x2="78" y2="94" />
+  <line x1="79" y1="69" x2="79" y2="94" />
+  <line x1="79" y1="69" x2="79" y2="95" />
+  <line x1="80" y1="70" x2="80" y2="95" />
+  <line x1="80" y1="70" x2="80" y2="95" />
   <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,96.00085180870013 10.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="10.000000,0.000000 80.588235,70.588235 80.588235,96.000852 10.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="35" y2="0" />
+  <line x1="10" y1="0" x2="36" y2="0" />
+  <line x1="11" y1="1" x2="36" y2="1" />
+  <line x1="11" y1="1" x2="37" y2="1" />
+  <line x1="12" y1="2" x2="37" y2="2" />
+  <line x1="12" y1="2" x2="37" y2="2" />
+  <line x1="12" y1="2" x2="38" y2="2" />
+  <line x1="13" y1="3" x2="38" y2="3" />
   <line x1="13" y1="3" x2="39" y2="3" />
+  <line x1="14" y1="4" x2="39" y2="4" />
+  <line x1="14" y1="4" x2="39" y2="4" />
+  <line x1="14" y1="4" x2="40" y2="4" />
+  <line x1="15" y1="5" x2="40" y2="5" />
+  <line x1="15" y1="5" x2="41" y2="5" />
+  <line x1="16" y1="6" x2="41" y2="6" />
+  <line x1="16" y1="6" x2="41" y2="6" />
+  <line x1="16" y1="6" x2="42" y2="6" />
   <line x1="17" y1="7" x2="42" y2="7" />
+  <line x1="17" y1="7" x2="43" y2="7" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="18" y1="8" x2="44" y2="8" />
+  <line x1="19" y1="9" x2="44" y2="9" />
+  <line x1="19" y1="9" x2="45" y2="9" />
+  <line x1="20" y1="10" x2="45" y2="10" />
+  <line x1="20" y1="10" x2="45" y2="10" />
   <line x1="20" y1="10" x2="46" y2="10" />
+  <line x1="21" y1="11" x2="46" y2="11" />
+  <line x1="21" y1="11" x2="47" y2="11" />
+  <line x1="22" y1="12" x2="47" y2="12" />
+  <line x1="22" y1="12" x2="47" y2="12" />
+  <line x1="22" y1="12" x2="48" y2="12" />
+  <line x1="23" y1="13" x2="48" y2="13" />
+  <line x1="23" y1="13" x2="49" y2="13" />
+  <line x1="24" y1="14" x2="49" y2="14" />
   <line x1="24" y1="14" x2="50" y2="14" />
+  <line x1="25" y1="15" x2="50" y2="15" />
+  <line x1="25" y1="15" x2="50" y2="15" />
+  <line x1="25" y1="15" x2="51" y2="15" />
+  <line x1="26" y1="16" x2="51" y2="16" />
+  <line x1="26" y1="16" x2="52" y2="16" />
+  <line x1="27" y1="17" x2="52" y2="17" />
+  <line x1="27" y1="17" x2="52" y2="17" />
+  <line x1="27" y1="17" x2="53" y2="17" />
+  <line x1="28" y1="18" x2="53" y2="18" />
   <line x1="28" y1="18" x2="54" y2="18" />
+  <line x1="29" y1="19" x2="54" y2="19" />
+  <line x1="29" y1="19" x2="54" y2="19" />
+  <line x1="29" y1="19" x2="55" y2="19" />
+  <line x1="30" y1="20" x2="55" y2="20" />
+  <line x1="30" y1="20" x2="56" y2="20" />
+  <line x1="31" y1="21" x2="56" y2="21" />
+  <line x1="31" y1="21" x2="56" y2="21" />
+  <line x1="31" y1="21" x2="57" y2="21" />
   <line x1="32" y1="22" x2="57" y2="22" />
+  <line x1="32" y1="22" x2="58" y2="22" />
+  <line x1="33" y1="23" x2="58" y2="23" />
+  <line x1="33" y1="23" x2="58" y2="23" />
+  <line x1="33" y1="23" x2="59" y2="23" />
+  <line x1="34" y1="24" x2="59" y2="24" />
+  <line x1="34" y1="24" x2="60" y2="24" />
+  <line x1="35" y1="25" x2="60" y2="25" />
+  <line x1="35" y1="25" x2="60" y2="25" />
   <line x1="35" y1="25" x2="61" y2="25" />
+  <line x1="36" y1="26" x2="61" y2="26" />
+  <line x1="36" y1="26" x2="62" y2="26" />
+  <line x1="37" y1="27" x2="62" y2="27" />
+  <line x1="37" y1="27" x2="62" y2="27" />
+  <line x1="37" y1="27" x2="63" y2="27" />
+  <line x1="38" y1="28" x2="63" y2="28" />
+  <line x1="38" y1="28" x2="64" y2="28" />
+  <line x1="39" y1="29" x2="64" y2="29" />
   <line x1="39" y1="29" x2="65" y2="29" />
+  <line x1="40" y1="30" x2="65" y2="30" />
+  <line x1="40" y1="30" x2="65" y2="30" />
+  <line x1="40" y1="30" x2="66" y2="30" />
+  <line x1="41" y1="31" x2="66" y2="31" />
+  <line x1="41" y1="31" x2="67" y2="31" />
+  <line x1="42" y1="32" x2="67" y2="32" />
+  <line x1="42" y1="32" x2="67" y2="32" />
+  <line x1="42" y1="32" x2="68" y2="32" />
   <line x1="43" y1="33" x2="68" y2="33" />
+  <line x1="43" y1="33" x2="69" y2="33" />
+  <line x1="44" y1="34" x2="69" y2="34" />
+  <line x1="44" y1="34" x2="69" y2="34" />
+  <line x1="44" y1="34" x2="70" y2="34" />
+  <line x1="45" y1="35" x2="70" y2="35" />
+  <line x1="45" y1="35" x2="71" y2="35" />
+  <line x1="46" y1="36" x2="71" y2="36" />
+  <line x1="46" y1="36" x2="71" y2="36" />
+  <line x1="46" y1="36" x2="72" y2="36" />
   <line x1="47" y1="37" x2="72" y2="37" />
+  <line x1="47" y1="37" x2="73" y2="37" />
+  <line x1="48" y1="38" x2="73" y2="38" />
+  <line x1="48" y1="38" x2="73" y2="38" />
+  <line x1="48" y1="38" x2="74" y2="38" />
+  <line x1="49" y1="39" x2="74" y2="39" />
+  <line x1="49" y1="39" x2="75" y2="39" />
+  <line x1="50" y1="40" x2="75" y2="40" />
+  <line x1="50" y1="40" x2="75" y2="40" />
   <line x1="50" y1="40" x2="76" y2="40" />
+  <line x1="51" y1="41" x2="76" y2="41" />
+  <line x1="51" y1="41" x2="77" y2="41" />
+  <line x1="52" y1="42" x2="77" y2="42" />
+  <line x1="52" y1="42" x2="77" y2="42" />
+  <line x1="52" y1="42" x2="78" y2="42" />
+  <line x1="53" y1="43" x2="78" y2="43" />
+  <line x1="53" y1="43" x2="79" y2="43" />
+  <line x1="54" y1="44" x2="79" y2="44" />
   <line x1="54" y1="44" x2="80" y2="44" />
+  <line x1="55" y1="45" x2="80" y2="45" />
+  <line x1="55" y1="45" x2="80" y2="45" />
+  <line x1="55" y1="45" x2="81" y2="45" />
+  <line x1="56" y1="46" x2="81" y2="46" />
+  <line x1="56" y1="46" x2="82" y2="46" />
+  <line x1="57" y1="47" x2="82" y2="47" />
+  <line x1="57" y1="47" x2="82" y2="47" />
+  <line x1="57" y1="47" x2="83" y2="47" />
   <line x1="58" y1="48" x2="83" y2="48" />
+  <line x1="58" y1="48" x2="84" y2="48" />
+  <line x1="59" y1="49" x2="84" y2="49" />
+  <line x1="59" y1="49" x2="84" y2="49" />
+  <line x1="59" y1="49" x2="85" y2="49" />
+  <line x1="60" y1="50" x2="85" y2="50" />
+  <line x1="60" y1="50" x2="86" y2="50" />
+  <line x1="61" y1="51" x2="86" y2="51" />
+  <line x1="61" y1="51" x2="86" y2="51" />
   <line x1="61" y1="51" x2="87" y2="51" />
+  <line x1="62" y1="52" x2="87" y2="52" />
+  <line x1="62" y1="52" x2="88" y2="52" />
+  <line x1="63" y1="53" x2="88" y2="53" />
+  <line x1="63" y1="53" x2="88" y2="53" />
+  <line x1="63" y1="53" x2="89" y2="53" />
+  <line x1="64" y1="54" x2="89" y2="54" />
+  <line x1="64" y1="54" x2="90" y2="54" />
+  <line x1="65" y1="55" x2="90" y2="55" />
+  <line x1="65" y1="55" x2="90" y2="55" />
   <line x1="65" y1="55" x2="91" y2="55" />
+  <line x1="66" y1="56" x2="91" y2="56" />
+  <line x1="66" y1="56" x2="92" y2="56" />
+  <line x1="67" y1="57" x2="92" y2="57" />
+  <line x1="67" y1="57" x2="92" y2="57" />
+  <line x1="67" y1="57" x2="93" y2="57" />
+  <line x1="68" y1="58" x2="93" y2="58" />
+  <line x1="68" y1="58" x2="94" y2="58" />
+  <line x1="69" y1="59" x2="94" y2="59" />
   <line x1="69" y1="59" x2="95" y2="59" />
+  <line x1="70" y1="60" x2="95" y2="60" />
+  <line x1="70" y1="60" x2="95" y2="60" />
+  <line x1="70" y1="60" x2="96" y2="60" />
+  <line x1="71" y1="61" x2="96" y2="61" />
+  <line x1="71" y1="61" x2="97" y2="61" />
+  <line x1="72" y1="62" x2="97" y2="62" />
+  <line x1="72" y1="62" x2="97" y2="62" />
+  <line x1="72" y1="62" x2="98" y2="62" />
   <line x1="73" y1="63" x2="98" y2="63" />
+  <line x1="73" y1="63" x2="99" y2="63" />
+  <line x1="74" y1="64" x2="99" y2="64" />
+  <line x1="74" y1="64" x2="99" y2="64" />
+  <line x1="74" y1="64" x2="100" y2="64" />
+  <line x1="75" y1="65" x2="100" y2="65" />
+  <line x1="75" y1="65" x2="101" y2="65" />
+  <line x1="76" y1="66" x2="101" y2="66" />
+  <line x1="76" y1="66" x2="101" y2="66" />
   <line x1="76" y1="66" x2="102" y2="66" />
+  <line x1="77" y1="67" x2="102" y2="67" />
+  <line x1="77" y1="67" x2="103" y2="67" />
+  <line x1="78" y1="68" x2="103" y2="68" />
+  <line x1="78" y1="68" x2="103" y2="68" />
+  <line x1="78" y1="68" x2="104" y2="68" />
+  <line x1="79" y1="69" x2="104" y2="69" />
+  <line x1="79" y1="69" x2="105" y2="69" />
+  <line x1="80" y1="70" x2="105" y2="70" />
+  <line x1="80" y1="70" x2="105" y2="70" />
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2033,7 +3194,7 @@ dtype: int64
   <line x1="35" y1="0" x2="106" y2="70" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 35.41261651458248,0.0 106.00085180870013,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#8B4903A0;stroke-width:0"/>
+  <polygon points="10.000000,0.000000 35.412617,0.000000 106.000852,70.588235 80.588235,70.588235" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
@@ -2050,7 +3211,7 @@ dtype: int64
   <line x1="106" y1="70" x2="106" y2="96" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="80.58823529411765,70.58823529411765 106.00085180870013,70.58823529411765 106.00085180870013,96.00085180870013 80.58823529411765,96.00085180870013" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="80.588235,70.588235 106.000852,70.588235 106.000852,96.000852 80.588235,96.000852" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="93.294544" y="116.000852" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
@@ -2108,7 +3269,7 @@ dtype: int64
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># choose chromosome arm</span>
-<span class="n">contig</span> <span class="o">=</span> <span class="s2">&quot;3R&quot;</span>
+<span class="n">region</span> <span class="o">=</span> <span class="s2">&quot;3R&quot;</span>
 
 <span class="c1"># choose site filter mask</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="s2">&quot;gamb_colu_arab&quot;</span>
@@ -2117,10 +3278,10 @@ dtype: int64
 <span class="n">sample_sets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">]</span>
 
 <span class="c1"># locate pass sites</span>
-<span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="n">contig</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 
 <span class="c1"># perform an allele count over genotypes</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="n">contig</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
+<span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
 <span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
 <span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
@@ -2139,7 +3300,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[########################################] | 100% Completed | 10.0s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[########################################] | 100% Completed |  1min 41.6s
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11226723
@@ -2176,37 +3337,35 @@ dtype: int64
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="cloud.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Ag3 cloud data access</p>
+            <p class="prev-next-title">Ag3.0 cloud data access</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="methods.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Ag3 methods</p>
+        <p class="prev-next-title">Ag3.0 sequencing and variant calling methods</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By MalariaGEN<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By MalariaGEN<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

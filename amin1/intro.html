@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amin1 &#8212; MalariaGEN vector data user guide</title>
+    <title>Amin1.0 &#8212; MalariaGEN vector data user guide</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -76,7 +76,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -86,8 +86,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Amin1 cloud data access" href="cloud.html" />
-    <link rel="prev" title="Exploring copy number variation (CNV)" href="../ag3/examples/cnv-explore.html" />
+    <link rel="next" title="Amin1.0 cloud data access" href="cloud.html" />
+    <link rel="prev" title="Ag3 API" href="../ag3/api.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -139,7 +139,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ag3/intro.html">
-   Ag3 (Ag1000G phase 3)
+   Ag3.0 (Ag1000G phase 3)
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -149,27 +149,22 @@ commentsRunWhenDOMLoaded(addUtterances);
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ag3/cloud.html">
-     Ag3 cloud data access
+     Ag3.0 cloud data access
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ag3/download.html">
-     Ag3 data downloads
+     Ag3.0 data downloads
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ag3/methods.html">
-     Ag3 methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ag3/api.html">
-     Ag3 API
+     Ag3.0 sequencing and variant calling methods
     </a>
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="../ag3/examples.html">
-     Ag3 analysis examples
+     Ag3.0 analysis examples
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
@@ -206,6 +201,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/api.html">
+   Ag3 API
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -215,7 +215,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   Amin1
+   Amin1.0
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -225,20 +225,20 @@ commentsRunWhenDOMLoaded(addUtterances);
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cloud.html">
-     Amin1 cloud data access
+     Amin1.0 cloud data access
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="download.html">
-     Amin1 data downloads
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="api.html">
-     Amin1 API
+     Amin1.0 data downloads
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api.html">
+   Amin1 API
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -298,7 +298,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -354,7 +354,7 @@ commentsRunWhenDOMLoaded(addUtterances);
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -394,16 +394,59 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Amin1.0</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#citation-and-terms-of-use">
+   Citation and terms of use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partner-studies-and-population-sampling">
+   Partner studies and population sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whole-genome-sequencing-and-variant-calling">
+   Whole-genome sequencing and variant calling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-hosting">
+   Data hosting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="amin1">
-<h1>Amin1<a class="headerlink" href="#amin1" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> resource comprises data from whole-genome sequencing of <em>Anopheles minimus</em> mosquitoes, which are a major vector of malaria in Southeast Asia. The mosquitoes were collected from sites in Cambodia in the context of a study of malaria vector species diversity led by Brandy St. Laurent.</p>
-<p>This page provides an introduction to the <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> data, which we hope will be a valuable resource for research and surveillance of malaria vectors in Southeast Asia. If you have any questions about this guide or how to use the data, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions/new">start a new discussion</a> on the malariagen/vector-open-data repo on GitHub. If you find any bugs, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/issues/new/choose">raise an issue</a>.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="amin1-0">
+<h1>Amin1.0<a class="headerlink" href="#amin1-0" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> resource comprises data from whole-genome sequencing of <em>Anopheles minimus</em> mosquitoes, which are a major vector of malaria in Southeast Asia. The mosquitoes were collected from sites in Cambodia in the context of a study of malaria vector species diversity led by Brandy St. Laurent.</p>
+<p>This page provides an introduction to the <code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> data, which we hope will be a valuable resource for research and surveillance of malaria vectors in Southeast Asia. If you have any questions about this guide or how to use the data, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions/new">start a new discussion</a> on the malariagen/vector-open-data repo on GitHub. If you find any bugs, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/issues/new/choose">raise an issue</a>.</p>
 <div class="section" id="citation-and-terms-of-use">
 <h2>Citation and terms of use<a class="headerlink" href="#citation-and-terms-of-use" title="Permalink to this headline">¶</a></h2>
-<p>Data from <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> are released openly and can be downloaded and analysed for any purpose. If you use these data as part of a publication, please cite the following paper:</p>
+<p>Data from <code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> are released openly and can be downloaded and analysed for any purpose. If you use these data as part of a publication, please cite the following paper:</p>
 <div class="admonition-citation admonition">
 <p class="admonition-title">Citation</p>
 <p>Brandyce St. Laurent et al. (2021) Population genomics reveal distinct and diverging populations of <em>An. minimus</em> in Cambodia – a widespread malaria vector in Southeast Asia. bioRxiv. <a class="reference external" href="https://doi.org/10.1101/2021.11.11.468219">https://doi.org/10.1101/2021.11.11.468219</a></p>
@@ -411,14 +454,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="partner-studies-and-population-sampling">
 <h2>Partner studies and population sampling<a class="headerlink" href="#partner-studies-and-population-sampling" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Amin1</span></code> includes data from 302 individual mosquitoes. Mosquito specimens sequenced for this data resource came from three separate field studies in Cambodia, led by Brandy St. Laurent, in collaboration with the <a class="reference external" href="https://www.cnm.gov.kh/">National Center for Parasitology, Entomology and Malaria Control (CNM), Cambodia</a>, and the <a class="reference external" href="https://www.niaid.nih.gov/research/lab-malaria-vector-research">NIH NIAID Laboratory of Malaria and Vector Research, USA</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> includes data from 302 individual mosquitoes. Mosquito specimens sequenced for this data resource came from three separate field studies in Cambodia, led by Brandy St. Laurent, in collaboration with the <a class="reference external" href="https://www.cnm.gov.kh/">National Center for Parasitology, Entomology and Malaria Control (CNM), Cambodia</a>, and the <a class="reference external" href="https://www.niaid.nih.gov/research/lab-malaria-vector-research">NIH NIAID Laboratory of Malaria and Vector Research, USA</a>.</p>
 <p>Mosquito collections were carried out in 2010 in Thmar Da; a longitudinal collection over 2014 at two sites in each of Pursat, Preah Vihear, and Ratanakiri provinces; and quarterly collections over 2016 at one site each in Pursat and Preah Vihear province, Cambodia. Multiple <em>Anopheles</em> species were collected in each of these studies, including the <em>An. minimus</em> s.s. specimens that have been included in this data resource. Field specimens were stored in 1.5 ml tubes with silica gel dessicant. DNA was extracted using either Nextec plates or a CTAB DNA extraction method. GPS coordinates for collections are available in the sample metadata.</p>
 <a class="bg-primary reference internal image-reference" href="../_images/amin1-map.png"><img alt="Amin1 map of sampling sites" class="bg-primary align-center" src="../_images/amin1-map.png" style="width: 700px;" /></a>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_3bad3_">
+<table id="T_1c95e_" class="dataframe">
   <caption>Number of mosquito specimens by collection site and year.</caption>
   <thead>
     <tr>
@@ -444,54 +487,54 @@ commentsRunWhenDOMLoaded(addUtterances);
   </thead>
   <tbody>
     <tr>
-      <th id="T_3bad3_level0_row0" class="row_heading level0 row0" >102.735</th>
-      <th id="T_3bad3_level1_row0" class="row_heading level1 row0" >12.155</th>
-      <th id="T_3bad3_level2_row0" class="row_heading level2 row0" >Thmar Da</th>
-      <td id="T_3bad3_row0_col0" class="data row0 col0" >26</td>
-      <td id="T_3bad3_row0_col1" class="data row0 col1" >15</td>
-      <td id="T_3bad3_row0_col2" class="data row0 col2" >0</td>
-      <td id="T_3bad3_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_3bad3_row0_col4" class="data row0 col4" >0</td>
+      <th id="T_1c95e_level0_row0" class="row_heading level0 row0" >102.735</th>
+      <th id="T_1c95e_level1_row0" class="row_heading level1 row0" >12.155</th>
+      <th id="T_1c95e_level2_row0" class="row_heading level2 row0" >Thmar Da</th>
+      <td id="T_1c95e_row0_col0" class="data row0 col0" >26</td>
+      <td id="T_1c95e_row0_col1" class="data row0 col1" >15</td>
+      <td id="T_1c95e_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_1c95e_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_1c95e_row0_col4" class="data row0 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_3bad3_level0_row1" class="row_heading level0 row1" >104.92</th>
-      <th id="T_3bad3_level1_row1" class="row_heading level1 row1" >13.77</th>
-      <th id="T_3bad3_level2_row1" class="row_heading level2 row1" >Chean Mok</th>
-      <td id="T_3bad3_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_3bad3_row1_col1" class="data row1 col1" >0</td>
-      <td id="T_3bad3_row1_col2" class="data row1 col2" >66</td>
-      <td id="T_3bad3_row1_col3" class="data row1 col3" >9</td>
-      <td id="T_3bad3_row1_col4" class="data row1 col4" >0</td>
+      <th id="T_1c95e_level0_row1" class="row_heading level0 row1" >104.92</th>
+      <th id="T_1c95e_level1_row1" class="row_heading level1 row1" >13.77</th>
+      <th id="T_1c95e_level2_row1" class="row_heading level2 row1" >Chean Mok</th>
+      <td id="T_1c95e_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_1c95e_row1_col1" class="data row1 col1" >0</td>
+      <td id="T_1c95e_row1_col2" class="data row1 col2" >66</td>
+      <td id="T_1c95e_row1_col3" class="data row1 col3" >9</td>
+      <td id="T_1c95e_row1_col4" class="data row1 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_3bad3_level0_row2" class="row_heading level0 row2" >104.982</th>
-      <th id="T_3bad3_level1_row2" class="row_heading level1 row2" >13.667</th>
-      <th id="T_3bad3_level2_row2" class="row_heading level2 row2" >Preah Kleang</th>
-      <td id="T_3bad3_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_3bad3_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_3bad3_row2_col2" class="data row2 col2" >47</td>
-      <td id="T_3bad3_row2_col3" class="data row2 col3" >9</td>
-      <td id="T_3bad3_row2_col4" class="data row2 col4" >36</td>
+      <th id="T_1c95e_level0_row2" class="row_heading level0 row2" >104.982</th>
+      <th id="T_1c95e_level1_row2" class="row_heading level1 row2" >13.667</th>
+      <th id="T_1c95e_level2_row2" class="row_heading level2 row2" >Preah Kleang</th>
+      <td id="T_1c95e_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_1c95e_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_1c95e_row2_col2" class="data row2 col2" >47</td>
+      <td id="T_1c95e_row2_col3" class="data row2 col3" >9</td>
+      <td id="T_1c95e_row2_col4" class="data row2 col4" >36</td>
     </tr>
     <tr>
-      <th id="T_3bad3_level0_row3" class="row_heading level0 row3" >106.995</th>
-      <th id="T_3bad3_level1_row3" class="row_heading level1 row3" >13.595</th>
-      <th id="T_3bad3_level2_row3" class="row_heading level2 row3" >Chamkar San</th>
-      <td id="T_3bad3_row3_col0" class="data row3 col0" >0</td>
-      <td id="T_3bad3_row3_col1" class="data row3 col1" >0</td>
-      <td id="T_3bad3_row3_col2" class="data row3 col2" >40</td>
-      <td id="T_3bad3_row3_col3" class="data row3 col3" >11</td>
-      <td id="T_3bad3_row3_col4" class="data row3 col4" >0</td>
+      <th id="T_1c95e_level0_row3" class="row_heading level0 row3" >106.995</th>
+      <th id="T_1c95e_level1_row3" class="row_heading level1 row3" >13.595</th>
+      <th id="T_1c95e_level2_row3" class="row_heading level2 row3" >Chamkar San</th>
+      <td id="T_1c95e_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_1c95e_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_1c95e_row3_col2" class="data row3 col2" >40</td>
+      <td id="T_1c95e_row3_col3" class="data row3 col3" >11</td>
+      <td id="T_1c95e_row3_col4" class="data row3 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_3bad3_level0_row4" class="row_heading level0 row4" >107.025</th>
-      <th id="T_3bad3_level1_row4" class="row_heading level1 row4" >13.548</th>
-      <th id="T_3bad3_level2_row4" class="row_heading level2 row4" >Sayas</th>
-      <td id="T_3bad3_row4_col0" class="data row4 col0" >0</td>
-      <td id="T_3bad3_row4_col1" class="data row4 col1" >0</td>
-      <td id="T_3bad3_row4_col2" class="data row4 col2" >39</td>
-      <td id="T_3bad3_row4_col3" class="data row4 col3" >4</td>
-      <td id="T_3bad3_row4_col4" class="data row4 col4" >0</td>
+      <th id="T_1c95e_level0_row4" class="row_heading level0 row4" >107.025</th>
+      <th id="T_1c95e_level1_row4" class="row_heading level1 row4" >13.548</th>
+      <th id="T_1c95e_level2_row4" class="row_heading level2 row4" >Sayas</th>
+      <td id="T_1c95e_row4_col0" class="data row4 col0" >0</td>
+      <td id="T_1c95e_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_1c95e_row4_col2" class="data row4 col2" >39</td>
+      <td id="T_1c95e_row4_col3" class="data row4 col3" >4</td>
+      <td id="T_1c95e_row4_col4" class="data row4 col4" >0</td>
     </tr>
   </tbody>
 </table>
@@ -500,18 +543,18 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="whole-genome-sequencing-and-variant-calling">
 <h2>Whole-genome sequencing and variant calling<a class="headerlink" href="#whole-genome-sequencing-and-variant-calling" title="Permalink to this headline">¶</a></h2>
-<p>All samples in <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> have been sequenced individually to high coverage using Illumina technology at the Wellcome Sanger Institute. These sequence data have then been analysed to identify genetic variants such as single nucleotide polymorphisms (SNPs). After variant calling, both the samples and the variants have been through a range of quality control analyses, to ensure the data are of high quality. Both the raw sequence data and the curated variant calls are openly available for download and analysis.</p>
+<p>All samples in <code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> have been sequenced individually to high coverage using Illumina technology at the Wellcome Sanger Institute. These sequence data have then been analysed to identify genetic variants such as single nucleotide polymorphisms (SNPs). After variant calling, both the samples and the variants have been through a range of quality control analyses, to ensure the data are of high quality. Both the raw sequence data and the curated variant calls are openly available for download and analysis.</p>
 <p>For further information about the sequencing and variant calling methods used, please see please see <a class="reference external" href="https://doi.org/10.1101/2021.11.11.468219">St. Laurent et al. (2021)</a>.</p>
 </div>
 <div class="section" id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
-<p>All data in <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> are available from Google Cloud Storage (GCS).</p>
+<p>All data in <code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> are available from Google Cloud Storage (GCS).</p>
 <p>The SNP calls can be analysed directly within the cloud without having to download or copy any data, via free interactive computing services such as <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. For more information, see the <a class="reference internal" href="cloud.html"><span class="doc std std-doc">cloud data access guide</span></a>.</p>
 <p>Sequence read alignments and SNP calls can also be downloaded from GCS for analysis locally. For more information, see the <a class="reference internal" href="download.html"><span class="doc std std-doc">data download guide</span></a>.</p>
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
-<p>If you would like to start working with the <code class="docutils literal notranslate"><span class="pre">Amin1</span></code> data, please visit the <a class="reference internal" href="cloud.html"><span class="doc std std-doc">cloud data access guide</span></a> or the <a class="reference internal" href="download.html"><span class="doc std std-doc">data download guide</span></a> or continue browsing the other documentation on this site.</p>
+<p>If you would like to start working with the <code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> data, please visit the <a class="reference internal" href="cloud.html"><span class="doc std std-doc">cloud data access guide</span></a> or the <a class="reference internal" href="download.html"><span class="doc std std-doc">data download guide</span></a> or continue browsing the other documentation on this site.</p>
 <p>For further information about the dataset and results of population genetic analyses, please see <a class="reference external" href="https://doi.org/10.1101/2021.11.11.468219">St. Laurent et al. (2021)</a>.</p>
 </div>
 <div class="toctree-wrapper compound">
@@ -540,37 +583,35 @@ commentsRunWhenDOMLoaded(addUtterances);
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../ag3/examples/cnv-explore.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../ag3/api.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Exploring copy number variation (CNV)</p>
+            <p class="prev-next-title">Ag3 API</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="cloud.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Amin1 cloud data access</p>
+        <p class="prev-next-title">Amin1.0 cloud data access</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By MalariaGEN<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By MalariaGEN<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
