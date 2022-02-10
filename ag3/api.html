@@ -415,6 +415,11 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aa-allele-frequencies">
+   aa_allele_frequencies()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#site-annotations">
    site_annotations()
   </a>
@@ -447,6 +452,11 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#haplotypes">
    haplotypes()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-frequencies-heatmap">
+   plot_frequencies_heatmap()
   </a>
  </li>
 </ul>
@@ -545,6 +555,11 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aa-allele-frequencies">
+   aa_allele_frequencies()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#site-annotations">
    site_annotations()
   </a>
@@ -577,6 +592,11 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#haplotypes">
    haplotypes()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-frequencies-heatmap">
+   plot_frequencies_heatmap()
   </a>
  </li>
 </ul>
@@ -1051,6 +1071,57 @@ the result.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="aa-allele-frequencies">
+<h2>aa_allele_frequencies()<a class="headerlink" href="#aa-allele-frequencies" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.aa_allele_frequencies">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">aa_allele_frequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt_20200416'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.aa_allele_frequencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute per amino acid allele frequencies for a gene transcript.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RA”.</p>
+</dd>
+<dt><strong>cohorts</strong><span class="classifier">str or dict</span></dt><dd><p>If a string, gives the name of a predefined cohort set, e.g., one of
+{“admin1_month”, “admin1_year”, “admin2_month”, “admin2_year”}.
+If a dict, should map cohort labels to sample queries, e.g.,
+<cite>{“bf_2012_col”: “country == ‘Burkina Faso’ and year == 2012 and species == ‘coluzzii’”}</cite>.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
+“species == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>cohorts_analysis</strong><span class="classifier">str</span></dt><dd><p>Cohort analysis identifier (date of analysis), default is latest version.</p>
+</dd>
+<dt><strong>min_cohort_size</strong><span class="classifier">int</span></dt><dd><p>Minimum cohort size, below which allele frequencies are not calculated for cohorts.
+Please note, NaNs will be returned for any cohorts with fewer samples than min_cohort_size,
+these can be removed from the output dataframe using pandas df.dropna(axis=’columns’).</p>
+</dd>
+<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+</dd>
+<dt><strong>site_filters_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters analysis version.</p>
+</dd>
+<dt><strong>species_analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}, optional</span></dt><dd><p>Include species calls in metadata.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
+identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
+“3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, variants with no alternate allele calls in any cohorts are dropped from
+the result.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>df_snps</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Cohorts with fewer samples than min_cohort_size will be excluded from output.</p>
+</dd></dl>
+
+</div>
 <div class="section" id="site-annotations">
 <h2>site_annotations()<a class="headerlink" href="#site-annotations" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
@@ -1284,6 +1355,38 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-frequencies-heatmap">
+<h2>plot_frequencies_heatmap()<a class="headerlink" href="#plot-frequencies-heatmap" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_frequencies_heatmap">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_frequencies_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_auto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.0%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_continuous_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Reds'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_frequencies_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Plot a heatmap from a pandas DataFrame of frequencies, e.g., output from</dt><dd><p><cite>Ag3.snp_allele_frequencies()</cite> or <cite>Ag3.gene_cnv_frequencies()</cite>. It’s recommended to
+filter the input DataFrame to just rows of interest, i.e., fewer rows than <cite>max_len</cite>.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">pandas DataFrame</span></dt><dd><p>A DataFrame of frequencies, e.g., output from <cite>snp_allele_frequencies()</cite> or <cite>gene_cnv_frequencies()</cite>.</p>
+</dd>
+<dt><strong>index</strong><span class="classifier">str or list of str</span></dt><dd><p>One or more column headers that are present in the input dataframe. This becomes the heatmap y-axis
+row labels. The column/s must produce a unique index.</p>
+</dd>
+<dt><strong>max_len</strong><span class="classifier">int, optional</span></dt><dd><p>Displaying large styled dataframes may cause ipython notebooks to crash.</p>
+</dd>
+<dt><strong>y_label</strong><span class="classifier">str, optional</span></dt><dd><p>This is the y-axis label that will be displayed on the heatmap.</p>
+</dd>
+<dt><strong>colorbar</strong><span class="classifier">bool, optional</span></dt><dd><p>If False, colorbar is not output.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Other parameters are passed through to px.imshow().</p>
+</dd>
 </dl>
 </dd>
 </dl>
