@@ -8,7 +8,6 @@ parts:
       - file: ag3/cloud
       - file: ag3/download
       - file: ag3/methods
-      - file: ag3/api
       - file: ag3/examples
         sections:
         - file: ag3/examples/collection-sites
@@ -16,13 +15,14 @@ parts:
         - file: ag3/examples/snp-effects
         - file: ag3/examples/pca
         - file: ag3/examples/cnv-explore
+    - file: ag3/api
   - caption: Anopheles minimus
     chapters:
     - file: amin1/intro
       sections:
       - file: amin1/cloud
       - file: amin1/download
-      - file: amin1/api
+    - file: amin1/api
   - caption: Partners and community
     chapters:
     - file: studies-ag1000g
