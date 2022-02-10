@@ -92,6 +92,12 @@ This page provides documentation for functions in the [malariagen_data](https://
 .. automethod:: malariagen_data::Ag3.snp_allele_frequencies
 ```
 
+## aa_allele_frequencies()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.aa_allele_frequencies
+```
+
 ## site_annotations()
 
 ```{eval-rst}
@@ -134,7 +140,8 @@ This page provides documentation for functions in the [malariagen_data](https://
 .. automethod:: malariagen_data::Ag3.haplotypes
 ```
 
+## plot_frequencies_heatmap()
 
-
-
-
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_frequencies_heatmap
+```
