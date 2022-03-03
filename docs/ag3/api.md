@@ -86,18 +86,6 @@ This page provides documentation for functions in the [malariagen_data](https://
 .. automethod:: malariagen_data::Ag3.snp_effects
 ```
 
-## snp_allele_frequencies()
-
-```{eval-rst}
-.. automethod:: malariagen_data::Ag3.snp_allele_frequencies
-```
-
-## aa_allele_frequencies()
-
-```{eval-rst}
-.. automethod:: malariagen_data::Ag3.aa_allele_frequencies
-```
-
 ## site_annotations()
 
 ```{eval-rst}
@@ -128,20 +116,68 @@ This page provides documentation for functions in the [malariagen_data](https://
 .. automethod:: malariagen_data::Ag3.gene_cnv
 ```
 
-## gene_cnv_frequencies()
-
-```{eval-rst}
-.. automethod:: malariagen_data::Ag3.gene_cnv_frequencies
-```
-
 ## haplotypes()
 
 ```{eval-rst}
 .. automethod:: malariagen_data::Ag3.haplotypes
 ```
 
+## snp_allele_frequencies()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.snp_allele_frequencies
+```
+
+## aa_allele_frequencies()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.aa_allele_frequencies
+```
+
+## gene_cnv_frequencies()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.gene_cnv_frequencies
+```
+
 ## plot_frequencies_heatmap()
 
 ```{eval-rst}
 .. automethod:: malariagen_data::Ag3.plot_frequencies_heatmap
+```
+
+## plot_frequencies_time_series()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_frequencies_time_series
+```
+
+## plot_frequencies_interactive_map()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_frequencies_interactive_map
+```
+
+## plot_frequencies_map_markers()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_frequencies_map_markers
+```
+
+## snp_allele_frequencies_advanced()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.snp_allele_frequencies_advanced
+```
+
+## aa_allele_frequencies_advanced()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.aa_allele_frequencies_advanced
+```
+
+## gene_cnv_frequencies_advanced()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.gene_cnv_frequencies_advanced
 ```
