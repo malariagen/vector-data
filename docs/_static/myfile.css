@@ -7,7 +7,7 @@ p.caption {
     font-weight: bold;
 }
 
-div.cell_output table.dataframe {
-    /* make pandas dataframes smaller */
+div.cell_output table {
+    /* make tables smaller */
     font-size: 80%;
 }
