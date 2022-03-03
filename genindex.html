@@ -38,9 +38,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -77,6 +80,12 @@ commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -344,6 +353,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ag3/api.html#malariagen_data.Ag3.aa_allele_frequencies">aa_allele_frequencies() (malariagen_data.Ag3 method)</a>
 </li>
+      <li><a href="ag3/api.html#malariagen_data.Ag3.aa_allele_frequencies_advanced">aa_allele_frequencies_advanced() (malariagen_data.Ag3 method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ag3/api.html#malariagen_data.Ag3">Ag3() (in module malariagen_data)</a>
@@ -376,14 +387,16 @@ commentsRunWhenDOMLoaded(addUtterances);
 </li>
       <li><a href="ag3/api.html#malariagen_data.Ag3.gene_cnv_frequencies">gene_cnv_frequencies() (malariagen_data.Ag3 method)</a>
 </li>
+      <li><a href="ag3/api.html#malariagen_data.Ag3.gene_cnv_frequencies_advanced">gene_cnv_frequencies_advanced() (malariagen_data.Ag3 method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ag3/api.html#malariagen_data.Ag3.geneset">geneset() (malariagen_data.Ag3 method)</a>
 
       <ul>
         <li><a href="amin1/api.html#malariagen_data.Amin1.geneset">(malariagen_data.Amin1 method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ag3/api.html#malariagen_data.Ag3.genome_sequence">genome_sequence() (malariagen_data.Ag3 method)</a>
 
       <ul>
@@ -412,7 +425,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ag3/api.html#malariagen_data.Ag3.plot_frequencies_heatmap">plot_frequencies_heatmap() (malariagen_data.Ag3 method)</a>
+      <li><a href="ag3/api.html#malariagen_data.Ag3.plot_frequencies_heatmap">plot_frequencies_heatmap() (malariagen_data.Ag3 static method)</a>
+</li>
+      <li><a href="ag3/api.html#malariagen_data.Ag3.plot_frequencies_interactive_map">plot_frequencies_interactive_map() (malariagen_data.Ag3 static method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ag3/api.html#malariagen_data.Ag3.plot_frequencies_map_markers">plot_frequencies_map_markers() (malariagen_data.Ag3 static method)</a>
+</li>
+      <li><a href="ag3/api.html#malariagen_data.Ag3.plot_frequencies_time_series">plot_frequencies_time_series() (malariagen_data.Ag3 static method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -434,9 +455,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 </li>
       <li><a href="ag3/api.html#malariagen_data.Ag3.site_filters">site_filters() (malariagen_data.Ag3 method)</a>
 </li>
+      <li><a href="ag3/api.html#malariagen_data.Ag3.snp_allele_frequencies">snp_allele_frequencies() (malariagen_data.Ag3 method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ag3/api.html#malariagen_data.Ag3.snp_allele_frequencies">snp_allele_frequencies() (malariagen_data.Ag3 method)</a>
+      <li><a href="ag3/api.html#malariagen_data.Ag3.snp_allele_frequencies_advanced">snp_allele_frequencies_advanced() (malariagen_data.Ag3 method)</a>
 </li>
       <li><a href="ag3/api.html#malariagen_data.Ag3.snp_calls">snp_calls() (malariagen_data.Ag3 method)</a>
 

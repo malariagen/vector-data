@@ -38,9 +38,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -77,12 +80,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -410,16 +412,6 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#snp-allele-frequencies">
-   snp_allele_frequencies()
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aa-allele-frequencies">
-   aa_allele_frequencies()
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#site-annotations">
    site_annotations()
   </a>
@@ -445,18 +437,58 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gene-cnv-frequencies">
-   gene_cnv_frequencies()
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#haplotypes">
    haplotypes()
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snp-allele-frequencies">
+   snp_allele_frequencies()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aa-allele-frequencies">
+   aa_allele_frequencies()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gene-cnv-frequencies">
+   gene_cnv_frequencies()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plot-frequencies-heatmap">
    plot_frequencies_heatmap()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-frequencies-time-series">
+   plot_frequencies_time_series()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-frequencies-interactive-map">
+   plot_frequencies_interactive_map()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-frequencies-map-markers">
+   plot_frequencies_map_markers()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snp-allele-frequencies-advanced">
+   snp_allele_frequencies_advanced()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aa-allele-frequencies-advanced">
+   aa_allele_frequencies_advanced()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gene-cnv-frequencies-advanced">
+   gene_cnv_frequencies_advanced()
   </a>
  </li>
 </ul>
@@ -550,16 +582,6 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#snp-allele-frequencies">
-   snp_allele_frequencies()
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aa-allele-frequencies">
-   aa_allele_frequencies()
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#site-annotations">
    site_annotations()
   </a>
@@ -585,18 +607,58 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gene-cnv-frequencies">
-   gene_cnv_frequencies()
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#haplotypes">
    haplotypes()
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snp-allele-frequencies">
+   snp_allele_frequencies()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aa-allele-frequencies">
+   aa_allele_frequencies()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gene-cnv-frequencies">
+   gene_cnv_frequencies()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plot-frequencies-heatmap">
    plot_frequencies_heatmap()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-frequencies-time-series">
+   plot_frequencies_time_series()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-frequencies-interactive-map">
+   plot_frequencies_interactive_map()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-frequencies-map-markers">
+   plot_frequencies_map_markers()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snp-allele-frequencies-advanced">
+   snp_allele_frequencies_advanced()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aa-allele-frequencies-advanced">
+   aa_allele_frequencies_advanced()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gene-cnv-frequencies-advanced">
+   gene_cnv_frequencies_advanced()
   </a>
  </li>
 </ul>
@@ -620,8 +682,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>url</strong><span class="classifier">str</span></dt><dd><p>Base path to data. Give “gs://vo_agam_release/” to use Google Cloud Storage,
-or a local path on your file system if data have been downloaded.</p>
+<dt><strong>url</strong><span class="classifier">str</span></dt><dd><p>Base path to data. Give “gs://vo_agam_release/” to use Google Cloud
+Storage, or a local path on your file system if data have been
+downloaded.</p>
 </dd>
 <dt><strong>**kwargs</strong></dt><dd><p>Passed through to fsspec when setting up file system access.</p>
 </dd>
@@ -650,7 +713,8 @@ or a local path on your file system if data have been downloaded.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>release</strong><span class="classifier">str, optional</span></dt><dd><p>Release identifier. Give “3.0” to access the Ag1000G phase 3 data release.</p>
+<dt><strong>release</strong><span class="classifier">str, optional</span></dt><dd><p>Release identifier. Give “3.0” to access the Ag1000G phase 3 data
+release.</p>
 </dd>
 </dl>
 </dd>
@@ -673,14 +737,14 @@ or a local path on your file system if data have been downloaded.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
-identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
-“3.0”) or a list of release identifiers.</p>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
 </dd>
 <dt><strong>species_analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}, optional</span></dt><dd><p>Include species calls in metadata.</p>
 </dd>
-<dt><strong>cohorts_analysis</strong><span class="classifier">str</span></dt><dd><p>Cohort analysis identifier (date of analysis), optional,  default is latest version.
-Includes sample cohort calls in metadata.</p>
+<dt><strong>cohorts_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Cohort analysis identifier (date of analysis), optional,  default is
+the latest version. Includes sample cohort calls in metadata.</p>
 </dd>
 </dl>
 </dd>
@@ -713,7 +777,8 @@ identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identi
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>A dataframe of cohort metadata, one row per sample.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -730,7 +795,8 @@ which samples are parents or progeny in which crosses.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>A dataframe of sample metadata for colony crosses.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -746,9 +812,9 @@ which samples are parents or progeny in which crosses.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
-identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”] or a release identifier (e.g.,
-“3.0”) or a list of release identifiers.</p>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”] or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
 </dd>
 <dt><strong>analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}</span></dt><dd><p>Species calling analysis.</p>
 </dd>
@@ -756,7 +822,9 @@ identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”] or a release identif
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>A dataframe of species calls for one or more sample sets, one row
+per sample.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -772,20 +840,22 @@ identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”] or a release identif
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic region
-defined with coordinates (e.g., “2L:44989425-44998059”) or a named tuple with
-genomic location <cite>Region(contig, start, end)</cite>.</p>
+<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+region defined with coordinates (e.g., “2L:44989425-44998059”) or a
+named tuple with genomic location <cite>Region(contig, start, end)</cite>.</p>
 </dd>
 <dt><strong>inline_array</strong><span class="classifier">bool, optional</span></dt><dd><p>Passed through to dask.array.from_array().</p>
 </dd>
-<dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr chunks.
-Also can be a target size, e.g., ‘200 MiB’.</p>
+<dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr
+chunks. Also, can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>d</strong><span class="classifier">dask.array.Array</span></dt><dd></dd>
+<dt><strong>d</strong><span class="classifier">dask.array.Array</span></dt><dd><p>An array of nucleotides giving the reference genome sequence for the
+given contig.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -801,13 +871,15 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>attributes</strong><span class="classifier">list of str, optional</span></dt><dd><p>Attribute keys to unpack into columns. Provide “*” to unpack all attributes.</p>
+<dt><strong>attributes</strong><span class="classifier">list of str, optional</span></dt><dd><p>Attribute keys to unpack into columns. Provide “*” to unpack all
+attributes.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>A dataframe of genome annotations, one row per feature.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -845,7 +917,8 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd></dd>
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset containing SNP sites, site filters and genotype calls.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -861,10 +934,11 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic region
-defined with coordinates (e.g., “2L:44989425-44998059”) or a named tuple with
-genomic location <cite>Region(contig, start, end)</cite>. Multiple values can be provided
-as a list, in which case data will be concatenated, e.g., [“3R”, “AGAP005958”].</p>
+<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+region defined with coordinates (e.g., “2L:44989425-44998059”) or a
+named tuple with genomic location <cite>Region(contig, start, end)</cite>.
+Multiple values can be provided as a list, in which case data will
+be concatenated, e.g., [“3R”, “AGAP005958”].</p>
 </dd>
 <dt><strong>field</strong><span class="classifier">{“POS”, “REF”, “ALT”}</span></dt><dd><p>Array to access.</p>
 </dd>
@@ -874,14 +948,16 @@ as a list, in which case data will be concatenated, e.g., [“3R”, “AGAP0059
 </dd>
 <dt><strong>inline_array</strong><span class="classifier">bool, optional</span></dt><dd><p>Passed through to dask.array.from_array().</p>
 </dd>
-<dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr chunks.
-Also can be a target size, e.g., ‘200 MiB’.</p>
+<dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr
+chunks. Also, can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>d</strong><span class="classifier">dask.array.Array or tuple of dask.array.Array</span></dt><dd></dd>
+<dt><strong>d</strong><span class="classifier">dask.array.Array</span></dt><dd><p>An array of either SNP positions, reference alleles or alternate
+alleles.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -897,14 +973,15 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic region
-defined with coordinates (e.g., “2L:44989425-44998059”) or a named tuple with
-genomic location <cite>Region(contig, start, end)</cite>. Multiple values can be provided
-as a list, in which case data will be concatenated, e.g., [“3R”, “AGAP005958”].</p>
+<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+region defined with coordinates (e.g., “2L:44989425-44998059”) or a
+named tuple with genomic location <cite>Region(contig, start, end)</cite>.
+Multiple values can be provided as a list, in which case data will
+be concatenated, e.g., [“3R”, “AGAP005958”].</p>
 </dd>
-<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
-identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
-“3.0”) or a list of release identifiers.</p>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
 </dd>
 <dt><strong>field</strong><span class="classifier">{“GT”, “GQ”, “AD”, “MQ”}</span></dt><dd><p>Array to access.</p>
 </dd>
@@ -914,14 +991,16 @@ identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identi
 </dd>
 <dt><strong>inline_array</strong><span class="classifier">bool, optional</span></dt><dd><p>Passed through to dask.array.from_array().</p>
 </dd>
-<dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr chunks.
-Also can be a target size, e.g., ‘200 MiB’.</p>
+<dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr
+chunks. Also, can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>d</strong><span class="classifier">dask.array.Array</span></dt><dd></dd>
+<dt><strong>d</strong><span class="classifier">dask.array.Array</span></dt><dd><p>An array of either genotypes (GT), genotype quality (GQ), allele
+depths (AD) or mapping quality (MQ) values.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -937,10 +1016,11 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic region
-defined with coordinates (e.g., “2L:44989425-44998059”) or a named tuple with
-genomic location <cite>Region(contig, start, end)</cite>. Multiple values can be provided
-as a list, in which case data will be concatenated, e.g., [“3R”, “AGAP005958”].</p>
+<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+region defined with coordinates (e.g., “2L:44989425-44998059”) or a
+named tuple with genomic location <cite>Region(contig, start, end)</cite>.
+Multiple values can be provided as a list, in which case data will
+be concatenated, e.g., [“3R”, “AGAP005958”].</p>
 </dd>
 <dt><strong>mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Mask to use.</p>
 </dd>
@@ -950,14 +1030,15 @@ as a list, in which case data will be concatenated, e.g., [“3R”, “AGAP0059
 </dd>
 <dt><strong>inline_array</strong><span class="classifier">bool, optional</span></dt><dd><p>Passed through to dask.from_array().</p>
 </dd>
-<dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr chunks.
-Also can be a target size, e.g., ‘200 MiB’.</p>
+<dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr
+chunks. Also, can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>d</strong><span class="classifier">dask.array.Array</span></dt><dd></dd>
+<dt><strong>d</strong><span class="classifier">dask.array.Array</span></dt><dd><p>An array of boolean values identifying sites that pass the filters.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -973,9 +1054,9 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic region
-defined with coordinates (e.g., “2L:44989425-44998059”) or a named tuple with
-genomic location <cite>Region(contig, start, end)</cite>.</p>
+<dt><strong>region: str or list of str or Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+region defined with coordinates (e.g., “2L:44989425-44998059”) or a
+named tuple with genomic location <cite>Region(contig, start, end)</cite>.</p>
 </dd>
 <dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
 </dd>
@@ -985,7 +1066,8 @@ genomic location <cite>Region(contig, start, end)</cite>.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>a</strong><span class="classifier">numpy.ndarray</span></dt><dd></dd>
+<dt><strong>a</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>An array of boolean values identifying accessible genome sites.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1011,114 +1093,12 @@ genomic location <cite>Region(contig, start, end)</cite>.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="snp-allele-frequencies">
-<h2>snp_allele_frequencies()<a class="headerlink" href="#snp-allele-frequencies" title="Permalink to this headline">¶</a></h2>
-<dl class="py method">
-<dt class="sig sig-object py" id="malariagen_data.Ag3.snp_allele_frequencies">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">snp_allele_frequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt_20200416'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.snp_allele_frequencies" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute per variant allele frequencies for a gene transcript.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RA”.</p>
-</dd>
-<dt><strong>cohorts</strong><span class="classifier">str or dict</span></dt><dd><p>If a string, gives the name of a predefined cohort set, e.g., one of
-{“admin1_month”, “admin1_year”, “admin2_month”, “admin2_year”}.
-If a dict, should map cohort labels to sample queries, e.g.,
-<cite>{“bf_2012_col”: “country == ‘Burkina Faso’ and year == 2012 and species == ‘coluzzii’”}</cite>.</p>
-</dd>
-<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
-“species == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
-</dd>
-<dt><strong>cohorts_analysis</strong><span class="classifier">str</span></dt><dd><p>Cohort analysis identifier (date of analysis), default is latest version.</p>
-</dd>
-<dt><strong>min_cohort_size</strong><span class="classifier">int</span></dt><dd><p>Minimum cohort size, below which allele frequencies are not calculated for cohorts.
-Please note, NaNs will be returned for any cohorts with fewer samples than min_cohort_size,
-these can be removed from the output dataframe using pandas df.dropna(axis=’columns’).</p>
-</dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
-</dd>
-<dt><strong>site_filters_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters analysis version.</p>
-</dd>
-<dt><strong>species_analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}, optional</span></dt><dd><p>Include species calls in metadata.</p>
-</dd>
-<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
-identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
-“3.0”) or a list of release identifiers.</p>
-</dd>
-<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, variants with no alternate allele calls in any cohorts are dropped from
-the result.</p>
-</dd>
-<dt><strong>effects</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, add SNP effect columns.</p>
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>A dataframe of all possible SNP variants and their effects, one row
+per variant.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>df_snps</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
 </dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Cohorts with fewer samples than min_cohort_size will be excluded from output.</p>
-</dd></dl>
-
-</div>
-<div class="section" id="aa-allele-frequencies">
-<h2>aa_allele_frequencies()<a class="headerlink" href="#aa-allele-frequencies" title="Permalink to this headline">¶</a></h2>
-<dl class="py method">
-<dt class="sig sig-object py" id="malariagen_data.Ag3.aa_allele_frequencies">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">aa_allele_frequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt_20200416'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.aa_allele_frequencies" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute per amino acid allele frequencies for a gene transcript.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RA”.</p>
-</dd>
-<dt><strong>cohorts</strong><span class="classifier">str or dict</span></dt><dd><p>If a string, gives the name of a predefined cohort set, e.g., one of
-{“admin1_month”, “admin1_year”, “admin2_month”, “admin2_year”}.
-If a dict, should map cohort labels to sample queries, e.g.,
-<cite>{“bf_2012_col”: “country == ‘Burkina Faso’ and year == 2012 and species == ‘coluzzii’”}</cite>.</p>
-</dd>
-<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
-“species == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
-</dd>
-<dt><strong>cohorts_analysis</strong><span class="classifier">str</span></dt><dd><p>Cohort analysis identifier (date of analysis), default is latest version.</p>
-</dd>
-<dt><strong>min_cohort_size</strong><span class="classifier">int</span></dt><dd><p>Minimum cohort size, below which allele frequencies are not calculated for cohorts.
-Please note, NaNs will be returned for any cohorts with fewer samples than min_cohort_size,
-these can be removed from the output dataframe using pandas df.dropna(axis=’columns’).</p>
-</dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
-</dd>
-<dt><strong>site_filters_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters analysis version.</p>
-</dd>
-<dt><strong>species_analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}, optional</span></dt><dd><p>Include species calls in metadata.</p>
-</dd>
-<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
-identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
-“3.0”) or a list of release identifiers.</p>
-</dd>
-<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, variants with no alternate allele calls in any cohorts are dropped from
-the result.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>df_snps</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Cohorts with fewer samples than min_cohort_size will be excluded from output.</p>
 </dd></dl>
 
 </div>
@@ -1151,7 +1131,8 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>d</strong><span class="classifier">dask.Array</span></dt><dd></dd>
+<dt><strong>d</strong><span class="classifier">dask.Array</span></dt><dd><p>An array of site annotations.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1163,11 +1144,12 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.cnv_hmm">
 <span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">cnv_hmm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'native'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.cnv_hmm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Access CNV HMM data.</p>
+<dd><p>Access CNV HMM data from CNV calling.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
+<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
 identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
@@ -1182,7 +1164,8 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd></dd>
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset of CNV HMM calls and associated data.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1194,11 +1177,12 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.cnv_coverage_calls">
 <span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">cnv_coverage_calls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'native'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.cnv_coverage_calls" title="Permalink to this definition">¶</a></dt>
-<dd><p>Access CNV HMM data.</p>
+<dd><p>Access CNV HMM data from genome-wide CNV discovery and filtering.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
+<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>sample_set</strong><span class="classifier">str</span></dt><dd><p>Sample set identifier.</p>
 </dd>
@@ -1207,13 +1191,14 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dt><strong>inline_array</strong><span class="classifier">bool, optional</span></dt><dd><p>Passed through to dask.array.from_array().</p>
 </dd>
 <dt><strong>chunks</strong><span class="classifier">str, optional</span></dt><dd><p>If ‘auto’ let dask decide chunk size. If ‘native’ use native zarr chunks.
-Also can be a target size, e.g., ‘200 MiB’.</p>
+Also, can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd></dd>
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset of CNV alleles and genotypes.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1229,7 +1214,8 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
+<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
 identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
@@ -1244,7 +1230,8 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd></dd>
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset of CNV alleles and genotypes.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1270,56 +1257,11 @@ identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identi
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="gene-cnv-frequencies">
-<h2>gene_cnv_frequencies()<a class="headerlink" href="#gene-cnv-frequencies" title="Permalink to this headline">¶</a></h2>
-<dl class="py method">
-<dt class="sig sig-object py" id="malariagen_data.Ag3.gene_cnv_frequencies">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">gene_cnv_frequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.gene_cnv_frequencies" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute modal copy number by gene, then compute the frequency of
-amplifications and deletions in one or more cohorts, from HMM data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
-</dd>
-<dt><strong>cohorts</strong><span class="classifier">str or dict</span></dt><dd><p>If a string, gives the name of a predefined cohort set, e.g., one of
-{“admin1_month”, “admin1_year”, “admin2_month”, “admin2_year”}.
-If a dict, should map cohort labels to sample queries, e.g.,
-<cite>{“bf_2012_col”: “country == ‘Burkina Faso’ and year == 2012 and species == ‘coluzzii’”}</cite>.</p>
-</dd>
-<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
-“species == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
-</dd>
-<dt><strong>cohorts_analysis</strong><span class="classifier">str</span></dt><dd><p>Cohort analysis identifier (date of analysis), default is latest version.</p>
-</dd>
-<dt><strong>min_cohort_size</strong><span class="classifier">int</span></dt><dd><p>Minimum cohort size, below which allele frequencies are not calculated for cohorts.
-Please note, NaNs will be returned for any cohorts with fewer samples than min_cohort_size,
-these can be removed from the output dataframe using pandas df.dropna(axis=’columns’).</p>
-</dd>
-<dt><strong>species_analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}, optional</span></dt><dd><p>Include species calls in metadata.</p>
-</dd>
-<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
-identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
-“3.0”) or a list of release identifiers.</p>
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset of modal copy number per gene and associated data.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd></dd>
 </dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>NaNs will be returned for any cohorts with fewer samples than min_cohort_size,
-these can be removed from the output dataframe using pandas df.dropna(axis=’columns’).</p>
 </dd></dl>
 
 </div>
@@ -1354,7 +1296,161 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd></dd>
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset of haplotypes and associated data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="snp-allele-frequencies">
+<h2>snp_allele_frequencies()<a class="headerlink" href="#snp-allele-frequencies" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.snp_allele_frequencies">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">snp_allele_frequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt_20200416'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">effects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.snp_allele_frequencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute per variant allele frequencies for a gene transcript.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RD”.</p>
+</dd>
+<dt><strong>cohorts</strong><span class="classifier">str or dict</span></dt><dd><p>If a string, gives the name of a predefined cohort set, e.g., one of
+{“admin1_month”, “admin1_year”, “admin2_month”, “admin2_year”}.
+If a dict, should map cohort labels to sample queries, e.g.,
+<cite>{“bf_2012_col”: “country == ‘Burkina Faso’ and year == 2012 and taxon == ‘coluzzii’”}</cite>.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
+“taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>cohorts_analysis</strong><span class="classifier">str</span></dt><dd><p>Cohort analysis version, default is the latest version.</p>
+</dd>
+<dt><strong>min_cohort_size</strong><span class="classifier">int</span></dt><dd><p>Minimum cohort size. Any cohorts below this size are omitted.</p>
+</dd>
+<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+</dd>
+<dt><strong>site_filters_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters analysis version.</p>
+</dd>
+<dt><strong>species_analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}, optional</span></dt><dd><p>Species calls analysis version.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
+identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
+“3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, variants with no alternate allele calls in any cohorts are dropped from
+the result.</p>
+</dd>
+<dt><strong>effects</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, add SNP effect columns.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>A dataframe of SNP frequencies, one row per variant.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Cohorts with fewer samples than min_cohort_size will be excluded from output.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="aa-allele-frequencies">
+<h2>aa_allele_frequencies()<a class="headerlink" href="#aa-allele-frequencies" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.aa_allele_frequencies">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">aa_allele_frequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt_20200416'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.aa_allele_frequencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute per amino acid allele frequencies for a gene transcript.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RA”.</p>
+</dd>
+<dt><strong>cohorts</strong><span class="classifier">str or dict</span></dt><dd><p>If a string, gives the name of a predefined cohort set, e.g., one of
+{“admin1_month”, “admin1_year”, “admin2_month”, “admin2_year”}.
+If a dict, should map cohort labels to sample queries, e.g.,
+<cite>{“bf_2012_col”: “country == ‘Burkina Faso’ and year == 2012 and taxon == ‘coluzzii’”}</cite>.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
+“taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>cohorts_analysis</strong><span class="classifier">str</span></dt><dd><p>Cohort analysis identifier (date of analysis), default is latest version.</p>
+</dd>
+<dt><strong>min_cohort_size</strong><span class="classifier">int</span></dt><dd><p>Minimum cohort size, below which allele frequencies are not calculated for cohorts.
+Please note, NaNs will be returned for any cohorts with fewer samples than min_cohort_size,
+these can be removed from the output dataframe using pandas df.dropna(axis=’columns’).</p>
+</dd>
+<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+</dd>
+<dt><strong>site_filters_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters analysis version.</p>
+</dd>
+<dt><strong>species_analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}, optional</span></dt><dd><p>Include species calls in metadata.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
+identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
+“3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, variants with no alternate allele calls in any cohorts are dropped from
+the result.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>A dataframe of amino acid allele frequencies, one row per replacement.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Cohorts with fewer samples than min_cohort_size will be excluded from output.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="gene-cnv-frequencies">
+<h2>gene_cnv_frequencies()<a class="headerlink" href="#gene-cnv-frequencies" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.gene_cnv_frequencies">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">gene_cnv_frequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_coverage_variance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.gene_cnv_frequencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute modal copy number by gene, then compute the frequency of
+amplifications and deletions in one or more cohorts, from HMM data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
+</dd>
+<dt><strong>cohorts</strong><span class="classifier">str or dict</span></dt><dd><p>If a string, gives the name of a predefined cohort set, e.g., one of
+{“admin1_month”, “admin1_year”, “admin2_month”, “admin2_year”}.
+If a dict, should map cohort labels to sample queries, e.g.,
+<cite>{“bf_2012_col”: “country == ‘Burkina Faso’ and year == 2012 and
+taxon == ‘coluzzii’”}</cite>.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample
+metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>cohorts_analysis</strong><span class="classifier">str</span></dt><dd><p>Cohort analysis identifier (date of analysis), default is the latest
+version.</p>
+</dd>
+<dt><strong>min_cohort_size</strong><span class="classifier">int</span></dt><dd><p>Minimum cohort size, below which cohorts are dropped.</p>
+</dd>
+<dt><strong>species_analysis</strong><span class="classifier">{“aim_20200422”, “pca_20200422”}, optional</span></dt><dd><p>Include species calls in metadata.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, drop any rows where there is no evidence of variation.</p>
+</dd>
+<dt><strong>max_coverage_variance</strong><span class="classifier">float, optional</span></dt><dd><p>Remove samples if coverage variance exceeds this value.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>A dataframe of CNV amplification (amp) and deletion (del) frequencies in the specified cohorts,
+one row per gene and CNV type (amp/del).</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1365,7 +1461,7 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <h2>plot_frequencies_heatmap()<a class="headerlink" href="#plot-frequencies-heatmap" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.plot_frequencies_heatmap">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_frequencies_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_auto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.0%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_continuous_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Reds'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_frequencies_heatmap" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_frequencies_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cohorts'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_auto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.0%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_continuous_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Reds'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_frequencies_heatmap" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="simple">
 <dt>Plot a heatmap from a pandas DataFrame of frequencies, e.g., output from</dt><dd><p><cite>Ag3.snp_allele_frequencies()</cite> or <cite>Ag3.gene_cnv_frequencies()</cite>. It’s recommended to
 filter the input DataFrame to just rows of interest, i.e., fewer rows than <cite>max_len</cite>.</p>
@@ -1381,11 +1477,310 @@ row labels. The column/s must produce a unique index.</p>
 </dd>
 <dt><strong>max_len</strong><span class="classifier">int, optional</span></dt><dd><p>Displaying large styled dataframes may cause ipython notebooks to crash.</p>
 </dd>
+<dt><strong>x_label</strong><span class="classifier">str, optional</span></dt><dd><p>This is the x-axis label that will be displayed on the heatmap.</p>
+</dd>
 <dt><strong>y_label</strong><span class="classifier">str, optional</span></dt><dd><p>This is the y-axis label that will be displayed on the heatmap.</p>
 </dd>
 <dt><strong>colorbar</strong><span class="classifier">bool, optional</span></dt><dd><p>If False, colorbar is not output.</p>
 </dd>
+<dt><strong>width</strong><span class="classifier">int, optional</span></dt><dd><p>Plot width in pixels.</p>
+</dd>
+<dt><strong>height</strong><span class="classifier">int, optional</span></dt><dd><p>Plot height in pixels.</p>
+</dd>
+<dt><strong>text_auto</strong><span class="classifier">str, optional</span></dt><dd><p>Formatting for frequency values.</p>
+</dd>
+<dt><strong>aspect</strong><span class="classifier">str, optional</span></dt><dd><p>Control the aspect ratio of the heatmap.</p>
+</dd>
+<dt><strong>color_continuous_scale</strong><span class="classifier">str, optional</span></dt><dd><p>Color scale to use.</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">bool or str, optional</span></dt><dd><p>If True, attempt to use metadata from input dataset as a plot
+title. Otherwise, use supplied value as a title.</p>
+</dd>
 <dt><strong>**kwargs</strong></dt><dd><p>Other parameters are passed through to px.imshow().</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-frequencies-time-series">
+<h2>plot_frequencies_time_series()<a class="headerlink" href="#plot-frequencies-time-series" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_frequencies_time_series">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_frequencies_time_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_frequencies_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a time series plot of variant frequencies using plotly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset of variant frequencies, such as returned by <cite>Ag3.snp_allele_frequencies_advanced()</cite>,
+<cite>Ag3.aa_allele_frequencies_advanced()</cite> or <cite>Ag3.gene_cnv_frequencies_advanced()</cite>.</p>
+</dd>
+<dt><strong>height</strong><span class="classifier">int, optional</span></dt><dd><p>Height of plot in pixels.</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">int, optional</span></dt><dd><p>Width of plot in pixels</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">bool or str, optional</span></dt><dd><p>If True, attempt to use metadata from input dataset as a plot
+title. Otherwise, use supplied value as a title.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Passed through to <cite>px.line()</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">plotly.graph_objects.Figure</span></dt><dd><p>A plotly figure containing line graphs. The resulting figure will have one
+panel per cohort, grouped into columns by taxon, and grouped into rows by
+area. Markers and lines show frequencies of variants.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-frequencies-interactive-map">
+<h2>plot_frequencies_interactive_map()<a class="headerlink" href="#plot-frequencies-interactive-map" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_frequencies_interactive_map">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_frequencies_interactive_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">2,</span> <span class="pre">20)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epilogue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Variant</span> <span class="pre">frequencies</span> <span class="pre">are</span> <span class="pre">shown</span> <span class="pre">as</span> <span class="pre">coloured</span> <span class="pre">markers.</span> <span class="pre">Opacity</span> <span class="pre">of</span> <span class="pre">color\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">denotes</span> <span class="pre">frequency.</span> <span class="pre">Click</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">marker</span> <span class="pre">for</span> <span class="pre">more</span> <span class="pre">information.\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_frequencies_interactive_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an interactive map with markers showing variant frequencies for cohorts
+grouped by area (space), period (time) and taxon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset of variant frequencies, such as returned by <cite>Ag3.snp_allele_frequencies_advanced()</cite>,
+<cite>Ag3.aa_allele_frequencies_advanced()</cite> or <cite>Ag3.gene_cnv_frequencies_advanced()</cite>.</p>
+</dd>
+<dt><strong>center</strong><span class="classifier">tuple of int, optional</span></dt><dd><p>Location to center the map.</p>
+</dd>
+<dt><strong>zoom</strong><span class="classifier">int, optional</span></dt><dd><p>Initial zoom level.</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">bool or str, optional</span></dt><dd><p>If True, attempt to use metadata from input dataset as a plot
+title. Otherwise, use supplied value as a title.</p>
+</dd>
+<dt><strong>epilogue</strong><span class="classifier">str, optional</span></dt><dd><p>Additional text to display below the map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ipywidgets.Widget</span></dt><dd><p>An interactive map with widgets for selecting which variant, taxon and
+time period to display.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-frequencies-map-markers">
+<h2>plot_frequencies_map_markers()<a class="headerlink" href="#plot-frequencies-map-markers" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_frequencies_map_markers">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_frequencies_map_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_frequencies_map_markers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot markers on a map showing variant frequencies for cohorts grouped
+by area (space), period (time) and taxon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>m</strong><span class="classifier">ipyleaflet.Map</span></dt><dd><p>The map on which to add the markers.</p>
+</dd>
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>A dataset of variant frequencies, such as returned by <cite>Ag3.snp_allele_frequencies_advanced()</cite>,
+<cite>Ag3.aa_allele_frequencies_advanced()</cite> or <cite>Ag3.gene_cnv_frequencies_advanced()</cite>.</p>
+</dd>
+<dt><strong>variant</strong><span class="classifier">int or str</span></dt><dd><p>Index or label of variant to plot.</p>
+</dd>
+<dt><strong>taxon</strong><span class="classifier">str</span></dt><dd><p>Taxon to show markers for.</p>
+</dd>
+<dt><strong>period</strong><span class="classifier">pd.Period</span></dt><dd><p>Time period to show markers for.</p>
+</dd>
+<dt><strong>clear</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, clear all layers (except the base layer) from the map before
+adding new markers.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="snp-allele-frequencies-advanced">
+<h2>snp_allele_frequencies_advanced()<a class="headerlink" href="#snp-allele-frequencies-advanced" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.snp_allele_frequencies_advanced">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">snp_allele_frequencies_advanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nobs_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'called'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt_20200416'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.snp_allele_frequencies_advanced" title="Permalink to this definition">¶</a></dt>
+<dd><p>Group samples by taxon, area (space) and period (time), then compute SNP allele counts
+and frequencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RD”.</p>
+</dd>
+<dt><strong>area_by</strong><span class="classifier">str</span></dt><dd><p>Column name in the sample metadata to use to group samples spatially. E.g.,
+use “adm1_ISO” or “adm1_name” to group by level 1 administrative divisions,
+or use “adm2_name” to group by level 2 administrative divisions.</p>
+</dd>
+<dt><strong>period_by</strong><span class="classifier">{“year”, “quarter”, “month”}</span></dt><dd><p>Length of time to group samples temporally.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
+identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
+“3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
+“taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>min_cohort_size</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum cohort size. Any cohorts below this size are omitted.</p>
+</dd>
+<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, variants with no alternate allele calls in any cohorts are dropped from
+the result.</p>
+</dd>
+<dt><strong>variant_query</strong><span class="classifier">str, optional</span></dt><dd></dd>
+<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply.</p>
+</dd>
+<dt><strong>nobs_mode</strong><span class="classifier">{“called”, “fixed”}</span></dt><dd><p>Method for calculating the denominator when computing frequencies. If “called”
+then use the number of called alleles, i.e., number of samples with non-missing
+genotype calls multiplied by 2. If “fixed” then use the number of samples
+multiplied by 2.</p>
+</dd>
+<dt><strong>ci_method</strong><span class="classifier">{“normal”, “agresti_coull”, “beta”, “wilson”, “binom_test”}, optional</span></dt><dd><p>Method to use for computing confidence intervals, passed through to
+<cite>statsmodels.stats.proportion.proportion_confint</cite>.</p>
+</dd>
+<dt><strong>cohorts_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Cohort analysis version, default is the latest version.</p>
+</dd>
+<dt><strong>species_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Species calls analysis version.</p>
+</dd>
+<dt><strong>site_filters_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters analysis version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>The resulting dataset contains data has dimensions “cohorts” and “variants”.
+Variables prefixed with “<a href="#id1"><span class="problematic" id="id2">cohort_</span></a>” are 1-dimensional arrays with data about
+the cohorts, such as the area, period, taxon and cohort size. Variables
+prefixed with “<a href="#id3"><span class="problematic" id="id4">variant_</span></a>” are 1-dimensional arrays with data about the variants,
+such as the contig, position, reference and alternate alleles. Variables prefixed
+with “<a href="#id5"><span class="problematic" id="id6">event_</span></a>” are 2-dimensional arrays with the allele counts and frequency
+calculations.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="aa-allele-frequencies-advanced">
+<h2>aa_allele_frequencies_advanced()<a class="headerlink" href="#aa-allele-frequencies-advanced" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.aa_allele_frequencies_advanced">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">aa_allele_frequencies_advanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nobs_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'called'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt_20200416'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.aa_allele_frequencies_advanced" title="Permalink to this definition">¶</a></dt>
+<dd><p>Group samples by taxon, area (space) and period (time), then compute amino acid
+change allele counts and frequencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RD”.</p>
+</dd>
+<dt><strong>area_by</strong><span class="classifier">str</span></dt><dd><p>Column name in the sample metadata to use to group samples spatially. E.g.,
+use “adm1_ISO” or “adm1_name” to group by level 1 administrative divisions,
+or use “adm2_name” to group by level 2 administrative divisions.</p>
+</dd>
+<dt><strong>period_by</strong><span class="classifier">{“year”, “quarter”, “month”}</span></dt><dd><p>Length of time to group samples temporally.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
+identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
+“3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
+“taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>min_cohort_size</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum cohort size. Any cohorts below this size are omitted.</p>
+</dd>
+<dt><strong>variant_query</strong><span class="classifier">str, optional</span></dt><dd></dd>
+<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply.</p>
+</dd>
+<dt><strong>nobs_mode</strong><span class="classifier">{“called”, “fixed”}</span></dt><dd><p>Method for calculating the denominator when computing frequencies. If “called”
+then use the number of called alleles, i.e., number of samples with non-missing
+genotype calls multiplied by 2. If “fixed” then use the number of samples
+multiplied by 2.</p>
+</dd>
+<dt><strong>ci_method</strong><span class="classifier">{“normal”, “agresti_coull”, “beta”, “wilson”, “binom_test”}, optional</span></dt><dd><p>Method to use for computing confidence intervals, passed through to
+<cite>statsmodels.stats.proportion.proportion_confint</cite>.</p>
+</dd>
+<dt><strong>cohorts_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Cohort analysis version, default is the latest version.</p>
+</dd>
+<dt><strong>species_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Species calls analysis version.</p>
+</dd>
+<dt><strong>site_filters_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters analysis version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>The resulting dataset contains data has dimensions “cohorts” and “variants”.
+Variables prefixed with “<a href="#id7"><span class="problematic" id="id8">cohort_</span></a>” are 1-dimensional arrays with data about
+the cohorts, such as the area, period, taxon and cohort size. Variables
+prefixed with “<a href="#id9"><span class="problematic" id="id10">variant_</span></a>” are 1-dimensional arrays with data about the variants,
+such as the contig, position, reference and alternate alleles. Variables prefixed
+with “<a href="#id11"><span class="problematic" id="id12">event_</span></a>” are 2-dimensional arrays with the allele counts and frequency
+calculations.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="gene-cnv-frequencies-advanced">
+<h2>gene_cnv_frequencies_advanced()<a class="headerlink" href="#gene-cnv-frequencies-advanced" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.gene_cnv_frequencies_advanced">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">gene_cnv_frequencies_advanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_coverage_variance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.gene_cnv_frequencies_advanced" title="Permalink to this definition">¶</a></dt>
+<dd><p>Group samples by taxon, area (space) and period (time), then compute gene CNV counts
+and frequencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
+</dd>
+<dt><strong>area_by</strong><span class="classifier">str</span></dt><dd><p>Column name in the sample metadata to use to group samples spatially. E.g.,
+use “adm1_ISO” or “adm1_name” to group by level 1 administrative divisions,
+or use “adm2_name” to group by level 2 administrative divisions.</p>
+</dd>
+<dt><strong>period_by</strong><span class="classifier">{“year”, “quarter”, “month”}</span></dt><dd><p>Length of time to group samples temporally.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
+identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
+“3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
+“taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>min_cohort_size</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum cohort size. Any cohorts below this size are omitted.</p>
+</dd>
+<dt><strong>variant_query</strong><span class="classifier">str, optional</span></dt><dd></dd>
+<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, drop any rows where there is no evidence of variation.</p>
+</dd>
+<dt><strong>max_coverage_variance</strong><span class="classifier">float, optional</span></dt><dd><p>Remove samples if coverage variance exceeds this value.</p>
+</dd>
+<dt><strong>ci_method</strong><span class="classifier">{“normal”, “agresti_coull”, “beta”, “wilson”, “binom_test”}, optional</span></dt><dd><p>Method to use for computing confidence intervals, passed through to
+<cite>statsmodels.stats.proportion.proportion_confint</cite>.</p>
+</dd>
+<dt><strong>cohorts_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Cohort analysis version, default is the latest version.</p>
+</dd>
+<dt><strong>species_analysis</strong><span class="classifier">str, optional</span></dt><dd><p>Species calls analysis version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>The resulting dataset contains data has dimensions “cohorts” and “variants”.
+Variables prefixed with “<a href="#id13"><span class="problematic" id="id14">cohort_</span></a>” are 1-dimensional arrays with data about
+the cohorts, such as the area, period, taxon and cohort size. Variables
+prefixed with “<a href="#id15"><span class="problematic" id="id16">variant_</span></a>” are 1-dimensional arrays with data about the variants,
+such as the contig, position, reference and alternate alleles. Variables prefixed
+with “<a href="#id17"><span class="problematic" id="id18">event_</span></a>” are 2-dimensional arrays with the allele counts and frequency
+calculations.</p>
 </dd>
 </dl>
 </dd>

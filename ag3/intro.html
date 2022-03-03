@@ -38,9 +38,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -77,12 +80,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -492,47 +494,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="sample-sets">
 <h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">¶</a></h2>
 <p>The samples included in <code class="docutils literal notranslate"><span class="pre">Ag3.0</span></code> have been organised into 28 sample sets. Each of these sample sets corresponds to a set of mosquito specimens from a contributing study. Depending on your objectives, you may want to access data from only specific sample sets, or all sample sets. Here is a list of the sample sets included:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen_data
-</pre></div>
+<div class="cell tag_remove-input docutils container">
 </div>
+<div class="cell tag_remove-input docutils container">
 </div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |████████████████████████████████| 133 kB 6.9 MB/s 
-     |████████████████████████████████| 5.7 MB 41.9 MB/s 
-     |████████████████████████████████| 153 kB 72.7 MB/s 
-     |████████████████████████████████| 2.3 MB 60.6 MB/s 
-     |████████████████████████████████| 1.1 MB 56.4 MB/s 
-     |████████████████████████████████| 271 kB 60.7 MB/s 
-     |████████████████████████████████| 94 kB 1.7 MB/s 
-     |████████████████████████████████| 144 kB 46.9 MB/s 
-     |████████████████████████████████| 6.2 MB 34.3 MB/s 
-?25h  Building wheel for asciitree (setup.py) ... ?25l?25hdone
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
-<span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample_sets</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_sets</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">df_sample_sets</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-3d828ee6-ad43-43d7-8c10-f30c0a6f3794">
-    <div class="colab-df-container">
-      <div>
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -550,281 +518,136 @@ commentsRunWhenDOMLoaded(addUtterances);
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sample_set</th>
       <th>sample_count</th>
-      <th>release</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>AG1000G-AO</td>
+      <th>AG1000G-AO</th>
       <td>81</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>AG1000G-BF-A</td>
+      <th>AG1000G-BF-A</th>
       <td>181</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>AG1000G-BF-B</td>
+      <th>AG1000G-BF-B</th>
       <td>102</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>AG1000G-BF-C</td>
+      <th>AG1000G-BF-C</th>
       <td>13</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>AG1000G-CD</td>
+      <th>AG1000G-CD</th>
       <td>76</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>AG1000G-CF</td>
+      <th>AG1000G-CF</th>
       <td>73</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>AG1000G-CI</td>
+      <th>AG1000G-CI</th>
       <td>80</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>AG1000G-CM-A</td>
+      <th>AG1000G-CM-A</th>
       <td>303</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>AG1000G-CM-B</td>
+      <th>AG1000G-CM-B</th>
       <td>97</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>AG1000G-CM-C</td>
+      <th>AG1000G-CM-C</th>
       <td>44</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>AG1000G-FR</td>
+      <th>AG1000G-FR</th>
       <td>23</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>AG1000G-GA-A</td>
+      <th>AG1000G-GA-A</th>
       <td>69</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>AG1000G-GH</td>
+      <th>AG1000G-GH</th>
       <td>100</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>13</th>
-      <td>AG1000G-GM-A</td>
+      <th>AG1000G-GM-A</th>
       <td>74</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>AG1000G-GM-B</td>
+      <th>AG1000G-GM-B</th>
       <td>31</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>15</th>
-      <td>AG1000G-GM-C</td>
+      <th>AG1000G-GM-C</th>
       <td>174</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>16</th>
-      <td>AG1000G-GN-A</td>
+      <th>AG1000G-GN-A</th>
       <td>45</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>AG1000G-GN-B</td>
+      <th>AG1000G-GN-B</th>
       <td>185</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>AG1000G-GQ</td>
+      <th>AG1000G-GQ</th>
       <td>10</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>19</th>
-      <td>AG1000G-GW</td>
+      <th>AG1000G-GW</th>
       <td>101</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>20</th>
-      <td>AG1000G-KE</td>
+      <th>AG1000G-KE</th>
       <td>86</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>21</th>
-      <td>AG1000G-ML-A</td>
+      <th>AG1000G-ML-A</th>
       <td>60</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>22</th>
-      <td>AG1000G-ML-B</td>
+      <th>AG1000G-ML-B</th>
       <td>71</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>23</th>
-      <td>AG1000G-MW</td>
+      <th>AG1000G-MW</th>
       <td>41</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>24</th>
-      <td>AG1000G-MZ</td>
+      <th>AG1000G-MZ</th>
       <td>74</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>25</th>
-      <td>AG1000G-TZ</td>
+      <th>AG1000G-TZ</th>
       <td>300</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>26</th>
-      <td>AG1000G-UG</td>
+      <th>AG1000G-UG</th>
       <td>290</td>
-      <td>3.0</td>
     </tr>
     <tr>
-      <th>27</th>
-      <td>AG1000G-X</td>
+      <th>AG1000G-X</th>
       <td>297</td>
-      <td>3.0</td>
     </tr>
   </tbody>
 </table>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-3d828ee6-ad43-43d7-8c10-f30c0a6f3794')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-3d828ee6-ad43-43d7-8c10-f30c0a6f3794 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-3d828ee6-ad43-43d7-8c10-f30c0a6f3794');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-</div></div>
+</div></div></div>
 </div>
 <p>The sample set identifiers all start with “AG1000G-” followed by the two-letter code of the country from which samples were collected (e.g., “AO” is Angola). Where there are multiple sample sets from the same country, these have been given alphabetical suffixes, e.g., “AG1000G-BF-A”, “AG1000G-BF-B” and “AG1000G-BF-C” are three sample sets from Burkina Faso.</p>
 <p>These country code suffixes are just a convenience to help remember which sample sets contain which data, please see the sample metadata for more precise location information. Note also that sample set AG1000G-GN-B contains samples from both Guinea and Mali.</p>
 <p>Here is a more detailed breakdown of the samples contained within each sample set, summarised by country, year of collection, and species:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">df_summary</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sample_set&quot;</span><span class="p">,</span> <span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">],</span> 
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;taxon&quot;</span><span class="p">],</span>
-    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;sample_id&quot;</span><span class="p">,</span> 
-    <span class="n">aggfunc</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span>
-    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">df_summary</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-c8c0d179-93ff-4f43-99c4-fadf35275401">
-    <div class="colab-df-container">
-      <div>
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1299,83 +1122,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     </tr>
   </tbody>
 </table>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-c8c0d179-93ff-4f43-99c4-fadf35275401')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-c8c0d179-93ff-4f43-99c4-fadf35275401 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-c8c0d179-93ff-4f43-99c4-fadf35275401');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-</div></div>
+</div></div></div>
 </div>
 <p>Note that there are also multiple sampling sites represented within some sample sets.</p>
 </div>
