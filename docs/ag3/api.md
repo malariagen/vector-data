@@ -181,3 +181,22 @@ This page provides documentation for functions in the [malariagen_data](https://
 ```{eval-rst}
 .. automethod:: malariagen_data::Ag3.gene_cnv_frequencies_advanced
 ```
+
+## plot_genes()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_genes
+```
+
+## plot_transcript()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_transcript
+```
+
+## resolve_region()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.resolve_region
+```
+
