@@ -255,6 +255,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Release notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release notes
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -491,6 +503,21 @@ const thebe_selector_output = ".output, .cell_output"
    gene_cnv_frequencies_advanced()
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-genes">
+   plot_genes()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-transcript">
+   plot_transcript()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolve-region">
+   resolve_region()
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -659,6 +686,21 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gene-cnv-frequencies-advanced">
    gene_cnv_frequencies_advanced()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-genes">
+   plot_genes()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-transcript">
+   plot_transcript()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolve-region">
+   resolve_region()
   </a>
  </li>
 </ul>
@@ -1148,7 +1190,7 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+<dt><strong>contig</strong><span class="classifier">str or list of str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
 as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
@@ -1181,7 +1223,7 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+<dt><strong>contig</strong><span class="classifier">str or list of str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
 as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>sample_set</strong><span class="classifier">str</span></dt><dd><p>Sample set identifier.</p>
@@ -1214,7 +1256,7 @@ Also, can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+<dt><strong>contig</strong><span class="classifier">str or list of str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
 as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
@@ -1247,7 +1289,8 @@ Also can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
+<dt><strong>contig</strong><span class="classifier">str or list of str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>sample_sets</strong><span class="classifier">str or list of str</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
 identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
@@ -1418,7 +1461,8 @@ amplifications and deletions in one or more cohorts, from HMM data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
+<dt><strong>contig</strong><span class="classifier">str or list of str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>cohorts</strong><span class="classifier">str or dict</span></dt><dd><p>If a string, gives the name of a predefined cohort set, e.g., one of
 {“admin1_month”, “admin1_year”, “admin2_month”, “admin2_year”}.
@@ -1462,20 +1506,22 @@ one row per gene and CNV type (amp/del).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.plot_frequencies_heatmap">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_frequencies_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'label'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cohorts'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variants'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_auto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.0%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_continuous_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Reds'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_frequencies_heatmap" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Plot a heatmap from a pandas DataFrame of frequencies, e.g., output from</dt><dd><p><cite>Ag3.snp_allele_frequencies()</cite> or <cite>Ag3.gene_cnv_frequencies()</cite>. It’s recommended to
-filter the input DataFrame to just rows of interest, i.e., fewer rows than <cite>max_len</cite>.</p>
-</dd>
-</dl>
+<dd><p>Plot a heatmap from a pandas DataFrame of frequencies, e.g., output
+from <cite>Ag3.snp_allele_frequencies()</cite> or <cite>Ag3.gene_cnv_frequencies()</cite>.
+It’s recommended to filter the input DataFrame to just rows of interest,
+i.e., fewer rows than <cite>max_len</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>df</strong><span class="classifier">pandas DataFrame</span></dt><dd><p>A DataFrame of frequencies, e.g., output from <cite>snp_allele_frequencies()</cite> or <cite>gene_cnv_frequencies()</cite>.</p>
+<dt><strong>df</strong><span class="classifier">pandas DataFrame</span></dt><dd><p>A DataFrame of frequencies, e.g., output from
+<cite>snp_allele_frequencies()</cite> or <cite>gene_cnv_frequencies()</cite>.</p>
 </dd>
-<dt><strong>index</strong><span class="classifier">str or list of str</span></dt><dd><p>One or more column headers that are present in the input dataframe. This becomes the heatmap y-axis
-row labels. The column/s must produce a unique index.</p>
+<dt><strong>index</strong><span class="classifier">str or list of str</span></dt><dd><p>One or more column headers that are present in the input dataframe.
+This becomes the heatmap y-axis row labels. The column/s must
+produce a unique index.</p>
 </dd>
-<dt><strong>max_len</strong><span class="classifier">int, optional</span></dt><dd><p>Displaying large styled dataframes may cause ipython notebooks to crash.</p>
+<dt><strong>max_len</strong><span class="classifier">int, optional</span></dt><dd><p>Displaying large styled dataframes may cause ipython notebooks to
+crash.</p>
 </dd>
 <dt><strong>x_label</strong><span class="classifier">str, optional</span></dt><dd><p>This is the x-axis label that will be displayed on the heatmap.</p>
 </dd>
@@ -1609,38 +1655,39 @@ adding new markers.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.snp_allele_frequencies_advanced">
 <span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">snp_allele_frequencies_advanced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_by</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_invariant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variant_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nobs_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'called'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'20211101'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aim_20200422'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dt_20200416'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.snp_allele_frequencies_advanced" title="Permalink to this definition">¶</a></dt>
-<dd><p>Group samples by taxon, area (space) and period (time), then compute SNP allele counts
-and frequencies.</p>
+<dd><p>Group samples by taxon, area (space) and period (time), then compute
+SNP allele counts and frequencies.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RD”.</p>
 </dd>
-<dt><strong>area_by</strong><span class="classifier">str</span></dt><dd><p>Column name in the sample metadata to use to group samples spatially. E.g.,
-use “adm1_ISO” or “adm1_name” to group by level 1 administrative divisions,
-or use “adm2_name” to group by level 2 administrative divisions.</p>
+<dt><strong>area_by</strong><span class="classifier">str</span></dt><dd><p>Column name in the sample metadata to use to group samples
+spatially. E.g., use “admin1_iso” or “admin1_name” to group by level 1
+administrative divisions, or use “admin2_name” to group by level 2
+administrative divisions.</p>
 </dd>
 <dt><strong>period_by</strong><span class="classifier">{“year”, “quarter”, “month”}</span></dt><dd><p>Length of time to group samples temporally.</p>
 </dd>
-<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of sample set
-identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identifier (e.g.,
-“3.0”) or a list of release identifiers.</p>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
 </dd>
-<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample metadata e.g.,
-“taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample
+metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
 </dd>
 <dt><strong>min_cohort_size</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum cohort size. Any cohorts below this size are omitted.</p>
 </dd>
-<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, variants with no alternate allele calls in any cohorts are dropped from
-the result.</p>
+<dt><strong>drop_invariant</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, variants with no alternate allele calls in any cohorts are
+dropped from the result.</p>
 </dd>
 <dt><strong>variant_query</strong><span class="classifier">str, optional</span></dt><dd></dd>
 <dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply.</p>
 </dd>
-<dt><strong>nobs_mode</strong><span class="classifier">{“called”, “fixed”}</span></dt><dd><p>Method for calculating the denominator when computing frequencies. If “called”
-then use the number of called alleles, i.e., number of samples with non-missing
-genotype calls multiplied by 2. If “fixed” then use the number of samples
-multiplied by 2.</p>
+<dt><strong>nobs_mode</strong><span class="classifier">{“called”, “fixed”}</span></dt><dd><p>Method for calculating the denominator when computing frequencies.
+If “called” then use the number of called alleles, i.e., number of
+samples with non-missing genotype calls multiplied by 2. If “fixed”
+then use the number of samples multiplied by 2.</p>
 </dd>
 <dt><strong>ci_method</strong><span class="classifier">{“normal”, “agresti_coull”, “beta”, “wilson”, “binom_test”}, optional</span></dt><dd><p>Method to use for computing confidence intervals, passed through to
 <cite>statsmodels.stats.proportion.proportion_confint</cite>.</p>
@@ -1656,11 +1703,11 @@ multiplied by 2.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>The resulting dataset contains data has dimensions “cohorts” and “variants”.
-Variables prefixed with “<a href="#id1"><span class="problematic" id="id2">cohort_</span></a>” are 1-dimensional arrays with data about
+Variables prefixed with “cohort” are 1-dimensional arrays with data about
 the cohorts, such as the area, period, taxon and cohort size. Variables
-prefixed with “<a href="#id3"><span class="problematic" id="id4">variant_</span></a>” are 1-dimensional arrays with data about the variants,
+prefixed with “variant” are 1-dimensional arrays with data about the variants,
 such as the contig, position, reference and alternate alleles. Variables prefixed
-with “<a href="#id5"><span class="problematic" id="id6">event_</span></a>” are 2-dimensional arrays with the allele counts and frequency
+with “event” are 2-dimensional arrays with the allele counts and frequency
 calculations.</p>
 </dd>
 </dl>
@@ -1682,8 +1729,8 @@ change allele counts and frequencies.</p>
 <dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RD”.</p>
 </dd>
 <dt><strong>area_by</strong><span class="classifier">str</span></dt><dd><p>Column name in the sample metadata to use to group samples spatially. E.g.,
-use “adm1_ISO” or “adm1_name” to group by level 1 administrative divisions,
-or use “adm2_name” to group by level 2 administrative divisions.</p>
+use “admin1_iso” or “admin1_name” to group by level 1 administrative divisions,
+or use “admin2_name” to group by level 2 administrative divisions.</p>
 </dd>
 <dt><strong>period_by</strong><span class="classifier">{“year”, “quarter”, “month”}</span></dt><dd><p>Length of time to group samples temporally.</p>
 </dd>
@@ -1718,11 +1765,11 @@ multiplied by 2.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>The resulting dataset contains data has dimensions “cohorts” and “variants”.
-Variables prefixed with “<a href="#id7"><span class="problematic" id="id8">cohort_</span></a>” are 1-dimensional arrays with data about
+Variables prefixed with “cohort” are 1-dimensional arrays with data about
 the cohorts, such as the area, period, taxon and cohort size. Variables
-prefixed with “<a href="#id9"><span class="problematic" id="id10">variant_</span></a>” are 1-dimensional arrays with data about the variants,
+prefixed with “variant” are 1-dimensional arrays with data about the variants,
 such as the contig, position, reference and alternate alleles. Variables prefixed
-with “<a href="#id11"><span class="problematic" id="id12">event_</span></a>” are 2-dimensional arrays with the allele counts and frequency
+with “event” are 2-dimensional arrays with the allele counts and frequency
 calculations.</p>
 </dd>
 </dl>
@@ -1741,11 +1788,12 @@ and frequencies.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>contig</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm, e.g., “3R”.</p>
+<dt><strong>contig</strong><span class="classifier">str or list of str</span></dt><dd><p>Chromosome arm, e.g., “3R”. Multiple values can be provided
+as a list, in which case data will be concatenated, e.g., [“2R”, “3R”].</p>
 </dd>
 <dt><strong>area_by</strong><span class="classifier">str</span></dt><dd><p>Column name in the sample metadata to use to group samples spatially. E.g.,
-use “adm1_ISO” or “adm1_name” to group by level 1 administrative divisions,
-or use “adm2_name” to group by level 2 administrative divisions.</p>
+use “admin1_iso” or “admin1_name” to group by level 1 administrative divisions,
+or use “admin2_name” to group by level 2 administrative divisions.</p>
 </dd>
 <dt><strong>period_by</strong><span class="classifier">{“year”, “quarter”, “month”}</span></dt><dd><p>Length of time to group samples temporally.</p>
 </dd>
@@ -1775,12 +1823,53 @@ identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a release identi
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>ds</strong><span class="classifier">xarray.Dataset</span></dt><dd><p>The resulting dataset contains data has dimensions “cohorts” and “variants”.
-Variables prefixed with “<a href="#id13"><span class="problematic" id="id14">cohort_</span></a>” are 1-dimensional arrays with data about
+Variables prefixed with “cohort” are 1-dimensional arrays with data about
 the cohorts, such as the area, period, taxon and cohort size. Variables
-prefixed with “<a href="#id15"><span class="problematic" id="id16">variant_</span></a>” are 1-dimensional arrays with data about the variants,
+prefixed with “variant” are 1-dimensional arrays with data about the variants,
 such as the contig, position, reference and alternate alleles. Variables prefixed
-with “<a href="#id17"><span class="problematic" id="id18">event_</span></a>” are 2-dimensional arrays with the allele counts and frequency
+with “event” are 2-dimensional arrays with the allele counts and frequency
 calculations.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-genes">
+<h2>plot_genes()<a class="headerlink" href="#plot-genes" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_genes">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_genes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toolbar_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'above'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Genes'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_genes" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#64;&#64;TODO</p>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-transcript">
+<h2>plot_transcript()<a class="headerlink" href="#plot-transcript" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_transcript">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_transcript</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toolbar_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'above'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_transcript" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="resolve-region">
+<h2>resolve_region()<a class="headerlink" href="#resolve-region" title="Permalink to this headline">¶</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.resolve_region">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">resolve_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.resolve_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a genome region into a standard data structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>region: str</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or genomic
+region defined with coordinates (e.g., “2L:44989425-44998059”).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Region</span></dt><dd><p>A named tuple with attributes contig, start and end.</p>
 </dd>
 </dl>
 </dd>
