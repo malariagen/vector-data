@@ -26,3 +26,6 @@ parts:
   - caption: Partners and community
     chapters:
     - file: studies-ag1000g
+  - caption: Release notes
+    chapters:
+    - file: release-notes
