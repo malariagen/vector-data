@@ -1,5 +1,9 @@
 # Release notes
 
+## 2022-03-14
+
+* Version 3.0.0 of the malariagen_data Python package is available, see the [release notes](https://github.com/malariagen/malariagen-data-python/#300) for details.
+
 ## 2022-03-09
 
 * The CNV discordant read call data in the Ag3.0 data resource has been patched to fix a bug where the variant labels were in the incorrect order. If you have used any of the CNV discordant read call data then please delete any downloaded data and rerun analyses.
