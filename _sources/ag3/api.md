@@ -194,9 +194,20 @@ This page provides documentation for functions in the [malariagen_data](https://
 .. automethod:: malariagen_data::Ag3.plot_transcript
 ```
 
+## plot_cnv_hmm_coverage()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_cnv_hmm_coverage
+```
+
+## plot_cnv_hmm_heatmap()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_cnv_hmm_heatmap
+```
+
 ## resolve_region()
 
 ```{eval-rst}
 .. automethod:: malariagen_data::Ag3.resolve_region
 ```
-
