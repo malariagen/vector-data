@@ -1,3 +1,3 @@
-jupyter-book==0.12.2
+jupyter-book==0.13.1
 numpydoc==1.2.0
-malariagen_data==3.0.0
+malariagen_data
