@@ -359,25 +359,12 @@ This page provides documentation for functions in the [malariagen_data](https://
 ## h12_gwss()
 
 ```{eval-rst}
-.. automethod:: malariagen_data::Ag3.plot_h12_gwss
+.. automethod:: malariagen_data::Ag3.h12_gwss
 ```
 
 
+## plot_h12_gwss()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@@TODO more
-
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_h12_gwss
+```
