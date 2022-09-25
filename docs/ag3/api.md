@@ -26,6 +26,18 @@ This page provides documentation for functions in the [malariagen_data](https://
 .. automethod:: malariagen_data::Ag3.sample_cohorts
 ```
 
+## count_samples()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.count_samples
+```
+
+## plot_samples_interactive_map()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_samples_interactive_map
+```
+
 ## cross_metadata()
 
 ```{eval-rst}
