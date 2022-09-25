@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Ag3.0 data downloads &#8212; MalariaGEN vector data user guide</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,6 +38,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -79,7 +78,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -97,7 +96,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -106,9 +119,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -126,14 +140,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../landing-page.html">
-   MalariaGEN vector data user guide
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../landing-page.html">
+                    MalariaGEN vector data user guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles gambiae complex
  </span>
@@ -269,112 +284,227 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ag3/download.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/malariagen/vector-data"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/download.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/download.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/malariagen/vector-data/blob/master/docs/ag3/download.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/download.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/malariagen/vector-data/blob/master/docs/ag3/download.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/malariagen/vector-data"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/download.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/ag3/download.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-hosting">
    Data hosting
@@ -507,12 +637,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Ag3.0 data downloads</h1>
@@ -661,22 +790,23 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="ag3-0-data-downloads">
-<h1>Ag3.0 data downloads<a class="headerlink" href="#ag3-0-data-downloads" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ag3-0-data-downloads">
+<h1>Ag3.0 data downloads<a class="headerlink" href="#ag3-0-data-downloads" title="Permalink to this headline">#</a></h1>
 <p>This notebook provides information about how to download data from the <a class="reference internal" href="intro.html"><span class="doc std std-doc"><em>Anopheles gambiae</em> 1000 Genomes project (Ag1000G) phase 3</span></a>. This includes sample metadata, raw sequence reads, sequence read alignments, and single nucleotide polymorphism (SNP) calls.</p>
 <p>Code examples that are intended to be run via a Linux command line are prefixed with an exclamation mark (!). If you are running these commands directly from a terminal, remove the exclamation mark.</p>
 <p>Examples in this notebook assume you are downloading data to a local folder within your home directory at the path <code class="docutils literal notranslate"><span class="pre">~/vo_agam_release/</span></code>. Change this if you want to download to a different folder on the local file system.</p>
-<div class="section" id="data-hosting">
-<h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
+<section id="data-hosting">
+<h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Ag3.0</span></code> data are hosted by several different services.</p>
 <p>Raw sequence reads in FASTQ format and sequence read alignments in BAM format are hosted by the European Nucleotide Archive (ENA). This guide provides examples of downloading data from ENA via FTP using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command line tool, but please note that there are several other options for downloading data, see the <a class="reference external" href="https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html">ENA documentation on how to download data files</a> for more information.</p>
 <p>Sample metadata in CSV format and SNP calls in VCF and Zarr formats are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
-</div>
-<div class="section" id="sample-sets">
-<h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sample-sets">
+<h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">#</a></h2>
 <p>Data in this release are organised into 28 sample sets. Each of these sample sets corresponds to a set of mosquito specimens contributed by a collaborating study. Depending on your objectives, you may want to download data from only specific sample sets, or all sample sets. For convenience there is a tab-delimited manifest file listing all sample sets in the release. Here is a direct download link for the sample set manifest:</p>
 <ul class="simple">
 <li><p>https://storage.googleapis.com/vo_agam_release/v3/manifest.tsv</p></li>
@@ -741,12 +871,12 @@ AG1000G-X	297
 </div>
 </div>
 <p>For more information about these sample sets, see the section on sample sets in the <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction to Ag1000G phase 3</span></a>.</p>
-</div>
-<div class="section" id="sample-metadata">
-<h2>Sample metadata<a class="headerlink" href="#sample-metadata" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sample-metadata">
+<h2>Sample metadata<a class="headerlink" href="#sample-metadata" title="Permalink to this headline">#</a></h2>
 <p>Data about the samples that were sequenced to generate this data resource are available, including the time and place of collection, the gender of the specimen, and our call regarding the species of the specimen.</p>
-<div class="section" id="specimen-collection-metadata">
-<h3>Specimen collection metadata<a class="headerlink" href="#specimen-collection-metadata" title="Permalink to this headline">¶</a></h3>
+<section id="specimen-collection-metadata">
+<h3>Specimen collection metadata<a class="headerlink" href="#specimen-collection-metadata" title="Permalink to this headline">#</a></h3>
 <p>Specimen collection metadata can be downloaded from GCS. E.g., here is the download link for the sample metadata for sample set AG1000G-BF-A:</p>
 <ul class="simple">
 <li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/general/AG1000G-BF-A/samples.meta.csv</p></li>
@@ -786,9 +916,9 @@ AB0094-Cx,BF3-17,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
 <p>The <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">location</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> columns give the location where the specimen was collected.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">month</span></code> columns give the approximate date when the specimen was collected.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">sex_call</span></code> column gives the gender as determined from the sequence data.</p>
-</div>
-<div class="section" id="species-calls">
-<h3>Species calls<a class="headerlink" href="#species-calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="species-calls">
+<h3>Species calls<a class="headerlink" href="#species-calls" title="Permalink to this headline">#</a></h3>
 <p>We have made a call for each specimen as to which species it belongs to (<em>Anopheles gambiae</em>, <em>Anopheles coluzzii</em>, <em>Anopheles arabiensis</em>) based on the genotypes of the samples. These calls were made from the sequence data, and there are cases where the species is not easy to determine. We report species calls using two methods, principal components analysis (PCA) and ancestry informative markers (AIMs).</p>
 <p>Species calls can be downloaded from GCS, e.g., for sample set AG1000G-BF-A:</p>
 <ul class="simple">
@@ -820,10 +950,10 @@ AB0094-Cx,0.986,0.002,gamb_colu,coluzzii
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">species_gambcolu_arabiensis</span></code> column provides a call as to whether the specimen is arabiensis or not (gamb_colu).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">species_gambiae_coluzzii</span></code> column applies to samples that are not arabiensis, and differentiates gambiae versus coluzzii.</p>
-</div>
-</div>
-<div class="section" id="raw-sequence-reads-fastq-format">
-<h2>Raw sequence reads (FASTQ format)<a class="headerlink" href="#raw-sequence-reads-fastq-format" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="raw-sequence-reads-fastq-format">
+<h2>Raw sequence reads (FASTQ format)<a class="headerlink" href="#raw-sequence-reads-fastq-format" title="Permalink to this headline">#</a></h2>
 <p>The raw sequence reads used in this data release can be downloaded from ENA. Note that for most samples there were multiple sequencing runs, and hence there are usually multiple ENA run accessions per sample. For most samples there were 3 sequencing runs, but some samples have 4 and some have a single sequencing run.</p>
 <p>To find the ENA run accessions for a given sample, first download the catalog of run accessions:</p>
 <ul class="simple">
@@ -861,9 +991,9 @@ AR0004-C,ERR343468
 </div>
 </div>
 <p>Note that FASTQ files are relatively large, several GB per sample, so they may take a long time to download, and may require a substantial amount of disk space on your local system.</p>
-</div>
-<div class="section" id="sequence-read-alignments-bam-format">
-<h2>Sequence read alignments (BAM format)<a class="headerlink" href="#sequence-read-alignments-bam-format" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sequence-read-alignments-bam-format">
+<h2>Sequence read alignments (BAM format)<a class="headerlink" href="#sequence-read-alignments-bam-format" title="Permalink to this headline">#</a></h2>
 <p>Analysis-ready sequence read alignments are available in BAM format for all samples in the release and can be downloaded from ENA. A catalog file mapping sample identifiers to ENA accessions is available at this link:</p>
 <ul class="simple">
 <li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_alignments.csv</p></li>
@@ -899,11 +1029,11 @@ AR0011-C,ERZ1695283
 </div>
 </div>
 <p>Note that BAM files are relatively large, approximately 10G per sample, so they may take a long time to download, and may require a substantial amount of disk space on your local system.</p>
-</div>
-<div class="section" id="snp-calls-vcf-format">
-<h2>SNP calls (VCF format)<a class="headerlink" href="#snp-calls-vcf-format" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="snp-genotypes">
-<h3>SNP genotypes<a class="headerlink" href="#snp-genotypes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="snp-calls-vcf-format">
+<h2>SNP calls (VCF format)<a class="headerlink" href="#snp-calls-vcf-format" title="Permalink to this headline">#</a></h2>
+<section id="snp-genotypes">
+<h3>SNP genotypes<a class="headerlink" href="#snp-genotypes" title="Permalink to this headline">#</a></h3>
 <p>SNP genotypes for individual mosquitoes in VCF format are available for download from GCS. A VCF file is available for each individual sample. To download a VCF file for a given sample, you will need the sample identifier and the sample set in which the sample belongs. For example, to download the VCF file for sample AR0001-C in sample set AG1000G-AO, run the following:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -960,9 +1090,9 @@ Alternatively if you ran the `gsutil rsync` command above to download sample met
 
 Each row in this file provides a mapping from Ag1000G sample identifiers to EVA analysis accessions. To find links for downloading the data, visit the EVA website and search for the corresponding analysis accession. E.g., the VCF file for sample @@TODO can be downloaded from this web page: @@TODO
 
---></div>
-<div class="section" id="site-filters">
-<h3>Site filters<a class="headerlink" href="#site-filters" title="Permalink to this headline">¶</a></h3>
+--></section>
+<section id="site-filters">
+<h3>Site filters<a class="headerlink" href="#site-filters" title="Permalink to this headline">#</a></h3>
 <p>SNP calling is not always reliable, and we have created some site filters to allow excluding low quality SNPs. We have created some sites-only VCF files with site filter information in the <code class="docutils literal notranslate"><span class="pre">FILTER</span></code> column. These VCF files are hosted on GCS.</p>
 <p>Because different species may have different genome accessibility issues, we have created three separate site filters:</p>
 <ul class="simple">
@@ -989,14 +1119,14 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="snp-calls-zarr-format">
-<h2>SNP calls (Zarr format)<a class="headerlink" href="#snp-calls-zarr-format" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="snp-calls-zarr-format">
+<h2>SNP calls (Zarr format)<a class="headerlink" href="#snp-calls-zarr-format" title="Permalink to this headline">#</a></h2>
 <p>SNP data are also available in Zarr format, which can be convenient and efficient to use for certain types of analysis. These data can be analysed directly in the cloud without downloading to the local system, see the <a class="reference internal" href="cloud.html"><span class="doc std std-doc">Ag3 cloud data access guide</span></a> for more information. The data can also be downloaded to your own system for local analysis if that is more convenient. Below are examples of how to download the Zarr data to your local system.</p>
 <p>The data are organised into several Zarr hierarchies.</p>
-<div class="section" id="snp-sites-and-alleles">
-<h3>SNP sites and alleles<a class="headerlink" href="#snp-sites-and-alleles" title="Permalink to this headline">¶</a></h3>
+<section id="snp-sites-and-alleles">
+<h3>SNP sites and alleles<a class="headerlink" href="#snp-sites-and-alleles" title="Permalink to this headline">#</a></h3>
 <p>Data on the genomic positions (sites) and reference and alternate alleles that were genotyped can be downloaded as follows:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -1008,9 +1138,9 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h3>Site filters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3>Site filters<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>SNP calling is not always reliable, and we have created some site filters to allow excluding low quality SNPs. To download site filters data in Zarr format, excluding some parts of the data that you probably won’t need:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -1023,9 +1153,9 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h3>SNP genotypes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3>SNP genotypes<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>SNP genotypes are available for each sample set separately. E.g., to download SNP genotypes in Zarr format for sample set AG1000G-BF-A, excluding some data you probably won’t need:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -1038,10 +1168,10 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="copy-number-variation-cnv-data">
-<h2>Copy number variation (CNV) data<a class="headerlink" href="#copy-number-variation-cnv-data" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="copy-number-variation-cnv-data">
+<h2>Copy number variation (CNV) data<a class="headerlink" href="#copy-number-variation-cnv-data" title="Permalink to this headline">#</a></h2>
 <p>Data on copy number variation within the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> cohort are available as three separate data types:</p>
 <ul class="simple">
 <li><p><strong>HMM</strong> – Genome-wide inferences of copy number state within each individual mosquito in 300 bp non-overlapping windows.</p></li>
@@ -1050,8 +1180,8 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </ul>
 <p>For more information on the methods used to generate these data, see the <a class="reference internal" href="methods.html"><span class="doc std std-doc">variant-calling methods</span></a> page.</p>
 <p>For each of these data types, data can be downloaded from Google Cloud Storage, and are available in either VCF or Zarr format.</p>
-<div class="section" id="cnv-hmm">
-<h3>CNV HMM<a class="headerlink" href="#cnv-hmm" title="Permalink to this headline">¶</a></h3>
+<section id="cnv-hmm">
+<h3>CNV HMM<a class="headerlink" href="#cnv-hmm" title="Permalink to this headline">#</a></h3>
 <p>The HMM inferences of copy number state are available in VCF, Zarr and text formats, and are organised by sample set.</p>
 <p>For example, the VCF file for sample set AG1000G-AO can be downloaded from the following URL:</p>
 <ul class="simple">
@@ -1087,9 +1217,9 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="cnv-coverage-calls">
-<h3>CNV coverage calls<a class="headerlink" href="#cnv-coverage-calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cnv-coverage-calls">
+<h3>CNV coverage calls<a class="headerlink" href="#cnv-coverage-calls" title="Permalink to this headline">#</a></h3>
 <p>Coverage-based CNV calls are available in VCF and Zarr formats, and are organised by sample set. Additionally the coverage calls were performed separately for <em>An. arabiensis</em> and (<em>An. gambiae</em> + <em>An. coluzzii</em>), and so are subdivided into “arab” and “gamb_colu” datasets, depending on which species are present in a given sample set.</p>
 <p>Note that some samples were excluded from coverage calling because of high coverage variance.</p>
 <p>For example, the VCF file for sample set AG1000G-AO and the gamb_colu callset can be downloaded from:</p>
@@ -1118,9 +1248,9 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="cnv-discordant-read-calls">
-<h3>CNV discordant read calls<a class="headerlink" href="#cnv-discordant-read-calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cnv-discordant-read-calls">
+<h3>CNV discordant read calls<a class="headerlink" href="#cnv-discordant-read-calls" title="Permalink to this headline">#</a></h3>
 <p>CNV calls for selected insecticide resistance loci are available in VCF and Zarr formats, and are organised by sample set.</p>
 <p>For example, the VCF file for sample set AG1000G-AO can be downloaded from:</p>
 <ul class="simple">
@@ -1137,10 +1267,10 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="haplotypes">
-<h2>Haplotypes<a class="headerlink" href="#haplotypes" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="haplotypes">
+<h2>Haplotypes<a class="headerlink" href="#haplotypes" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data resource also includes haplotype reference panels, which were obtained by <a class="reference external" href="https://en.wikipedia.org/wiki/Haplotype_estimation">phasing</a> the SNP calls. To allow for a range of different analyses, three different haplotype reference panels were constructed, each using a different subset of samples and applying different site filters:</p>
 <ul class="simple">
 <li><p><strong>“gamb_colu_arab”</strong> - This haplotype reference panel includes <strong>all wild-caught samples</strong>, and phases biallelic SNPs passing the “gamb_colu_arab” site filters.</p></li>
@@ -1148,8 +1278,8 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 <li><p><strong>“arab”</strong> - This haplotype reference panel includes <strong>wild-caught samples assigned as <em>An. arabiensis</em></strong> via the AIM species calling method, and phases biallelic SNPs passing the “arab” site filters.</p></li>
 </ul>
 <p>Haplotype data can be downloaded in either VCF or Zarr format. See the subsections below for further details</p>
-<div class="section" id="haplotype-reference-panels-vcf-format">
-<h3>Haplotype reference panels (VCF format)<a class="headerlink" href="#haplotype-reference-panels-vcf-format" title="Permalink to this headline">¶</a></h3>
+<section id="haplotype-reference-panels-vcf-format">
+<h3>Haplotype reference panels (VCF format)<a class="headerlink" href="#haplotype-reference-panels-vcf-format" title="Permalink to this headline">#</a></h3>
 <p>These are the VCFs created by the phasing pipeline, containing all samples included each of the phasing runs. There is one VCF per phasing analysis per chromosome arm. The URL for each file has the following structure:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/panel/{analysis}/ag3_{analysis}_{contig}_phased.vcf.gz</span></code></p></li>
@@ -1175,9 +1305,9 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="sample-set-haplotypes-vcf-format">
-<h3>Sample set haplotypes (VCF format)<a class="headerlink" href="#sample-set-haplotypes-vcf-format" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sample-set-haplotypes-vcf-format">
+<h3>Sample set haplotypes (VCF format)<a class="headerlink" href="#sample-set-haplotypes-vcf-format" title="Permalink to this headline">#</a></h3>
 <p>These VCFs are subsets of the panel VCFs, containing only samples in a given sample set. There is one VCF per sample set, per phasing analysis, per chromosome arm. The URL for each file has the following structure:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/{sample_set}/{analysis}/vcf/AG1000G-AO_{analysis}_{contig}_phased.vcf.gz</span></code></p></li>
@@ -1202,9 +1332,9 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="sample-set-haplotypes-zarr-format">
-<h3>Sample set haplotypes (Zarr format)<a class="headerlink" href="#sample-set-haplotypes-zarr-format" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sample-set-haplotypes-zarr-format">
+<h3>Sample set haplotypes (Zarr format)<a class="headerlink" href="#sample-set-haplotypes-zarr-format" title="Permalink to this headline">#</a></h3>
 <p>These contain the haplotype data in Zarr format, with one Zarr hierarchy per sample set. The root zarr path for a given hierarchy has the following structure:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_agam_release/v3/snp_haplotypes/{sample_set}/{analysis}/zarr</span></code></p></li>
@@ -1230,10 +1360,10 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="accessing-downloaded-data-from-python">
-<h2>Accessing downloaded data from Python<a class="headerlink" href="#accessing-downloaded-data-from-python" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="accessing-downloaded-data-from-python">
+<h2>Accessing downloaded data from Python<a class="headerlink" href="#accessing-downloaded-data-from-python" title="Permalink to this headline">#</a></h2>
 <p>There are a wide variety of tools available for analysing the data from Ag1000G phase 3 once downloaded to your local system. If you would like to ask about possible approaches for a given analysis, please feel free to <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions/new">start a new discussion</a> on the malariagen/vector-public-data repo on GitHub.</p>
 <p>Within the MalariaGEN vector genomics team we primarily use the Python programming language for analysing the SNP data, making use of software packages in the Scientific Python / PyData ecosystem. This section gives some simple examples illustrating how to use these tools to read downloaded data.</p>
 <p>These examples use data from two sample sets, AG1000G-BF-A and AG1000G-BF-B.</p>
@@ -2919,12 +3049,12 @@ dtype: int64
 </div>
 </div>
 <p>For worked examples of various analyses using these data, see the <a class="reference internal" href="examples.html"><span class="doc std std-doc">Ag3.0 analysis examples</span></a> page.</p>
-</div>
-<div class="section" id="feedback-and-suggestions">
-<h2>Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="feedback-and-suggestions">
+<h2>Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">#</a></h2>
 <p>If there are particular analyses you would like to run, or if you have other suggestions for useful documentation we could add to this site, we would love to know, please get in touch via the <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">malariagen/vector-data GitHub discussion board</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2948,9 +3078,11 @@ dtype: int64
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="cloud.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2966,24 +3098,28 @@ dtype: int64
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By MalariaGEN<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By MalariaGEN<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

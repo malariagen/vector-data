@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Single nucleotide polymorphisms (SNPs) &#8212; MalariaGEN vector data user guide</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -40,6 +38,7 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -79,7 +78,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -97,7 +96,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -106,9 +119,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -126,14 +140,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../landing-page.html">
-   MalariaGEN vector data user guide
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../landing-page.html">
+                    MalariaGEN vector data user guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles gambiae complex
  </span>
@@ -269,112 +284,227 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/ag3/examples/snps.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/malariagen/vector-data"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/examples/snps.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/examples/snps.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/malariagen/vector-data/blob/master/docs/ag3/examples/snps.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/examples/snps.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/malariagen/vector-data/blob/master/docs/ag3/examples/snps.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/malariagen/vector-data"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/examples/snps.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/ag3/examples/snps.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setup">
    Setup
@@ -473,12 +603,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Single nucleotide polymorphisms (SNPs)</h1>
@@ -593,14 +722,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="single-nucleotide-polymorphisms-snps">
-<h1>Single nucleotide polymorphisms (SNPs)<a class="headerlink" href="#single-nucleotide-polymorphisms-snps" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="single-nucleotide-polymorphisms-snps">
+<h1>Single nucleotide polymorphisms (SNPs)<a class="headerlink" href="#single-nucleotide-polymorphisms-snps" title="Permalink to this headline">#</a></h1>
 <p>This notebook looks in more detail at how single nucleotide polymorphisms (SNPs) are represented in the Ag1000G phase 3 (<code class="docutils literal notranslate"><span class="pre">Ag3.0</span></code>) data release. We’ll also look at the different site filters that we’ve created to help select high quality SNPs for robust population genetic analyses. As always, this notebook is executable, click the launch icon (<i class="fas fa-rocket"></i>) at the top of the page and select a cloud computing service if you’d like to try running it for yourself.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <p>Install some packages. You can skip this step if running on MyBinder, these will be already installed.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
@@ -664,9 +794,9 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div>
 </div>
-</div>
-<div class="section" id="preface-navigating-the-reference-genome">
-<h2>Preface: navigating the reference genome<a class="headerlink" href="#preface-navigating-the-reference-genome" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="preface-navigating-the-reference-genome">
+<h2>Preface: navigating the reference genome<a class="headerlink" href="#preface-navigating-the-reference-genome" title="Permalink to this headline">#</a></h2>
 <p>In case you’re not already familiar with the <em>Anopheles gambiae</em> genome, here’s a quick primer on how it’s structured and how we refer to specific sites (positions) within the genome.</p>
 <p>For Ag1000G analyses we use the AgamP4 reference genome. This genome is comprised of five main sequences:</p>
 <div class="cell docutils container">
@@ -908,9 +1038,9 @@ X: 24,393,108 bp
 <li><p>We converted the X-axis coordinates to “Mbp” which means mega-base pairs, i.e., millions of letters.</p></li>
 </ol>
 <p>Now we’re acquainted with the reference genome, let’s look at nucleotide variation.</p>
-</div>
-<div class="section" id="snp-positions-and-alleles">
-<h2>SNP positions and alleles<a class="headerlink" href="#snp-positions-and-alleles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="snp-positions-and-alleles">
+<h2>SNP positions and alleles<a class="headerlink" href="#snp-positions-and-alleles" title="Permalink to this headline">#</a></h2>
 <p>When studying genetic variation in natural populations, there are two fundamental questions:</p>
 <ol class="simple">
 <li><p>Where in the genome do we observe <strong>differences (i.e., nucleotide variation)</strong> between individual mosquitoes.</p></li>
@@ -5056,9 +5186,9 @@ Attributes:
 </div>
 <p>The most important thing to note about the SNP data in Ag3 is that <strong>not all of these alternate alleles will have been observed in the mosquitoes we sequenced.</strong></p>
 <p>To determine which alternate alleles are observed in Ag3, we need to look at the SNP genotypes. Let’s take a look at how SNP genotypes are represented, then return to the question of which alternate alleles have been observed.</p>
-</div>
-<div class="section" id="genotypes">
-<h2>Genotypes<a class="headerlink" href="#genotypes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="genotypes">
+<h2>Genotypes<a class="headerlink" href="#genotypes" title="Permalink to this headline">#</a></h2>
 <p>Here a SNP “genotype” means the pair of nucleotides (alleles) carried by an individual mosquito at a specific site in the genome. Note that this is a pair of alleles because mosquitoes are diploid like us, meaning that they carry two copies of their genome, one inherited from each parent (except for males on the X chromosome, which inherit one copy from their mother only).</p>
 <p>Rather than storing the actual nucleotides for each genotype, it is conventional to use a numerical encoding of genotypes, where 0 stands for the reference allele, 1 stands for the first alternate allele, 2 stands for the second alternate allele, 3 stands for the third alternate allele, etc.</p>
 <p>E.g., at site 2R:10 the reference allele is “T”. If an individual mosquito carries a homozygous reference genotype (both genome copies have a “T”), we represent this in Python as the pair of integers <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>. In a VCF file this is represented as the string “0/0”.</p>
@@ -5198,9 +5328,9 @@ Attributes:
 </div>
 <p>This wrapper class provided a display showing a preview of genotype calls for the first and last sites and samples, using the VCF-style representation of genotype calls (e.g., “0/0” is homozygous reference, etc.).</p>
 <p>Once we have access to the genotype calls, we can run a variety of different computations. A common computation needed for many analyses is an allele count, which we’ll look at next.</p>
-</div>
-<div class="section" id="allele-counts">
-<h2>Allele counts<a class="headerlink" href="#allele-counts" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="allele-counts">
+<h2>Allele counts<a class="headerlink" href="#allele-counts" title="Permalink to this headline">#</a></h2>
 <p>An allele count involves scanning across all the genotypes at a given site and counting the number of times each allele is observed. I.e., how many 0s, 1s, 2s and 3s are observed. Let’s do an allele count for the first 10 sites on chromosome arm 2R.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5303,9 +5433,9 @@ Attributes:
 </div>
 <p>These arrays can be useful when selecting which sites to use for a given analysis. For example, you might want to select only segregating sites, with at most a certain number of missing allele calls.</p>
 <p>Now we’ve seen how SNP positions, alleles and genotypes are represented, let’s look at the site filters we’ve created for Ag3 to help select sites for robust population genetic analyses.</p>
-</div>
-<div class="section" id="site-filters">
-<h2>Site filters<a class="headerlink" href="#site-filters" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="site-filters">
+<h2>Site filters<a class="headerlink" href="#site-filters" title="Permalink to this headline">#</a></h2>
 <p>When analysing genome variation, there are some sites in the genome where it is difficult to reliably ascertain nucleotide variation and call genotypes. This can be for a variety of reasons. For example, some genome regions are very repetitive, and short sequence reads cannot be aligned unambiguously. Another issue can be that some samples have structural variation in some regions of the genome, where different samples have different numbers of copies of a given sequence.</p>
 <p>To identify and avoid sites like these, we have created site filters. These are Boolean masks which identify sites where SNP genotyping is reliable, based on the fact that most sequence reads are unambiguously aligned, and there is minimal evidence for structural variation.</p>
 <p>Because we have multiple mosquito species included in the Ag3 cohort (<em>An. gambiae</em>, <em>An. coluzzii</em> and <em>An. arabiensis</em>) we have created three different site filters which are appropriate in different circumstances, depending on which samples you’re analysing. Here is a summary of the three site filters:</p>
@@ -10502,11 +10632,11 @@ Attributes:
 </tr>
 </table></div></div>
 </div>
-</div>
-<div class="section" id="locating-snps">
-<h2>Locating SNPs<a class="headerlink" href="#locating-snps" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="locating-a-single-snp">
-<h3>Locating a single SNP<a class="headerlink" href="#locating-a-single-snp" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="locating-snps">
+<h2>Locating SNPs<a class="headerlink" href="#locating-snps" title="Permalink to this headline">#</a></h2>
+<section id="locating-a-single-snp">
+<h3>Locating a single SNP<a class="headerlink" href="#locating-a-single-snp" title="Permalink to this headline">#</a></h3>
 <p>For some analyses you may have a particular genomic site you are investigating, and want to know what variation occurs at that site in the Ag3 data resource. To locate that site, a convenient approach is to use an <a class="reference external" href="http://xarray.pydata.org/en/stable/user-guide/indexing.html">index</a>.</p>
 <p>For example, let’s locate data for the site 2L:2422652.</p>
 <div class="cell docutils container">
@@ -14917,9 +15047,9 @@ Attributes:
 </div>
 </div>
 <p>From the output above we can see there are some samples with a <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">2)</span></code> genotype, which correspond to the T/T genotype, and some samples with a <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> which corresponds to the A/A genotype.</p>
-</div>
-<div class="section" id="locating-snps-in-a-genome-region">
-<h3>Locating SNPs in a genome region<a class="headerlink" href="#locating-snps-in-a-genome-region" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="locating-snps-in-a-genome-region">
+<h3>Locating SNPs in a genome region<a class="headerlink" href="#locating-snps-in-a-genome-region" title="Permalink to this headline">#</a></h3>
 <p>For other analyses you may want to extract data for a specific genome region, such as a gene. Again a good approach is to use an index. E.g., let’s locate data for the <em>Vgsc</em> gene, which spans the region 2L:2358158-2431617.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -16387,10 +16517,10 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="locating-samples">
-<h2>Locating samples<a class="headerlink" href="#locating-samples" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="locating-samples">
+<h2>Locating samples<a class="headerlink" href="#locating-samples" title="Permalink to this headline">#</a></h2>
 <p>In many cases you may want to access genotypes for an individual mosquito sample, or a group of samples. This usually requires linking the sample metadata to the genotypes. Let’s look at how to do that. First, load sample metadata.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -20169,8 +20299,8 @@ Attributes:
 </div>
 </div>
 <p>Also, the order of samples in the sample metadata is the same as the order of the columns in the genotype array. We can use this correspondance to look up samples and access their genotypes.</p>
-<div class="section" id="locating-a-single-sample">
-<h3>Locating a single sample<a class="headerlink" href="#locating-a-single-sample" title="Permalink to this headline">¶</a></h3>
+<section id="locating-a-single-sample">
+<h3>Locating a single sample<a class="headerlink" href="#locating-a-single-sample" title="Permalink to this headline">#</a></h3>
 <p>Let’s extract both sample metadata and genotypes for a single sample, e.g., sample AB0110-C.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -22471,9 +22601,9 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="locating-multiple-samples">
-<h3>Locating multiple samples<a class="headerlink" href="#locating-multiple-samples" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="locating-multiple-samples">
+<h3>Locating multiple samples<a class="headerlink" href="#locating-multiple-samples" title="Permalink to this headline">#</a></h3>
 <p>We will also often want to locate a group of samples based on their metadata, e.g., all samples from a given country, collected in a certain year, of a certain species; and then analyse their genotypes. Let’s look at an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -25711,10 +25841,10 @@ Attributes:
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-df3cf571-be13-4c01-9e9f-4f58ed8a8517' class='xr-section-summary-in' type='checkbox'  checked><label for='section-df3cf571-be13-4c01-9e9f-4f58ed8a8517' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>contigs :</span></dt><dd>(&#x27;2R&#x27;, &#x27;2L&#x27;, &#x27;3R&#x27;, &#x27;3L&#x27;, &#x27;X&#x27;)</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Note above that we now have a dataset with 98 samples, which corresponds to the 98 samples we selected with our sample metadata query.</p>
-</div>
-</div>
-<div class="section" id="selecting-sites-and-samples">
-<h2>Selecting sites and samples<a class="headerlink" href="#selecting-sites-and-samples" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="selecting-sites-and-samples">
+<h2>Selecting sites and samples<a class="headerlink" href="#selecting-sites-and-samples" title="Permalink to this headline">#</a></h2>
 <p>We can also combine site selections with sample selections, e.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -27285,22 +27415,22 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="differences-from-previous-data-releases">
-<h2>Differences from previous data releases<a class="headerlink" href="#differences-from-previous-data-releases" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="differences-from-previous-data-releases">
+<h2>Differences from previous data releases<a class="headerlink" href="#differences-from-previous-data-releases" title="Permalink to this headline">#</a></h2>
 <p>In case you have worked with previous data releases from the Ag1000G project, there are a couple of important differences to be aware of. These are touched on in the text above, but let’s expand a little here.</p>
-<div class="section" id="genotyping-at-all-sites">
-<h3>Genotyping at all sites<a class="headerlink" href="#genotyping-at-all-sites" title="Permalink to this headline">¶</a></h3>
+<section id="genotyping-at-all-sites">
+<h3>Genotyping at all sites<a class="headerlink" href="#genotyping-at-all-sites" title="Permalink to this headline">#</a></h3>
 <p>In Ag3 we have genotyped all samples at all genomic sites where the reference genome is not “N”, and those genotypes are included in the released data. This includes genotypes at sites where no variation from the reference genome was observed. This is different from previous releases, where we only released genotypes at sites where some variation was observed.</p>
 <p>The reason why we made this change is because several important use cases for these data involve identifying genomic sites which are highly conserved, i.e., where samples do not vary at all. Because we now report genotypes at all sites, it is possible to identify these highly conserved sites with more confidence.</p>
-</div>
-<div class="section" id="predefined-alternate-alleles">
-<h3>Predefined alternate alleles<a class="headerlink" href="#predefined-alternate-alleles" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="predefined-alternate-alleles">
+<h3>Predefined alternate alleles<a class="headerlink" href="#predefined-alternate-alleles" title="Permalink to this headline">#</a></h3>
 <p>In Ag3 we predefined the set of possible alternate SNP alleles at all sites in the genome, before we ran our SNP genotyping pipeline on the samples sequenced. This means that our data includes three alternate alleles at every site in the genome. Not all of these alleles will have been observed in the data, and determining which alleles are observed requires examination of the genotypes. This is different from previous releases, where alternate alleles were declared during the SNP calling process, and only observed alternate alleles were included in the data release.</p>
 <p>The reason why we have made this change is because it simplifies the SNP genotyping pipeline. Because we fix the set of alleles ahead of time, all samples can be genotyped independently, and merging the resulting data is straightforward. This also makes it easier to integrate with new data in the future, because it allows merging Ag3 data with data from future samples where alleles may be observed that were not observed in the Ag3 cohort.</p>
-</div>
-<div class="section" id="id1">
-<h3>Site filters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3>Site filters<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>In Ag3 we have defined site filters, which are Boolean masks that apply to all sites in the genome, and which identify sites where SNP genotyping is reliable.These site filters replace the separate variant filters and genome accessibility masks defined in previous project phases.</p>
 <p>The reason why we took this approach is that it is simpler. All sites are treated the same, regardless of whether variation is observed or not. Instead of having to work two different things (variant filters and genome accessibility masks) there is just a single site filter to work with.</p>
 <p>Note that some software tools such as scikit-allel may require you to provide a genome accessibility mask, which is a Boolean array of the same length as the chromosomal sequence you’re analysing. In case you need this, the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> class provides a convenience method to obtain this from the site filters. E.g.:</p>
@@ -27405,14 +27535,14 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="further-reading">
-<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
 <p>Hopefully the examples above have helped to give some sense of how to access and work with SNP data from Ag3. If you have any comments or questions, please <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">get in touch</a>.</p>
 <p>This notebook is part of the <a class="reference internal" href="../intro.html"><span class="doc std std-doc">Ag1000G phase 3 user guide</span></a>. See the menu at the left for more documentation and example analyses.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -27436,9 +27566,11 @@ Attributes:
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="collection-sites.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -27454,24 +27586,28 @@ Attributes:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By MalariaGEN<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By MalariaGEN<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

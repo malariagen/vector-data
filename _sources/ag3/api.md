@@ -26,6 +26,18 @@ This page provides documentation for functions in the [malariagen_data](https://
 .. automethod:: malariagen_data::Ag3.sample_cohorts
 ```
 
+## count_samples()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.count_samples
+```
+
+## plot_samples_interactive_map()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_samples_interactive_map
+```
+
 ## cross_metadata()
 
 ```{eval-rst}
@@ -210,4 +222,149 @@ This page provides documentation for functions in the [malariagen_data](https://
 
 ```{eval-rst}
 .. automethod:: malariagen_data::Ag3.resolve_region
+```
+
+## igv()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.igv
+```
+
+## view_alignments()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.view_alignments
+```
+
+## wgs_data_catalog()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.wgs_data_catalog
+```
+
+## snp_allele_counts()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.snp_allele_counts
+```
+
+## pca()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.pca
+```
+
+## plot_pca_variance()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_pca_variance
+```
+
+## plot_pca_coords()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_pca_coords
+```
+
+## plot_pca_coords_3d()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_pca_coords_3d
+```
+
+## plot_pca_snps()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_snps
+```
+
+
+## aim_variants()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.aim_variants
+```
+
+
+## aim_calls()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.aim_calls
+```
+
+
+## plot_aim_heatmap()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_aim_heatmap
+```
+
+
+## cohort_diversity_stats()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.cohort_diversity_stats
+```
+
+
+## diversity_stats()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.diversity_stats
+```
+
+
+## plot_diversity_stats()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_diversity_stats
+```
+
+
+## plot_heterozygosity()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_heterozygosity
+```
+
+
+## roh_hmm()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.roh_hmm
+```
+
+
+## plot_roh()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_roh
+```
+
+
+## h12_calibration()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.h12_calibration
+```
+
+
+## plot_h12_calibration()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_h12_calibration
+```
+
+
+## h12_gwss()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.h12_gwss
+```
+
+
+## plot_h12_gwss()
+
+```{eval-rst}
+.. automethod:: malariagen_data::Ag3.plot_h12_gwss
 ```

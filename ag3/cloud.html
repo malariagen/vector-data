@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Ag3.0 cloud data access &#8212; MalariaGEN vector data user guide</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,6 +38,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -79,7 +78,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -99,7 +98,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -108,9 +121,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -128,14 +142,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../landing-page.html">
-   MalariaGEN vector data user guide
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../landing-page.html">
+                    MalariaGEN vector data user guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Anopheles gambiae complex
  </span>
@@ -271,112 +286,227 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ag3/cloud.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/malariagen/vector-data"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/cloud.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/cloud.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/malariagen/vector-data/blob/master/docs/ag3/cloud.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/ag3/cloud.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/malariagen/vector-data/blob/master/docs/ag3/cloud.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/malariagen/vector-data"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/cloud.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/ag3/cloud.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-hosting">
    Data hosting
@@ -470,12 +600,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Ag3.0 cloud data access</h1>
@@ -585,20 +714,21 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="ag3-0-cloud-data-access">
-<h1>Ag3.0 cloud data access<a class="headerlink" href="#ag3-0-cloud-data-access" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ag3-0-cloud-data-access">
+<h1>Ag3.0 cloud data access<a class="headerlink" href="#ag3-0-cloud-data-access" title="Permalink to this headline">#</a></h1>
 <p>This page provides information about how to access data from <a class="reference internal" href="intro.html"><span class="doc std std-doc"><em>Anopheles gambiae</em> 1000 Genomes project (Ag1000G) phase 3</span></a> via Google Cloud. This includes sample metadata and single nucleotide polymorphism (SNP) calls.</p>
 <p>This notebook illustrates how to read data directly from the cloud, without having to first download any data locally. This notebook can be run from any computer, but will work best when run from a compute node within Google Cloud, because it will be physically closer to the data and so data transfer is faster. For example, this notebook can be run via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a> which are free interactive computing service running in the cloud.</p>
 <p>To launch this notebook in the cloud and run it for yourself, click the launch icon (<i class="fas fa-rocket"></i>) at the top of the page and select one of the cloud computing services available.</p>
-<div class="section" id="data-hosting">
-<h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">¶</a></h2>
+<section id="data-hosting">
+<h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">#</a></h2>
 <p>All data required for this notebook is hosted on Google Cloud Storage (GCS). Data are hosted in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted in GCS are publicly accessible and do not require any authentication to access.</p>
-</div>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <p>Running this notebook requires some Python packages to be installed:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -702,9 +832,9 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div>
 </div>
-</div>
-<div class="section" id="sample-sets">
-<h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sample-sets">
+<h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">#</a></h2>
 <p>Data in this release are organised into 28 sample sets. Each of these sample sets corresponds to a set of mosquito specimens contributed by a collaborating study. Depending on your objectives, you may want to access data from only specific sample sets, or all sample sets.</p>
 <p>To see which sample sets are available, load the sample set manifest into a pandas dataframe:</p>
 <div class="cell docutils container">
@@ -991,9 +1121,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div>
 </div>
 <p>For more information about these sample sets, see the section on sample sets in the <a class="reference internal" href="intro.html"><span class="doc std std-doc">introduction to Ag1000G phase 3</span></a>.</p>
-</div>
-<div class="section" id="sample-metadata">
-<h2>Sample metadata<a class="headerlink" href="#sample-metadata" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sample-metadata">
+<h2>Sample metadata<a class="headerlink" href="#sample-metadata" title="Permalink to this headline">#</a></h2>
 <p>Data about the samples that were sequenced to generate this data resource are available, including the time and place of collection, the gender of the specimen, and our call regarding the species of the specimen. These are organised by sample set.</p>
 <p>E.g., load sample metadata for all samples in the Ag3.0 release into a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">pandas DataFrame</a>:</p>
 <div class="cell docutils container">
@@ -1422,9 +1552,9 @@ dtype: int64
 </div>
 </div>
 <p>Note that samples within a sample set may belong to different species. For convenience, we have made a species call for all samples in Ag1000G phase 3, using the genomic data. If you have any questions about how to interpret these species calls, please get in touch.</p>
-</div>
-<div class="section" id="snp-calls">
-<h2>SNP calls<a class="headerlink" href="#snp-calls" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="snp-calls">
+<h2>SNP calls<a class="headerlink" href="#snp-calls" title="Permalink to this headline">#</a></h2>
 <p>Data on SNP calls, including the SNP positions, alleles, site filters, and genotypes, can be accessed as an <a class="reference external" href="http://xarray.pydata.org/en/stable/user-guide/data-structures.html#dataset">xarray Dataset</a>.</p>
 <p>E.g., access SNP calls for chromosome arm 3R for all samples in <code class="docutils literal notranslate"><span class="pre">Ag3.0</span></code>.</p>
 <div class="cell docutils container">
@@ -5119,8 +5249,8 @@ Attributes:
 </table></div></li></ul></div></li><li class='xr-section-item'><input id='section-dfa53f56-21cf-4188-ae8f-4595f89f4cc4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-dfa53f56-21cf-4188-ae8f-4595f89f4cc4' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>contigs :</span></dt><dd>(&#x27;2R&#x27;, &#x27;2L&#x27;, &#x27;3R&#x27;, &#x27;3L&#x27;, &#x27;X&#x27;)</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The arrays within this dataset are backed by <a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask arrays</a>, and can be accessed as shown below.</p>
-<div class="section" id="snp-sites-and-alleles">
-<h3>SNP sites and alleles<a class="headerlink" href="#snp-sites-and-alleles" title="Permalink to this headline">¶</a></h3>
+<section id="snp-sites-and-alleles">
+<h3>SNP sites and alleles<a class="headerlink" href="#snp-sites-and-alleles" title="Permalink to this headline">#</a></h3>
 <p>We have called SNP genotypes in all samples at all positions in the genome where the reference allele is not “N”. Data on this set of genomic positions and alleles for a given chromosome arm (e.g., 3R) can be accessed as <a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask arrays</a> as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5452,9 +5582,9 @@ Attributes:
 <p>Here the first column contains the reference alleles, and the remaining columns contain the alternate alleles.</p>
 <p>Note that a byte string data type is used here for efficiency. E.g., the Python code <code class="docutils literal notranslate"><span class="pre">b'T'</span></code> represents a byte string containing the letter “T”, which here stands for the nucleotide thymine.</p>
 <p>Note that we have chosen to genotype all samples at all sites in the genome, assuming all possible SNP alleles. Not all of these alternate alleles will actually have been observed in the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> samples. To determine which sites and alleles are segregating, an allele count can be performed over the samples you are interested in. See the example below.</p>
-</div>
-<div class="section" id="site-filters">
-<h3>Site filters<a class="headerlink" href="#site-filters" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="site-filters">
+<h3>Site filters<a class="headerlink" href="#site-filters" title="Permalink to this headline">#</a></h3>
 <p>SNP calling is not always reliable, and we have created some site filters to allow excluding low quality SNPs.</p>
 <p>Because different species may have different genome accessibility issues, we have created three separate site filters:</p>
 <ul class="simple">
@@ -5699,9 +5829,9 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="snp-genotypes">
-<h3>SNP genotypes<a class="headerlink" href="#snp-genotypes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="snp-genotypes">
+<h3>SNP genotypes<a class="headerlink" href="#snp-genotypes" title="Permalink to this headline">#</a></h3>
 <p>SNP genotypes for individual samples are available. Genotypes are stored as a three-dimensional array, where the first dimension corresponds to genomic positions, the second dimension is samples, and the third dimension is ploidy (2). Values coded as integers, where -1 represents a missing value, 0 represents the reference allele, and 1, 2, and 3 represent alternate alleles.</p>
 <p>SNP genotypes can be accessed as dask arrays as shown below.</p>
 <div class="cell docutils container">
@@ -9841,10 +9971,10 @@ E.g., the code below sets up a genotype array.</p>
 <div class="cell_output docutils container">
 <div class="output text_html"><div class="allel allel-DisplayAs2D"><span>&lt;GenotypeDaskArray shape=(52226568, 3081, 2) dtype=int8&gt;</span><table><thead><tr><th></th><th style="text-align: center">0</th><th style="text-align: center">1</th><th style="text-align: center">2</th><th style="text-align: center">3</th><th style="text-align: center">4</th><th style="text-align: center">...</th><th style="text-align: center">3076</th><th style="text-align: center">3077</th><th style="text-align: center">3078</th><th style="text-align: center">3079</th><th style="text-align: center">3080</th></tr></thead><tbody><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">0</th><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">1</th><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">2</th><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td><td style="text-align: center">0/0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">...</th><td style="text-align: center" colspan="12">...</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">52226565</th><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">52226566</th><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">52226567</th><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">0/0</td><td style="text-align: center">...</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td><td style="text-align: center">./.</td></tr></tbody></table></div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="copy-number-variation-cnv-data">
-<h2>Copy number variation (CNV) data<a class="headerlink" href="#copy-number-variation-cnv-data" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="copy-number-variation-cnv-data">
+<h2>Copy number variation (CNV) data<a class="headerlink" href="#copy-number-variation-cnv-data" title="Permalink to this headline">#</a></h2>
 <p>Data on copy number variation within the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> cohort are available as three separate data types:</p>
 <ul class="simple">
 <li><p><strong>HMM</strong> – Genome-wide inferences of copy number state within each individual mosquito in 300 bp non-overlapping windows.</p></li>
@@ -9853,8 +9983,8 @@ E.g., the code below sets up a genotype array.</p>
 </ul>
 <p>For more information on the methods used to generate these data, see the <a class="reference internal" href="methods.html"><span class="doc std std-doc">variant-calling methods</span></a> page.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">malariagen_data</span></code> Python package provides some convenience functions for accessing these data, illustrated below.</p>
-<div class="section" id="cnv-hmm">
-<h3>CNV HMM<a class="headerlink" href="#cnv-hmm" title="Permalink to this headline">¶</a></h3>
+<section id="cnv-hmm">
+<h3>CNV HMM<a class="headerlink" href="#cnv-hmm" title="Permalink to this headline">#</a></h3>
 <p>Access HMM data via the <code class="docutils literal notranslate"><span class="pre">cnv_hmm()</span></code> method, which returns an <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a> dataset. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -11626,9 +11756,9 @@ Data variables:
   </div>
 </div></div>
 </div>
-</div>
-<div class="section" id="cnv-coverage-calls">
-<h3>CNV coverage calls<a class="headerlink" href="#cnv-coverage-calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cnv-coverage-calls">
+<h3>CNV coverage calls<a class="headerlink" href="#cnv-coverage-calls" title="Permalink to this headline">#</a></h3>
 <p>Coverage calls can be accessed via the <code class="docutils literal notranslate"><span class="pre">cnv_coverage_calls()</span></code> method, which returns an xarray dataset. Note that an analysis parameter must be given, which can be either “arab” for <em>An. arabiensis</em> samples or “gamb_colu” for non-<em>An. arabiensis</em>.</p>
 <p>N.B., coverage calls can only be accessed on sample set at a time, because the CNV alleles do not necessarily match between sample sets. E.g.:</p>
 <div class="cell docutils container">
@@ -12393,9 +12523,9 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="cnv-discordant-read-calls">
-<h3>CNV discordant read calls<a class="headerlink" href="#cnv-discordant-read-calls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cnv-discordant-read-calls">
+<h3>CNV discordant read calls<a class="headerlink" href="#cnv-discordant-read-calls" title="Permalink to this headline">#</a></h3>
 <p>Access the discordant read calls via the <code class="docutils literal notranslate"><span class="pre">cnv_discordant_read_calls()</span></code> method. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -13422,10 +13552,10 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="haplotypes">
-<h2>Haplotypes<a class="headerlink" href="#haplotypes" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="haplotypes">
+<h2>Haplotypes<a class="headerlink" href="#haplotypes" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data resource also includes haplotype reference panels, which were obtained by <a class="reference external" href="https://en.wikipedia.org/wiki/Haplotype_estimation">phasing</a> the SNP calls. Phasing involves resolving the genotypes within each individual into a pair of haplotypes providing information about the two different DNA sequences inherited, one from each parent. Haplotypes provide greater power for a range of population genetic analyses, such as genome-wide scans for signals of recent selection, or analysis of adaptive gene flow between populations.</p>
 <p>To allow for a range of different analyses, three different haplotype reference panels were constructed, each using a different subset of samples and applying different site filters:</p>
 <ul class="simple">
@@ -14978,8 +15108,8 @@ Attributes:
 <div class="output text_html"><div class="allel allel-DisplayAs2D"><span>&lt;HaplotypeDaskArray shape=(16514919, 5568) dtype=int8&gt;</span><table><thead><tr><th></th><th style="text-align: center">0</th><th style="text-align: center">1</th><th style="text-align: center">2</th><th style="text-align: center">3</th><th style="text-align: center">4</th><th style="text-align: center">...</th><th style="text-align: center">5563</th><th style="text-align: center">5564</th><th style="text-align: center">5565</th><th style="text-align: center">5566</th><th style="text-align: center">5567</th></tr></thead><tbody><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">0</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">1</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">2</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">...</th><td style="text-align: center" colspan="12">...</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">16514916</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">16514917</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">16514918</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr></tbody></table></div></div></div>
 </div>
 <p>Note that in the haplotype array above, each row is a SNP and each column is a haplotype. There were <span class="math notranslate nohighlight">\(2784\)</span> samples in this analysis, and so we have <span class="math notranslate nohighlight">\(5568\)</span> (<span class="math notranslate nohighlight">\(2\times2784\)</span>) haplotypes.</p>
-<div class="section" id="using-sample-metadata-to-subset-haplotypes">
-<h3>Using sample metadata to subset haplotypes<a class="headerlink" href="#using-sample-metadata-to-subset-haplotypes" title="Permalink to this headline">¶</a></h3>
+<section id="using-sample-metadata-to-subset-haplotypes">
+<h3>Using sample metadata to subset haplotypes<a class="headerlink" href="#using-sample-metadata-to-subset-haplotypes" title="Permalink to this headline">#</a></h3>
 <p>For some analyses, you’ll want to subset the haplotypes, e.g., by location and species. In order to perform subsetting, you need to obtain sample metadata, and align it with the haplotype data. This ensures that every row in the sample metadata dataframe corresponds to every column in the phased genotypes array. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -16364,10 +16494,10 @@ Attributes:
 <div class="output text_html"><div class="allel allel-DisplayAs2D"><span>&lt;HaplotypeDaskArray shape=(16514919, 164) dtype=int8&gt;</span><table><thead><tr><th></th><th style="text-align: center">0</th><th style="text-align: center">1</th><th style="text-align: center">2</th><th style="text-align: center">3</th><th style="text-align: center">4</th><th style="text-align: center">...</th><th style="text-align: center">159</th><th style="text-align: center">160</th><th style="text-align: center">161</th><th style="text-align: center">162</th><th style="text-align: center">163</th></tr></thead><tbody><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">0</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">1</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">2</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">...</th><td style="text-align: center" colspan="12">...</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">16514916</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">16514917</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr><tr><th style="text-align: center; background-color: white; border-right: 1px solid black; ">16514918</th><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">...</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center">0</td></tr></tbody></table></div></div></div>
 </div>
 <p>Note there are <span class="math notranslate nohighlight">\(82\)</span> samples in the cohort and thus <span class="math notranslate nohighlight">\(164\)</span> (<span class="math notranslate nohighlight">\(2\times82\)</span>) haplotypes.</p>
-</div>
-</div>
-<div class="section" id="example-computation">
-<h2>Example computation<a class="headerlink" href="#example-computation" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="example-computation">
+<h2>Example computation<a class="headerlink" href="#example-computation" title="Permalink to this headline">#</a></h2>
 <p>Here’s an example computation to count the number of segregating SNPs on chromosome arm 3R that also pass gamb_colu_arab site filters. This may take a minute or two, because it is scanning genotype calls at millions of SNPs in hundreds of samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -16411,16 +16541,16 @@ Attributes:
 </div>
 </div>
 <p>For more in-depth worked examples of various analyses, see the <a class="reference internal" href="examples.html"><span class="doc std std-doc">Ag3.0 analysis examples</span></a> page.</p>
-</div>
-<div class="section" id="running-larger-computations">
-<h2>Running larger computations<a class="headerlink" href="#running-larger-computations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="running-larger-computations">
+<h2>Running larger computations<a class="headerlink" href="#running-larger-computations" title="Permalink to this headline">#</a></h2>
 <p>Please note that free cloud computing services such as Google Colab and MyBinder provide only limited computing resources. Thus although these services are able to efficiently read <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data stored on Google Cloud, you may find that you run out of memory, or computations take a long time running on a single core. If you would like any suggestions regarding how to set up more powerful compute resources in the cloud, please feel free to get in touch via the <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">malariagen/vector-data GitHub discussion board</a>.</p>
-</div>
-<div class="section" id="feedback-and-suggestions">
-<h2>Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="feedback-and-suggestions">
+<h2>Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">#</a></h2>
 <p>If there are particular analyses you would like to run, or if you have other suggestions for useful documentation we could add to this site, we would love to know, please get in touch via the <a class="reference external" href="https://github.com/malariagen/vector-data/discussions">malariagen/vector-data GitHub discussion board</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -16444,9 +16574,11 @@ Attributes:
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -16462,24 +16594,28 @@ Attributes:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By MalariaGEN<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By MalariaGEN<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
