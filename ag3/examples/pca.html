@@ -688,7 +688,7 @@ title="Print to PDF"
 <p>Set up the environment by installing and importing some packages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -qU malariagen_data plotly
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -qU malariagen_data plotly
 </pre></div>
 </div>
 </div>
@@ -712,30 +712,30 @@ title="Print to PDF"
 </div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import packages</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">bisect</span>
-<span class="kn">import</span> <span class="nn">hashlib</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">allel</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">dask</span>
-<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
-<span class="kn">from</span> <span class="nn">dask.diagnostics</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
-<span class="c1"># quieten dask warnings about large chunks</span>
-<span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;array.slicing.split_large_chunks&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">malariagen_data</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># import packages
+import os
+import bisect
+import hashlib
+import json
+import allel
+import numpy as np
+import dask
+import dask.array as da
+from dask.diagnostics import ProgressBar
+# quieten dask warnings about large chunks
+dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: True})
+import pandas as pd
+import malariagen_data
+import plotly.express as px
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup access to malariagen data in google cloud</span>
-<span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">()</span>
-<span class="n">ag3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># setup access to malariagen data in google cloud
+ag3 = malariagen_data.Ag3()
+ag3
 </pre></div>
 </div>
 </div>
@@ -771,9 +771,9 @@ title="Print to PDF"
 <p>To avoid having to rerun these analyses, we’ll save the results so we can come back to them later. If you’re running this notebook on Google Colab, you can save results to your Google Drive, which will mean you don’t lose results even if you leave the notebook and come back several days later. To mount your Google Drive, run the following code, and follow the authorization instructions:</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mount Google Drive if running on Google Colab</span>
-<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># mount Google Drive if running on Google Colab
+from google.colab import drive
+drive.mount(&#39;/content/drive&#39;)
 </pre></div>
 </div>
 </div>
@@ -781,10 +781,10 @@ title="Print to PDF"
 <p>Now create a directory to hold PCA results:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a directory to hold PCA results - change this to something suitable</span>
-<span class="c1"># if not running on Google Colab</span>
-<span class="n">results_dir</span> <span class="o">=</span> <span class="s2">&quot;drive/MyDrive/Colab Data/ag3-pca-results&quot;</span>
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a directory to hold PCA results - change this to something suitable
+# if not running on Google Colab
+results_dir = &quot;drive/MyDrive/Colab Data/ag3-pca-results&quot;
+os.makedirs(results_dir, exist_ok=True)
 </pre></div>
 </div>
 </div>
@@ -795,153 +795,153 @@ title="Print to PDF"
 <p>Now define some functions for running a PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hash_params</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Helper function to hash analysis parameters.&quot;&quot;&quot;</span>
-    <span class="n">o</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="n">args</span><span class="p">,</span>
-        <span class="s1">&#39;kwargs&#39;</span><span class="p">:</span> <span class="n">kwargs</span>
-    <span class="p">}</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">h</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def hash_params(*args, **kwargs):
+    &quot;&quot;&quot;Helper function to hash analysis parameters.&quot;&quot;&quot;
+    o = {
+        &#39;args&#39;: args,
+        &#39;kwargs&#39;: kwargs
+    }
+    s = json.dumps(o, sort_keys=True).encode()
+    h = hashlib.md5(s).hexdigest()
+    return h
 
 
-<span class="k">def</span> <span class="nf">run_pca</span><span class="p">(</span>
-    <span class="n">region</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">site_mask</span><span class="o">=</span><span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">,</span>
-    <span class="n">min_minor_ac</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">max_an_missing</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">n_snps</span><span class="o">=</span><span class="mi">100_000</span><span class="p">,</span>
-    <span class="n">snp_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Main function to run a PCA.</span>
-<span class="sd">    </span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    region : str</span>
-<span class="sd">        Chromosome arm, e.g., &#39;3L&#39;, or region, e.g., &#39;3L:1000000-37000000&#39;.</span>
-<span class="sd">    sample_sets : str or list of str, optional</span>
-<span class="sd">        Sample sets to analyse.</span>
-<span class="sd">    sample_query : str, optional</span>
-<span class="sd">        A pandas query string to select specific samples.</span>
-<span class="sd">    site_mask : {&#39;gamb_colu_arab&#39;, &#39;gamb_colu&#39;, &#39;arab&#39;}</span>
-<span class="sd">        Which site mask to apply.</span>
-<span class="sd">    min_minor_ac : int</span>
-<span class="sd">        Minimum minor allele count.</span>
-<span class="sd">    max_an_missing : int</span>
-<span class="sd">        Maximum number of missing allele calls.</span>
-<span class="sd">    n_snps : int</span>
-<span class="sd">        Approximate number of SNPs to use.</span>
-<span class="sd">    snp_offset : int</span>
-<span class="sd">        Offset when thinning SNPs.</span>
-<span class="sd">    n_components : int</span>
-<span class="sd">        Number of PCA components to retain.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    data : pandas DataFrame</span>
-<span class="sd">        Data frame with one row per sample, including columns &quot;PC1&quot;, &quot;PC2&quot;, etc.</span>
-<span class="sd">    evr : numpy array</span>
-<span class="sd">        Explained variance ratio per principal component.</span>
-<span class="sd">    </span>
-<span class="sd">    &quot;&quot;&quot;</span>
+def run_pca(
+    region, 
+    sample_sets=&quot;3.0&quot;,
+    sample_query=None,
+    site_mask=&quot;gamb_colu_arab&quot;,
+    min_minor_ac=3,
+    max_an_missing=0,
+    n_snps=100_000,
+    snp_offset=0,
+    n_components=10):
+    &quot;&quot;&quot;Main function to run a PCA.
     
-    <span class="c1"># construct a key to save the results under</span>
-    <span class="n">results_key</span> <span class="o">=</span> <span class="n">hash_params</span><span class="p">(</span>
-        <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-        <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">,</span>
-        <span class="n">sample_query</span><span class="o">=</span><span class="n">sample_query</span><span class="p">,</span>
-        <span class="n">site_mask</span><span class="o">=</span><span class="n">site_mask</span><span class="p">,</span>
-        <span class="n">min_minor_ac</span><span class="o">=</span><span class="n">min_minor_ac</span><span class="p">,</span>
-        <span class="n">max_an_missing</span><span class="o">=</span><span class="n">max_an_missing</span><span class="p">,</span>
-        <span class="n">n_snps</span><span class="o">=</span><span class="n">n_snps</span><span class="p">,</span>
-        <span class="n">snp_offset</span><span class="o">=</span><span class="n">snp_offset</span><span class="p">,</span>
-        <span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span>
-    <span class="p">)</span>
+    Parameters
+    ----------
+    region : str
+        Chromosome arm, e.g., &#39;3L&#39;, or region, e.g., &#39;3L:1000000-37000000&#39;.
+    sample_sets : str or list of str, optional
+        Sample sets to analyse.
+    sample_query : str, optional
+        A pandas query string to select specific samples.
+    site_mask : {&#39;gamb_colu_arab&#39;, &#39;gamb_colu&#39;, &#39;arab&#39;}
+        Which site mask to apply.
+    min_minor_ac : int
+        Minimum minor allele count.
+    max_an_missing : int
+        Maximum number of missing allele calls.
+    n_snps : int
+        Approximate number of SNPs to use.
+    snp_offset : int
+        Offset when thinning SNPs.
+    n_components : int
+        Number of PCA components to retain.
 
-    <span class="c1"># define paths for results files</span>
-    <span class="n">data_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">results_key</span><span class="si">}</span><span class="s1">-data.csv&#39;</span>
-    <span class="n">evr_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">results_key</span><span class="si">}</span><span class="s1">-evr.npy&#39;</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># try to load previously generated results</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
-        <span class="n">evr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">evr_path</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">evr</span>
-    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-        <span class="c1"># no previous results available, need to run analysis</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;running analysis: </span><span class="si">{</span><span class="n">results_key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    Returns
+    -------
+    data : pandas DataFrame
+        Data frame with one row per sample, including columns &quot;PC1&quot;, &quot;PC2&quot;, etc.
+    evr : numpy array
+        Explained variance ratio per principal component.
     
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setting up inputs&#39;</span><span class="p">)</span>
-
-    <span class="c1"># load sample metadata</span>
-    <span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
+    &quot;&quot;&quot;
     
-    <span class="c1"># access SNP calls</span>
-    <span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">,</span> <span class="n">site_mask</span><span class="o">=</span><span class="n">site_mask</span><span class="p">)</span>
+    # construct a key to save the results under
+    results_key = hash_params(
+        region=region,
+        sample_sets=sample_sets,
+        sample_query=sample_query,
+        site_mask=site_mask,
+        min_minor_ac=min_minor_ac,
+        max_an_missing=max_an_missing,
+        n_snps=n_snps,
+        snp_offset=snp_offset,
+        n_components=n_components
+    )
 
-    <span class="k">if</span> <span class="n">sample_query</span><span class="p">:</span>
-        <span class="c1"># locate selected samples</span>
-        <span class="n">loc_samples</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">sample_query</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">df_samples</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">loc_samples</span><span class="p">,</span> <span class="p">:]</span>
-        <span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">loc_samples</span><span class="p">)</span>
+    # define paths for results files
+    data_path = f&#39;{results_dir}/{results_key}-data.csv&#39;
+    evr_path = f&#39;{results_dir}/{results_key}-evr.npy&#39;
 
-    <span class="c1"># access SNP genotypes</span>
-    <span class="n">gt</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;locating segregating sites within desired frequency range&#39;</span><span class="p">)</span>
-
-    <span class="c1"># perform allele count</span>
-    <span class="n">ac</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+    try:
+        # try to load previously generated results
+        data = pd.read_csv(data_path)
+        evr = np.load(evr_path)
+        return data, evr
+    except FileNotFoundError:
+        # no previous results available, need to run analysis
+        print(f&#39;running analysis: {results_key}&#39;)
     
-    <span class="c1"># calculate some convenience variables</span>
-    <span class="n">n_chroms</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="n">an_called</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">an_missing</span> <span class="o">=</span> <span class="n">n_chroms</span> <span class="o">-</span> <span class="n">an_called</span>
-    <span class="n">min_ref_ac</span> <span class="o">=</span> <span class="n">min_minor_ac</span>
-    <span class="n">max_ref_ac</span> <span class="o">=</span> <span class="n">n_chroms</span> <span class="o">-</span> <span class="n">min_minor_ac</span>
+    print(&#39;setting up inputs&#39;)
 
-    <span class="c1"># here we choose biallelic sites involving the reference allele</span>
-    <span class="n">loc_seg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">ac</span><span class="o">.</span><span class="n">is_biallelic</span><span class="p">()</span> <span class="o">&amp;</span> 
-                         <span class="p">(</span><span class="n">ac</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">min_ref_ac</span><span class="p">)</span> <span class="o">&amp;</span> 
-                         <span class="p">(</span><span class="n">ac</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_ref_ac</span><span class="p">)</span> <span class="o">&amp;</span> 
-                         <span class="p">(</span><span class="n">an_missing</span> <span class="o">&lt;=</span> <span class="n">max_an_missing</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    # load sample metadata
+    df_samples = ag3.sample_metadata(sample_sets=sample_sets)
     
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;preparing PCA input data&#39;</span><span class="p">)</span>
+    # access SNP calls
+    ds_snps = ag3.snp_calls(region=region, sample_sets=sample_sets, site_mask=site_mask)
 
-    <span class="c1"># thin SNPs to approximately the desired number</span>
-    <span class="n">snp_step</span> <span class="o">=</span> <span class="n">loc_seg</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">n_snps</span>
-    <span class="n">loc_seg_ds</span> <span class="o">=</span> <span class="n">loc_seg</span><span class="p">[</span><span class="n">snp_offset</span><span class="p">::</span><span class="n">snp_step</span><span class="p">]</span>
+    if sample_query:
+        # locate selected samples
+        loc_samples = df_samples.eval(sample_query).values
+        df_samples = df_samples.loc[loc_samples, :]
+        ds_snps = ds_snps.isel(samples=loc_samples)
 
-    <span class="c1"># subset genotypes to selected sites</span>
-    <span class="n">gt_seg</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">gt</span><span class="p">,</span> <span class="n">loc_seg_ds</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    
-    <span class="c1"># convert to genotype alt counts</span>
-    <span class="n">gn_seg</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">gt_seg</span><span class="p">)</span><span class="o">.</span><span class="n">to_n_alt</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-    
-    <span class="c1"># remove any edge-case variants where all genotypes are identical</span>
-    <span class="n">loc_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">gn_seg</span> <span class="o">!=</span> <span class="n">gn_seg</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">gn_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">loc_var</span><span class="p">,</span> <span class="n">gn_seg</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    # access SNP genotypes
+    gt = ds_snps[&quot;call_genotype&quot;].data
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;running PCA&#39;</span><span class="p">)</span>
+    print(&#39;locating segregating sites within desired frequency range&#39;)
 
-    <span class="c1"># run the PCA</span>
-    <span class="n">coords</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">gn_var</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">)</span>
+    # perform allele count
+    ac = allel.GenotypeDaskArray(gt).count_alleles(max_allele=3).compute()
     
-    <span class="c1"># add PCs to dataframe</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_components</span><span class="p">):</span>
-        <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;PC</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+    # calculate some convenience variables
+    n_chroms = gt.shape[1] * 2
+    an_called = ac.sum(axis=1)
+    an_missing = n_chroms - an_called
+    min_ref_ac = min_minor_ac
+    max_ref_ac = n_chroms - min_minor_ac
+
+    # here we choose biallelic sites involving the reference allele
+    loc_seg = np.nonzero(ac.is_biallelic() &amp; 
+                         (ac[:, 0] &gt;= min_ref_ac) &amp; 
+                         (ac[:, 0] &lt;= max_ref_ac) &amp; 
+                         (an_missing &lt;= max_an_missing))[0]
     
-    <span class="c1"># save results</span>
-    <span class="n">evr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">evr_path</span><span class="p">,</span> <span class="n">evr</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;saved results: </span><span class="si">{</span><span class="n">results_key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    print(&#39;preparing PCA input data&#39;)
+
+    # thin SNPs to approximately the desired number
+    snp_step = loc_seg.shape[0] // n_snps
+    loc_seg_ds = loc_seg[snp_offset::snp_step]
+
+    # subset genotypes to selected sites
+    gt_seg = da.take(gt, loc_seg_ds, axis=0)
     
-    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">evr</span>
+    # convert to genotype alt counts
+    gn_seg = allel.GenotypeDaskArray(gt_seg).to_n_alt().compute()
+    
+    # remove any edge-case variants where all genotypes are identical
+    loc_var = np.any(gn_seg != gn_seg[:, 0, np.newaxis], axis=1)
+    gn_var = np.compress(loc_var, gn_seg, axis=0)
+
+    print(&#39;running PCA&#39;)
+
+    # run the PCA
+    coords, model = allel.pca(gn_var, n_components=n_components)
+    
+    # add PCs to dataframe
+    data = df_samples.copy()
+    for i in range(n_components):
+        data[f&#39;PC{i+1}&#39;] = coords[:, i]
+    
+    # save results
+    evr = model.explained_variance_ratio_
+    data.to_csv(data_path, index=False)
+    np.save(evr_path, evr)
+    print(f&#39;saved results: {results_key}&#39;)
+    
+    return data, evr
     
 </pre></div>
 </div>
@@ -953,30 +953,30 @@ title="Print to PDF"
 <p>Before we starting running PCAs, define some plotting functions to help visualise the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_variance</span><span class="p">(</span><span class="n">evr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot a bar chart showing variance explained by each principal</span>
-<span class="sd">    component.&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_variance(evr, **kwargs):
+    &quot;&quot;&quot;Plot a bar chart showing variance explained by each principal
+    component.&quot;&quot;&quot;
     
-    <span class="c1"># prepare variables</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">evr</span> <span class="o">*</span> <span class="mi">100</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))]</span>
+    # prepare variables
+    y = evr * 100
+    x = [str(i+1) for i in range(len(y))]
     
-    <span class="c1"># setup plotting options</span>
-    <span class="n">plot_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">labels</span><span class="o">=</span><span class="p">{</span>
-            <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;Principal component&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;Explained variance (%)&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="n">template</span><span class="o">=</span><span class="s1">&#39;simple_white&#39;</span><span class="p">,</span>
-        <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
-        <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
-    <span class="p">)</span>
-    <span class="c1"># apply any user overrides</span>
-    <span class="n">plot_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    # setup plotting options
+    plot_kwargs = dict(
+        labels={
+            &#39;x&#39;: &#39;Principal component&#39;,
+            &#39;y&#39;: &#39;Explained variance (%)&#39;,
+        },
+        template=&#39;simple_white&#39;,
+        width=600,
+        height=400
+    )
+    # apply any user overrides
+    plot_kwargs.update(kwargs)
 
-    <span class="c1"># make a bar plot</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_kwargs</span><span class="p">)</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    # make a bar plot
+    fig = px.bar(x=x, y=y, **plot_kwargs)
+    fig.show()
     
 </pre></div>
 </div>
@@ -984,118 +984,118 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jitter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">f</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def jitter(a, f):
+    r = a.max() - a.min()
+    return a + f * np.random.uniform(-r, r, a.shape)
 
 
-<span class="k">def</span> <span class="nf">plot_coords</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span>
-    <span class="n">jitter_frac</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
-    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-    <span class="p">):</span>
+def plot_coords(
+    data,
+    x=&#39;PC1&#39;,
+    y=&#39;PC2&#39;,
+    jitter_frac=0.02,
+    random_seed=42,
+    **kwargs,
+    ):
 
-    <span class="c1"># setup data</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    # setup data
+    data = data.copy()
     
-    <span class="c1"># apply jitter if desired - helps spread out points when tightly clustered</span>
-    <span class="k">if</span> <span class="n">jitter_frac</span><span class="p">:</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">jitter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">jitter_frac</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">jitter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="p">],</span> <span class="n">jitter_frac</span><span class="p">)</span>
+    # apply jitter if desired - helps spread out points when tightly clustered
+    if jitter_frac:
+        np.random.seed(random_seed)
+        data[x] = jitter(data[x], jitter_frac)
+        data[y] = jitter(data[y], jitter_frac)
             
-    <span class="c1"># convenience variables</span>
-    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;country_location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
-    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># hack to allow us to control marker size</span>
+    # convenience variables
+    data[&#39;country_location&#39;] = data[&#39;country&#39;] + &#39; - &#39; + data[&#39;location&#39;]
+    data[&#39;size&#39;] = 1  # hack to allow us to control marker size
     
-    <span class="c1"># setup plotting options</span>
-    <span class="n">plot_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span>
-        <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-        <span class="n">template</span><span class="o">=</span><span class="s1">&#39;simple_white&#39;</span><span class="p">,</span>
-        <span class="n">hover_name</span><span class="o">=</span><span class="s1">&#39;sample_id&#39;</span><span class="p">,</span>
-        <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span>
-            <span class="s1">&#39;partner_sample_id&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;sample_set&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;aim_species&#39;</span><span class="p">,</span> 
-            <span class="s1">&#39;country&#39;</span><span class="p">,</span> 
-            <span class="s1">&#39;location&#39;</span><span class="p">,</span> 
-            <span class="s1">&#39;year&#39;</span><span class="p">,</span> 
-        <span class="p">],</span>
-        <span class="n">size</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">,</span>
-        <span class="n">size_max</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
-        <span class="n">render_mode</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="c1"># apply any user overrides</span>
-    <span class="n">plot_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    # setup plotting options
+    plot_kwargs = dict(
+        width=700,
+        height=500,
+        template=&#39;simple_white&#39;,
+        hover_name=&#39;sample_id&#39;,
+        hover_data=[
+            &#39;partner_sample_id&#39;,
+            &#39;sample_set&#39;,
+            &#39;aim_species&#39;, 
+            &#39;country&#39;, 
+            &#39;location&#39;, 
+            &#39;year&#39;, 
+        ],
+        size=&#39;size&#39;,
+        size_max=8,
+        opacity=0.9,
+        render_mode=&#39;svg&#39;,
+    )
+    # apply any user overrides
+    plot_kwargs.update(kwargs)
 
-    <span class="c1"># 2D scatter plot</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_kwargs</span><span class="p">)</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    # 2D scatter plot
+    fig = px.scatter(data, x=x, y=y, **plot_kwargs)
+    fig.show()
 
 
-<span class="k">def</span> <span class="nf">plot_coords_3d</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span>
-    <span class="n">z</span><span class="o">=</span><span class="s1">&#39;PC3&#39;</span><span class="p">,</span>
-    <span class="n">jitter_frac</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
-    <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-    <span class="p">):</span>
+def plot_coords_3d(
+    data,
+    x=&#39;PC1&#39;,
+    y=&#39;PC2&#39;,
+    z=&#39;PC3&#39;,
+    jitter_frac=0.02,
+    random_seed=42,
+    **kwargs,
+    ):
 
-    <span class="c1"># setup data</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    # setup data
+    data = data.copy()
     
-    <span class="c1"># apply jitter if desired - helps spread out points when tightly clustered</span>
-    <span class="k">if</span> <span class="n">jitter_frac</span><span class="p">:</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">jitter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">jitter_frac</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">jitter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">y</span><span class="p">],</span> <span class="n">jitter_frac</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">]</span> <span class="o">=</span> <span class="n">jitter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">z</span><span class="p">],</span> <span class="n">jitter_frac</span><span class="p">)</span>
+    # apply jitter if desired - helps spread out points when tightly clustered
+    if jitter_frac:
+        np.random.seed(random_seed)
+        data[x] = jitter(data[x], jitter_frac)
+        data[y] = jitter(data[y], jitter_frac)
+        data[z] = jitter(data[z], jitter_frac)
             
-    <span class="c1"># convenience variables</span>
-    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;country_location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+    # convenience variables
+    data[&#39;country_location&#39;] = data[&#39;country&#39;] + &#39; - &#39; + data[&#39;location&#39;]
     
-    <span class="c1"># setup plotting options</span>
-    <span class="n">plot_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span>
-        <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-        <span class="n">hover_name</span><span class="o">=</span><span class="s1">&#39;sample_id&#39;</span><span class="p">,</span>
-        <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span>
-            <span class="s1">&#39;partner_sample_id&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;sample_set&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;aim_species&#39;</span><span class="p">,</span> 
-            <span class="s1">&#39;country&#39;</span><span class="p">,</span> 
-            <span class="s1">&#39;location&#39;</span><span class="p">,</span> 
-            <span class="s1">&#39;year&#39;</span><span class="p">,</span> 
-        <span class="p">],</span>
-    <span class="p">)</span>
-    <span class="c1"># apply any user overrides</span>
-    <span class="n">plot_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    # setup plotting options
+    plot_kwargs = dict(
+        width=700,
+        height=500,
+        hover_name=&#39;sample_id&#39;,
+        hover_data=[
+            &#39;partner_sample_id&#39;,
+            &#39;sample_set&#39;,
+            &#39;aim_species&#39;, 
+            &#39;country&#39;, 
+            &#39;location&#39;, 
+            &#39;year&#39;, 
+        ],
+    )
+    # apply any user overrides
+    plot_kwargs.update(kwargs)
 
-    <span class="c1"># 3D scatter plot</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_kwargs</span><span class="p">)</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    # 3D scatter plot
+    fig = px.scatter_3d(data, x=x, y=y, z=z, **plot_kwargs)
+    fig.show()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose colours for species</span>
-<span class="n">species_palette</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">qualitative</span><span class="o">.</span><span class="n">Plotly</span>
-<span class="n">species_color_map</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;gambiae&#39;</span><span class="p">:</span> <span class="n">species_palette</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="s1">&#39;coluzzii&#39;</span><span class="p">:</span> <span class="n">species_palette</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="s1">&#39;arabiensis&#39;</span><span class="p">:</span> <span class="n">species_palette</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-    <span class="s1">&#39;intermediate_gambiae_coluzzii&#39;</span><span class="p">:</span> <span class="n">species_palette</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-    <span class="s1">&#39;intermediate_arabiensis_gambiae&#39;</span><span class="p">:</span> <span class="n">species_palette</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
-<span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># choose colours for species
+species_palette = px.colors.qualitative.Plotly
+species_color_map = {
+    &#39;gambiae&#39;: species_palette[0],
+    &#39;coluzzii&#39;: species_palette[1],
+    &#39;arabiensis&#39;: species_palette[2],
+    &#39;intermediate_gambiae_coluzzii&#39;: species_palette[3],
+    &#39;intermediate_arabiensis_gambiae&#39;: species_palette[4],
+}
 </pre></div>
 </div>
 </div>
@@ -1107,10 +1107,10 @@ title="Print to PDF"
 <p>Let’s begin by running a PCA using only samples from the Central African Republic and SNPs from chromosome arm 3L.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">evr</span> <span class="o">=</span> <span class="n">run_pca</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s1">&#39;3L&#39;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;AG1000G-CF&quot;</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data, evr = run_pca(
+    region=&#39;3L&#39;, 
+    sample_sets=&quot;AG1000G-CF&quot;,
+)
 </pre></div>
 </div>
 </div>
@@ -1118,7 +1118,7 @@ title="Print to PDF"
 <p>Let’s look at what the <code class="docutils literal notranslate"><span class="pre">run_pca()</span></code> function returns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data.head()
 </pre></div>
 </div>
 </div>
@@ -1372,7 +1372,7 @@ title="Print to PDF"
 <p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> variable is a pandas DataFrame, with one row per sample, and including columns “PC1”, “PC2”, etc., with the coordinates of the principal components.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>evr
 </pre></div>
 </div>
 </div>
@@ -1388,11 +1388,11 @@ title="Print to PDF"
 <p>Let’s make a scatter plot the PCA results for the first two components:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Central African Republic (3L)&#39;</span>
-<span class="n">plot_coords</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;aim_species&#39;</span><span class="p">,</span> 
-            <span class="n">color_discrete_map</span><span class="o">=</span><span class="n">species_color_map</span><span class="p">,</span> 
-            <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title = &#39;Central African Republic (3L)&#39;
+plot_coords(data, x=&#39;PC1&#39;, y=&#39;PC2&#39;,
+            color=&#39;aim_species&#39;, 
+            color_discrete_map=species_color_map, 
+            title=title)
 </pre></div>
 </div>
 </div>
@@ -1436,7 +1436,7 @@ if (outputEl) {{
 <p>Notice that some of the <em>An. gambiae</em> samples spread out along PC2. How do you know whether this is meaningful or just random noise? One way to get an intuition for this is to examine the variance explained by each of the components:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_variance</span><span class="p">(</span><span class="n">evr</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_variance(evr, title=title)
 </pre></div>
 </div>
 </div>
@@ -1490,16 +1490,16 @@ if (outputEl) {{
 <p>Let’s explore another sample set, this time from Uganda.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Uganda (3L)&#39;</span>
-<span class="n">data</span><span class="p">,</span> <span class="n">evr</span> <span class="o">=</span> <span class="n">run_pca</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s1">&#39;3L&#39;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;AG1000G-UG&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">plot_variance</span><span class="p">(</span><span class="n">evr</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
-<span class="n">plot_coords</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;aim_species&#39;</span><span class="p">,</span> 
-            <span class="n">color_discrete_map</span><span class="o">=</span><span class="n">species_color_map</span><span class="p">,</span> 
-            <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title = &#39;Uganda (3L)&#39;
+data, evr = run_pca(
+    region=&#39;3L&#39;, 
+    sample_sets=&quot;AG1000G-UG&quot;,
+)
+plot_variance(evr, title=title)
+plot_coords(data, x=&#39;PC1&#39;, y=&#39;PC2&#39;,
+            color=&#39;aim_species&#39;, 
+            color_discrete_map=species_color_map, 
+            title=title)
 </pre></div>
 </div>
 </div>
@@ -1571,19 +1571,19 @@ if (outputEl) {{
 <p>One other point to note, the <em>An. gambiae</em> mosquitoes from Uganda were sampled from two different locations, Kihihi in the south west of the country, and Nagongera in the east. Let’s explore this further by rerunning PCA with just the Ugandan <em>An. gambiae</em>. Let’s also exclude two <em>An. gambiae</em> samples which occurred as outliers on the previous PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Uganda &lt;i&gt;An. gambiae&lt;/i&gt; (3L)&#39;</span>
-<span class="n">data</span><span class="p">,</span> <span class="n">evr</span> <span class="o">=</span> <span class="n">run_pca</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s1">&#39;3L&#39;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;AG1000G-UG&quot;</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="p">(</span>
-        <span class="s2">&quot;aim_species == &#39;gambiae&#39; and &quot;</span>
-        <span class="s2">&quot;sample_id not in [&#39;AC0223-C&#39;, &#39;AC0240-C&#39;]&quot;</span>
-    <span class="p">),</span>
-<span class="p">)</span>
-<span class="n">plot_variance</span><span class="p">(</span><span class="n">evr</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
-<span class="n">plot_coords</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> 
-            <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title = &#39;Uganda &lt;i&gt;An. gambiae&lt;/i&gt; (3L)&#39;
+data, evr = run_pca(
+    region=&#39;3L&#39;, 
+    sample_sets=&quot;AG1000G-UG&quot;,
+    sample_query=(
+        &quot;aim_species == &#39;gambiae&#39; and &quot;
+        &quot;sample_id not in [&#39;AC0223-C&#39;, &#39;AC0240-C&#39;]&quot;
+    ),
+)
+plot_variance(evr, title=title)
+plot_coords(data, x=&#39;PC1&#39;, y=&#39;PC2&#39;,
+            color=&#39;location&#39;, 
+            title=title)
 </pre></div>
 </div>
 </div>
@@ -1667,12 +1667,12 @@ if (outputEl) {{
 <p>Now we have seen both reproductive isolation between species and geographical isolation in action, it’s time to tackle a more complex situation: Tanzania.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Tanzania (3L)&#39;</span>
-<span class="n">data</span><span class="p">,</span> <span class="n">evr</span> <span class="o">=</span> <span class="n">run_pca</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s1">&#39;3L&#39;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;AG1000G-TZ&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">plot_variance</span><span class="p">(</span><span class="n">evr</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title = &#39;Tanzania (3L)&#39;
+data, evr = run_pca(
+    region=&#39;3L&#39;, 
+    sample_sets=&quot;AG1000G-TZ&quot;,
+)
+plot_variance(evr, title=title)
 </pre></div>
 </div>
 </div>
@@ -1712,11 +1712,11 @@ if (outputEl) {{
 <p>Here the first three principal components explain more variance than the others. A perfect excuse to plot the results in 3D.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coords_3d</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s1">&#39;PC3&#39;</span><span class="p">,</span> 
-               <span class="n">color</span><span class="o">=</span><span class="s1">&#39;aim_species&#39;</span><span class="p">,</span> 
-               <span class="n">color_discrete_map</span><span class="o">=</span><span class="n">species_color_map</span><span class="p">,</span> 
-               <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-               <span class="n">jitter_frac</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_coords_3d(data, x=&#39;PC1&#39;, y=&#39;PC2&#39;, z=&#39;PC3&#39;, 
+               color=&#39;aim_species&#39;, 
+               color_discrete_map=species_color_map, 
+               title=title,
+               jitter_frac=0.05)
 </pre></div>
 </div>
 </div>
@@ -1763,19 +1763,19 @@ if (outputEl) {{
 <p>We can also combine data from multiple countries to perform a broader analysis of population structure. To finish off with, let’s run a PCA of all the <em>An. arabiensis</em> mosquitoes from East Africa. This is a larger set of samples, so may take a little longer to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;East African &lt;i&gt;An. arabiensis&lt;/i&gt; (3L)&#39;</span>
-<span class="n">data</span><span class="p">,</span> <span class="n">evr</span> <span class="o">=</span> <span class="n">run_pca</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s1">&#39;3L&#39;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="p">(</span>
-        <span class="s2">&quot;aim_species == &#39;arabiensis&#39; and &quot;</span>
-        <span class="s2">&quot;country in [&#39;Uganda&#39;, &#39;Tanzania&#39;, &#39;Kenya&#39;, &#39;Malawi&#39;]&quot;</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-<span class="n">plot_variance</span><span class="p">(</span><span class="n">evr</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
-<span class="n">plot_coords</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> 
-            <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>title = &#39;East African &lt;i&gt;An. arabiensis&lt;/i&gt; (3L)&#39;
+data, evr = run_pca(
+    region=&#39;3L&#39;, 
+    sample_sets=&quot;3.0&quot;,
+    sample_query=(
+        &quot;aim_species == &#39;arabiensis&#39; and &quot;
+        &quot;country in [&#39;Uganda&#39;, &#39;Tanzania&#39;, &#39;Kenya&#39;, &#39;Malawi&#39;]&quot;
+    )
+)
+plot_variance(evr, title=title)
+plot_coords(data, x=&#39;PC1&#39;, y=&#39;PC2&#39;,
+            color=&#39;country&#39;, 
+            title=title)
 </pre></div>
 </div>
 </div>

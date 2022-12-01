@@ -602,8 +602,8 @@ title="Print to PDF"
 <p>Download this file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir -pv ~/vo_amin_release/v1/metadata
-<span class="o">!</span>gsutil rsync -r gs://vo_amin_release/v1/metadata/ ~/vo_amin_release/v1/metadata/
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_amin_release/v1/metadata
+!gsutil rsync -r gs://vo_amin_release/v1/metadata/ ~/vo_amin_release/v1/metadata/
 </pre></div>
 </div>
 </div>
@@ -611,7 +611,7 @@ title="Print to PDF"
 <p>Inspect the first few rows of the sample metadata file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head ~/vo_amin_release/v1/metadata/samples.meta.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_amin_release/v1/metadata/samples.meta.csv
 </pre></div>
 </div>
 </div>
@@ -646,7 +646,7 @@ VBS09483-4248STDY7308997,VBS09483,4248STDY7308997,CB-2-03873,Brandy St. Laurent,
 <p>Here are the first few rows, showing the columns with the sample IDs and the BAM file URLs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head ~/vo_amin_release/v1/metadata/wgs_snp_data.csv <span class="p">|</span> cut -d, -f1,2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_amin_release/v1/metadata/wgs_snp_data.csv | cut -d, -f1,2
 </pre></div>
 </div>
 </div>
@@ -668,8 +668,8 @@ VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/align
 <p>For example, the first row provides information about sample VBS09378-4248STDY7308980, and the value of the alignments_bam field gives the download URL for the BAM file. To download this file locally:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># N.B., large data download</span>
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09378-4248STDY7308980-2019-03-03.bam
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># N.B., large data download
+!wget --no-clobber https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09378-4248STDY7308980-2019-03-03.bam
 </pre></div>
 </div>
 </div>
@@ -678,7 +678,7 @@ VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/align
 <p>For example, here are the first few rows of the catalog file, this time showing the sample_id and snp_genotypes_vcf columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head ~/vo_amin_release/v1/metadata/wgs_snp_data.csv <span class="p">|</span> cut -d, -f1,4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_amin_release/v1/metadata/wgs_snp_data.csv | cut -d, -f1,4
 </pre></div>
 </div>
 </div>
@@ -700,8 +700,8 @@ VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/snp_g
 <p>For example, the first row provides information about sample VBS09378-4248STDY7308980, and the value of the snp_genotypes_vcf field gives the download URL for the VCF file for this sample. To download this file locally:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># N.B., large data download</span>
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09378-4248STDY7308980-2019-03-04.vcf.gz
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># N.B., large data download
+!wget --no-clobber https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09378-4248STDY7308980-2019-03-04.vcf.gz
 </pre></div>
 </div>
 </div>
@@ -712,9 +712,9 @@ VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/snp_g
 <p>SNP data are also available in Zarr format, which can be convenient and efficient to use for certain types of analysis. These data can be analysed directly in the cloud without downloading to the local system – see the section on <a class="reference internal" href="cloud.html"><span class="doc std std-doc">cloud data access</span></a> for more information. The Zarr data can also be downloaded to your own system for local analysis, if that is more convenient. Below are examples of how to download the Zarr data to your local system.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># N.B., large data download</span>
-<span class="o">!</span>mkdir -pv ~/vo_amin_release/v1/snp_genotypes/all
-<span class="o">!</span>gsutil -m rsync -r gs://vo_amin_release/v1/snp_genotypes/all/ ~/vo_amin_release/v1/snp_genotypes/all/
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># N.B., large data download
+!mkdir -pv ~/vo_amin_release/v1/snp_genotypes/all
+!gsutil -m rsync -r gs://vo_amin_release/v1/snp_genotypes/all/ ~/vo_amin_release/v1/snp_genotypes/all/
 </pre></div>
 </div>
 </div>

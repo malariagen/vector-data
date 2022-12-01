@@ -639,7 +639,7 @@ title="Print to PDF"
 <p>Install the packages we’ll need. If you’re working on MyBinder, you can skip this step, packages are already installed.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -qU malariagen_data bokeh
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -qU malariagen_data bokeh
 </pre></div>
 </div>
 </div>
@@ -647,15 +647,15 @@ title="Print to PDF"
 <p>Import packages.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
-<span class="kn">from</span> <span class="nn">bisect</span> <span class="kn">import</span> <span class="n">bisect_left</span><span class="p">,</span> <span class="n">bisect_right</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
-<span class="kn">from</span> <span class="nn">dask.diagnostics</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
-<span class="kn">import</span> <span class="nn">bokeh.io</span> <span class="k">as</span> <span class="nn">bkio</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import malariagen_data
+from bisect import bisect_left, bisect_right
+import numpy as np
+import dask.array as da
+from dask.diagnostics import ProgressBar
+import bokeh.io as bkio
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -663,7 +663,7 @@ title="Print to PDF"
 <p>In this notebook we’ll be making some interactive plots using the <a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">bokeh</a> package. Set up plotting with bokeh in the notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bkio</span><span class="o">.</span><span class="n">output_notebook</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bkio.output_notebook()
 </pre></div>
 </div>
 </div>
@@ -671,8 +671,8 @@ title="Print to PDF"
 <p>Finally, setup access to <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data in Google Cloud.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">()</span>
-<span class="n">ag3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3 = malariagen_data.Ag3()
+ag3
 </pre></div>
 </div>
 </div>
@@ -745,8 +745,8 @@ title="Print to PDF"
 <p>The CNV HMM results for a given chromosome and given sample sets can be accessed using the <code class="docutils literal notranslate"><span class="pre">cnv_hmm</span></code> method. Let’s access the data for chromosome arm 2R, for two of the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> sample sets from Burkina Faso.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_hmm</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">cnv_hmm</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">])</span>
-<span class="n">ds_hmm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_hmm = ag3.cnv_hmm(region=&quot;2R&quot;, sample_sets=[&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;])
+ds_hmm
 </pre></div>
 </div>
 </div>
@@ -1467,8 +1467,8 @@ Attributes:
 <p>The <code class="docutils literal notranslate"><span class="pre">ds_hmm</span></code> variable is an <a class="reference external" href="http://xarray.pydata.org/en/stable/user-guide/data-structures.html#dataset">xarray dataset</a>. This is simply a container for several data arrays. In particular, we’ll be most interested in the <code class="docutils literal notranslate"><span class="pre">variant_position</span></code> and <code class="docutils literal notranslate"><span class="pre">variant_end</span></code> arrays, which provide the genomic coordinates for the window start and stop positions; and the <code class="docutils literal notranslate"><span class="pre">call_CN</span></code> array, which provides the inferred copy number state across samples and windows. Let’s look at each of these in turn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># window start coordinates (1-based)</span>
-<span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;variant_position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># window start coordinates (1-based)
+ds_hmm[&#39;variant_position&#39;].values
 </pre></div>
 </div>
 </div>
@@ -1481,8 +1481,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># window end coordinates (1-based, inclusive)</span>
-<span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;variant_end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># window end coordinates (1-based, inclusive)
+ds_hmm[&#39;variant_end&#39;].values
 </pre></div>
 </div>
 </div>
@@ -1495,8 +1495,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># copy number state predictions from the HMMs</span>
-<span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;call_CN&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># copy number state predictions from the HMMs
+ds_hmm[&#39;call_CN&#39;]
 </pre></div>
 </div>
 </div>
@@ -2053,8 +2053,8 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <p>Notice that the <code class="docutils literal notranslate"><span class="pre">call_CN</span></code> array has 205,151 rows and 283 columns. That’s because there are 205,151 windows on chromosome arm 2R, and we’ve requested data for 283 individual mosquitoes. For example, here are the copy number state predictions for the first 5 genome windows, for the first sample:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cn</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;call_CN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">cn</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cn = ds_hmm[&#39;call_CN&#39;].values
+cn[:5, 0]
 </pre></div>
 </div>
 </div>
@@ -2067,13 +2067,13 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <p>The numbers 7, 4, 4, 8 and 8 are copy number states. Above I said that the normal copy number state is 2, so what’s going on here? Well, these values are from the beginning of the chromosome arm, and the ends of the chromosome can exhibit a lot of copy number variation. Let’s gain some more intuition by making a histogram of the <code class="docutils literal notranslate"><span class="pre">call_CN</span></code> values across all windows and individuals.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cn</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Copy number state&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Copy number histogram&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mf">.5</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
+ax.hist(cn.flatten(), bins=np.arange(-1, 13, 1))
+ax.set_xlabel(&#39;Copy number state&#39;)
+ax.set_ylabel(&#39;Frequency&#39;)
+ax.set_title(&#39;Copy number histogram&#39;)
+ax.set_xticks(np.arange(-1, 13, 1) + .5)
+ax.set_xticklabels(np.arange(-1, 13, 1));
 </pre></div>
 </div>
 </div>
@@ -2092,11 +2092,11 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <p>In our previous analysis of Ag1000G phase 2, we found that the region surrounding the <em>Cyp9k1</em> gene on the X chromosome was a CNV hotspot. Let’s explore that in the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data resource.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_cnv_hmm_heatmap</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;X:15,233,000-15,260,000&quot;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">],</span> 
-    <span class="n">sample_query</span><span class="o">=</span><span class="s2">&quot;taxon == &#39;gambiae&#39; and sex_call == &#39;F&#39;&quot;</span>
-<span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_cnv_hmm_heatmap(
+    region=&quot;X:15,233,000-15,260,000&quot;, 
+    sample_sets=[&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;], 
+    sample_query=&quot;taxon == &#39;gambiae&#39; and sex_call == &#39;F&#39;&quot;
+);
 </pre></div>
 </div>
 </div>
@@ -2426,11 +2426,11 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <p>Let’s compare with the <em>An. coluzzii</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_cnv_hmm_heatmap</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;X:15,233,000-15,260,000&quot;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">],</span> 
-    <span class="n">sample_query</span><span class="o">=</span><span class="s2">&quot;taxon == &#39;coluzzii&#39; and sex_call == &#39;F&#39;&quot;</span>
-<span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_cnv_hmm_heatmap(
+    region=&quot;X:15,233,000-15,260,000&quot;, 
+    sample_sets=[&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;], 
+    sample_query=&quot;taxon == &#39;coluzzii&#39; and sex_call == &#39;F&#39;&quot;
+);
 </pre></div>
 </div>
 </div>
@@ -2763,11 +2763,11 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <p>For comparison, let’s also visualise CNVs in the <em>Cyp6p/aa</em> region on chromosome arm 2R, another known CNV hotspot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_cnv_hmm_heatmap</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R:28,450,000-28,580,000&quot;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">],</span> 
-    <span class="n">sample_query</span><span class="o">=</span><span class="s2">&quot;taxon == &#39;gambiae&#39;&quot;</span>
-<span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_cnv_hmm_heatmap(
+    region=&quot;2R:28,450,000-28,580,000&quot;, 
+    sample_sets=[&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;], 
+    sample_query=&quot;taxon == &#39;gambiae&#39;&quot;
+);
 </pre></div>
 </div>
 </div>
@@ -3096,11 +3096,11 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <p>Again, let’s compare with the <em>An. coluzzii</em> from the same sample sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_cnv_hmm_heatmap</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R:28,450,000-28,580,000&quot;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">],</span> 
-    <span class="n">sample_query</span><span class="o">=</span><span class="s2">&quot;taxon == &#39;coluzzii&#39;&quot;</span>
-<span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_cnv_hmm_heatmap(
+    region=&quot;2R:28,450,000-28,580,000&quot;, 
+    sample_sets=[&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;], 
+    sample_query=&quot;taxon == &#39;coluzzii&#39;&quot;
+);
 </pre></div>
 </div>
 </div>
@@ -3436,12 +3436,12 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <p>Compute CNV frequencies in genes in the <em>Cyp6aa/p</em> cluster.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cnv_cyp6aap</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">gene_cnv_frequencies</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R:28,450,000-28,510,000&quot;</span><span class="p">,</span> 
-    <span class="n">cohorts</span><span class="o">=</span><span class="s2">&quot;admin1_year&quot;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="n">df_cnv_cyp6aap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_cnv_cyp6aap = ag3.gene_cnv_frequencies(
+    region=&quot;2R:28,450,000-28,510,000&quot;, 
+    cohorts=&quot;admin1_year&quot;, 
+    sample_sets=[&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]
+)
+df_cnv_cyp6aap
 </pre></div>
 </div>
 </div>
@@ -3769,7 +3769,7 @@ Dimensions without coordinates: variants, samples</pre><div class='xr-wrap' hidd
 <p>Finally, let’s make this table a little more readable by removing some columns and highlighting frequencies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_frequencies_heatmap</span><span class="p">(</span><span class="n">df_cnv_cyp6aap</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_frequencies_heatmap(df_cnv_cyp6aap)
 </pre></div>
 </div>
 </div>

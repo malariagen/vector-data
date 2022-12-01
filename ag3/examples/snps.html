@@ -734,7 +734,7 @@ title="Print to PDF"
 <p>Install some packages. You can skip this step if running on MyBinder, these will be already installed.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -qU malariagen_data seaborn
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -qU malariagen_data seaborn
 </pre></div>
 </div>
 </div>
@@ -742,21 +742,21 @@ title="Print to PDF"
 <p>Import the packages we’ll need.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">dask</span>
-<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
-<span class="c1"># silence some dask warnings</span>
-<span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;array.slicing.split_large_chunks&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">allel</span>
-<span class="kn">from</span> <span class="nn">dask.diagnostics.progress</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
-<span class="kn">import</span> <span class="nn">malariagen_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from collections import Counter
+from functools import lru_cache
+import numpy as np
+import pandas as pd
+import dask
+import dask.array as da
+# silence some dask warnings
+dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: True})
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
+import allel
+from dask.diagnostics.progress import ProgressBar
+import malariagen_data
 </pre></div>
 </div>
 </div>
@@ -764,8 +764,8 @@ title="Print to PDF"
 <p>Set up access to the Ag3 data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">()</span>
-<span class="n">ag3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3 = malariagen_data.Ag3()
+ag3
 </pre></div>
 </div>
 </div>
@@ -801,7 +801,7 @@ title="Print to PDF"
 <p>For Ag1000G analyses we use the AgamP4 reference genome. This genome is comprised of five main sequences:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">contigs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.contigs
 </pre></div>
 </div>
 </div>
@@ -814,9 +814,9 @@ title="Print to PDF"
 <p>Each of these identifiers (e.g., “2R”) refers to a sequence of nucleotides, i.e., a sequence of the letters “A”, “C”, “T” and “G”. Let’s see how long these sequences are.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">contig</span> <span class="ow">in</span> <span class="n">ag3</span><span class="o">.</span><span class="n">contigs</span><span class="p">:</span>
-    <span class="n">seq</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">contig</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> bp&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for contig in ag3.contigs:
+    seq = ag3.genome_sequence(contig)
+    print(f&quot;{contig}: {len(seq):,} bp&quot;)
 </pre></div>
 </div>
 </div>
@@ -834,8 +834,8 @@ X: 24,393,108 bp
 <p>Let’s take a peek at the first 100 letters in one of the sequences (2R).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">seq</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq = ag3.genome_sequence(&quot;2R&quot;).compute()
+seq[:100]
 </pre></div>
 </div>
 </div>
@@ -858,7 +858,7 @@ X: 24,393,108 bp
 <p>To refer to a specific site (position) within a sequence, we typically use 1-based coordinates. E.g., “2R:10” refers to the tenth nucleotide (letter) in the 2R sequence. We can access this nucleotide via Python, but when indexing in Python we need to remember to use zero-based indices. E.g., access the nucleotide at position 10 on chromosome arm 2R:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[9]
 </pre></div>
 </div>
 </div>
@@ -872,16 +872,16 @@ X: 24,393,108 bp
 <p>Note that there are also some “gaps” in the reference genome, where we don’t know what the nucleotide is. These are represented in the sequence with the letter “N”. Let’s take a look at how common these are, for chromosome arm 2R:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_nucleotides</span><span class="p">(</span><span class="n">contig</span><span class="p">):</span>
-    <span class="n">seq</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def count_nucleotides(contig):
+    seq = ag3.genome_sequence(contig).compute()
+    return Counter(seq).most_common()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count_nucleotides</span><span class="p">(</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>count_nucleotides(&quot;2R&quot;)
 </pre></div>
 </div>
 </div>
@@ -904,76 +904,76 @@ X: 24,393,108 bp
 <p>To gain a bit more intuition for how the genome is structured and the relative sizes of the different sequences, let’s make a plot of the five chromosome arms, summarising the relative abundance of the different nucleotides.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sequence_composition</span><span class="p">(</span><span class="n">seq_id</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">100_000</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_sequence_composition(seq_id, window_size=100_000, ax=None):
     
-    <span class="c1"># load reference sequence</span>
-    <span class="n">seq</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">seq_id</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+    # load reference sequence
+    seq = ag3.genome_sequence(seq_id).compute()
     
-    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="c1"># make the figure size relative to largest contig</span>
-        <span class="n">figw</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="s2">&quot;2R&quot;</span><span class="p">))</span>
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">figw</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    if ax is None:
+        # make the figure size relative to largest contig
+        figw = 7 * len(seq) / len(ag3.genome_sequence(&quot;2R&quot;))
+        fig, ax = plt.subplots(figsize=(figw, 1))
  
-    <span class="c1"># convert to upper-case</span>
-    <span class="n">seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+    # convert to upper-case
+    seq = np.char.upper(seq)
 
-    <span class="c1"># locate nucleotides</span>
-    <span class="n">is_a</span> <span class="o">=</span> <span class="n">seq</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span>
-    <span class="n">is_c</span> <span class="o">=</span> <span class="n">seq</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;C&#39;</span>
-    <span class="n">is_g</span> <span class="o">=</span> <span class="n">seq</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;G&#39;</span>
-    <span class="n">is_t</span> <span class="o">=</span> <span class="n">seq</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;T&#39;</span>
-    <span class="n">is_n</span> <span class="o">=</span> <span class="n">seq</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;N&#39;</span>
-    <span class="c1"># check there&#39;s nothing unexpected</span>
-    <span class="n">is_other</span> <span class="o">=</span> <span class="o">~</span><span class="n">is_a</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">is_c</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">is_g</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">is_t</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">is_n</span>
-    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">is_other</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+    # locate nucleotides
+    is_a = seq == b&#39;A&#39;
+    is_c = seq == b&#39;C&#39;
+    is_g = seq == b&#39;G&#39;
+    is_t = seq == b&#39;T&#39;
+    is_n = seq == b&#39;N&#39;
+    # check there&#39;s nothing unexpected
+    is_other = ~is_a &amp; ~is_c &amp; ~is_g &amp; ~is_t &amp; ~is_n
+    assert np.sum(is_other) == 0
 
-    <span class="c1"># construct windows</span>
-    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="n">window_size</span><span class="p">)</span>
+    # construct windows
+    bins = np.arange(0, len(seq), window_size)
 
-    <span class="c1"># count nucleotides in each window</span>
-    <span class="n">h_a</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">is_a</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
-    <span class="n">h_c</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">is_c</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
-    <span class="n">h_g</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">is_g</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
-    <span class="n">h_t</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">is_t</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
-    <span class="n">h_n</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">is_n</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    # count nucleotides in each window
+    h_a, _ = np.histogram(np.nonzero(is_a)[0] + 1, bins=bins)
+    h_c, _ = np.histogram(np.nonzero(is_c)[0] + 1, bins=bins)
+    h_g, _ = np.histogram(np.nonzero(is_g)[0] + 1, bins=bins)
+    h_t, _ = np.histogram(np.nonzero(is_t)[0] + 1, bins=bins)
+    h_n, _ = np.histogram(np.nonzero(is_n)[0] + 1, bins=bins)
 
-    <span class="c1"># plot frequence of nucleotides within each bin</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">bottom</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
-    <span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
-    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">palette</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">h_a</span><span class="p">,</span> <span class="n">h_t</span><span class="p">,</span> <span class="n">h_g</span><span class="p">,</span> <span class="n">h_c</span><span class="p">,</span> <span class="n">h_n</span><span class="p">],</span> <span class="n">colors</span><span class="p">,</span> <span class="s1">&#39;ATGCN&#39;</span><span class="p">):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="n">bottom</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">l</span><span class="p">)</span>
-        <span class="n">bottom</span> <span class="o">+=</span> <span class="n">h</span>
+    # plot frequence of nucleotides within each bin
+    left = bins[:-1]
+    bottom = 0
+    width = np.diff(bins)
+    palette = sns.color_palette(&#39;colorblind&#39;)
+    colors = [palette[i] for i in [2, 0, 3, 8]] + [&#39;k&#39;]
+    for h, c, l in zip([h_a, h_t, h_g, h_c, h_n], colors, &#39;ATGCN&#39;):
+        ax.bar(left, h, width=width, bottom=bottom, color=c, align=&#39;edge&#39;, label=l)
+        bottom += h
         
-    <span class="c1"># tidy up plot</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;0%&#39;</span><span class="p">,</span> <span class="s1">&#39;100%&#39;</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">seq_id</span><span class="p">)</span>
-    <span class="c1"># convert X axis to Mbp</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">x</span><span class="o">//</span><span class="mf">1e6</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Position (Mbp)&quot;</span><span class="p">)</span>
+    # tidy up plot
+    ax.set_xlim(0, len(seq))
+    ax.set_yticks(ax.get_ylim())
+    ax.set_yticklabels([&#39;0%&#39;, &#39;100%&#39;])
+    ax.set_title(seq_id)
+    # convert X axis to Mbp
+    ax.xaxis.set_major_formatter(mpl.ticker.FuncFormatter(lambda x, p: x//1e6))
+    ax.set_xlabel(&quot;Position (Mbp)&quot;)
     
-    <span class="c1"># add centromere/telomere annotation</span>
-    <span class="k">if</span> <span class="n">seq_id</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;2L&#39;</span><span class="p">,</span> <span class="s1">&#39;3L&#39;</span><span class="p">}:</span>
-        <span class="n">ltxt</span> <span class="o">=</span> <span class="s2">&quot;centromere&quot;</span>
-        <span class="n">rtxt</span> <span class="o">=</span> <span class="s2">&quot;telomere&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">ltxt</span> <span class="o">=</span> <span class="s2">&quot;telomere&quot;</span>
-        <span class="n">rtxt</span> <span class="o">=</span> <span class="s2">&quot;centromere&quot;</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">ltxt</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s2">&quot;axes fraction&quot;</span><span class="p">,</span> 
-                <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">rtxt</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s2">&quot;axes fraction&quot;</span><span class="p">,</span> 
-                <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+    # add centromere/telomere annotation
+    if seq_id in {&#39;2L&#39;, &#39;3L&#39;}:
+        ltxt = &quot;centromere&quot;
+        rtxt = &quot;telomere&quot;
+    else:
+        ltxt = &quot;telomere&quot;
+        rtxt = &quot;centromere&quot;
+    ax.annotate(ltxt, xy=(0, 1), xycoords=&quot;axes fraction&quot;, 
+                xytext=(0, 2), textcoords=&#39;offset points&#39;, va=&#39;bottom&#39;, ha=&#39;left&#39;)
+    ax.annotate(rtxt, xy=(1, 1), xycoords=&quot;axes fraction&quot;, 
+                xytext=(0, 2), textcoords=&#39;offset points&#39;, va=&#39;bottom&#39;, ha=&#39;right&#39;)
     
-    <span class="c1"># add legend - reverse order so matches the plot</span>
-    <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">handles</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> 
-              <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">),</span> 
-              <span class="n">prop</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;monospace&#39;</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-              <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    # add legend - reverse order so matches the plot
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(reversed(handles), reversed(labels), 
+              loc=&#39;center left&#39;, bbox_to_anchor=(1, .5), 
+              prop=dict(family=&#39;monospace&#39;), ncol=1,
+              frameon=False)
         
 </pre></div>
 </div>
@@ -981,7 +981,7 @@ X: 24,393,108 bp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sequence_composition</span><span class="p">(</span><span class="s1">&#39;2R&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sequence_composition(&#39;2R&#39;)
 </pre></div>
 </div>
 </div>
@@ -991,7 +991,7 @@ X: 24,393,108 bp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sequence_composition</span><span class="p">(</span><span class="s1">&#39;2L&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sequence_composition(&#39;2L&#39;)
 </pre></div>
 </div>
 </div>
@@ -1001,7 +1001,7 @@ X: 24,393,108 bp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sequence_composition</span><span class="p">(</span><span class="s1">&#39;3R&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sequence_composition(&#39;3R&#39;)
 </pre></div>
 </div>
 </div>
@@ -1011,7 +1011,7 @@ X: 24,393,108 bp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sequence_composition</span><span class="p">(</span><span class="s1">&#39;3L&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sequence_composition(&#39;3L&#39;)
 </pre></div>
 </div>
 </div>
@@ -1021,7 +1021,7 @@ X: 24,393,108 bp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sequence_composition</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sequence_composition(&#39;X&#39;)
 </pre></div>
 </div>
 </div>
@@ -1052,8 +1052,8 @@ X: 24,393,108 bp
 <p>Let’s look at how these data are represented for chromosome arm 2R:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_snps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_snps = ag3.snp_calls(region=&quot;2R&quot;, sample_sets=&quot;3.0&quot;)
+ds_snps
 </pre></div>
 </div>
 </div>
@@ -5075,8 +5075,8 @@ Attributes:
 <p>The “variant_position” array here holds the 1-based positions (coordinates) where the SNPs were called. E.g., here’s the first 10 SNP positions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">pos</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pos = ds_snps[&quot;variant_position&quot;].data
+pos[:10].compute()
 </pre></div>
 </div>
 </div>
@@ -5089,20 +5089,20 @@ Attributes:
 <p>Note that this is simply the positions 1-10. However, these positions <strong>do not</strong> continue increasing by 1 all the way through the array, i.e., there are gaps, because of gaps in the reference genome. We can quickly visualise that, by plotting the distance between adjacent sites:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_gaps</span><span class="p">(</span><span class="n">contig</span><span class="p">):</span>
-    <span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">contig</span><span class="p">)</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-    <span class="n">loc_gap</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">1</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">loc_gap</span><span class="p">]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">loc_gap</span><span class="p">]</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span>
-    <span class="c1"># convert X axis to Mbp</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">x</span><span class="o">//</span><span class="mf">1e6</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Position (Mbp)&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Gap size (bp)&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_gaps(contig):
+    ds_snps = ag3.snp_calls(region=contig)
+    pos = ds_snps[&quot;variant_position&quot;].data.compute()
+    d = np.diff(pos)
+    loc_gap = d &gt; 1
+    x = pos[1:][loc_gap]
+    y = d[loc_gap]
+    fig, ax = plt.subplots(figsize=(7, 2))
+    ax.plot(x, y, color=&#39;black&#39;, linewidth=.5, marker=&#39;o&#39;, linestyle=&#39; &#39;, markersize=2, mfc=&#39;none&#39;)
+    ax.set_title(&quot;2R&quot;)
+    # convert X axis to Mbp
+    ax.xaxis.set_major_formatter(mpl.ticker.FuncFormatter(lambda x, p: x//1e6))
+    ax.set_xlabel(&quot;Position (Mbp)&quot;)
+    ax.set_ylabel(&#39;Gap size (bp)&#39;)
     
 </pre></div>
 </div>
@@ -5110,7 +5110,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_gaps</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_gaps(contig=&quot;2R&quot;)
 </pre></div>
 </div>
 </div>
@@ -5121,7 +5121,7 @@ Attributes:
 <p>Note also that the length of the <code class="docutils literal notranslate"><span class="pre">pos</span></code> array is less than the length of the reference genome sequence:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(seq) - len(pos)
 </pre></div>
 </div>
 </div>
@@ -5135,8 +5135,8 @@ Attributes:
 <p>The “variant_alleles” array holds the reference and alternate alleles, i.e., the possible nucleotides for each SNP site. E.g., are the alleles at the first 10 SNP sites:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alleles</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_allele&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">alleles</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>alleles = ds_snps[&quot;variant_allele&quot;].data
+alleles[:10].compute()
 </pre></div>
 </div>
 </div>
@@ -5158,7 +5158,7 @@ Attributes:
 <p>The first column contains the reference alleles. We can confirm that this corresponds to the nucleotides in the reference sequence by using the SNP positions to index the sequence (remembering to convert to zero-based coordinates):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="n">pos</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[pos[:10].compute() - 1]
 </pre></div>
 </div>
 </div>
@@ -5260,9 +5260,9 @@ Attributes:
 <p>To see this in action, let’s access the SNP genotypes for chromosome arm 2R for all wild samples in Ag3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">gt</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_snps = ag3.snp_calls(region=&quot;2R&quot;, sample_sets=&quot;3.0&quot;)
+gt = ds_snps[&quot;call_genotype&quot;].data
+gt.shape
 </pre></div>
 </div>
 </div>
@@ -5276,7 +5276,7 @@ Attributes:
 <p>So, e.g., let’s look up the genotype call at the 10th site in the 1st sample:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt[9, 0].compute()
 </pre></div>
 </div>
 </div>
@@ -5290,7 +5290,7 @@ Attributes:
 <p>Let’s try another, the 10th site and the 2,393rd sample.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2392</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt[9, 2392].compute()
 </pre></div>
 </div>
 </div>
@@ -5304,7 +5304,7 @@ Attributes:
 <p>Let’s look at one more genotype, the 10th site and the 249th sample.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">248</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt[9, 248].compute()
 </pre></div>
 </div>
 </div>
@@ -5318,8 +5318,8 @@ Attributes:
 <p>When working with genotype arrays it can be useful to use the <a class="reference external" href="http://scikit-allel.readthedocs.org/">scikit-allel</a> package. Let’s wrap the <code class="docutils literal notranslate"><span class="pre">gt</span></code> variable, which is a general purpose <a class="reference external" href="https://docs.dask.org/en/latest/array.html">dask array</a>, with the scikit-allel <code class="docutils literal notranslate"><span class="pre">GenotypeDaskArray</span></code> class, which provides some useful functionality for analysing genotype data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">gt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt = allel.GenotypeDaskArray(ds_snps[&quot;call_genotype&quot;].data)
+gt
 </pre></div>
 </div>
 </div>
@@ -5334,8 +5334,8 @@ Attributes:
 <p>An allele count involves scanning across all the genotypes at a given site and counting the number of times each allele is observed. I.e., how many 0s, 1s, 2s and 3s are observed. Let’s do an allele count for the first 10 sites on chromosome arm 2R.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">ac</span><span class="o">.</span><span class="n">displayall</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ac = gt[:10].count_alleles(max_allele=3).compute()
+ac.displayall()
 </pre></div>
 </div>
 </div>
@@ -5350,8 +5350,8 @@ Attributes:
 <p>Let’s use this allele counts array to compute some properties of these 10 sites.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how many alleles were observed</span>
-<span class="n">ac</span><span class="o">.</span><span class="n">allelism</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># how many alleles were observed
+ac.allelism()
 </pre></div>
 </div>
 </div>
@@ -5363,8 +5363,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># whether any alternate alleles were observed</span>
-<span class="n">ac</span><span class="o">.</span><span class="n">is_variant</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># whether any alternate alleles were observed
+ac.is_variant()
 </pre></div>
 </div>
 </div>
@@ -5377,8 +5377,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># whether more than one allele was observed</span>
-<span class="n">ac</span><span class="o">.</span><span class="n">is_segregating</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># whether more than one allele was observed
+ac.is_segregating()
 </pre></div>
 </div>
 </div>
@@ -5391,8 +5391,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># whether exactly two alleles were observed</span>
-<span class="n">ac</span><span class="o">.</span><span class="n">is_biallelic</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># whether exactly two alleles were observed
+ac.is_biallelic()
 </pre></div>
 </div>
 </div>
@@ -5405,9 +5405,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># total number of alleles called</span>
-<span class="n">an_called</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">an_called</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># total number of alleles called
+an_called = ac.sum(axis=1)
+an_called
 </pre></div>
 </div>
 </div>
@@ -5419,9 +5419,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># total number of missing allele calls</span>
-<span class="n">an_missing</span> <span class="o">=</span> <span class="p">(</span><span class="n">gt</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">an_called</span>
-<span class="n">an_missing</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># total number of missing allele calls
+an_missing = (gt.shape[1] * 2) - an_called
+an_missing
 </pre></div>
 </div>
 </div>
@@ -5447,9 +5447,9 @@ Attributes:
 <p>For each of these filters, there is one Boolean mask per chromosome arm. The Boolean masks are True where a site passes the filter and False otherwise. E.g., here’s the <code class="docutils literal notranslate"><span class="pre">gamb_colu_arab</span></code> site filter for chromosome arm 2R:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span>
-<span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_filter_pass_gamb_colu_arab&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">loc_pass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_snps = ag3.snp_calls(region=&quot;2R&quot;)
+loc_pass = ds_snps[&quot;variant_filter_pass_gamb_colu_arab&quot;].data
+loc_pass
 </pre></div>
 </div>
 </div>
@@ -5693,8 +5693,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examine the first ten values</span>
-<span class="n">loc_pass</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># examine the first ten values
+loc_pass[:10].compute()
 </pre></div>
 </div>
 </div>
@@ -5707,8 +5707,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how many sites in total pass the filter?</span>
-<span class="n">loc_pass</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># how many sites in total pass the filter?
+loc_pass.sum().compute()
 </pre></div>
 </div>
 </div>
@@ -5721,27 +5721,27 @@ Attributes:
 <p>To get some intuition for what these site filters look like and how they differ from each other, let’s build a summary table showing how many sites pass in each chromosome arm. This may take a minute or two to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tabulate_filter_counts</span><span class="p">():</span>
-    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">contig</span> <span class="ow">in</span> <span class="n">ag3</span><span class="o">.</span><span class="n">contigs</span><span class="p">:</span>
-        <span class="n">contig_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">contig</span><span class="p">))</span>
-        <span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">contig</span><span class="p">)</span>
-        <span class="n">n_sites</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s2">&quot;variants&quot;</span><span class="p">]</span>
-        <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">contig</span><span class="p">,</span> <span class="n">contig_length</span><span class="p">,</span> <span class="n">n_sites</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">,</span> <span class="s2">&quot;gamb_colu&quot;</span><span class="p">,</span> <span class="s2">&quot;arab&quot;</span><span class="p">:</span>
-            <span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;variant_filter_pass_</span><span class="si">{</span><span class="n">mask</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-            <span class="n">n_pass</span> <span class="o">=</span> <span class="n">loc_pass</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-            <span class="n">pc_pass</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.1%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_pass</span> <span class="o">/</span> <span class="n">n_sites</span><span class="p">)</span>
-            <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pc_pass</span><span class="p">)</span>
-        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span>
-        <span class="n">rows</span><span class="p">,</span> 
-        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;contig&quot;</span><span class="p">,</span> <span class="s2">&quot;contig length&quot;</span><span class="p">,</span> <span class="s2">&quot;no. sites&quot;</span><span class="p">,</span> <span class="s2">&quot;pass gamb_colu_arab&quot;</span><span class="p">,</span> <span class="s2">&quot;pass gamb_colu&quot;</span><span class="p">,</span> <span class="s2">&quot;pass arab&quot;</span><span class="p">]</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def tabulate_filter_counts():
+    rows = []
+    for contig in ag3.contigs:
+        contig_length = len(ag3.genome_sequence(contig))
+        ds_snps = ag3.snp_calls(region=contig)
+        n_sites = ds_snps.dims[&quot;variants&quot;]
+        row = [contig, contig_length, n_sites]
+        for mask in &quot;gamb_colu_arab&quot;, &quot;gamb_colu&quot;, &quot;arab&quot;:
+            loc_pass = ds_snps[f&quot;variant_filter_pass_{mask}&quot;].data
+            n_pass = loc_pass.sum().compute()
+            pc_pass = &quot;{:.1%}&quot;.format(n_pass / n_sites)
+            row.append(pc_pass)
+        rows.append(row)
+    df = pd.DataFrame.from_records(
+        rows, 
+        columns=[&quot;contig&quot;, &quot;contig length&quot;, &quot;no. sites&quot;, &quot;pass gamb_colu_arab&quot;, &quot;pass gamb_colu&quot;, &quot;pass arab&quot;]
+    )
+    return df
 
-<span class="n">df_filter_counts</span> <span class="o">=</span> <span class="n">tabulate_filter_counts</span><span class="p">()</span>
-<span class="n">df_filter_counts</span>
+df_filter_counts = tabulate_filter_counts()
+df_filter_counts
 </pre></div>
 </div>
 </div>
@@ -5909,43 +5909,43 @@ Attributes:
 <p>To gain a bit more intuition for these filters, let’s plot the fraction of genome sites that pass the site filters in moving windows over each of the chromosome arms.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_site_filters</span><span class="p">(</span><span class="n">contig</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">200_000</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_site_filters(contig, window_size=200_000, ax=None):
 
-    <span class="c1"># setup figure and axes</span>
-    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">contig_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">contig</span><span class="p">))</span>
-        <span class="n">figw</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">*</span> <span class="n">contig_length</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="s2">&quot;2R&quot;</span><span class="p">))</span>
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">figw</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-        <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    # setup figure and axes
+    if ax is None:
+        contig_length = len(ag3.genome_sequence(contig))
+        figw = 7 * contig_length / len(ag3.genome_sequence(&quot;2R&quot;))
+        fig, ax = plt.subplots(figsize=(figw, 2))
+        sns.despine(ax=ax, offset=5)
 
-    <span class="c1"># setup X variable</span>
-    <span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">contig</span><span class="p">)</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">moving_statistic</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span>
+    # setup X variable
+    ds_snps = ag3.snp_calls(region=contig)
+    pos = ds_snps[&quot;variant_position&quot;].values
+    x = allel.moving_statistic(pos, statistic=np.mean, size=window_size)
 
-    <span class="c1"># setup Y variables and plot</span>
-    <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="s2">&quot;gamb_colu&quot;</span><span class="p">,</span> <span class="s2">&quot;arab&quot;</span><span class="p">,</span> <span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">:</span>
-        <span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;variant_filter_pass_</span><span class="si">{</span><span class="n">mask</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">moving_statistic</span><span class="p">(</span><span class="n">loc_pass</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+    # setup Y variables and plot
+    for mask in &quot;gamb_colu&quot;, &quot;arab&quot;, &quot;gamb_colu_arab&quot;:
+        loc_pass = ds_snps[f&quot;variant_filter_pass_{mask}&quot;].values
+        y = allel.moving_statistic(loc_pass, statistic=np.mean, size=window_size)
+        ax.plot(x, y * 100, label=mask)
 
-    <span class="c1"># tidy plot</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">contig_length</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span>
-    <span class="c1"># convert X axis to Mbp</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">x</span><span class="o">//</span><span class="mf">1e6</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Position (Mbp)&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;% pass&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Filter&quot;</span><span class="p">,</span>
-              <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    # tidy plot
+    ax.set_xlim(0, contig_length)
+    ax.set_ylim(0, 100)
+    ax.set_title(contig)
+    # convert X axis to Mbp
+    ax.xaxis.set_major_formatter(mpl.ticker.FuncFormatter(lambda x, p: x//1e6))
+    ax.set_xlabel(&quot;Position (Mbp)&quot;)
+    ax.set_ylabel(&#39;% pass&#39;)
+    ax.legend(loc=&#39;upper left&#39;, bbox_to_anchor=(1, 1), title=&quot;Filter&quot;,
+              frameon=False)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_site_filters</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_site_filters(contig=&quot;2R&quot;)
 </pre></div>
 </div>
 </div>
@@ -5955,7 +5955,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_site_filters</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;2L&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_site_filters(contig=&quot;2L&quot;)
 </pre></div>
 </div>
 </div>
@@ -5965,7 +5965,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_site_filters</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;3R&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_site_filters(contig=&quot;3R&quot;)
 </pre></div>
 </div>
 </div>
@@ -5975,7 +5975,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_site_filters</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;3L&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_site_filters(contig=&quot;3L&quot;)
 </pre></div>
 </div>
 </div>
@@ -5985,7 +5985,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_site_filters</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_site_filters(contig=&quot;X&quot;)
 </pre></div>
 </div>
 </div>
@@ -5996,8 +5996,8 @@ Attributes:
 <p>The methods in the <code class="docutils literal notranslate"><span class="pre">malariagen_data.Ag3</span></code> class allow you to access data on sites or genotypes with one of these filters already applied. E.g., let’s access the SNP calls with the <code class="docutils literal notranslate"><span class="pre">gamb_colu_arab</span></code> filter applied.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps_filtered</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">site_mask</span><span class="o">=</span><span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_snps_filtered</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_snps_filtered = ag3.snp_calls(region=&quot;2R&quot;, site_mask=&quot;gamb_colu_arab&quot;, sample_sets=&quot;3.0&quot;)
+ds_snps_filtered
 </pre></div>
 </div>
 </div>
@@ -10020,8 +10020,8 @@ Attributes:
 <p>Similarly, here are the genotypes with the <code class="docutils literal notranslate"><span class="pre">gamb_colu_arab</span></code> site filter applied.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt_filtered</span> <span class="o">=</span> <span class="n">ds_snps_filtered</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">gt_filtered</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt_filtered = ds_snps_filtered[&quot;call_genotype&quot;].data
+gt_filtered
 </pre></div>
 </div>
 </div>
@@ -10641,9 +10641,9 @@ Attributes:
 <p>For example, let’s locate data for the site 2L:2422652.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2L&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">variants</span><span class="o">=</span><span class="s2">&quot;variant_position&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="s2">&quot;sample_id&quot;</span><span class="p">)</span>
-<span class="n">ds_snps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_snps = ag3.snp_calls(region=&quot;2L&quot;, sample_sets=&quot;3.0&quot;)
+ds_snps = ds_snps.set_index(variants=&quot;variant_position&quot;, samples=&quot;sample_id&quot;)
+ds_snps
 </pre></div>
 </div>
 </div>
@@ -13981,9 +13981,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access the SNP data at that site</span>
-<span class="n">ds_site</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">variants</span><span class="o">=</span><span class="mi">2422652</span><span class="p">)</span>
-<span class="n">ds_site</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># access the SNP data at that site
+ds_site = ds_snps.sel(variants=2422652)
+ds_site
 </pre></div>
 </div>
 </div>
@@ -15014,9 +15014,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access the alternate alleles</span>
-<span class="n">alleles_site</span> <span class="o">=</span> <span class="n">ds_site</span><span class="p">[</span><span class="s2">&quot;variant_allele&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">alleles_site</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># access the alternate alleles
+alleles_site = ds_site[&quot;variant_allele&quot;].values
+alleles_site
 </pre></div>
 </div>
 </div>
@@ -15028,9 +15028,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access the genotypes</span>
-<span class="n">gt_site</span> <span class="o">=</span> <span class="n">ds_site</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">gt_site</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># access the genotypes
+gt_site = ds_site[&quot;call_genotype&quot;].values
+gt_site
 </pre></div>
 </div>
 </div>
@@ -15053,8 +15053,8 @@ Attributes:
 <p>For other analyses you may want to extract data for a specific genome region, such as a gene. Again a good approach is to use an index. E.g., let’s locate data for the <em>Vgsc</em> gene, which spans the region 2L:2358158-2431617.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_region</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">variants</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2358158</span><span class="p">,</span> <span class="mi">2431617</span><span class="p">))</span>
-<span class="n">ds_region</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_region = ds_snps.sel(variants=slice(2358158, 2431617))
+ds_region
 </pre></div>
 </div>
 </div>
@@ -16450,9 +16450,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># obtain SNP positions within selected region</span>
-<span class="n">pos_region</span> <span class="o">=</span> <span class="n">ds_region</span><span class="p">[</span><span class="s2">&quot;variants&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">pos_region</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># obtain SNP positions within selected region
+pos_region = ds_region[&quot;variants&quot;].values
+pos_region
 </pre></div>
 </div>
 </div>
@@ -16464,9 +16464,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># alleles within selected region</span>
-<span class="n">alleles_region</span> <span class="o">=</span> <span class="n">ds_region</span><span class="p">[</span><span class="s2">&quot;variant_allele&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">alleles_region</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># alleles within selected region
+alleles_region = ds_region[&quot;variant_allele&quot;].values
+alleles_region
 </pre></div>
 </div>
 </div>
@@ -16484,9 +16484,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># genotypes within selected region</span>
-<span class="n">gt_region</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_region</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">gt_region</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># genotypes within selected region
+gt_region = allel.GenotypeDaskArray(ds_region[&quot;call_genotype&quot;].data)
+gt_region
 </pre></div>
 </div>
 </div>
@@ -16495,9 +16495,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># allele counts</span>
-<span class="n">ac_region</span> <span class="o">=</span> <span class="n">gt_region</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">ac_region</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># allele counts
+ac_region = gt_region.count_alleles(max_allele=3).compute()
+ac_region
 </pre></div>
 </div>
 </div>
@@ -16506,8 +16506,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how many segregating SNPs within our region of interest?</span>
-<span class="n">ac_region</span><span class="o">.</span><span class="n">is_segregating</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># how many segregating SNPs within our region of interest?
+ac_region.is_segregating().sum()
 </pre></div>
 </div>
 </div>
@@ -16524,8 +16524,8 @@ Attributes:
 <p>In many cases you may want to access genotypes for an individual mosquito sample, or a group of samples. This usually requires linking the sample metadata to the genotypes. Let’s look at how to do that. First, load sample metadata.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;sample_id&quot;</span><span class="p">)</span>
-<span class="n">df_samples</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_samples = ag3.sample_metadata(sample_sets=&quot;3.0&quot;).set_index(&quot;sample_id&quot;)
+df_samples
 </pre></div>
 </div>
 </div>
@@ -16947,9 +16947,9 @@ Attributes:
 <p>Now access SNP calls for whatever chromosome arm you are analysing, e.g., 2L.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2L&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">variants</span><span class="o">=</span><span class="s2">&quot;variant_position&quot;</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="s2">&quot;sample_id&quot;</span><span class="p">)</span>
-<span class="n">ds_snps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_snps = ag3.snp_calls(region=&quot;2L&quot;, sample_sets=&quot;3.0&quot;)
+ds_snps = ds_snps.set_index(variants=&quot;variant_position&quot;, samples=&quot;sample_id&quot;)
+ds_snps
 </pre></div>
 </div>
 </div>
@@ -20288,7 +20288,7 @@ Attributes:
 <p>The key point to know here is that the number of rows in the sample metadata dataframe and the size of the “samples” dimension in the SNP calls dataset are the same.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_samples</span><span class="p">)</span> <span class="o">==</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(df_samples) == ds_snps.dims[&quot;samples&quot;]
 </pre></div>
 </div>
 </div>
@@ -20304,8 +20304,8 @@ Attributes:
 <p>Let’s extract both sample metadata and genotypes for a single sample, e.g., sample AB0110-C.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;AB0110-C&#39;</span><span class="p">]</span>
-<span class="n">s</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = df_samples.loc[&#39;AB0110-C&#39;]
+s
 </pre></div>
 </div>
 </div>
@@ -20342,8 +20342,8 @@ Name: AB0110-C, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_sample</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="s1">&#39;AB0110-C&#39;</span><span class="p">)</span>
-<span class="n">ds_sample</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_sample = ds_snps.sel(samples=&#39;AB0110-C&#39;)
+ds_sample
 </pre></div>
 </div>
 </div>
@@ -22544,9 +22544,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute some genotype counts for our sample of interest</span>
-<span class="n">gt_sample</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeVector</span><span class="p">(</span><span class="n">ds_sample</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">gt_sample</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># compute some genotype counts for our sample of interest
+gt_sample = allel.GenotypeVector(ds_sample[&quot;call_genotype&quot;].values)
+gt_sample
 </pre></div>
 </div>
 </div>
@@ -22555,7 +22555,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt_sample</span><span class="o">.</span><span class="n">count_missing</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt_sample.count_missing()
 </pre></div>
 </div>
 </div>
@@ -22567,7 +22567,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt_sample</span><span class="o">.</span><span class="n">count_hom_ref</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt_sample.count_hom_ref()
 </pre></div>
 </div>
 </div>
@@ -22579,7 +22579,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt_sample</span><span class="o">.</span><span class="n">count_het</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt_sample.count_het()
 </pre></div>
 </div>
 </div>
@@ -22591,7 +22591,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt_sample</span><span class="o">.</span><span class="n">count_hom_alt</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt_sample.count_hom_alt()
 </pre></div>
 </div>
 </div>
@@ -22607,10 +22607,10 @@ Attributes:
 <p>We will also often want to locate a group of samples based on their metadata, e.g., all samples from a given country, collected in a certain year, of a certain species; and then analyse their genotypes. Let’s look at an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select An. gambiae samples from Burkina Faso collected in 2012</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;(country == &#39;Burkina Faso&#39;) and (year == 2012) and (taxon == &#39;gambiae&#39;)&quot;</span>
-<span class="n">loc_samples</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-<span class="n">loc_samples</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># select An. gambiae samples from Burkina Faso collected in 2012
+query = &quot;(country == &#39;Burkina Faso&#39;) and (year == 2012) and (taxon == &#39;gambiae&#39;)&quot;
+loc_samples = df_samples.eval(query).values
+loc_samples
 </pre></div>
 </div>
 </div>
@@ -22622,9 +22622,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># examing their metadata</span>
-<span class="n">df_samples_selected</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">loc_samples</span><span class="p">]</span>
-<span class="n">df_samples_selected</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># examing their metadata
+df_samples_selected = df_samples.loc[loc_samples]
+df_samples_selected
 </pre></div>
 </div>
 </div>
@@ -23045,9 +23045,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select SNP calls</span>
-<span class="n">ds_snps_selected</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">loc_samples</span><span class="p">)</span>
-<span class="n">ds_snps_selected</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># select SNP calls
+ds_snps_selected = ds_snps.isel(samples=loc_samples)
+ds_snps_selected
 </pre></div>
 </div>
 </div>
@@ -25848,8 +25848,8 @@ Attributes:
 <p>We can also combine site selections with sample selections, e.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># obtain SNP calls at 2L:2422652 in sample AB0110-C</span>
-<span class="n">ds_snps</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">variants</span><span class="o">=</span><span class="mi">2422652</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="n">loc_samples</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># obtain SNP calls at 2L:2422652 in sample AB0110-C
+ds_snps.sel(variants=2422652, samples=loc_samples)
 </pre></div>
 </div>
 </div>
@@ -26547,9 +26547,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access SNP calls in the Vgsc gene in An. gambiae samples from Burkina Faso collected in 2012</span>
-<span class="n">ds_snps_vgsc</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">variants</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2358158</span><span class="p">,</span> <span class="mi">2431617</span><span class="p">),</span> <span class="n">samples</span><span class="o">=</span><span class="n">loc_samples</span><span class="p">)</span>
-<span class="n">ds_snps_vgsc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># access SNP calls in the Vgsc gene in An. gambiae samples from Burkina Faso collected in 2012
+ds_snps_vgsc = ds_snps.sel(variants=slice(2358158, 2431617), samples=loc_samples)
+ds_snps_vgsc
 </pre></div>
 </div>
 </div>
@@ -27402,10 +27402,10 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how many segregating sites now?</span>
-<span class="n">gt_vgsc</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_snps_vgsc</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ac_vgsc</span> <span class="o">=</span> <span class="n">gt_vgsc</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">ac_vgsc</span><span class="o">.</span><span class="n">is_segregating</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># how many segregating sites now?
+gt_vgsc = allel.GenotypeDaskArray(ds_snps_vgsc[&quot;call_genotype&quot;].data)
+ac_vgsc = gt_vgsc.count_alleles(max_allele=3).compute()
+ac_vgsc.is_segregating().sum()
 </pre></div>
 </div>
 </div>
@@ -27436,8 +27436,8 @@ Attributes:
 <p>Note that some software tools such as scikit-allel may require you to provide a genome accessibility mask, which is a Boolean array of the same length as the chromosomal sequence you’re analysing. In case you need this, the <code class="docutils literal notranslate"><span class="pre">Ag3</span></code> class provides a convenience method to obtain this from the site filters. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_accessible</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">is_accessible</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">site_mask</span><span class="o">=</span><span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">)</span>
-<span class="n">is_accessible</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>is_accessible = ag3.is_accessible(region=&quot;2R&quot;, site_mask=&quot;gamb_colu_arab&quot;)
+is_accessible.shape
 </pre></div>
 </div>
 </div>
@@ -27450,8 +27450,8 @@ Attributes:
 <p>This is an array the same length as the chromosomal sequence, and is True where the reference genome is not an “N” and the site filter passes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">genome_sequence</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">seq</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq = ag3.genome_sequence(region=&quot;2R&quot;).compute()
+seq.shape
 </pre></div>
 </div>
 </div>
@@ -27463,7 +27463,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">is_accessible</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(seq) == len(is_accessible)
 </pre></div>
 </div>
 </div>
@@ -27475,7 +27475,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_accessible</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>is_accessible.sum()
 </pre></div>
 </div>
 </div>
@@ -27487,8 +27487,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">loc_pass</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>loc_pass = ag3.site_filters(region=&quot;2R&quot;, mask=&quot;gamb_colu_arab&quot;).compute()
+loc_pass.shape
 </pre></div>
 </div>
 </div>
@@ -27500,7 +27500,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc_pass</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>loc_pass.sum()
 </pre></div>
 </div>
 </div>
@@ -27512,8 +27512,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s2">&quot;POS&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">pos</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pos = ag3.snp_sites(region=&quot;2R&quot;, field=&quot;POS&quot;).compute()
+pos.shape
 </pre></div>
 </div>
 </div>
@@ -27525,7 +27525,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">loc_pass</span> <span class="o">==</span> <span class="n">is_accessible</span><span class="p">[</span><span class="n">pos</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.all(loc_pass == is_accessible[pos - 1])
 </pre></div>
 </div>
 </div>

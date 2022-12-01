@@ -627,7 +627,7 @@ title="Print to PDF"
 <p>Install the packages we’ll need. If you’re working on MyBinder, you can skip this step, packages will already be installed.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -qU malariagen_data bokeh plotly
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -qU malariagen_data bokeh plotly
 </pre></div>
 </div>
 </div>
@@ -635,15 +635,15 @@ title="Print to PDF"
 <p>Import packages.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">bokeh.plotting</span> <span class="k">as</span> <span class="nn">bkplt</span>
-<span class="kn">import</span> <span class="nn">bokeh.models</span> <span class="k">as</span> <span class="nn">bkmod</span>
-<span class="kn">import</span> <span class="nn">bokeh.layouts</span> <span class="k">as</span> <span class="nn">bklay</span>
-<span class="kn">import</span> <span class="nn">bokeh.io</span> <span class="k">as</span> <span class="nn">bkio</span>
-<span class="kn">import</span> <span class="nn">bokeh.palettes</span> <span class="k">as</span> <span class="nn">bkpal</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
-<span class="kn">import</span> <span class="nn">malariagen_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import bokeh.plotting as bkplt
+import bokeh.models as bkmod
+import bokeh.layouts as bklay
+import bokeh.io as bkio
+import bokeh.palettes as bkpal
+import pandas as pd
+import plotly.express as px
+import malariagen_data
 </pre></div>
 </div>
 </div>
@@ -652,7 +652,7 @@ title="Print to PDF"
 <p>Set up plotting with bokeh in the notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bkio</span><span class="o">.</span><span class="n">output_notebook</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bkio.output_notebook()
 </pre></div>
 </div>
 </div>
@@ -660,8 +660,8 @@ title="Print to PDF"
 <p>Setup access to MalariaGEN data in Google Cloud.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">()</span>
-<span class="n">ag3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3 = malariagen_data.Ag3()
+ag3
 </pre></div>
 </div>
 </div>
@@ -727,8 +727,8 @@ title="Print to PDF"
 <p>Gene annotations for the <em>Anopheles gambiae</em> (AgamP4) genome are available from <a class="reference external" href="https://vectorbase.org/vectorbase/app/">VectorBase</a>. For convenience, we’ve added some functionality to the <code class="docutils literal notranslate"><span class="pre">malariagen_data</span></code> package for loading these gene annotations into a pandas data frame. Let’s take a look.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_geneset</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">geneset</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">)</span>
-<span class="n">df_geneset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_geneset = ag3.geneset().set_index(&quot;ID&quot;)
+df_geneset
 </pre></div>
 </div>
 </div>
@@ -1024,7 +1024,7 @@ title="Print to PDF"
 <p>To get a bit more intuition for gene annotations, let’s make an interactive plot of all the gene annotations in the geneset. We will plot each gene as a rectangle showing it’s location on a chromosome arm.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_genes</span><span class="p">(</span><span class="s2">&quot;2L&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_genes(&quot;2L&quot;);
 </pre></div>
 </div>
 </div>
@@ -1360,7 +1360,7 @@ title="Print to PDF"
 <p>Let’s build some intuition by looking up the transcripts for the doublesex gene, AGAP004050.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_geneset</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Parent == &#39;AGAP004050&#39;&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_geneset.query(&quot;Parent == &#39;AGAP004050&#39;&quot;)
 </pre></div>
 </div>
 </div>
@@ -1526,7 +1526,7 @@ title="Print to PDF"
 <p>Visualise transcripts for the doublesex gene (AGAP004050).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_transcript</span><span class="p">(</span><span class="s2">&quot;AGAP004050-RA&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_transcript(&quot;AGAP004050-RA&quot;);
 </pre></div>
 </div>
 </div>
@@ -1854,7 +1854,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_transcript</span><span class="p">(</span><span class="s2">&quot;AGAP004050-RB&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_transcript(&quot;AGAP004050-RB&quot;);
 </pre></div>
 </div>
 </div>
@@ -2184,7 +2184,7 @@ title="Print to PDF"
 <p>Let’s look at another example, the resistance to dieldrin (<em>Rdl</em>) gene AGAP006028.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_geneset</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Parent == &#39;AGAP006028&#39;&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_geneset.query(&quot;Parent == &#39;AGAP006028&#39;&quot;)
 </pre></div>
 </div>
 </div>
@@ -2362,7 +2362,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_transcript</span><span class="p">(</span><span class="s2">&quot;AGAP006028-RA&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_transcript(&quot;AGAP006028-RA&quot;);
 </pre></div>
 </div>
 </div>
@@ -2690,7 +2690,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_transcript</span><span class="p">(</span><span class="s2">&quot;AGAP006028-RB&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_transcript(&quot;AGAP006028-RB&quot;);
 </pre></div>
 </div>
 </div>
@@ -3018,7 +3018,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_transcript</span><span class="p">(</span><span class="s2">&quot;AGAP006028-RC&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_transcript(&quot;AGAP006028-RC&quot;);
 </pre></div>
 </div>
 </div>
@@ -3386,14 +3386,14 @@ title="Print to PDF"
 <p>To compute SNP effects for a given gene transcript, we’ve added a <code class="docutils literal notranslate"><span class="pre">snp_effects()</span></code> method to the <a class="reference internal" href="../api.html"><span class="doc std std-doc">Ag3 Python API</span></a>. Let’s see it in action, again using the <em>Rdl</em> gene (AGAP006028) as an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rdl gene, first transcript - change this to investigate a different gene or transcript</span>
-<span class="n">transcript</span> <span class="o">=</span> <span class="s2">&quot;AGAP006028-RA&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Rdl gene, first transcript - change this to investigate a different gene or transcript
+transcript = &quot;AGAP006028-RA&quot;
 
-<span class="c1"># compute effects for all SNPs in chosen transcript</span>
-<span class="n">df_effects</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_effects</span><span class="p">(</span>
-    <span class="n">transcript</span><span class="o">=</span><span class="n">transcript</span><span class="p">,</span> 
-<span class="p">)</span>
-<span class="n">df_effects</span>
+# compute effects for all SNPs in chosen transcript
+df_effects = ag3.snp_effects(
+    transcript=transcript, 
+)
+df_effects
 </pre></div>
 </div>
 </div>
@@ -3733,7 +3733,7 @@ title="Print to PDF"
 <p>Using pandas, we can take a closer look at features of this data frame, like the counts of different effects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_effects</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;impact&#39;</span><span class="p">,</span> <span class="s1">&#39;effect&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_effects.groupby([&#39;impact&#39;, &#39;effect&#39;]).size()
 </pre></div>
 </div>
 </div>
@@ -3762,13 +3762,13 @@ dtype: int64
 <p>Now compute allele frequencies for these populations in our gene of interest (may take a minute or two).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_af</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_allele_frequencies</span><span class="p">(</span>
-    <span class="n">transcript</span><span class="o">=</span><span class="n">transcript</span><span class="p">,</span> 
-    <span class="n">cohorts</span><span class="o">=</span><span class="s2">&quot;admin1_year&quot;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s2">&quot;country in [&#39;Burkina Faso&#39;, &#39;Uganda&#39;]&quot;</span>
-<span class="p">)</span>
-<span class="n">df_af</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_af = ag3.snp_allele_frequencies(
+    transcript=transcript, 
+    cohorts=&quot;admin1_year&quot;, 
+    sample_sets=&quot;3.0&quot;,
+    sample_query=&quot;country in [&#39;Burkina Faso&#39;, &#39;Uganda&#39;]&quot;
+)
+df_af
 </pre></div>
 </div>
 </div>
@@ -4235,8 +4235,8 @@ dtype: int64
 <p>We can use the SNP effects and allele frequencies we have calculated to investigate the genetic variation present in our gene and populations of interest. Let’s filter the data frame of SNPs, e.g., below we keep only non-synonymous SNPs. We can also remove any low frequency SNPs, where there is an allele frequency of less than 2% across all populations of interest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_snps_filtered</span> <span class="o">=</span> <span class="n">df_af</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;effect == &#39;NON_SYNONYMOUS_CODING&#39; and max_af &gt; 0.02&quot;</span><span class="p">)</span>
-<span class="n">df_snps_filtered</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_snps_filtered = df_af.query(&quot;effect == &#39;NON_SYNONYMOUS_CODING&#39; and max_af &gt; 0.02&quot;)
+df_snps_filtered
 </pre></div>
 </div>
 </div>
@@ -4727,7 +4727,7 @@ dtype: int64
 <p>We can visualise these frequencies as a heatmap.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span><span class="o">.</span><span class="n">plot_frequencies_heatmap</span><span class="p">(</span><span class="n">df_snps_filtered</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3.plot_frequencies_heatmap(df_snps_filtered)
 </pre></div>
 </div>
 </div>
@@ -4767,74 +4767,74 @@ if (outputEl) {{
 <p>We can also make a plot to help visualise these data in their genomic context.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_snps_transcript</span><span class="p">(</span><span class="n">transcript</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Category10&#39;</span><span class="p">):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_snps_transcript(transcript, data, width=750, height=300, palette=&#39;Category10&#39;):
+    data = data.reset_index()
 
-    <span class="c1"># hover tooltips</span>
-    <span class="n">tooltips</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="s1">&#39;@contig:@position{,}&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;alleles&quot;</span><span class="p">,</span> <span class="s1">&#39;@ref_allele&gt;@alt_allele&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;pass&quot;</span><span class="p">,</span> <span class="s2">&quot;@pass_gamb_colu_arab, @pass_gamb_colu, @pass_arab&quot;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;impact&quot;</span><span class="p">,</span> <span class="s1">&#39;@impact&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;effect&quot;</span><span class="p">,</span> <span class="s1">&#39;@effect&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;aa_change&quot;</span><span class="p">,</span> <span class="s1">&#39;@aa_change&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">,</span> <span class="s1">&#39;@frequency{</span><span class="si">%f</span><span class="s1">} (@cohort)&#39;</span><span class="p">),</span>
-    <span class="p">]</span>
+    # hover tooltips
+    tooltips = [
+        (&quot;position&quot;, &#39;@contig:@position{,}&#39;),
+        (&quot;alleles&quot;, &#39;@ref_allele&gt;@alt_allele&#39;),
+        (&quot;pass&quot;, &quot;@pass_gamb_colu_arab, @pass_gamb_colu, @pass_arab&quot;),
+        (&quot;impact&quot;, &#39;@impact&#39;),
+        (&quot;effect&quot;, &#39;@effect&#39;),
+        (&quot;aa_change&quot;, &#39;@aa_change&#39;),
+        (&quot;frequency&quot;, &#39;@frequency{%f} (@cohort)&#39;),
+    ]
 
-    <span class="n">fig1</span> <span class="o">=</span> <span class="n">bkplt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span>
-        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Transcript - </span><span class="si">{</span><span class="n">transcript</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-        <span class="n">tools</span><span class="o">=</span><span class="s1">&#39;xpan,xzoom_in,xzoom_out,xwheel_zoom,reset,hover&#39;</span><span class="p">,</span>
-        <span class="n">active_scroll</span><span class="o">=</span><span class="s1">&#39;xwheel_zoom&#39;</span><span class="p">,</span>
-        <span class="n">active_drag</span><span class="o">=</span><span class="s1">&#39;xpan&#39;</span><span class="p">,</span>
-        <span class="n">plot_width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> 
-        <span class="n">plot_height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> 
-        <span class="n">tooltips</span><span class="o">=</span><span class="n">tooltips</span><span class="p">,</span>
-        <span class="n">toolbar_location</span><span class="o">=</span><span class="s2">&quot;above&quot;</span><span class="p">)</span>
+    fig1 = bkplt.figure(
+        title=f&#39;Transcript - {transcript}&#39;,
+        tools=&#39;xpan,xzoom_in,xzoom_out,xwheel_zoom,reset,hover&#39;,
+        active_scroll=&#39;xwheel_zoom&#39;,
+        active_drag=&#39;xpan&#39;,
+        plot_width=width, 
+        plot_height=height, 
+        tooltips=tooltips,
+        toolbar_location=&quot;above&quot;)
 
-    <span class="c1"># set up colors</span>
-    <span class="n">frq_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;frq_&quot;</span><span class="p">)]</span>
-    <span class="n">cohorts</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;frq_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">frq_cols</span><span class="p">]</span>
-    <span class="n">palette</span> <span class="o">=</span> <span class="n">bkpal</span><span class="o">.</span><span class="n">all_palettes</span><span class="p">[</span><span class="n">palette</span><span class="p">]</span>
-    <span class="n">colors</span> <span class="o">=</span> <span class="n">palette</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">cohorts</span><span class="p">)]</span>
+    # set up colors
+    frq_cols = [c for c in data.columns if c.startswith(&quot;frq_&quot;)]
+    cohorts = [c.split(&quot;frq_&quot;)[1] for c in frq_cols]
+    palette = bkpal.all_palettes[palette]
+    colors = palette[len(cohorts)]
 
-    <span class="c1"># plot allele frequencies</span>
-    <span class="k">for</span> <span class="n">coh</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cohorts</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;frequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;frq_</span><span class="si">{</span><span class="n">coh</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
-        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">coh</span>
-        <span class="n">fig1</span><span class="o">.</span><span class="n">triangle</span><span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="s2">&quot;frequency&quot;</span><span class="p">,</span> 
-                      <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
-                      <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-                      <span class="n">source</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
-                      <span class="n">legend_label</span><span class="o">=</span><span class="n">coh</span><span class="p">)</span>
+    # plot allele frequencies
+    for coh, color in zip(cohorts, colors):
+        df = data.copy()
+        df[&#39;frequency&#39;] = df[f&quot;frq_{coh}&quot;]
+        df[&#39;cohort&#39;] = coh
+        fig1.triangle(&quot;position&quot;, &quot;frequency&quot;, 
+                      size=8, 
+                      color=color,
+                      source=df,
+                      legend_label=coh)
 
-    <span class="c1"># tidy up the plot</span>
-    <span class="n">fig1</span><span class="o">.</span><span class="n">y_range</span> <span class="o">=</span> <span class="n">bkmod</span><span class="o">.</span><span class="n">Range1d</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">fig1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Alt allele frequency&#39;</span>
-    <span class="n">fig1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">fig1</span><span class="o">.</span><span class="n">add_layout</span><span class="p">(</span><span class="n">fig1</span><span class="o">.</span><span class="n">legend</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;right&#39;</span><span class="p">)</span>
-    <span class="n">fig1</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">click_policy</span><span class="o">=</span><span class="s2">&quot;hide&quot;</span>
+    # tidy up the plot
+    fig1.y_range = bkmod.Range1d(0, 1)
+    fig1.yaxis.axis_label = f&#39;Alt allele frequency&#39;
+    fig1.xaxis.visible = False
+    fig1.add_layout(fig1.legend[0], &#39;right&#39;)
+    fig1.legend.click_policy=&quot;hide&quot;
 
-    <span class="c1"># plot transcript</span>
-    <span class="n">fig2</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">plot_transcript</span><span class="p">(</span>
-        <span class="n">transcript</span><span class="p">,</span> 
-        <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> 
-        <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> 
-        <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
-        <span class="n">x_range</span><span class="o">=</span><span class="n">fig1</span><span class="o">.</span><span class="n">x_range</span>
-    <span class="p">)</span>
-    <span class="n">fig2</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">logo</span> <span class="o">=</span> <span class="kc">None</span> 
-    <span class="n">fig2</span><span class="o">.</span><span class="n">toolbar_location</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">fig2</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="kc">None</span>
+    # plot transcript
+    fig2 = ag3.plot_transcript(
+        transcript, 
+        width=width, 
+        height=80, 
+        show=False, 
+        x_range=fig1.x_range
+    )
+    fig2.toolbar.logo = None 
+    fig2.toolbar_location = None
+    fig2.title = None
 
-    <span class="n">bkplt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">bklay</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">fig1</span><span class="p">,</span> <span class="n">fig2</span><span class="p">))</span>
+    bkplt.show(bklay.column(fig1, fig2))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_snps_transcript</span><span class="p">(</span><span class="n">transcript</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_snps_filtered</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_snps_transcript(transcript, data=df_snps_filtered)
 </pre></div>
 </div>
 </div>

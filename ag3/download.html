@@ -626,11 +626,6 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#accessing-downloaded-data-from-python">
-   Accessing downloaded data from Python
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feedback-and-suggestions">
    Feedback and suggestions
   </a>
@@ -775,11 +770,6 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#accessing-downloaded-data-from-python">
-   Accessing downloaded data from Python
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feedback-and-suggestions">
    Feedback and suggestions
   </a>
@@ -803,7 +793,8 @@ title="Print to PDF"
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Ag3.0</span></code> data are hosted by several different services.</p>
 <p>Raw sequence reads in FASTQ format and sequence read alignments in BAM format are hosted by the European Nucleotide Archive (ENA). This guide provides examples of downloading data from ENA via FTP using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command line tool, but please note that there are several other options for downloading data, see the <a class="reference external" href="https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html">ENA documentation on how to download data files</a> for more information.</p>
-<p>Sample metadata in CSV format and SNP calls in VCF and Zarr formats are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
+<p>SNP calls in VCF and Zarr formats are hosted on S3-compatible object storage at the Sanger Institute. This guide provides examples of downloading thes data using <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
+<p>Sample metadata in CSV format are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
 </section>
 <section id="sample-sets">
 <h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">#</a></h2>
@@ -814,15 +805,13 @@ title="Print to PDF"
 <p>The sample set manifest can also be downloaded via <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> to a directory on the local file system, e.g.:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir -pv ~/vo_agam_release/v3/
-<span class="o">!</span>gsutil cp gs://vo_agam_release/v3/manifest.tsv ~/vo_agam_release/v3/
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_agam_release/v3/
+!gsutil cp gs://vo_agam_release/v3/manifest.tsv ~/vo_agam_release/v3/
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: created directory &#39;/root/vo_agam_release&#39;
-mkdir: created directory &#39;/root/vo_agam_release/v3/&#39;
-Copying gs://vo_agam_release/v3/manifest.tsv...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Copying gs://vo_agam_release/v3/manifest.tsv...
 / [1 files][  453.0 B/  453.0 B]                                                
 Operation completed over 1 objects/453.0 B.                                      
 </pre></div>
@@ -832,7 +821,7 @@ Operation completed over 1 objects/453.0 B.
 <p>Here are the file contents:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cat ~/vo_agam_release/v3/manifest.tsv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!cat ~/vo_agam_release/v3/manifest.tsv
 </pre></div>
 </div>
 </div>
@@ -884,8 +873,14 @@ AG1000G-X	297
 <p>Sample metadata for all sample sets can also be downloaded using <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir -pv ~/vo_agam_release/v3/metadata/
-<span class="o">!</span>gsutil -m rsync -r gs://vo_agam_release/v3/metadata/ ~/vo_agam_release/v3/metadata/
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_agam_release/v3/metadata/
+!gsutil -m rsync -r gs://vo_agam_release/v3/metadata/ ~/vo_agam_release/v3/metadata/
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building synchronization state...
+Starting synchronization...
 </pre></div>
 </div>
 </div>
@@ -893,21 +888,21 @@ AG1000G-X	297
 <p>Here are the first few rows of the sample metadata for sample set AG1000G-BF-A:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head ~/vo_agam_release/v3/metadata/general/AG1000G-BF-A/samples.meta.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_agam_release/v3/metadata/general/AG1000G-BF-A/samples.meta.csv
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_id,partner_sample_id,contributor,country,location,year,month,latitude,longitude,sex_call
-AB0085-Cx,BF2-4,Austin Burt,Burkina Faso,Pala,2012,7,11.150,-4.235,F
-AB0086-Cx,BF2-6,Austin Burt,Burkina Faso,Pala,2012,7,11.150,-4.235,F
-AB0087-C,BF3-3,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
-AB0088-C,BF3-5,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
-AB0089-Cx,BF3-8,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
-AB0090-C,BF3-10,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
-AB0091-C,BF3-12,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
-AB0092-C,BF3-13,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
-AB0094-Cx,BF3-17,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
+AB0085-Cx,BF2-4,Austin Burt,Burkina Faso,Pala,2012,7,11.151,-4.235,F
+AB0086-Cx,BF2-6,Austin Burt,Burkina Faso,Pala,2012,7,11.151,-4.235,F
+AB0087-C,BF3-3,Austin Burt,Burkina Faso,Bana Village,2012,7,11.233,-4.472,F
+AB0088-C,BF3-5,Austin Burt,Burkina Faso,Bana Village,2012,7,11.233,-4.472,F
+AB0089-Cx,BF3-8,Austin Burt,Burkina Faso,Bana Village,2012,7,11.233,-4.472,F
+AB0090-C,BF3-10,Austin Burt,Burkina Faso,Bana Village,2012,7,11.233,-4.472,F
+AB0091-C,BF3-12,Austin Burt,Burkina Faso,Bana Village,2012,7,11.233,-4.472,F
+AB0092-C,BF3-13,Austin Burt,Burkina Faso,Bana Village,2012,7,11.233,-4.472,F
+AB0094-Cx,BF3-17,Austin Burt,Burkina Faso,Bana Village,2012,7,11.233,-4.472,F
 </pre></div>
 </div>
 </div>
@@ -919,31 +914,30 @@ AB0094-Cx,BF3-17,Austin Burt,Burkina Faso,Bana,2012,7,11.233,-4.472,F
 </section>
 <section id="species-calls">
 <h3>Species calls<a class="headerlink" href="#species-calls" title="Permalink to this headline">#</a></h3>
-<p>We have made a call for each specimen as to which species it belongs to (<em>Anopheles gambiae</em>, <em>Anopheles coluzzii</em>, <em>Anopheles arabiensis</em>) based on the genotypes of the samples. These calls were made from the sequence data, and there are cases where the species is not easy to determine. We report species calls using two methods, principal components analysis (PCA) and ancestry informative markers (AIMs).</p>
-<p>Species calls can be downloaded from GCS, e.g., for sample set AG1000G-BF-A:</p>
+<p>We have made a preliminary call for each specimen as to which species it belongs to (<em>Anopheles gambiae</em>, <em>Anopheles coluzzii</em>, <em>Anopheles arabiensis</em>) based on the genotypes of the samples. These calls were made from the sequence data, and there are cases where the species is not easy to determine. We report species calls using ancestry informative markers (AIMs).</p>
+<p>AIM species calls can be downloaded from GCS, e.g., for sample set AG1000G-BF-A:</p>
 <ul class="simple">
-<li><p>PCA species calls - https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_pca.csv</p></li>
-<li><p>AIM species calls - https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_aim.csv</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_aim_20220528/AG1000G-BF-A/samples.species_aim.csv</p></li>
 </ul>
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system.</p>
 <p>Here are the first few rows of the AIM species calls for sample set AG1000G-BF-A:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head ~/vo_agam_release/v3/metadata/species_calls_20200422/AG1000G-BF-A/samples.species_aim.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_agam_release/v3/metadata/species_calls_aim_20220528/AG1000G-BF-A/samples.species_aim.csv
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_id,aim_fraction_colu,aim_fraction_arab,species_gambcolu_arabiensis,species_gambiae_coluzzii
-AB0085-Cx,0.024,0.002,gamb_colu,gambiae
-AB0086-Cx,0.038,0.002,gamb_colu,gambiae
-AB0087-C,0.982,0.002,gamb_colu,coluzzii
-AB0088-C,0.990,0.002,gamb_colu,coluzzii
-AB0089-Cx,0.975,0.002,gamb_colu,coluzzii
-AB0090-C,0.977,0.002,gamb_colu,coluzzii
-AB0091-C,0.974,0.002,gamb_colu,coluzzii
-AB0092-C,0.978,0.002,gamb_colu,coluzzii
-AB0094-Cx,0.986,0.002,gamb_colu,coluzzii
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_id,aim_species_fraction_arab,aim_species_fraction_colu,aim_species_fraction_colu_no2L,aim_species_gambcolu_arabiensis,aim_species_gambiae_coluzzii,aim_species
+AB0085-Cx,0.0007664303506418854,0.014316392269148175,0.016488046166529265,gambcolu,gambiae,gambiae
+AB0086-Cx,0.0024904214559386974,0.023571428571428573,0.02631578947368421,gambcolu,gambiae,gambiae
+AB0087-C,0.0017244682889442423,0.9247311827956989,0.9810074318744839,gambcolu,coluzzii,coluzzii
+AB0088-C,0.001915341888527102,0.8686288585786073,0.9875930521091811,gambcolu,coluzzii,coluzzii
+AB0089-Cx,0.0028735632183908046,0.8567335243553008,0.9735973597359736,gambcolu,coluzzii,coluzzii
+AB0090-C,0.0011500862564692352,0.972083035075161,0.9777411376751854,gambcolu,coluzzii,coluzzii
+AB0091-C,0.0015322735108216816,0.9157060518731989,0.9750830564784053,gambcolu,coluzzii,coluzzii
+AB0092-C,0.0013417672992141077,0.870157819225251,0.9801652892561984,gambcolu,coluzzii,coluzzii
+AB0094-Cx,0.002106069308826345,0.8658536585365854,0.984297520661157,gambcolu,coluzzii,coluzzii
 </pre></div>
 </div>
 </div>
@@ -962,7 +956,7 @@ AB0094-Cx,0.986,0.002,gamb_colu,coluzzii
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system. Inspect the file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head ~/vo_agam_release/v3/metadata/ena_runs.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_agam_release/v3/metadata/ena_runs.csv
 </pre></div>
 </div>
 </div>
@@ -981,15 +975,7 @@ AR0004-C,ERR343468
 </div>
 </div>
 </div>
-<p>For example, the sequence reads for sample AR0001-C are available from three ENA accessions: ERR347035, ERR347047 and ERR352136. To download the sequence reads, visit the ENA website and search for these accessions. E.g., links to download sequence reads for run ERR352136 are available from this web page: https://www.ebi.ac.uk/ena/browser/view/ERR352136. To download the FASTQ files for this run via <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR352/ERR352136/ERR352136_1.fastq.gz
-<span class="o">!</span>wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR352/ERR352136/ERR352136_2.fastq.gz
-</pre></div>
-</div>
-</div>
-</div>
+<p>For example, the sequence reads for sample AR0001-C are available from three ENA accessions: ERR347035, ERR347047 and ERR352136. To download the sequence reads, visit the ENA website and search for these accessions. E.g., links to download sequence reads for run ERR352136 are available from this web page: https://www.ebi.ac.uk/ena/browser/view/ERR352136.</p>
 <p>Note that FASTQ files are relatively large, several GB per sample, so they may take a long time to download, and may require a substantial amount of disk space on your local system.</p>
 </section>
 <section id="sequence-read-alignments-bam-format">
@@ -1001,70 +987,99 @@ AR0004-C,ERR343468
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system. Here are the first few rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head ~/vo_agam_release/v3/metadata/ena_alignments.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_agam_release/v3/metadata/ena_alignments.csv
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_id,ena_analysis
+
 AR0001-C,ERZ1695275
+
 AR0002-C,ERZ1695276
+
 AR0004-C,ERZ1695277
+
 AR0006-C,ERZ1695278
+
 AR0007-C,ERZ1695279
+
 AR0008-C,ERZ1695280
+
 AR0009-C,ERZ1695281
+
 AR0010-Cx,ERZ1695282
+
 AR0011-C,ERZ1695283
 </pre></div>
 </div>
 </div>
 </div>
-<p>Each row in this file provides a mapping from Ag1000G sample identifiers to ENA analysis accessions. To find links for downloading the data, visit the ENA website and search for the corresponding analysis accession. E.g., the analysis-ready BAM file for sample AR0001-C can be downloaded from this web page: https://www.ebi.ac.uk/ena/browser/view/ERZ1695275. To download the BAM file via <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget ftp://ftp.sra.ebi.ac.uk/vol1/ERZ169/ERZ1695275/AR0001-C.bam
-</pre></div>
-</div>
-</div>
-</div>
+<p>Each row in this file provides a mapping from Ag1000G sample identifiers to ENA analysis accessions. To find links for downloading the data, visit the ENA website and search for the corresponding analysis accession. E.g., links to download the analysis-ready BAM file for sample AR0001-C can be found from the web page at <a class="reference external" href="https://www.ebi.ac.uk/ena/browser/view/ERZ1695275">ERZ1695275</a>.</p>
 <p>Note that BAM files are relatively large, approximately 10G per sample, so they may take a long time to download, and may require a substantial amount of disk space on your local system.</p>
 </section>
 <section id="snp-calls-vcf-format">
 <h2>SNP calls (VCF format)<a class="headerlink" href="#snp-calls-vcf-format" title="Permalink to this headline">#</a></h2>
 <section id="snp-genotypes">
 <h3>SNP genotypes<a class="headerlink" href="#snp-genotypes" title="Permalink to this headline">#</a></h3>
-<p>SNP genotypes for individual mosquitoes in VCF format are available for download from GCS. A VCF file is available for each individual sample. To download a VCF file for a given sample, you will need the sample identifier and the sample set in which the sample belongs. For example, to download the VCF file for sample AR0001-C in sample set AG1000G-AO, run the following:</p>
-<div class="cell tag_hide-output docutils container">
+<p>SNP genotypes for individual mosquitoes in VCF format are available for download from Sanger S3-compatible object storage. A VCF file is available for each individual sample. To download a VCF file for a given sample, you will need the sample identifier and the sample set in which the sample belongs. Then inspect the data catalog in the metadata. E.g., for sample set AG1000G-AO:</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0001-C.vcf.gz
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0001-C.vcf.gz.tbi
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_agam_release/v3/metadata/general/AG1000G-AO/wgs_snp_data.csv | cut -f1,4 -d,
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_id,snp_genotypes_vcf
+AR0047-C,https://vo_agam_output.cog.sanger.ac.uk/AR0047-C.vcf.gz
+AR0049-C,https://vo_agam_output.cog.sanger.ac.uk/AR0049-C.vcf.gz
+AR0051-C,https://vo_agam_output.cog.sanger.ac.uk/AR0051-C.vcf.gz
+AR0061-C,https://vo_agam_output.cog.sanger.ac.uk/AR0061-C.vcf.gz
+AR0078-C,https://vo_agam_output.cog.sanger.ac.uk/AR0078-C.vcf.gz
+AR0080-C,https://vo_agam_output.cog.sanger.ac.uk/AR0080-C.vcf.gz
+AR0084-C,https://vo_agam_output.cog.sanger.ac.uk/AR0084-C.vcf.gz
+AR0097-C,https://vo_agam_output.cog.sanger.ac.uk/AR0097-C.vcf.gz
+AR0072-C,https://vo_agam_output.cog.sanger.ac.uk/AR0072-C.vcf.gz
 </pre></div>
 </div>
 </div>
 </div>
-<p>Alternatively, VCF files for all samples in a given sample set can be downloaded using the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command. E.g., to download all VCFs for sample set AG1000G-AO, run the following:</p>
+<p>A VCF file and associated tabix index can be downloaded via wget, e.g.:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/
-!gsutil -m rsync -r \
-    gs://vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/ \
-    ~/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-clobber https://vo_agam_output.cog.sanger.ac.uk/AR0047-C.vcf.gz
+!wget --no-clobber https://vo_agam_output.cog.sanger.ac.uk/AR0047-C.vcf.gz.tbi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-12-01 13:36:09--  https://vo_agam_output.cog.sanger.ac.uk/AR0047-C.vcf.gz
+Resolving vo_agam_output.cog.sanger.ac.uk (vo_agam_output.cog.sanger.ac.uk)... 193.62.203.62, 193.62.203.61, 193.62.203.63
+Connecting to vo_agam_output.cog.sanger.ac.uk (vo_agam_output.cog.sanger.ac.uk)|193.62.203.62|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3222999974 (3.0G) [application/gzip]
+Saving to: ‘AR0047-C.vcf.gz’
+
+AR0047-C.vcf.gz       1%[                    ]  50.91M  8.62MB/s    eta 5m 53s ^C
+--2022-12-01 13:36:17--  https://vo_agam_output.cog.sanger.ac.uk/AR0047-C.vcf.gz.tbi
+Resolving vo_agam_output.cog.sanger.ac.uk (vo_agam_output.cog.sanger.ac.uk)... 193.62.203.62, 193.62.203.61, 193.62.203.63
+Connecting to vo_agam_output.cog.sanger.ac.uk (vo_agam_output.cog.sanger.ac.uk)|193.62.203.62|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 258551 (252K) [application/gzip]
+Saving to: ‘AR0047-C.vcf.gz.tbi’
+
+AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s   
+
+2022-12-01 13:36:17 (5.78 MB/s) - ‘AR0047-C.vcf.gz.tbi’ saved [258551/258551]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Note that each of these VCF files is around 3 Gb, so downloading may take some time, and sufficient local storage will be needed.</p>
-<p>Each of these VCF files is an “all sites” VCF file, meaning that genotypes have been called at all genomic positions where the reference nucleotide is not “N”, regardless of whether variation is observed in the given sample. This means that VCFs from multiple samples can be merged easily to create a multi-sample VCF, which may be required for certain analyses. For example, the code below downloads VCFs for three samples, then uses the <a class="reference external" href="http://samtools.github.io/bcftools/bcftools.html#merge">bcftools merge</a> command to merge the calls for chromosome arm 3R, up to 1 Mbp:</p>
+<p>Each of these VCF files is an “all sites” VCF file, meaning that genotypes have been called at all genomic positions where the reference nucleotide is not “N”, regardless of whether variation is observed in the given sample. This means that VCFs from multiple samples can be merged easily to create a multi-sample VCF, which may be required for certain analyses. For example, the code below merges VCFs for three samples for chromosome arm 3R up to 1 Mbp:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0001-C.vcf.gz
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0001-C.vcf.gz.tbi
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0002-C.vcf.gz
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0002-C.vcf.gz.tbi
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0004-C.vcf.gz
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/v3/snp_genotypes/per_sample/AG1000G-AO/vcf/AR0004-C.vcf.gz.tbi
-<span class="o">!</span>bcftools merge --output-type z --regions 3R:1-1000000 --output merged.vcf.gz AR0001-C.vcf.gz AR0002-C.vcf.gz AR0004-C.vcf.gz 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!bcftools merge --output-type z --regions 3R:1-1000000 --output merged.vcf.gz AR0001-C.vcf.gz AR0002-C.vcf.gz AR0004-C.vcf.gz 
 </pre></div>
 </div>
 </div>
@@ -1072,25 +1087,12 @@ AR0011-C,ERZ1695283
 <p>If you are just interested in analysing variants within a given set of samples, you might like to filter the merged VCF to remove non-variant sites and alleles, e.g., using <a class="reference external" href="http://samtools.github.io/bcftools/bcftools.html#view">bcftools view</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>bcftools view --output-type z --output-file merged_variant.vcf.gz --min-ac <span class="m">1</span>:nonmajor --trim-alt-alleles merged.vcf.gz
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!bcftools view --output-type z --output-file merged_variant.vcf.gz --min-ac 1:nonmajor --trim-alt-alleles merged.vcf.gz
 </pre></div>
 </div>
 </div>
 </div>
-<p>SNP calls in VCF format will also shortly be available from the European Variation Archive (EVA), check back soon for more information.</p>
-<!--
-
-SNP calls in VCF format are also available from the European Variation Archive (EVA). A catalog file mapping sample identifiers to EVA accessions is available at this link:
-
-* https://storage.googleapis.com/vo_agam_release/v3/metadata/eva_snp_genotypes.csv (@@TODO)
-
-Alternatively if you ran the `gsutil rsync` command above to download sample metadata then this file will already be present on your local file system. Inspect the file:
-
-!head ~/vo_agam_release/v3/metadata/ena_snp_genotypes.csv
-
-Each row in this file provides a mapping from Ag1000G sample identifiers to EVA analysis accessions. To find links for downloading the data, visit the EVA website and search for the corresponding analysis accession. E.g., the VCF file for sample @@TODO can be downloaded from this web page: @@TODO
-
---></section>
+</section>
 <section id="site-filters">
 <h3>Site filters<a class="headerlink" href="#site-filters" title="Permalink to this headline">#</a></h3>
 <p>SNP calling is not always reliable, and we have created some site filters to allow excluding low quality SNPs. We have created some sites-only VCF files with site filter information in the <code class="docutils literal notranslate"><span class="pre">FILTER</span></code> column. These VCF files are hosted on GCS.</p>
@@ -1190,8 +1192,8 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 <p>VCF files for all samples sets can be downloaded via gsutil as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a local directory to hold downloaded CNV data</span>
-<span class="o">!</span>mkdir -pv ~/vo_agam_release/v3/cnv/
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a local directory to hold downloaded CNV data
+!mkdir -pv ~/vo_agam_release/v3/cnv/
 </pre></div>
 </div>
 </div>
@@ -1361,1694 +1363,6 @@ Each row in this file provides a mapping from Ag1000G sample identifiers to EVA 
 </div>
 </div>
 </section>
-</section>
-<section id="accessing-downloaded-data-from-python">
-<h2>Accessing downloaded data from Python<a class="headerlink" href="#accessing-downloaded-data-from-python" title="Permalink to this headline">#</a></h2>
-<p>There are a wide variety of tools available for analysing the data from Ag1000G phase 3 once downloaded to your local system. If you would like to ask about possible approaches for a given analysis, please feel free to <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions/new">start a new discussion</a> on the malariagen/vector-public-data repo on GitHub.</p>
-<p>Within the MalariaGEN vector genomics team we primarily use the Python programming language for analysing the SNP data, making use of software packages in the Scientific Python / PyData ecosystem. This section gives some simple examples illustrating how to use these tools to read downloaded data.</p>
-<p>These examples use data from two sample sets, AG1000G-BF-A and AG1000G-BF-B.</p>
-<p>Firstly, here are all the commands again to download the data needed to run these examples (requires about 10G of local storage):</p>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download sample set manifest
-!mkdir -pv ~/vo_agam_release/v3/
-!gsutil cp gs://vo_agam_release/v3/manifest.tsv ~/vo_agam_release/v3/
-
-# download sample metadata
-!mkdir -pv ~/vo_agam_release/v3/metadata/
-!gsutil -m rsync -r gs://vo_agam_release/v3/metadata/ ~/vo_agam_release/v3/metadata/
-
-# download sites data
-!mkdir -pv ~/vo_agam_release/v3/snp_genotypes/all/sites/
-!gsutil -m rsync -r \
-    gs://vo_agam_release/v3/snp_genotypes/all/sites/ \
-    ~/vo_agam_release/v3/snp_genotypes/all/sites/
-
-# download site filters data
-!mkdir -pv ~/vo_agam_release/v3/site_filters/
-!gsutil -m rsync -r \
-    -x &#39;.*vcf.*|.*crosses_stats.*|.*[MG]Q10.*|.*[MG]Q30.*|.*[MG]Q_mean.*|.*[MG]Q_std.*|.*/lo_.*|.*/hi_.*|.*no_cov.*|.*allele_consistency.*|.*heterozygosity.*&#39; \
-    gs://vo_agam_release/v3/site_filters/ \
-    ~/vo_agam_release/v3/site_filters/
-
-# download SNP genotype data for selected sample sets
-!mkdir -pv ~/vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-A/
-!gsutil -m rsync -r \
-        -x &#39;.*/calldata/(AD|GQ|MQ)/.*&#39; \
-        gs://vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-A/ \
-        ~/vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-A/
-!mkdir -pv ~/vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-B/
-!gsutil -m rsync -r \
-        -x &#39;.*/calldata/(AD|GQ|MQ)/.*&#39; \
-        gs://vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-B/ \
-        ~/vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-B/
-    
-# download CNV HMM data for all sample sets
-!mkdir -pv ~/vo_agam_release/v3/cnv/
-!gsutil -m rsync -r \
-    -x &#39;.*/coverage_calls/.*|.*/discordant_read_calls/.*|.*/hmm/vcf/.*|.*/hmm/per_sample/.*&#39; \
-    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
-</pre></div>
-</div>
-</div>
-</div>
-<p>The following Python packages need to be installed on the local system:</p>
-<div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen_data
-</pre></div>
-</div>
-</div>
-</div>
-<p>To make accessing these data more convenient, we’ve created the <a class="reference external" href="https://github.com/malariagen/malariagen-data-python">malariagen_data</a> Python package. This is experimental so please let us know if you find any bugs or have any suggestions. See the <a class="reference internal" href="api.html"><span class="doc std std-doc">Ag3 API docs</span></a> for documentation of all functions available from this package.</p>
-<p>Set up access to the Ag1000G phase 3 data, at the local path where data were downloaded:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
-<span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">(</span><span class="s2">&quot;~/vo_agam_release/&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Examples of reading/opening various files:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read sample set manifest into a pandas dataframe</span>
-<span class="n">df_sample_sets</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_sets</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">df_sample_sets</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-b2e096c0-633b-4397-bebd-e8a80c3a36d2">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>sample_set</th>
-      <th>sample_count</th>
-      <th>release</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>AG1000G-AO</td>
-      <td>81</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>AG1000G-BF-A</td>
-      <td>181</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>AG1000G-BF-B</td>
-      <td>102</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>AG1000G-BF-C</td>
-      <td>13</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>AG1000G-CD</td>
-      <td>76</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>AG1000G-CF</td>
-      <td>73</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>AG1000G-CI</td>
-      <td>80</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>AG1000G-CM-A</td>
-      <td>303</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>AG1000G-CM-B</td>
-      <td>97</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>AG1000G-CM-C</td>
-      <td>44</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>AG1000G-FR</td>
-      <td>23</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>AG1000G-GA-A</td>
-      <td>69</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>AG1000G-GH</td>
-      <td>100</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>AG1000G-GM-A</td>
-      <td>74</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>AG1000G-GM-B</td>
-      <td>31</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>AG1000G-GM-C</td>
-      <td>174</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>AG1000G-GN-A</td>
-      <td>45</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>AG1000G-GN-B</td>
-      <td>185</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>AG1000G-GQ</td>
-      <td>10</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>AG1000G-GW</td>
-      <td>101</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>AG1000G-KE</td>
-      <td>86</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>AG1000G-ML-A</td>
-      <td>60</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>AG1000G-ML-B</td>
-      <td>71</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>AG1000G-MW</td>
-      <td>41</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>AG1000G-MZ</td>
-      <td>74</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>AG1000G-TZ</td>
-      <td>300</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>AG1000G-UG</td>
-      <td>290</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>AG1000G-X</td>
-      <td>297</td>
-      <td>3.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-b2e096c0-633b-4397-bebd-e8a80c3a36d2')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-b2e096c0-633b-4397-bebd-e8a80c3a36d2 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-b2e096c0-633b-4397-bebd-e8a80c3a36d2');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read sample metadata for AG1000G-BF-A and AG1000G-BF-B into a pandas dataframe</span>
-<span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AG1000G-BF-A&#39;</span><span class="p">,</span> <span class="s1">&#39;AG1000G-BF-B&#39;</span><span class="p">])</span>
-<span class="n">df_samples</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-6c31320f-2f6e-492a-8105-b540ad1a1434">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>sample_id</th>
-      <th>partner_sample_id</th>
-      <th>contributor</th>
-      <th>country</th>
-      <th>location</th>
-      <th>year</th>
-      <th>month</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>sex_call</th>
-      <th>sample_set</th>
-      <th>release</th>
-      <th>aim_species_fraction_colu</th>
-      <th>aim_species_fraction_arab</th>
-      <th>aim_species_gambcolu_arabiensis</th>
-      <th>aim_species_gambiae_coluzzii</th>
-      <th>aim_species</th>
-      <th>country_ISO</th>
-      <th>adm1_name</th>
-      <th>adm1_ISO</th>
-      <th>adm2_name</th>
-      <th>taxon</th>
-      <th>cohort_admin1_year</th>
-      <th>cohort_admin1_month</th>
-      <th>cohort_admin2_year</th>
-      <th>cohort_admin2_month</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>AB0085-Cx</td>
-      <td>BF2-4</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Pala</td>
-      <td>2012</td>
-      <td>7</td>
-      <td>11.150</td>
-      <td>-4.235</td>
-      <td>F</td>
-      <td>AG1000G-BF-A</td>
-      <td>3.0</td>
-      <td>0.024</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>gambiae</td>
-      <td>gambiae</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>gambiae</td>
-      <td>BF-09_gamb_2012</td>
-      <td>BF-09_gamb_2012_07</td>
-      <td>BF-09_Houet_gamb_2012</td>
-      <td>BF-09_Houet_gamb_2012_07</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>AB0086-Cx</td>
-      <td>BF2-6</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Pala</td>
-      <td>2012</td>
-      <td>7</td>
-      <td>11.150</td>
-      <td>-4.235</td>
-      <td>F</td>
-      <td>AG1000G-BF-A</td>
-      <td>3.0</td>
-      <td>0.038</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>gambiae</td>
-      <td>gambiae</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>gambiae</td>
-      <td>BF-09_gamb_2012</td>
-      <td>BF-09_gamb_2012_07</td>
-      <td>BF-09_Houet_gamb_2012</td>
-      <td>BF-09_Houet_gamb_2012_07</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>AB0087-C</td>
-      <td>BF3-3</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Bana</td>
-      <td>2012</td>
-      <td>7</td>
-      <td>11.233</td>
-      <td>-4.472</td>
-      <td>F</td>
-      <td>AG1000G-BF-A</td>
-      <td>3.0</td>
-      <td>0.982</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>coluzzii</td>
-      <td>coluzzii</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>coluzzii</td>
-      <td>BF-09_colu_2012</td>
-      <td>BF-09_colu_2012_07</td>
-      <td>BF-09_Houet_colu_2012</td>
-      <td>BF-09_Houet_colu_2012_07</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>AB0088-C</td>
-      <td>BF3-5</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Bana</td>
-      <td>2012</td>
-      <td>7</td>
-      <td>11.233</td>
-      <td>-4.472</td>
-      <td>F</td>
-      <td>AG1000G-BF-A</td>
-      <td>3.0</td>
-      <td>0.990</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>coluzzii</td>
-      <td>coluzzii</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>coluzzii</td>
-      <td>BF-09_colu_2012</td>
-      <td>BF-09_colu_2012_07</td>
-      <td>BF-09_Houet_colu_2012</td>
-      <td>BF-09_Houet_colu_2012_07</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>AB0089-Cx</td>
-      <td>BF3-8</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Bana</td>
-      <td>2012</td>
-      <td>7</td>
-      <td>11.233</td>
-      <td>-4.472</td>
-      <td>F</td>
-      <td>AG1000G-BF-A</td>
-      <td>3.0</td>
-      <td>0.975</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>coluzzii</td>
-      <td>coluzzii</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>coluzzii</td>
-      <td>BF-09_colu_2012</td>
-      <td>BF-09_colu_2012_07</td>
-      <td>BF-09_Houet_colu_2012</td>
-      <td>BF-09_Houet_colu_2012_07</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>278</th>
-      <td>AB0533-C</td>
-      <td>BF13-18</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Souroukoudinga</td>
-      <td>2014</td>
-      <td>7</td>
-      <td>11.235</td>
-      <td>-4.535</td>
-      <td>F</td>
-      <td>AG1000G-BF-B</td>
-      <td>3.0</td>
-      <td>0.021</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>gambiae</td>
-      <td>gambiae</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>gambiae</td>
-      <td>BF-09_gamb_2014</td>
-      <td>BF-09_gamb_2014_07</td>
-      <td>BF-09_Houet_gamb_2014</td>
-      <td>BF-09_Houet_gamb_2014_07</td>
-    </tr>
-    <tr>
-      <th>279</th>
-      <td>AB0536-C</td>
-      <td>BF13-31</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Souroukoudinga</td>
-      <td>2014</td>
-      <td>7</td>
-      <td>11.235</td>
-      <td>-4.535</td>
-      <td>F</td>
-      <td>AG1000G-BF-B</td>
-      <td>3.0</td>
-      <td>0.025</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>gambiae</td>
-      <td>gambiae</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>gambiae</td>
-      <td>BF-09_gamb_2014</td>
-      <td>BF-09_gamb_2014_07</td>
-      <td>BF-09_Houet_gamb_2014</td>
-      <td>BF-09_Houet_gamb_2014_07</td>
-    </tr>
-    <tr>
-      <th>280</th>
-      <td>AB0537-C</td>
-      <td>BF13-32</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Souroukoudinga</td>
-      <td>2014</td>
-      <td>7</td>
-      <td>11.235</td>
-      <td>-4.535</td>
-      <td>F</td>
-      <td>AG1000G-BF-B</td>
-      <td>3.0</td>
-      <td>0.029</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>gambiae</td>
-      <td>gambiae</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>gambiae</td>
-      <td>BF-09_gamb_2014</td>
-      <td>BF-09_gamb_2014_07</td>
-      <td>BF-09_Houet_gamb_2014</td>
-      <td>BF-09_Houet_gamb_2014_07</td>
-    </tr>
-    <tr>
-      <th>281</th>
-      <td>AB0538-C</td>
-      <td>BF13-33</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Souroukoudinga</td>
-      <td>2014</td>
-      <td>7</td>
-      <td>11.235</td>
-      <td>-4.535</td>
-      <td>F</td>
-      <td>AG1000G-BF-B</td>
-      <td>3.0</td>
-      <td>0.018</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>gambiae</td>
-      <td>gambiae</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>gambiae</td>
-      <td>BF-09_gamb_2014</td>
-      <td>BF-09_gamb_2014_07</td>
-      <td>BF-09_Houet_gamb_2014</td>
-      <td>BF-09_Houet_gamb_2014_07</td>
-    </tr>
-    <tr>
-      <th>282</th>
-      <td>AB0408-C</td>
-      <td>BF14-20</td>
-      <td>Austin Burt</td>
-      <td>Burkina Faso</td>
-      <td>Bana</td>
-      <td>2014</td>
-      <td>7</td>
-      <td>11.233</td>
-      <td>-4.472</td>
-      <td>F</td>
-      <td>AG1000G-BF-B</td>
-      <td>3.0</td>
-      <td>0.986</td>
-      <td>0.002</td>
-      <td>gamb_colu</td>
-      <td>coluzzii</td>
-      <td>coluzzii</td>
-      <td>BFA</td>
-      <td>Hauts-Bassins</td>
-      <td>BF-09</td>
-      <td>Houet</td>
-      <td>coluzzii</td>
-      <td>BF-09_colu_2014</td>
-      <td>BF-09_colu_2014_07</td>
-      <td>BF-09_Houet_colu_2014</td>
-      <td>BF-09_Houet_colu_2014_07</td>
-    </tr>
-  </tbody>
-</table>
-<p>283 rows × 26 columns</p>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-6c31320f-2f6e-492a-8105-b540ad1a1434')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-6c31320f-2f6e-492a-8105-b540ad1a1434 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-6c31320f-2f6e-492a-8105-b540ad1a1434');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect number of samples by species</span>
-<span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;taxon&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>taxon
-arabiensis                         3
-coluzzii                         135
-gambiae                          144
-intermediate_gambiae_coluzzii      1
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access SNP positions and alleles for chromosome arm 3R as dask array</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_sites</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s2">&quot;POS&quot;</span><span class="p">)</span>
-<span class="n">pos</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 208.91 MB </td> <td> 2.10 MB </td></tr>
-    <tr><th> Shape </th><td> (52226568,) </td> <td> (524288,) </td></tr>
-    <tr><th> Count </th><td> 101 Tasks </td><td> 100 Chunks </td></tr>
-    <tr><th> Type </th><td> int32 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="1" y1="0" x2="1" y2="25" />
-  <line x1="2" y1="0" x2="2" y2="25" />
-  <line x1="3" y1="0" x2="3" y2="25" />
-  <line x1="4" y1="0" x2="4" y2="25" />
-  <line x1="6" y1="0" x2="6" y2="25" />
-  <line x1="7" y1="0" x2="7" y2="25" />
-  <line x1="8" y1="0" x2="8" y2="25" />
-  <line x1="9" y1="0" x2="9" y2="25" />
-  <line x1="10" y1="0" x2="10" y2="25" />
-  <line x1="12" y1="0" x2="12" y2="25" />
-  <line x1="13" y1="0" x2="13" y2="25" />
-  <line x1="14" y1="0" x2="14" y2="25" />
-  <line x1="15" y1="0" x2="15" y2="25" />
-  <line x1="16" y1="0" x2="16" y2="25" />
-  <line x1="18" y1="0" x2="18" y2="25" />
-  <line x1="19" y1="0" x2="19" y2="25" />
-  <line x1="20" y1="0" x2="20" y2="25" />
-  <line x1="21" y1="0" x2="21" y2="25" />
-  <line x1="22" y1="0" x2="22" y2="25" />
-  <line x1="24" y1="0" x2="24" y2="25" />
-  <line x1="25" y1="0" x2="25" y2="25" />
-  <line x1="26" y1="0" x2="26" y2="25" />
-  <line x1="27" y1="0" x2="27" y2="25" />
-  <line x1="28" y1="0" x2="28" y2="25" />
-  <line x1="30" y1="0" x2="30" y2="25" />
-  <line x1="31" y1="0" x2="31" y2="25" />
-  <line x1="32" y1="0" x2="32" y2="25" />
-  <line x1="33" y1="0" x2="33" y2="25" />
-  <line x1="34" y1="0" x2="34" y2="25" />
-  <line x1="36" y1="0" x2="36" y2="25" />
-  <line x1="37" y1="0" x2="37" y2="25" />
-  <line x1="38" y1="0" x2="38" y2="25" />
-  <line x1="39" y1="0" x2="39" y2="25" />
-  <line x1="40" y1="0" x2="40" y2="25" />
-  <line x1="42" y1="0" x2="42" y2="25" />
-  <line x1="43" y1="0" x2="43" y2="25" />
-  <line x1="44" y1="0" x2="44" y2="25" />
-  <line x1="45" y1="0" x2="45" y2="25" />
-  <line x1="46" y1="0" x2="46" y2="25" />
-  <line x1="48" y1="0" x2="48" y2="25" />
-  <line x1="49" y1="0" x2="49" y2="25" />
-  <line x1="50" y1="0" x2="50" y2="25" />
-  <line x1="51" y1="0" x2="51" y2="25" />
-  <line x1="53" y1="0" x2="53" y2="25" />
-  <line x1="54" y1="0" x2="54" y2="25" />
-  <line x1="55" y1="0" x2="55" y2="25" />
-  <line x1="56" y1="0" x2="56" y2="25" />
-  <line x1="57" y1="0" x2="57" y2="25" />
-  <line x1="59" y1="0" x2="59" y2="25" />
-  <line x1="60" y1="0" x2="60" y2="25" />
-  <line x1="61" y1="0" x2="61" y2="25" />
-  <line x1="62" y1="0" x2="62" y2="25" />
-  <line x1="63" y1="0" x2="63" y2="25" />
-  <line x1="65" y1="0" x2="65" y2="25" />
-  <line x1="66" y1="0" x2="66" y2="25" />
-  <line x1="67" y1="0" x2="67" y2="25" />
-  <line x1="68" y1="0" x2="68" y2="25" />
-  <line x1="69" y1="0" x2="69" y2="25" />
-  <line x1="71" y1="0" x2="71" y2="25" />
-  <line x1="72" y1="0" x2="72" y2="25" />
-  <line x1="73" y1="0" x2="73" y2="25" />
-  <line x1="74" y1="0" x2="74" y2="25" />
-  <line x1="75" y1="0" x2="75" y2="25" />
-  <line x1="77" y1="0" x2="77" y2="25" />
-  <line x1="78" y1="0" x2="78" y2="25" />
-  <line x1="79" y1="0" x2="79" y2="25" />
-  <line x1="80" y1="0" x2="80" y2="25" />
-  <line x1="81" y1="0" x2="81" y2="25" />
-  <line x1="83" y1="0" x2="83" y2="25" />
-  <line x1="84" y1="0" x2="84" y2="25" />
-  <line x1="85" y1="0" x2="85" y2="25" />
-  <line x1="86" y1="0" x2="86" y2="25" />
-  <line x1="87" y1="0" x2="87" y2="25" />
-  <line x1="89" y1="0" x2="89" y2="25" />
-  <line x1="90" y1="0" x2="90" y2="25" />
-  <line x1="91" y1="0" x2="91" y2="25" />
-  <line x1="92" y1="0" x2="92" y2="25" />
-  <line x1="93" y1="0" x2="93" y2="25" />
-  <line x1="95" y1="0" x2="95" y2="25" />
-  <line x1="96" y1="0" x2="96" y2="25" />
-  <line x1="97" y1="0" x2="97" y2="25" />
-  <line x1="98" y1="0" x2="98" y2="25" />
-  <line x1="99" y1="0" x2="99" y2="25" />
-  <line x1="101" y1="0" x2="101" y2="25" />
-  <line x1="102" y1="0" x2="102" y2="25" />
-  <line x1="103" y1="0" x2="103" y2="25" />
-  <line x1="104" y1="0" x2="104" y2="25" />
-  <line x1="106" y1="0" x2="106" y2="25" />
-  <line x1="107" y1="0" x2="107" y2="25" />
-  <line x1="108" y1="0" x2="108" y2="25" />
-  <line x1="109" y1="0" x2="109" y2="25" />
-  <line x1="110" y1="0" x2="110" y2="25" />
-  <line x1="112" y1="0" x2="112" y2="25" />
-  <line x1="113" y1="0" x2="113" y2="25" />
-  <line x1="114" y1="0" x2="114" y2="25" />
-  <line x1="115" y1="0" x2="115" y2="25" />
-  <line x1="116" y1="0" x2="116" y2="25" />
-  <line x1="118" y1="0" x2="118" y2="25" />
-  <line x1="119" y1="0" x2="119" y2="25" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >52226568</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-</td>
-</tr>
-</table></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read first 10 SNP positions into a numpy array</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">p</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10], dtype=int32)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access gamb_colu_arab site filters for chromosome arm 3R as a dask array</span>
-<span class="n">filter_pass</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">)</span>
-<span class="n">filter_pass</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 52.23 MB </td> <td> 300.00 kB </td></tr>
-    <tr><th> Shape </th><td> (52226568,) </td> <td> (300000,) </td></tr>
-    <tr><th> Count </th><td> 176 Tasks </td><td> 175 Chunks </td></tr>
-    <tr><th> Type </th><td> bool </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="0" y1="0" x2="0" y2="25" />
-  <line x1="1" y1="0" x2="1" y2="25" />
-  <line x1="2" y1="0" x2="2" y2="25" />
-  <line x1="2" y1="0" x2="2" y2="25" />
-  <line x1="3" y1="0" x2="3" y2="25" />
-  <line x1="4" y1="0" x2="4" y2="25" />
-  <line x1="4" y1="0" x2="4" y2="25" />
-  <line x1="5" y1="0" x2="5" y2="25" />
-  <line x1="6" y1="0" x2="6" y2="25" />
-  <line x1="6" y1="0" x2="6" y2="25" />
-  <line x1="7" y1="0" x2="7" y2="25" />
-  <line x1="8" y1="0" x2="8" y2="25" />
-  <line x1="8" y1="0" x2="8" y2="25" />
-  <line x1="9" y1="0" x2="9" y2="25" />
-  <line x1="10" y1="0" x2="10" y2="25" />
-  <line x1="11" y1="0" x2="11" y2="25" />
-  <line x1="11" y1="0" x2="11" y2="25" />
-  <line x1="12" y1="0" x2="12" y2="25" />
-  <line x1="13" y1="0" x2="13" y2="25" />
-  <line x1="13" y1="0" x2="13" y2="25" />
-  <line x1="14" y1="0" x2="14" y2="25" />
-  <line x1="15" y1="0" x2="15" y2="25" />
-  <line x1="15" y1="0" x2="15" y2="25" />
-  <line x1="16" y1="0" x2="16" y2="25" />
-  <line x1="17" y1="0" x2="17" y2="25" />
-  <line x1="17" y1="0" x2="17" y2="25" />
-  <line x1="18" y1="0" x2="18" y2="25" />
-  <line x1="19" y1="0" x2="19" y2="25" />
-  <line x1="19" y1="0" x2="19" y2="25" />
-  <line x1="20" y1="0" x2="20" y2="25" />
-  <line x1="21" y1="0" x2="21" y2="25" />
-  <line x1="22" y1="0" x2="22" y2="25" />
-  <line x1="22" y1="0" x2="22" y2="25" />
-  <line x1="23" y1="0" x2="23" y2="25" />
-  <line x1="24" y1="0" x2="24" y2="25" />
-  <line x1="24" y1="0" x2="24" y2="25" />
-  <line x1="25" y1="0" x2="25" y2="25" />
-  <line x1="26" y1="0" x2="26" y2="25" />
-  <line x1="26" y1="0" x2="26" y2="25" />
-  <line x1="27" y1="0" x2="27" y2="25" />
-  <line x1="28" y1="0" x2="28" y2="25" />
-  <line x1="28" y1="0" x2="28" y2="25" />
-  <line x1="29" y1="0" x2="29" y2="25" />
-  <line x1="30" y1="0" x2="30" y2="25" />
-  <line x1="31" y1="0" x2="31" y2="25" />
-  <line x1="31" y1="0" x2="31" y2="25" />
-  <line x1="32" y1="0" x2="32" y2="25" />
-  <line x1="33" y1="0" x2="33" y2="25" />
-  <line x1="33" y1="0" x2="33" y2="25" />
-  <line x1="34" y1="0" x2="34" y2="25" />
-  <line x1="35" y1="0" x2="35" y2="25" />
-  <line x1="35" y1="0" x2="35" y2="25" />
-  <line x1="36" y1="0" x2="36" y2="25" />
-  <line x1="37" y1="0" x2="37" y2="25" />
-  <line x1="37" y1="0" x2="37" y2="25" />
-  <line x1="38" y1="0" x2="38" y2="25" />
-  <line x1="39" y1="0" x2="39" y2="25" />
-  <line x1="39" y1="0" x2="39" y2="25" />
-  <line x1="40" y1="0" x2="40" y2="25" />
-  <line x1="41" y1="0" x2="41" y2="25" />
-  <line x1="42" y1="0" x2="42" y2="25" />
-  <line x1="42" y1="0" x2="42" y2="25" />
-  <line x1="43" y1="0" x2="43" y2="25" />
-  <line x1="44" y1="0" x2="44" y2="25" />
-  <line x1="44" y1="0" x2="44" y2="25" />
-  <line x1="45" y1="0" x2="45" y2="25" />
-  <line x1="46" y1="0" x2="46" y2="25" />
-  <line x1="46" y1="0" x2="46" y2="25" />
-  <line x1="47" y1="0" x2="47" y2="25" />
-  <line x1="48" y1="0" x2="48" y2="25" />
-  <line x1="48" y1="0" x2="48" y2="25" />
-  <line x1="49" y1="0" x2="49" y2="25" />
-  <line x1="50" y1="0" x2="50" y2="25" />
-  <line x1="51" y1="0" x2="51" y2="25" />
-  <line x1="51" y1="0" x2="51" y2="25" />
-  <line x1="52" y1="0" x2="52" y2="25" />
-  <line x1="53" y1="0" x2="53" y2="25" />
-  <line x1="53" y1="0" x2="53" y2="25" />
-  <line x1="54" y1="0" x2="54" y2="25" />
-  <line x1="55" y1="0" x2="55" y2="25" />
-  <line x1="55" y1="0" x2="55" y2="25" />
-  <line x1="56" y1="0" x2="56" y2="25" />
-  <line x1="57" y1="0" x2="57" y2="25" />
-  <line x1="57" y1="0" x2="57" y2="25" />
-  <line x1="58" y1="0" x2="58" y2="25" />
-  <line x1="59" y1="0" x2="59" y2="25" />
-  <line x1="59" y1="0" x2="59" y2="25" />
-  <line x1="60" y1="0" x2="60" y2="25" />
-  <line x1="61" y1="0" x2="61" y2="25" />
-  <line x1="62" y1="0" x2="62" y2="25" />
-  <line x1="62" y1="0" x2="62" y2="25" />
-  <line x1="63" y1="0" x2="63" y2="25" />
-  <line x1="64" y1="0" x2="64" y2="25" />
-  <line x1="64" y1="0" x2="64" y2="25" />
-  <line x1="65" y1="0" x2="65" y2="25" />
-  <line x1="66" y1="0" x2="66" y2="25" />
-  <line x1="66" y1="0" x2="66" y2="25" />
-  <line x1="67" y1="0" x2="67" y2="25" />
-  <line x1="68" y1="0" x2="68" y2="25" />
-  <line x1="68" y1="0" x2="68" y2="25" />
-  <line x1="69" y1="0" x2="69" y2="25" />
-  <line x1="70" y1="0" x2="70" y2="25" />
-  <line x1="70" y1="0" x2="70" y2="25" />
-  <line x1="71" y1="0" x2="71" y2="25" />
-  <line x1="72" y1="0" x2="72" y2="25" />
-  <line x1="73" y1="0" x2="73" y2="25" />
-  <line x1="73" y1="0" x2="73" y2="25" />
-  <line x1="74" y1="0" x2="74" y2="25" />
-  <line x1="75" y1="0" x2="75" y2="25" />
-  <line x1="75" y1="0" x2="75" y2="25" />
-  <line x1="76" y1="0" x2="76" y2="25" />
-  <line x1="77" y1="0" x2="77" y2="25" />
-  <line x1="77" y1="0" x2="77" y2="25" />
-  <line x1="78" y1="0" x2="78" y2="25" />
-  <line x1="79" y1="0" x2="79" y2="25" />
-  <line x1="79" y1="0" x2="79" y2="25" />
-  <line x1="80" y1="0" x2="80" y2="25" />
-  <line x1="81" y1="0" x2="81" y2="25" />
-  <line x1="82" y1="0" x2="82" y2="25" />
-  <line x1="82" y1="0" x2="82" y2="25" />
-  <line x1="83" y1="0" x2="83" y2="25" />
-  <line x1="84" y1="0" x2="84" y2="25" />
-  <line x1="84" y1="0" x2="84" y2="25" />
-  <line x1="85" y1="0" x2="85" y2="25" />
-  <line x1="86" y1="0" x2="86" y2="25" />
-  <line x1="86" y1="0" x2="86" y2="25" />
-  <line x1="87" y1="0" x2="87" y2="25" />
-  <line x1="88" y1="0" x2="88" y2="25" />
-  <line x1="88" y1="0" x2="88" y2="25" />
-  <line x1="89" y1="0" x2="89" y2="25" />
-  <line x1="90" y1="0" x2="90" y2="25" />
-  <line x1="90" y1="0" x2="90" y2="25" />
-  <line x1="91" y1="0" x2="91" y2="25" />
-  <line x1="92" y1="0" x2="92" y2="25" />
-  <line x1="93" y1="0" x2="93" y2="25" />
-  <line x1="93" y1="0" x2="93" y2="25" />
-  <line x1="94" y1="0" x2="94" y2="25" />
-  <line x1="95" y1="0" x2="95" y2="25" />
-  <line x1="95" y1="0" x2="95" y2="25" />
-  <line x1="96" y1="0" x2="96" y2="25" />
-  <line x1="97" y1="0" x2="97" y2="25" />
-  <line x1="97" y1="0" x2="97" y2="25" />
-  <line x1="98" y1="0" x2="98" y2="25" />
-  <line x1="99" y1="0" x2="99" y2="25" />
-  <line x1="99" y1="0" x2="99" y2="25" />
-  <line x1="100" y1="0" x2="100" y2="25" />
-  <line x1="101" y1="0" x2="101" y2="25" />
-  <line x1="102" y1="0" x2="102" y2="25" />
-  <line x1="102" y1="0" x2="102" y2="25" />
-  <line x1="103" y1="0" x2="103" y2="25" />
-  <line x1="104" y1="0" x2="104" y2="25" />
-  <line x1="104" y1="0" x2="104" y2="25" />
-  <line x1="105" y1="0" x2="105" y2="25" />
-  <line x1="106" y1="0" x2="106" y2="25" />
-  <line x1="106" y1="0" x2="106" y2="25" />
-  <line x1="107" y1="0" x2="107" y2="25" />
-  <line x1="108" y1="0" x2="108" y2="25" />
-  <line x1="108" y1="0" x2="108" y2="25" />
-  <line x1="109" y1="0" x2="109" y2="25" />
-  <line x1="110" y1="0" x2="110" y2="25" />
-  <line x1="110" y1="0" x2="110" y2="25" />
-  <line x1="111" y1="0" x2="111" y2="25" />
-  <line x1="112" y1="0" x2="112" y2="25" />
-  <line x1="113" y1="0" x2="113" y2="25" />
-  <line x1="113" y1="0" x2="113" y2="25" />
-  <line x1="114" y1="0" x2="114" y2="25" />
-  <line x1="115" y1="0" x2="115" y2="25" />
-  <line x1="115" y1="0" x2="115" y2="25" />
-  <line x1="116" y1="0" x2="116" y2="25" />
-  <line x1="117" y1="0" x2="117" y2="25" />
-  <line x1="117" y1="0" x2="117" y2="25" />
-  <line x1="118" y1="0" x2="118" y2="25" />
-  <line x1="119" y1="0" x2="119" y2="25" />
-  <line x1="119" y1="0" x2="119" y2="25" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >52226568</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-</td>
-</tr>
-</table></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read filter values for first 10 SNPs (True means the site passes filters)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">filter_pass</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">f</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False, False, False, False, False, False, False, False,
-       False])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access SNP genotypes for AG1000G-BF-A and AG1000G-BF-B as a dask array</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_genotypes</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">])</span>
-<span class="n">gt</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table>
-<tr>
-<td>
-<table>
-  <thead>
-    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
-  </thead>
-  <tbody>
-    <tr><th> Bytes </th><td> 29.56 GB </td> <td> 30.00 MB </td></tr>
-    <tr><th> Shape </th><td> (52226568, 283, 2) </td> <td> (300000, 50, 2) </td></tr>
-    <tr><th> Count </th><td> 2452 Tasks </td><td> 1225 Chunks </td></tr>
-    <tr><th> Type </th><td> int8 </td><td> numpy.ndarray </td></tr>
-  </tbody>
-</table>
-</td>
-<td>
-<svg width="156" height="146" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="10" y1="4" x2="80" y2="75" />
-  <line x1="10" y1="8" x2="80" y2="79" />
-  <line x1="10" y1="13" x2="80" y2="84" />
-  <line x1="10" y1="16" x2="80" y2="86" />
-  <line x1="10" y1="20" x2="80" y2="91" />
-  <line x1="10" y1="25" x2="80" y2="95" />
-  <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
-  <line x1="10" y1="0" x2="10" y2="25" />
-  <line x1="10" y1="0" x2="10" y2="26" />
-  <line x1="11" y1="1" x2="11" y2="26" />
-  <line x1="11" y1="1" x2="11" y2="27" />
-  <line x1="12" y1="2" x2="12" y2="27" />
-  <line x1="12" y1="2" x2="12" y2="27" />
-  <line x1="12" y1="2" x2="12" y2="28" />
-  <line x1="13" y1="3" x2="13" y2="28" />
-  <line x1="13" y1="3" x2="13" y2="29" />
-  <line x1="14" y1="4" x2="14" y2="29" />
-  <line x1="14" y1="4" x2="14" y2="29" />
-  <line x1="14" y1="4" x2="14" y2="30" />
-  <line x1="15" y1="5" x2="15" y2="30" />
-  <line x1="15" y1="5" x2="15" y2="31" />
-  <line x1="16" y1="6" x2="16" y2="31" />
-  <line x1="16" y1="6" x2="16" y2="31" />
-  <line x1="16" y1="6" x2="16" y2="32" />
-  <line x1="17" y1="7" x2="17" y2="32" />
-  <line x1="17" y1="7" x2="17" y2="33" />
-  <line x1="18" y1="8" x2="18" y2="33" />
-  <line x1="18" y1="8" x2="18" y2="33" />
-  <line x1="18" y1="8" x2="18" y2="34" />
-  <line x1="19" y1="9" x2="19" y2="34" />
-  <line x1="19" y1="9" x2="19" y2="35" />
-  <line x1="20" y1="10" x2="20" y2="35" />
-  <line x1="20" y1="10" x2="20" y2="35" />
-  <line x1="20" y1="10" x2="20" y2="36" />
-  <line x1="21" y1="11" x2="21" y2="36" />
-  <line x1="21" y1="11" x2="21" y2="37" />
-  <line x1="22" y1="12" x2="22" y2="37" />
-  <line x1="22" y1="12" x2="22" y2="37" />
-  <line x1="22" y1="12" x2="22" y2="38" />
-  <line x1="23" y1="13" x2="23" y2="38" />
-  <line x1="23" y1="13" x2="23" y2="39" />
-  <line x1="24" y1="14" x2="24" y2="39" />
-  <line x1="24" y1="14" x2="24" y2="40" />
-  <line x1="25" y1="15" x2="25" y2="40" />
-  <line x1="25" y1="15" x2="25" y2="40" />
-  <line x1="25" y1="15" x2="25" y2="41" />
-  <line x1="26" y1="16" x2="26" y2="41" />
-  <line x1="26" y1="16" x2="26" y2="42" />
-  <line x1="27" y1="17" x2="27" y2="42" />
-  <line x1="27" y1="17" x2="27" y2="42" />
-  <line x1="27" y1="17" x2="27" y2="43" />
-  <line x1="28" y1="18" x2="28" y2="43" />
-  <line x1="28" y1="18" x2="28" y2="44" />
-  <line x1="29" y1="19" x2="29" y2="44" />
-  <line x1="29" y1="19" x2="29" y2="44" />
-  <line x1="29" y1="19" x2="29" y2="45" />
-  <line x1="30" y1="20" x2="30" y2="45" />
-  <line x1="30" y1="20" x2="30" y2="46" />
-  <line x1="31" y1="21" x2="31" y2="46" />
-  <line x1="31" y1="21" x2="31" y2="46" />
-  <line x1="31" y1="21" x2="31" y2="47" />
-  <line x1="32" y1="22" x2="32" y2="47" />
-  <line x1="32" y1="22" x2="32" y2="48" />
-  <line x1="33" y1="23" x2="33" y2="48" />
-  <line x1="33" y1="23" x2="33" y2="48" />
-  <line x1="33" y1="23" x2="33" y2="49" />
-  <line x1="34" y1="24" x2="34" y2="49" />
-  <line x1="34" y1="24" x2="34" y2="50" />
-  <line x1="35" y1="25" x2="35" y2="50" />
-  <line x1="35" y1="25" x2="35" y2="50" />
-  <line x1="35" y1="25" x2="35" y2="51" />
-  <line x1="36" y1="26" x2="36" y2="51" />
-  <line x1="36" y1="26" x2="36" y2="52" />
-  <line x1="37" y1="27" x2="37" y2="52" />
-  <line x1="37" y1="27" x2="37" y2="52" />
-  <line x1="37" y1="27" x2="37" y2="53" />
-  <line x1="38" y1="28" x2="38" y2="53" />
-  <line x1="38" y1="28" x2="38" y2="54" />
-  <line x1="39" y1="29" x2="39" y2="54" />
-  <line x1="39" y1="29" x2="39" y2="55" />
-  <line x1="40" y1="30" x2="40" y2="55" />
-  <line x1="40" y1="30" x2="40" y2="55" />
-  <line x1="40" y1="30" x2="40" y2="56" />
-  <line x1="41" y1="31" x2="41" y2="56" />
-  <line x1="41" y1="31" x2="41" y2="57" />
-  <line x1="42" y1="32" x2="42" y2="57" />
-  <line x1="42" y1="32" x2="42" y2="57" />
-  <line x1="42" y1="32" x2="42" y2="58" />
-  <line x1="43" y1="33" x2="43" y2="58" />
-  <line x1="43" y1="33" x2="43" y2="59" />
-  <line x1="44" y1="34" x2="44" y2="59" />
-  <line x1="44" y1="34" x2="44" y2="59" />
-  <line x1="44" y1="34" x2="44" y2="60" />
-  <line x1="45" y1="35" x2="45" y2="60" />
-  <line x1="45" y1="35" x2="45" y2="61" />
-  <line x1="46" y1="36" x2="46" y2="61" />
-  <line x1="46" y1="36" x2="46" y2="61" />
-  <line x1="46" y1="36" x2="46" y2="62" />
-  <line x1="47" y1="37" x2="47" y2="62" />
-  <line x1="47" y1="37" x2="47" y2="63" />
-  <line x1="48" y1="38" x2="48" y2="63" />
-  <line x1="48" y1="38" x2="48" y2="63" />
-  <line x1="48" y1="38" x2="48" y2="64" />
-  <line x1="49" y1="39" x2="49" y2="64" />
-  <line x1="49" y1="39" x2="49" y2="65" />
-  <line x1="50" y1="40" x2="50" y2="65" />
-  <line x1="50" y1="40" x2="50" y2="65" />
-  <line x1="50" y1="40" x2="50" y2="66" />
-  <line x1="51" y1="41" x2="51" y2="66" />
-  <line x1="51" y1="41" x2="51" y2="67" />
-  <line x1="52" y1="42" x2="52" y2="67" />
-  <line x1="52" y1="42" x2="52" y2="67" />
-  <line x1="52" y1="42" x2="52" y2="68" />
-  <line x1="53" y1="43" x2="53" y2="68" />
-  <line x1="53" y1="43" x2="53" y2="69" />
-  <line x1="54" y1="44" x2="54" y2="69" />
-  <line x1="54" y1="44" x2="54" y2="70" />
-  <line x1="55" y1="45" x2="55" y2="70" />
-  <line x1="55" y1="45" x2="55" y2="70" />
-  <line x1="55" y1="45" x2="55" y2="71" />
-  <line x1="56" y1="46" x2="56" y2="71" />
-  <line x1="56" y1="46" x2="56" y2="72" />
-  <line x1="57" y1="47" x2="57" y2="72" />
-  <line x1="57" y1="47" x2="57" y2="72" />
-  <line x1="57" y1="47" x2="57" y2="73" />
-  <line x1="58" y1="48" x2="58" y2="73" />
-  <line x1="58" y1="48" x2="58" y2="74" />
-  <line x1="59" y1="49" x2="59" y2="74" />
-  <line x1="59" y1="49" x2="59" y2="74" />
-  <line x1="59" y1="49" x2="59" y2="75" />
-  <line x1="60" y1="50" x2="60" y2="75" />
-  <line x1="60" y1="50" x2="60" y2="76" />
-  <line x1="61" y1="51" x2="61" y2="76" />
-  <line x1="61" y1="51" x2="61" y2="76" />
-  <line x1="61" y1="51" x2="61" y2="77" />
-  <line x1="62" y1="52" x2="62" y2="77" />
-  <line x1="62" y1="52" x2="62" y2="78" />
-  <line x1="63" y1="53" x2="63" y2="78" />
-  <line x1="63" y1="53" x2="63" y2="78" />
-  <line x1="63" y1="53" x2="63" y2="79" />
-  <line x1="64" y1="54" x2="64" y2="79" />
-  <line x1="64" y1="54" x2="64" y2="80" />
-  <line x1="65" y1="55" x2="65" y2="80" />
-  <line x1="65" y1="55" x2="65" y2="80" />
-  <line x1="65" y1="55" x2="65" y2="81" />
-  <line x1="66" y1="56" x2="66" y2="81" />
-  <line x1="66" y1="56" x2="66" y2="82" />
-  <line x1="67" y1="57" x2="67" y2="82" />
-  <line x1="67" y1="57" x2="67" y2="82" />
-  <line x1="67" y1="57" x2="67" y2="83" />
-  <line x1="68" y1="58" x2="68" y2="83" />
-  <line x1="68" y1="58" x2="68" y2="84" />
-  <line x1="69" y1="59" x2="69" y2="84" />
-  <line x1="69" y1="59" x2="69" y2="85" />
-  <line x1="70" y1="60" x2="70" y2="85" />
-  <line x1="70" y1="60" x2="70" y2="85" />
-  <line x1="70" y1="60" x2="70" y2="86" />
-  <line x1="71" y1="61" x2="71" y2="86" />
-  <line x1="71" y1="61" x2="71" y2="87" />
-  <line x1="72" y1="62" x2="72" y2="87" />
-  <line x1="72" y1="62" x2="72" y2="87" />
-  <line x1="72" y1="62" x2="72" y2="88" />
-  <line x1="73" y1="63" x2="73" y2="88" />
-  <line x1="73" y1="63" x2="73" y2="89" />
-  <line x1="74" y1="64" x2="74" y2="89" />
-  <line x1="74" y1="64" x2="74" y2="89" />
-  <line x1="74" y1="64" x2="74" y2="90" />
-  <line x1="75" y1="65" x2="75" y2="90" />
-  <line x1="75" y1="65" x2="75" y2="91" />
-  <line x1="76" y1="66" x2="76" y2="91" />
-  <line x1="76" y1="66" x2="76" y2="91" />
-  <line x1="76" y1="66" x2="76" y2="92" />
-  <line x1="77" y1="67" x2="77" y2="92" />
-  <line x1="77" y1="67" x2="77" y2="93" />
-  <line x1="78" y1="68" x2="78" y2="93" />
-  <line x1="78" y1="68" x2="78" y2="93" />
-  <line x1="78" y1="68" x2="78" y2="94" />
-  <line x1="79" y1="69" x2="79" y2="94" />
-  <line x1="79" y1="69" x2="79" y2="95" />
-  <line x1="80" y1="70" x2="80" y2="95" />
-  <line x1="80" y1="70" x2="80" y2="95" />
-  <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.000000,0.000000 80.588235,70.588235 80.588235,96.000852 10.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
-  <line x1="10" y1="0" x2="35" y2="0" />
-  <line x1="10" y1="0" x2="36" y2="0" />
-  <line x1="11" y1="1" x2="36" y2="1" />
-  <line x1="11" y1="1" x2="37" y2="1" />
-  <line x1="12" y1="2" x2="37" y2="2" />
-  <line x1="12" y1="2" x2="37" y2="2" />
-  <line x1="12" y1="2" x2="38" y2="2" />
-  <line x1="13" y1="3" x2="38" y2="3" />
-  <line x1="13" y1="3" x2="39" y2="3" />
-  <line x1="14" y1="4" x2="39" y2="4" />
-  <line x1="14" y1="4" x2="39" y2="4" />
-  <line x1="14" y1="4" x2="40" y2="4" />
-  <line x1="15" y1="5" x2="40" y2="5" />
-  <line x1="15" y1="5" x2="41" y2="5" />
-  <line x1="16" y1="6" x2="41" y2="6" />
-  <line x1="16" y1="6" x2="41" y2="6" />
-  <line x1="16" y1="6" x2="42" y2="6" />
-  <line x1="17" y1="7" x2="42" y2="7" />
-  <line x1="17" y1="7" x2="43" y2="7" />
-  <line x1="18" y1="8" x2="43" y2="8" />
-  <line x1="18" y1="8" x2="43" y2="8" />
-  <line x1="18" y1="8" x2="44" y2="8" />
-  <line x1="19" y1="9" x2="44" y2="9" />
-  <line x1="19" y1="9" x2="45" y2="9" />
-  <line x1="20" y1="10" x2="45" y2="10" />
-  <line x1="20" y1="10" x2="45" y2="10" />
-  <line x1="20" y1="10" x2="46" y2="10" />
-  <line x1="21" y1="11" x2="46" y2="11" />
-  <line x1="21" y1="11" x2="47" y2="11" />
-  <line x1="22" y1="12" x2="47" y2="12" />
-  <line x1="22" y1="12" x2="47" y2="12" />
-  <line x1="22" y1="12" x2="48" y2="12" />
-  <line x1="23" y1="13" x2="48" y2="13" />
-  <line x1="23" y1="13" x2="49" y2="13" />
-  <line x1="24" y1="14" x2="49" y2="14" />
-  <line x1="24" y1="14" x2="50" y2="14" />
-  <line x1="25" y1="15" x2="50" y2="15" />
-  <line x1="25" y1="15" x2="50" y2="15" />
-  <line x1="25" y1="15" x2="51" y2="15" />
-  <line x1="26" y1="16" x2="51" y2="16" />
-  <line x1="26" y1="16" x2="52" y2="16" />
-  <line x1="27" y1="17" x2="52" y2="17" />
-  <line x1="27" y1="17" x2="52" y2="17" />
-  <line x1="27" y1="17" x2="53" y2="17" />
-  <line x1="28" y1="18" x2="53" y2="18" />
-  <line x1="28" y1="18" x2="54" y2="18" />
-  <line x1="29" y1="19" x2="54" y2="19" />
-  <line x1="29" y1="19" x2="54" y2="19" />
-  <line x1="29" y1="19" x2="55" y2="19" />
-  <line x1="30" y1="20" x2="55" y2="20" />
-  <line x1="30" y1="20" x2="56" y2="20" />
-  <line x1="31" y1="21" x2="56" y2="21" />
-  <line x1="31" y1="21" x2="56" y2="21" />
-  <line x1="31" y1="21" x2="57" y2="21" />
-  <line x1="32" y1="22" x2="57" y2="22" />
-  <line x1="32" y1="22" x2="58" y2="22" />
-  <line x1="33" y1="23" x2="58" y2="23" />
-  <line x1="33" y1="23" x2="58" y2="23" />
-  <line x1="33" y1="23" x2="59" y2="23" />
-  <line x1="34" y1="24" x2="59" y2="24" />
-  <line x1="34" y1="24" x2="60" y2="24" />
-  <line x1="35" y1="25" x2="60" y2="25" />
-  <line x1="35" y1="25" x2="60" y2="25" />
-  <line x1="35" y1="25" x2="61" y2="25" />
-  <line x1="36" y1="26" x2="61" y2="26" />
-  <line x1="36" y1="26" x2="62" y2="26" />
-  <line x1="37" y1="27" x2="62" y2="27" />
-  <line x1="37" y1="27" x2="62" y2="27" />
-  <line x1="37" y1="27" x2="63" y2="27" />
-  <line x1="38" y1="28" x2="63" y2="28" />
-  <line x1="38" y1="28" x2="64" y2="28" />
-  <line x1="39" y1="29" x2="64" y2="29" />
-  <line x1="39" y1="29" x2="65" y2="29" />
-  <line x1="40" y1="30" x2="65" y2="30" />
-  <line x1="40" y1="30" x2="65" y2="30" />
-  <line x1="40" y1="30" x2="66" y2="30" />
-  <line x1="41" y1="31" x2="66" y2="31" />
-  <line x1="41" y1="31" x2="67" y2="31" />
-  <line x1="42" y1="32" x2="67" y2="32" />
-  <line x1="42" y1="32" x2="67" y2="32" />
-  <line x1="42" y1="32" x2="68" y2="32" />
-  <line x1="43" y1="33" x2="68" y2="33" />
-  <line x1="43" y1="33" x2="69" y2="33" />
-  <line x1="44" y1="34" x2="69" y2="34" />
-  <line x1="44" y1="34" x2="69" y2="34" />
-  <line x1="44" y1="34" x2="70" y2="34" />
-  <line x1="45" y1="35" x2="70" y2="35" />
-  <line x1="45" y1="35" x2="71" y2="35" />
-  <line x1="46" y1="36" x2="71" y2="36" />
-  <line x1="46" y1="36" x2="71" y2="36" />
-  <line x1="46" y1="36" x2="72" y2="36" />
-  <line x1="47" y1="37" x2="72" y2="37" />
-  <line x1="47" y1="37" x2="73" y2="37" />
-  <line x1="48" y1="38" x2="73" y2="38" />
-  <line x1="48" y1="38" x2="73" y2="38" />
-  <line x1="48" y1="38" x2="74" y2="38" />
-  <line x1="49" y1="39" x2="74" y2="39" />
-  <line x1="49" y1="39" x2="75" y2="39" />
-  <line x1="50" y1="40" x2="75" y2="40" />
-  <line x1="50" y1="40" x2="75" y2="40" />
-  <line x1="50" y1="40" x2="76" y2="40" />
-  <line x1="51" y1="41" x2="76" y2="41" />
-  <line x1="51" y1="41" x2="77" y2="41" />
-  <line x1="52" y1="42" x2="77" y2="42" />
-  <line x1="52" y1="42" x2="77" y2="42" />
-  <line x1="52" y1="42" x2="78" y2="42" />
-  <line x1="53" y1="43" x2="78" y2="43" />
-  <line x1="53" y1="43" x2="79" y2="43" />
-  <line x1="54" y1="44" x2="79" y2="44" />
-  <line x1="54" y1="44" x2="80" y2="44" />
-  <line x1="55" y1="45" x2="80" y2="45" />
-  <line x1="55" y1="45" x2="80" y2="45" />
-  <line x1="55" y1="45" x2="81" y2="45" />
-  <line x1="56" y1="46" x2="81" y2="46" />
-  <line x1="56" y1="46" x2="82" y2="46" />
-  <line x1="57" y1="47" x2="82" y2="47" />
-  <line x1="57" y1="47" x2="82" y2="47" />
-  <line x1="57" y1="47" x2="83" y2="47" />
-  <line x1="58" y1="48" x2="83" y2="48" />
-  <line x1="58" y1="48" x2="84" y2="48" />
-  <line x1="59" y1="49" x2="84" y2="49" />
-  <line x1="59" y1="49" x2="84" y2="49" />
-  <line x1="59" y1="49" x2="85" y2="49" />
-  <line x1="60" y1="50" x2="85" y2="50" />
-  <line x1="60" y1="50" x2="86" y2="50" />
-  <line x1="61" y1="51" x2="86" y2="51" />
-  <line x1="61" y1="51" x2="86" y2="51" />
-  <line x1="61" y1="51" x2="87" y2="51" />
-  <line x1="62" y1="52" x2="87" y2="52" />
-  <line x1="62" y1="52" x2="88" y2="52" />
-  <line x1="63" y1="53" x2="88" y2="53" />
-  <line x1="63" y1="53" x2="88" y2="53" />
-  <line x1="63" y1="53" x2="89" y2="53" />
-  <line x1="64" y1="54" x2="89" y2="54" />
-  <line x1="64" y1="54" x2="90" y2="54" />
-  <line x1="65" y1="55" x2="90" y2="55" />
-  <line x1="65" y1="55" x2="90" y2="55" />
-  <line x1="65" y1="55" x2="91" y2="55" />
-  <line x1="66" y1="56" x2="91" y2="56" />
-  <line x1="66" y1="56" x2="92" y2="56" />
-  <line x1="67" y1="57" x2="92" y2="57" />
-  <line x1="67" y1="57" x2="92" y2="57" />
-  <line x1="67" y1="57" x2="93" y2="57" />
-  <line x1="68" y1="58" x2="93" y2="58" />
-  <line x1="68" y1="58" x2="94" y2="58" />
-  <line x1="69" y1="59" x2="94" y2="59" />
-  <line x1="69" y1="59" x2="95" y2="59" />
-  <line x1="70" y1="60" x2="95" y2="60" />
-  <line x1="70" y1="60" x2="95" y2="60" />
-  <line x1="70" y1="60" x2="96" y2="60" />
-  <line x1="71" y1="61" x2="96" y2="61" />
-  <line x1="71" y1="61" x2="97" y2="61" />
-  <line x1="72" y1="62" x2="97" y2="62" />
-  <line x1="72" y1="62" x2="97" y2="62" />
-  <line x1="72" y1="62" x2="98" y2="62" />
-  <line x1="73" y1="63" x2="98" y2="63" />
-  <line x1="73" y1="63" x2="99" y2="63" />
-  <line x1="74" y1="64" x2="99" y2="64" />
-  <line x1="74" y1="64" x2="99" y2="64" />
-  <line x1="74" y1="64" x2="100" y2="64" />
-  <line x1="75" y1="65" x2="100" y2="65" />
-  <line x1="75" y1="65" x2="101" y2="65" />
-  <line x1="76" y1="66" x2="101" y2="66" />
-  <line x1="76" y1="66" x2="101" y2="66" />
-  <line x1="76" y1="66" x2="102" y2="66" />
-  <line x1="77" y1="67" x2="102" y2="67" />
-  <line x1="77" y1="67" x2="103" y2="67" />
-  <line x1="78" y1="68" x2="103" y2="68" />
-  <line x1="78" y1="68" x2="103" y2="68" />
-  <line x1="78" y1="68" x2="104" y2="68" />
-  <line x1="79" y1="69" x2="104" y2="69" />
-  <line x1="79" y1="69" x2="105" y2="69" />
-  <line x1="80" y1="70" x2="105" y2="70" />
-  <line x1="80" y1="70" x2="105" y2="70" />
-  <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="35" y1="0" x2="106" y2="70" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.000000,0.000000 35.412617,0.000000 106.000852,70.588235 80.588235,70.588235" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
-  <line x1="80" y1="75" x2="106" y2="75" />
-  <line x1="80" y1="79" x2="106" y2="79" />
-  <line x1="80" y1="84" x2="106" y2="84" />
-  <line x1="80" y1="86" x2="106" y2="86" />
-  <line x1="80" y1="91" x2="106" y2="91" />
-  <line x1="80" y1="95" x2="106" y2="95" />
-  <line x1="80" y1="96" x2="106" y2="96" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
-  <line x1="106" y1="70" x2="106" y2="96" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="80.588235,70.588235 106.000852,70.588235 106.000852,96.000852 80.588235,96.000852" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="93.294544" y="116.000852" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
-  <text x="126.000852" y="83.294544" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,126.000852,83.294544)">283</text>
-  <text x="35.294118" y="80.706734" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,35.294118,80.706734)">52226568</text>
-</svg>
-</td>
-</tr>
-</table></div></div>
-</div>
-<p>Genotypes are stored as a three-dimensional array, where the first dimension corresponds to genomic positions, the second dimension is samples, and the third dimension is ploidy (2). Values coded as integers, where -1 represents a missing value, 0 represents the reference allele, and 1, 2, and 3 represent alternate alleles.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># e.g., read genotypes for the first 5 SNPs and the first 3 samples</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">gt</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">g</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0, 0],
-        [0, 0],
-        [0, 0]],
-
-       [[0, 0],
-        [0, 0],
-        [0, 0]],
-
-       [[0, 0],
-        [0, 0],
-        [0, 0]],
-
-       [[0, 0],
-        [0, 0],
-        [0, 0]],
-
-       [[0, 0],
-        [0, 0],
-        [0, 0]]], dtype=int8)
-</pre></div>
-</div>
-</div>
-</div>
-<p>For worked examples of various analyses using these data, see the <a class="reference internal" href="examples.html"><span class="doc std std-doc">Ag3.0 analysis examples</span></a> page.</p>
 </section>
 <section id="feedback-and-suggestions">
 <h2>Feedback and suggestions<a class="headerlink" href="#feedback-and-suggestions" title="Permalink to this headline">#</a></h2>

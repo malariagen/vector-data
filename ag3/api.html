@@ -684,8 +684,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot-pca-snps">
-   plot_pca_snps()
+  <a class="reference internal nav-link" href="#plot-snps">
+   plot_snps()
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -751,6 +751,26 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plot-h12-gwss">
    plot_h12_gwss()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#h1x-gwss">
+   h1x_gwss()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-h1x-gwss">
+   plot_h1x_gwss()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-haplotype-clustering">
+   plot_haplotype_clustering()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-haplotype-network">
+   plot_haplotype_network()
   </a>
  </li>
 </ul>
@@ -998,8 +1018,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot-pca-snps">
-   plot_pca_snps()
+  <a class="reference internal nav-link" href="#plot-snps">
+   plot_snps()
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1067,6 +1087,26 @@ title="Print to PDF"
    plot_h12_gwss()
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#h1x-gwss">
+   h1x_gwss()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-h1x-gwss">
+   plot_h1x_gwss()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-haplotype-clustering">
+   plot_haplotype_clustering()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-haplotype-network">
+   plot_haplotype_network()
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -1084,7 +1124,7 @@ title="Print to PDF"
 <h2>Ag3()<a class="headerlink" href="#ag3" title="Permalink to this headline">#</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3">
-<span class="sig-prename descclassname"><span class="pre">malariagen_data.</span></span><span class="sig-name descname"><span class="pre">Ag3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bokeh_output_notebook=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_cache=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log=&lt;_io.TextIOWrapper</span> <span class="pre">name='&lt;stdout&gt;'</span> <span class="pre">mode='w'</span> <span class="pre">encoding='utf-8'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_location=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">malariagen_data.</span></span><span class="sig-name descname"><span class="pre">Ag3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bokeh_output_notebook=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_cache=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log=&lt;_io.TextIOWrapper</span> <span class="pre">name='&lt;stdout&gt;'</span> <span class="pre">mode='w'</span> <span class="pre">encoding='utf-8'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_location=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohorts_analysis=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species_analysis=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_filters_analysis=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3" title="Permalink to this definition">#</a></dt>
 <dd><p>Provides access to data from Ag3.x releases.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1151,8 +1191,7 @@ in a directory named “results_cache”:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>release</strong><span class="classifier">str, optional</span></dt><dd><p>Release identifier. Give “3.0” to access the Ag1000G phase 3 data
-release.</p>
+<dt><strong>release</strong><span class="classifier">str, optional</span></dt><dd><p>Release identifier, e.g. give “3.0” to access the v3.0 data release.</p>
 </dd>
 </dl>
 </dd>
@@ -1180,7 +1219,7 @@ sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
 release identifier (e.g., “3.0”) or a list of release identifiers.</p>
 </dd>
 <dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample
-metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+metadata e.g., “country == ‘Burkina Faso’”.</p>
 </dd>
 </dl>
 </dd>
@@ -1342,7 +1381,7 @@ per sample.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
 region defined with coordinates (e.g., “2L:44989425-44998059”) or a
 named tuple with genomic location <cite>Region(contig, start, end)</cite>.
 Multiple values can be provided as a list, in which case data will
@@ -1384,7 +1423,7 @@ given contig.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
 region defined with coordinates (e.g., “2L:44989425-44998059”) or a
 named tuple with genomic location <cite>Region(contig, start, end)</cite>.
 Multiple values can be provided as a list, in which case data will
@@ -1395,9 +1434,9 @@ sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
 release identifier (e.g., “3.0”) or a list of release identifiers.</p>
 </dd>
 <dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample
-metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+metadata e.g., “country == ‘Burkina Faso’”.</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>site_class</strong><span class="classifier">str, optional</span></dt><dd><p>Select sites belonging to one of the following classes: CDS_DEG_4,
 (4-fold degenerate coding sites), CDS_DEG_2_SIMPLE (2-fold simple
@@ -1439,7 +1478,7 @@ chunks. Also, can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
 region defined with coordinates (e.g., “2L:44989425-44998059”) or a
 named tuple with genomic location <cite>Region(contig, start, end)</cite>.
 Multiple values can be provided as a list, in which case data will
@@ -1447,7 +1486,7 @@ be concatenated, e.g., [“3R”, “3L”].</p>
 </dd>
 <dt><strong>field</strong><span class="classifier">{“POS”, “REF”, “ALT”}</span></dt><dd><p>Array to access.</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>inline_array</strong><span class="classifier">bool, optional</span></dt><dd><p>Passed through to dask.array.from_array().</p>
 </dd>
@@ -1476,7 +1515,7 @@ alleles.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
 region defined with coordinates (e.g., “2L:44989425-44998059”) or a
 named tuple with genomic location <cite>Region(contig, start, end)</cite>.
 Multiple values can be provided as a list, in which case data will
@@ -1491,7 +1530,7 @@ metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.<
 </dd>
 <dt><strong>field</strong><span class="classifier">{“GT”, “GQ”, “AD”, “MQ”}</span></dt><dd><p>Array to access.</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>inline_array</strong><span class="classifier">bool, optional</span></dt><dd><p>Passed through to dask.array.from_array().</p>
 </dd>
@@ -1520,13 +1559,13 @@ depths (AD) or mapping quality (MQ) values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
 region defined with coordinates (e.g., “2L:44989425-44998059”) or a
 named tuple with genomic location <cite>Region(contig, start, end)</cite>.
 Multiple values can be provided as a list, in which case data will
 be concatenated, e.g., [“3R”, “3L”].</p>
 </dd>
-<dt><strong>mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Mask to use.</p>
+<dt><strong>mask</strong><span class="classifier">str</span></dt><dd><p>Mask to use, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>field</strong><span class="classifier">str, optional</span></dt><dd><p>Array to access.</p>
 </dd>
@@ -1556,13 +1595,13 @@ chunks. Also, can be a target size, e.g., ‘200 MiB’.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
 region defined with coordinates (e.g., “2L:44989425-44998059”) or a
 named tuple with genomic location <cite>Region(contig, start, end)</cite>.
 Multiple values can be provided as a list, in which case data will
 be concatenated, e.g., [“3R”, “3L”].</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 </dl>
 </dd>
@@ -1587,7 +1626,7 @@ be concatenated, e.g., [“3R”, “3L”].</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>transcript</strong><span class="classifier">str</span></dt><dd><p>Gene transcript ID (AgamP4.12), e.g., “AGAP004707-RA”.</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}, optional</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 </dl>
 </dd>
@@ -1611,13 +1650,13 @@ per variant.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
 region defined with coordinates (e.g., “2L:44989425-44998059”) or a
 named tuple with genomic location <cite>Region(contig, start, end)</cite>.
 Multiple values can be provided as a list, in which case data will
 be concatenated, e.g., [“3R”, “3L”].</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>inline_array</strong><span class="classifier">bool, optional</span></dt><dd><p>Passed through to dask.from_array().</p>
 </dd>
@@ -2323,12 +2362,12 @@ calculations.</p>
 <h2>plot_genes()<a class="headerlink" href="#plot-genes" title="Permalink to this headline">#</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.plot_genes">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_genes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toolbar_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'above'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Genes'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_genes" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_genes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toolbar_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'above'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Genes'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_genes" title="Permalink to this definition">#</a></dt>
 <dd><p>Plot a genes track, using bokeh.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region</strong><span class="classifier">str or Region</span></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or
+<dt><strong>region</strong><span class="classifier">str or Region</span></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”) or
 genomic region defined with coordinates (e.g.,
 “2L:44989425-44998059”).</p>
 </dd>
@@ -2360,7 +2399,7 @@ genomic region defined with coordinates (e.g.,
 <h2>plot_transcript()<a class="headerlink" href="#plot-transcript" title="Permalink to this headline">#</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.plot_transcript">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_transcript</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toolbar_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'above'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_transcript" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_transcript</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transcript</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toolbar_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'above'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_transcript" title="Permalink to this definition">#</a></dt>
 <dd><p>Plot a transcript, using bokeh.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2490,7 +2529,7 @@ row_height.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region: str</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or
+<dt><strong>region: str</strong></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”) or
 genomic region defined with coordinates (e.g.,
 “2L:44989425-44998059”).</p>
 </dd>
@@ -2589,7 +2628,7 @@ SNP allele was observed in the selected samples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region</strong><span class="classifier">str or Region</span></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or
+<dt><strong>region</strong><span class="classifier">str or Region</span></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”) or
 genomic region defined with coordinates (e.g.,
 “2L:44989425-44998059”).</p>
 </dd>
@@ -2641,13 +2680,13 @@ the <cite>results_cache</cite> parameter was set when instantiating the Ag3 clas
 <h2>pca()<a class="headerlink" href="#pca" title="Permalink to this headline">#</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.pca">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">pca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_snps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thin_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gamb_colu_arab'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_minor_ac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_missing_an</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.pca" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">pca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_snps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thin_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_minor_ac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_missing_an</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.pca" title="Permalink to this definition">#</a></dt>
 <dd><p>Run a principal components analysis (PCA) using biallelic SNPs from
 the selected genome region and samples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or
+<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”) or
 genomic region defined with coordinates (e.g.,
 “2L:44989425-44998059”).</p>
 </dd>
@@ -2662,9 +2701,9 @@ sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
 release identifier (e.g., “3.0”) or a list of release identifiers.</p>
 </dd>
 <dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample
-metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+metadata e.g., “country == ‘Burkina Faso’”.</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>min_minor_ac</strong><span class="classifier">int, optional</span></dt><dd><p>The minimum minor allele count. SNPs with a minor allele count
 below this value will be excluded prior to thinning.</p>
@@ -2812,18 +2851,18 @@ etc., added.</p>
 </dd></dl>
 
 </section>
-<section id="plot-pca-snps">
-<h2>plot_pca_snps()<a class="headerlink" href="#plot-pca-snps" title="Permalink to this headline">#</a></h2>
+<section id="plot-snps">
+<h2>plot_snps()<a class="headerlink" href="#plot-snps" title="Permalink to this headline">#</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.plot_snps">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_snps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gamb_colu_arab'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genes_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_snps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_snps" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_snps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genes_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_snps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_snps" title="Permalink to this definition">#</a></dt>
 <dd><p>Plot SNPs in a given genome region. SNPs are shown as rectangles,
 with segregating and non-segregating SNPs positioned on different levels,
 and coloured by site filter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or
+<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”) or
 genomic region defined with coordinates (e.g.,
 “2L:44989425-44998059”).</p>
 </dd>
@@ -2832,9 +2871,9 @@ sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
 release identifier (e.g., “3.0”) or a list of release identifiers.</p>
 </dd>
 <dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample
-metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+metadata e.g., “country == ‘Burkina Faso’”.</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str, optional</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>width</strong><span class="classifier">int, optional</span></dt><dd><p>Width of plot in pixels (px).</p>
 </dd>
@@ -3107,7 +3146,7 @@ confidence intervals for a single cohort.</p>
 <h2>plot_heterozygosity()<a class="headerlink" href="#plot-heterozygosity" title="Permalink to this headline">#</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.plot_heterozygosity">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_heterozygosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.03</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">170</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genes_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circle_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_heterozygosity" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_heterozygosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.03</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">170</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genes_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circle_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_heterozygosity" title="Permalink to this definition">#</a></dt>
 <dd><p>Plot windowed heterozygosity for a single sample over a genome
 region.</p>
 <dl class="field-list simple">
@@ -3115,11 +3154,11 @@ region.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>sample</strong><span class="classifier">str or int</span></dt><dd><p>Sample identifier or index within sample set.</p>
 </dd>
-<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or
+<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”) or
 genomic region defined with coordinates (e.g.,
 “2L:44989425-44998059”).</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>window_size</strong><span class="classifier">int</span></dt><dd><p>Number of sites per window.</p>
 </dd>
@@ -3161,11 +3200,11 @@ identifier.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>sample</strong><span class="classifier">str or int</span></dt><dd><p>Sample identifier or index within sample set.</p>
 </dd>
-<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or
+<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”) or
 genomic region defined with coordinates (e.g.,
 “2L:44989425-44998059”).</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>window_size</strong><span class="classifier">int</span></dt><dd><p>Number of sites per window.</p>
 </dd>
@@ -3196,7 +3235,7 @@ homozygosity.</p>
 <h2>plot_roh()<a class="headerlink" href="#plot-roh" title="Permalink to this headline">#</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="malariagen_data.Ag3.plot_roh">
-<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_roh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phet_roh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phet_nonroh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.003,</span> <span class="pre">0.01)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.03</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heterozygosity_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">170</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roh_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genes_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circle_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_roh" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_roh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phet_roh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phet_nonroh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.003,</span> <span class="pre">0.01)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.03</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heterozygosity_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">170</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roh_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genes_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circle_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_roh" title="Permalink to this definition">#</a></dt>
 <dd><p>Plot windowed heterozygosity and inferred runs of homozygosity for a
 single sample over a genome region.</p>
 <dl class="field-list simple">
@@ -3204,11 +3243,11 @@ single sample over a genome region.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>sample</strong><span class="classifier">str or int</span></dt><dd><p>Sample identifier or index within sample set.</p>
 </dd>
-<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”) or
+<dt><strong>region</strong><span class="classifier">str</span></dt><dd><p>Contig name (e.g., “2L”), gene name (e.g., “AGAP007280”) or
 genomic region defined with coordinates (e.g.,
 “2L:44989425-44998059”).</p>
 </dd>
-<dt><strong>site_mask</strong><span class="classifier">{“gamb_colu_arab”, “gamb_colu”, “arab”}</span></dt><dd><p>Site filters mask to apply.</p>
+<dt><strong>site_mask</strong><span class="classifier">str</span></dt><dd><p>Site filters mask to apply, e.g. “gamb_colu”</p>
 </dd>
 <dt><strong>window_size</strong><span class="classifier">int</span></dt><dd><p>Number of sites per window.</p>
 </dd>
@@ -3421,6 +3460,247 @@ metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.<
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>fig</strong><span class="classifier">figure</span></dt><dd><p>A plot showing windowed h12 statistic with gene track on x-axis.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="h1x-gwss">
+<h2>h1x_gwss()<a class="headerlink" href="#h1x-gwss" title="Permalink to this headline">#</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.h1x_gwss">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">h1x_gwss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohort1_query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohort2_query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.h1x_gwss" title="Permalink to this definition">#</a></dt>
+<dd><p>Run a H1X genome-wide scan to detect genome regions with
+shared selective sweeps between two cohorts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>contig: str</strong></dt><dd><p>Chromosome arm (e.g., “2L”)</p>
+</dd>
+<dt><strong>analysis</strong><span class="classifier">{“arab”, “gamb_colu”, “gamb_colu_arab”}</span></dt><dd><p>Which phasing analysis to use. If analysing only An. arabiensis, the
+“arab” analysis is best. If analysing only An. gambiae and An.
+coluzzii, the “gamb_colu” analysis is best. Otherwise, use the
+“gamb_colu_arab” analysis.</p>
+</dd>
+<dt><strong>window_size</strong><span class="classifier">int</span></dt><dd><p>The size of windows used to calculate h12 over.</p>
+</dd>
+<dt><strong>cohort1_query</strong><span class="classifier">str</span></dt><dd><p>A pandas query string which will be evaluated against the sample
+metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>cohort2_query</strong><span class="classifier">str</span></dt><dd><p>A pandas query string which will be evaluated against the sample
+metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>cohort_size</strong><span class="classifier">int, optional</span></dt><dd><p>If provided, randomly down-sample to the given cohort size.</p>
+</dd>
+<dt><strong>random_seed</strong><span class="classifier">int, optional</span></dt><dd><p>Random seed used for down-sampling.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>An array containing the window centre point genomic positions.</p>
+</dd>
+<dt><strong>h1x</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>An array with H1X statistic values for each window.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="plot-h1x-gwss">
+<h2>plot_h1x_gwss()<a class="headerlink" href="#plot-h1x-gwss" title="Permalink to this headline">#</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_h1x_gwss">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_h1x_gwss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohort1_query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohort2_query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">190</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genes_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_h1x_gwss" title="Permalink to this definition">#</a></dt>
+<dd><p>Run and plot a H1X genome-wide scan to detect genome regions
+with shared selective sweeps between two cohorts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>contig: str</strong></dt><dd><p>Chromosome arm (e.g., “2L”)</p>
+</dd>
+<dt><strong>analysis</strong><span class="classifier">{“arab”, “gamb_colu”, “gamb_colu_arab”}</span></dt><dd><p>Which phasing analysis to use. If analysing only An. arabiensis, the
+“arab” analysis is best. If analysing only An. gambiae and An.
+coluzzii, the “gamb_colu” analysis is best. Otherwise, use the
+“gamb_colu_arab” analysis.</p>
+</dd>
+<dt><strong>window_size</strong><span class="classifier">int</span></dt><dd><p>The size of windows used to calculate h12 over.</p>
+</dd>
+<dt><strong>cohort1_query</strong><span class="classifier">str</span></dt><dd><p>A pandas query string which will be evaluated against the sample
+metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>cohort2_query</strong><span class="classifier">str</span></dt><dd><p>A pandas query string which will be evaluated against the sample
+metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>cohort_size</strong><span class="classifier">int, optional</span></dt><dd><p>If provided, randomly down-sample to the given cohort size.</p>
+</dd>
+<dt><strong>random_seed</strong><span class="classifier">int, optional</span></dt><dd><p>Random seed used for down-sampling.</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">str, optional</span></dt><dd><p>If provided, title string is used to label plot.</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">int, optional</span></dt><dd><p>Plot width in pixels (px).</p>
+</dd>
+<dt><strong>track_height</strong><span class="classifier">int. optional</span></dt><dd><p>GWSS track height in pixels (px).</p>
+</dd>
+<dt><strong>genes_height</strong><span class="classifier">int. optional</span></dt><dd><p>Gene track height in pixels (px).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">figure</span></dt><dd><p>A plot showing windowed H1X statistic with gene track on x-axis.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="plot-haplotype-clustering">
+<h2>plot_haplotype_clustering()<a class="headerlink" href="#plot-haplotype-clustering" title="Permalink to this headline">#</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_haplotype_clustering">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_haplotype_clustering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linkage_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'single'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cohort_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_haplotype_clustering" title="Permalink to this definition">#</a></dt>
+<dd><p>Hierarchically cluster haplotypes in region and produce an interactive plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+region defined with coordinates (e.g., “2L:44989425-44998059”) or a
+named tuple with genomic location <cite>Region(contig, start, end)</cite>.
+Multiple values can be provided as a list, in which case data will
+be concatenated, e.g., [“3R”, “3L”].</p>
+</dd>
+<dt><strong>analysis</strong><span class="classifier">{“arab”, “gamb_colu”, “gamb_colu_arab”}</span></dt><dd><p>Which phasing analysis to use. If analysing only An. arabiensis, the
+“arab” analysis is best. If analysing only An. gambiae and An.
+coluzzii, the “gamb_colu” analysis is best. Otherwise, use the
+“gamb_colu_arab” analysis.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample
+metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>Identifies a column in the sample metadata which determines the colour
+of dendrogram leaves (haplotypes).</p>
+</dd>
+<dt><strong>symbol</strong><span class="classifier">str, optional</span></dt><dd><p>Identifies a column in the sample metadata which determines the shape
+of dendrogram leaves (haplotypes).</p>
+</dd>
+<dt><strong>linkage_method: str, optional</strong></dt><dd><p>The linkage algorithm to use, valid options are ‘single’, ‘complete’,
+‘average’, ‘weighted’, ‘centroid’, ‘median’ and ‘ward’. See the Linkage
+Methods section of the scipy.cluster.hierarchy.linkage docs for full
+descriptions.</p>
+</dd>
+<dt><strong>count_sort: bool, optional</strong></dt><dd><p>For each node n, the order (visually, from left-to-right) n’s two descendant
+links are plotted is determined by this parameter. If True, the child with
+the minimum number of original objects in its cluster is plotted first. Note
+distance_sort and count_sort cannot both be True.</p>
+</dd>
+<dt><strong>distance_sort: bool, optional</strong></dt><dd><p>For each node n, the order (visually, from left-to-right) n’s two descendant
+links are plotted is determined by this parameter. If True, The child with the
+minimum distance between its direct descendants is plotted first.</p>
+</dd>
+<dt><strong>cohort_size</strong><span class="classifier">int, optional</span></dt><dd><p>If provided, randomly down-sample to the given cohort size.</p>
+</dd>
+<dt><strong>random_seed</strong><span class="classifier">int, optional</span></dt><dd><p>Random seed used for down-sampling.</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">int, optional</span></dt><dd><p>The figure width in pixels</p>
+</dd>
+<dt><strong>height: int, optional</strong></dt><dd><p>The figure height in pixels</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">Figure</span></dt><dd><p>Plotly figure.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="plot-haplotype-network">
+<h2>plot_haplotype_network()<a class="headerlink" href="#plot-haplotype-network" title="Permalink to this headline">#</a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="malariagen_data.Ag3.plot_haplotype_network">
+<span class="sig-prename descclassname"><span class="pre">Ag3.</span></span><span class="sig-name descname"><span class="pre">plot_haplotype_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_discrete_sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_discrete_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_orders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_size_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'inline'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">650</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'100%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cose'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#malariagen_data.Ag3.plot_haplotype_network" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct a median-joining haplotype network and display it using
+Cytoscape.</p>
+<p>A haplotype network provides a visualisation of the genetic distance
+between haplotypes. Each node in the network represents a unique
+haplotype. The size (area) of the node is scaled by the number of
+times that unique haplotype was observed within the selected samples.
+A connection between two nodes represents a single SNP difference
+between the corresponding haplotypes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>region: str or list of str or Region or list of Region</strong></dt><dd><p>Chromosome arm (e.g., “2L”), gene name (e.g., “AGAP007280”), genomic
+region defined with coordinates (e.g., “2L:44989425-44998059”) or a
+named tuple with genomic location <cite>Region(contig, start, end)</cite>.
+Multiple values can be provided as a list, in which case data will
+be concatenated, e.g., [“3R”, “3L”].</p>
+</dd>
+<dt><strong>analysis</strong><span class="classifier">{“arab”, “gamb_colu”, “gamb_colu_arab”}</span></dt><dd><p>Which phasing analysis to use. If analysing only An. arabiensis, the
+“arab” analysis is best. If analysing only An. gambiae and An.
+coluzzii, the “gamb_colu” analysis is best. Otherwise, use the
+“gamb_colu_arab” analysis.</p>
+</dd>
+<dt><strong>sample_sets</strong><span class="classifier">str or list of str, optional</span></dt><dd><p>Can be a sample set identifier (e.g., “AG1000G-AO”) or a list of
+sample set identifiers (e.g., [“AG1000G-BF-A”, “AG1000G-BF-B”]) or a
+release identifier (e.g., “3.0”) or a list of release identifiers.</p>
+</dd>
+<dt><strong>sample_query</strong><span class="classifier">str, optional</span></dt><dd><p>A pandas query string which will be evaluated against the sample
+metadata e.g., “taxon == ‘coluzzii’ and country == ‘Burkina Faso’”.</p>
+</dd>
+<dt><strong>max_dist</strong><span class="classifier">int, optional</span></dt><dd><p>Join network components up to a maximum distance of 2 SNP
+differences.</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>Identifies a column in the sample metadata which determines the colour
+of pie chart segments within nodes.</p>
+</dd>
+<dt><strong>color_discrete_sequence</strong><span class="classifier">list, optional</span></dt><dd><p>Provide a list of colours to use.</p>
+</dd>
+<dt><strong>color_discrete_map</strong><span class="classifier">dict, optional</span></dt><dd><p>Provide an explicit mapping from values to colours.</p>
+</dd>
+<dt><strong>category_orders</strong><span class="classifier">list, optional</span></dt><dd><p>Control the order in which values appear in the legend.</p>
+</dd>
+<dt><strong>node_size_factor</strong><span class="classifier">int, optional</span></dt><dd><p>Control the sizing of nodes.</p>
+</dd>
+<dt><strong>server_mode</strong><span class="classifier">{“inline”, “external”, “jupyterlab”}</span></dt><dd><p>Controls how the Jupyter Dash app will be launched. See
+<a class="reference external" href="https://medium.com/plotly/introducing-jupyterdash-811f1f57c02e">https://medium.com/plotly/introducing-jupyterdash-811f1f57c02e</a> for
+more information.</p>
+</dd>
+<dt><strong>height</strong><span class="classifier">int, optional</span></dt><dd><p>Height of the plot.</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">int, optional</span></dt><dd><p>Width of the plot.</p>
+</dd>
+<dt><strong>layout</strong><span class="classifier">str</span></dt><dd><p>Name of the network layout to use to position nodes.</p>
+</dd>
+<dt><strong>layout_params</strong></dt><dd><p>Additional parameters to the layout algorithm.</p>
+</dd>
+<dt><strong>server_port</strong></dt><dd><p>Manually override the port on which the Dash app will run.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>app</dt><dd><p>The running Dash app.</p>
 </dd>
 </dl>
 </dd>

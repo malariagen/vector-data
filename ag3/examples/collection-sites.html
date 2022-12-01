@@ -879,13 +879,13 @@ title="Print to PDF"
 <p>To load geographical data and plot maps, we’ll need to install some packages, including <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">cartopy</a> and <a class="reference external" href="https://rasterio.readthedocs.io/en/latest/">rasterio</a>. Installing these packages can be a bit fiddly. If you’re running this on Google Colab (or other Debian/Ubuntu systems and using pip to install Python packages) run the following code cell.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://github.com/googlecolab/colabtools/issues/85#issuecomment-709241391</span>
-<span class="o">!</span>apt-get -q install libgdal-dev libproj-dev libgeos-dev proj-data proj-bin
-<span class="o">!</span>pip install -q cython numpy scipy pyshp matplotlib pandas malariagen_data
-<span class="o">!</span>pip uninstall -q -y shapely  # make sure we have a fresh install
-<span class="o">!</span>pip install -q shapely --no-binary shapely
-<span class="o">!</span>pip install -q --upgrade cartopy
-<span class="o">!</span>pip install -q --upgrade rasterio
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># https://github.com/googlecolab/colabtools/issues/85#issuecomment-709241391
+!apt-get -q install libgdal-dev libproj-dev libgeos-dev proj-data proj-bin
+!pip install -q cython numpy scipy pyshp matplotlib pandas malariagen_data
+!pip uninstall -q -y shapely  # make sure we have a fresh install
+!pip install -q shapely --no-binary shapely
+!pip install -q --upgrade cartopy
+!pip install -q --upgrade rasterio
 </pre></div>
 </div>
 </div>
@@ -958,9 +958,9 @@ Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check we have cartopy 0.18.0 or greater, needed to get tiles from google maps</span>
-<span class="kn">import</span> <span class="nn">cartopy</span>
-<span class="n">cartopy</span><span class="o">.</span><span class="n">__version__</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># check we have cartopy 0.18.0 or greater, needed to get tiles from google maps
+import cartopy
+cartopy.__version__
 </pre></div>
 </div>
 </div>
@@ -973,9 +973,9 @@ Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
 <p>Setup access to MalariaGEN data via Google Cloud.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">malariagen_data</span>
-<span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">()</span>
-<span class="n">ag3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import malariagen_data
+ag3 = malariagen_data.Ag3()
+ag3
 </pre></div>
 </div>
 </div>
@@ -1008,8 +1008,8 @@ Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
 <p>The ecosystem classifications in full resolution are available from the <a class="reference external" href="http://rmgsc.cr.usgs.gov/outgoing/ecosystems/AfricaData/">USGS website</a>, but these are large files and higher resolution than we need. For convenience we’ve precomputed a downsampled version of these data, let’s download it.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG_5pc.tif
-<span class="o">!</span>wget --no-clobber https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG.tif.vat.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-clobber https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG_5pc.tif
+!wget --no-clobber https://storage.googleapis.com/vo_agam_release/reference/af_labeled_ecosys/Africa_IVC_20130316_final_MG.tif.vat.csv
 </pre></div>
 </div>
 </div>
@@ -1042,8 +1042,8 @@ Africa_IVC_20130316 100%[===================&gt;]  34.99K  --.-KB/s    in 0s
 <p>Data from the Malaria Atlas Project can be downloaded from their <a class="reference external" href="https://malariaatlas.org/explorer/">data explorer site</a>. Let’s download the most recent ITN coverage model.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber -O 2020_Africa_ITN_Use.zip <span class="s2">&quot;https://malariaatlas.org/geoserver/Explorer/ows?service=CSW&amp;version=2.0.1&amp;request=DirectDownload&amp;ResourceId=Explorer:2020_Africa_ITN_Use&quot;</span>
-<span class="o">!</span>unzip -n -d 2020_Africa_ITN_Use 2020_Africa_ITN_Use.zip
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-clobber -O 2020_Africa_ITN_Use.zip &quot;https://malariaatlas.org/geoserver/Explorer/ows?service=CSW&amp;version=2.0.1&amp;request=DirectDownload&amp;ResourceId=Explorer:2020_Africa_ITN_Use&quot;
+!unzip -n -d 2020_Africa_ITN_Use 2020_Africa_ITN_Use.zip
 </pre></div>
 </div>
 </div>
@@ -1092,9 +1092,9 @@ Archive:  2020_Africa_ITN_Use.zip
 <p>Let’s also get data for country boundaries and physical features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-clobber https://raw.githubusercontent.com/SciTools/cartopy/master/tools/cartopy_feature_download.py
-<span class="o">!</span>python cartopy_feature_download.py physical --no-warn
-<span class="o">!</span>python cartopy_feature_download.py cultural --no-warn
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-clobber https://raw.githubusercontent.com/SciTools/cartopy/master/tools/cartopy_feature_download.py
+!python cartopy_feature_download.py physical --no-warn
+!python cartopy_feature_download.py cultural --no-warn
 </pre></div>
 </div>
 </div>
@@ -1164,198 +1164,198 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Now let’s define some functions for loading the map data and plotting a map, with support for different background options.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">rasterio</span>
-<span class="kn">import</span> <span class="nn">cartopy</span>
-<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
-<span class="kn">from</span> <span class="nn">cartopy.io.img_tiles</span> <span class="kn">import</span> <span class="n">OSM</span><span class="p">,</span> <span class="n">GoogleTiles</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from functools import lru_cache
+import pandas as pd
+%matplotlib inline
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import rasterio
+import cartopy
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+from cartopy.io.img_tiles import OSM, GoogleTiles
+import warnings
+warnings.filterwarnings(&#39;ignore&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup some geographical projections</span>
-<span class="n">crs_lonlat</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
-<span class="n">crs_mercator</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Mercator</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># setup some geographical projections
+crs_lonlat = ccrs.PlateCarree()
+crs_mercator = ccrs.Mercator()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">load_ecosystems</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Load the African ecosystems data.&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>@lru_cache(maxsize=None)
+def load_ecosystems():
+    &quot;&quot;&quot;Load the African ecosystems data.&quot;&quot;&quot;
 
-    <span class="c1"># build a matplotlib colour map from the colour table</span>
-    <span class="n">df_colors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Africa_IVC_20130316_final_MG.tif.vat.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
-    <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">df_colors</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">df_colors</span><span class="p">[[</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-        <span class="n">colors</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span>
-    <span class="c1"># fix the zero colour to be white</span>
-    <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
-    <span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    # build a matplotlib colour map from the colour table
+    df_colors = pd.read_csv(&#39;Africa_IVC_20130316_final_MG.tif.vat.csv&#39;).set_index(&#39;Value&#39;)
+    colors = np.zeros((df_colors.index.max() + 1, 3), dtype=float)
+    for v, (r, g, b) in df_colors[[&#39;Red&#39;, &#39;Green&#39;, &#39;Blue&#39;]].iterrows():
+        colors[int(v)] = r, g, b
+    # fix the zero colour to be white
+    colors[0] = 1, 1, 1
+    cmap = mpl.colors.ListedColormap(colors)
 
-    <span class="c1"># load the image data</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Africa_IVC_20130316_final_MG_5pc.tif&quot;</span><span class="p">)</span>
-    <span class="n">image_data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">image_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">image_data</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">image_data</span><span class="p">)</span>  
+    # load the image data
+    image = rasterio.open(&quot;Africa_IVC_20130316_final_MG_5pc.tif&quot;)
+    image_data = image.read(1)
+    image_data = np.ma.masked_where(image_data &lt; 0, image_data)  
 
-    <span class="c1"># determine image extent </span>
-    <span class="n">extent</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> 
-        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">top</span>
-    <span class="p">)</span>         
+    # determine image extent 
+    extent = (
+        image.bounds.left, 
+        image.bounds.right,
+        image.bounds.bottom,
+        image.bounds.top
+    )         
 
-    <span class="k">return</span> <span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span> <span class="n">crs_lonlat</span>
+    return image_data, cmap, extent, crs_lonlat
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">load_itn_coverage</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Load ITN coverage data for a given year.&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>@lru_cache(maxsize=None)
+def load_itn_coverage(year):
+    &quot;&quot;&quot;Load ITN coverage data for a given year.&quot;&quot;&quot;
     
-    <span class="n">image</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)</span>
-    <span class="n">image_data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">image_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">image_data</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">image_data</span><span class="p">)</span>
-    <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdYlGn&quot;</span>
-    <span class="n">extent</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> 
-        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
-        <span class="n">image</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">top</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span> <span class="n">crs_lonlat</span>
+    image = rasterio.open(f&quot;2020_Africa_ITN_Use/2020_GBD2021_Africa_ITN_Coverage_{year}.tif&quot;)
+    image_data = image.read(1)
+    image_data = np.ma.masked_where(image_data &lt;= 0, image_data)
+    cmap = &quot;RdYlGn&quot;
+    extent = (
+        image.bounds.left, 
+        image.bounds.right,
+        image.bounds.bottom,
+        image.bounds.top
+    )
+    return image_data, cmap, extent, crs_lonlat
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sites</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">,</span> <span class="n">sample_query</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;osm&#39;</span><span class="p">,</span> 
-               <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bgstyle</span><span class="o">=</span><span class="s1">&#39;street&#39;</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">gridlines</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
-               <span class="n">plot_kws</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot a map of mosquito collection sites.&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_sites(extent=None, sample_sets=&quot;3.0&quot;, sample_query=None, background=&#39;osm&#39;, 
+               bgzoom=3, bgstyle=&#39;street&#39;, bgyear=2019, ax=None, figsize=(7, 7), gridlines=15,
+               plot_kws=None, label_sites=False, title=None):
+    &quot;&quot;&quot;Plot a map of mosquito collection sites.&quot;&quot;&quot;
 
-    <span class="c1"># normalise background parameter to lower case</span>
-    <span class="n">background</span> <span class="o">=</span> <span class="n">background</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    # normalise background parameter to lower case
+    background = background.lower()
 
-    <span class="k">if</span> <span class="n">extent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="c1"># default to the whole of Africa</span>
-        <span class="n">extent</span> <span class="o">=</span> <span class="o">-</span><span class="mi">26</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">38</span>
+    if extent is None:
+        # default to the whole of Africa
+        extent = -26, 64, -35, 38
 
-    <span class="c1"># decide what projection to use</span>
-    <span class="k">if</span> <span class="n">background</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;osm&#39;</span><span class="p">,</span> <span class="s1">&#39;google&#39;</span><span class="p">}:</span>
-        <span class="c1"># these backgrounds use Mercator projection and look best in their</span>
-        <span class="c1"># native projection</span>
-        <span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">GOOGLE_MERCATOR</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># other backgrounds use Plate Carree, for simplicity use their</span>
-        <span class="c1"># native projection</span>
-        <span class="n">projection</span> <span class="o">=</span> <span class="n">crs_lonlat</span>
+    # decide what projection to use
+    if background in {&#39;osm&#39;, &#39;google&#39;}:
+        # these backgrounds use Mercator projection and look best in their
+        # native projection
+        projection = ccrs.GOOGLE_MERCATOR
+    else:
+        # other backgrounds use Plate Carree, for simplicity use their
+        # native projection
+        projection = crs_lonlat
         
-    <span class="c1"># create a figure and axes to plot on</span>
-    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+    # create a figure and axes to plot on
+    if ax is None:
+        fig = plt.figure(figsize=figsize, facecolor=&#39;w&#39;)
+        ax = fig.add_subplot(111, projection=projection)
 
-    <span class="c1"># set the extent of the map</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">)</span>
+    # set the extent of the map
+    ax.set_extent(extent, crs=crs_lonlat)
 
-    <span class="c1"># plot the background image</span>
+    # plot the background image
 
-    <span class="k">if</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;osm&#39;</span><span class="p">:</span>
-        <span class="c1"># use OpenStreetMap as background</span>
-        <span class="n">imagery</span> <span class="o">=</span> <span class="n">OSM</span><span class="p">()</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">imagery</span><span class="p">,</span> <span class="n">bgzoom</span><span class="p">)</span>
+    if background == &#39;osm&#39;:
+        # use OpenStreetMap as background
+        imagery = OSM()
+        ax.add_image(imagery, bgzoom)
 
-    <span class="k">elif</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;google&#39;</span><span class="p">:</span>
-        <span class="c1"># use Google Maps as background</span>
-        <span class="n">imagery</span> <span class="o">=</span> <span class="n">GoogleTiles</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">bgstyle</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">imagery</span><span class="p">,</span> <span class="n">bgzoom</span><span class="p">)</span>
+    elif background == &#39;google&#39;:
+        # use Google Maps as background
+        imagery = GoogleTiles(style=bgstyle)
+        ax.add_image(imagery, bgzoom)
 
-    <span class="k">elif</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;ecosystems&#39;</span><span class="p">:</span>
-        <span class="c1"># use African Ecosystems as background</span>
-        <span class="n">image_data</span><span class="p">,</span> <span class="n">image_cmap</span><span class="p">,</span> <span class="n">image_extent</span><span class="p">,</span> <span class="n">image_crs</span> <span class="o">=</span> <span class="n">load_ecosystems</span><span class="p">()</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">image_cmap</span><span class="p">,</span> 
-                  <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">image_extent</span><span class="p">,</span>
-                  <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">image_crs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Ecosystems&#39;</span>
+    elif background == &#39;ecosystems&#39;:
+        # use African Ecosystems as background
+        image_data, image_cmap, image_extent, image_crs = load_ecosystems()
+        ax.imshow(image_data, cmap=image_cmap, 
+                  interpolation=&#39;nearest&#39;, extent=image_extent,
+                  origin=&#39;upper&#39;, transform=image_crs)
+        if title is None:
+            title = &#39;Ecosystems&#39;
         
-    <span class="k">elif</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;itn_coverage&#39;</span><span class="p">:</span>
-        <span class="c1"># use ITN coverage as background</span>
-        <span class="n">image_data</span><span class="p">,</span> <span class="n">image_cmap</span><span class="p">,</span> <span class="n">image_extent</span><span class="p">,</span> <span class="n">image_crs</span> <span class="o">=</span> <span class="n">load_itn_coverage</span><span class="p">(</span><span class="n">bgyear</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">image_cmap</span><span class="p">,</span> 
-                  <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">image_extent</span><span class="p">,</span>
-                  <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">image_crs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ITN coverage (</span><span class="si">{</span><span class="n">bgyear</span><span class="si">}</span><span class="s1">)&#39;</span>
+    elif background == &#39;itn_coverage&#39;:
+        # use ITN coverage as background
+        image_data, image_cmap, image_extent, image_crs = load_itn_coverage(bgyear)
+        ax.imshow(image_data, cmap=image_cmap, 
+                  interpolation=&#39;nearest&#39;, extent=image_extent,
+                  origin=&#39;upper&#39;, transform=image_crs)
+        if title is None:
+            title = f&#39;ITN coverage ({bgyear})&#39;
 
-    <span class="k">if</span> <span class="n">background</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;ecosystems&quot;</span><span class="p">,</span> <span class="s2">&quot;itn_coverage&quot;</span><span class="p">}:</span>
-        <span class="c1"># add useful features</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;50m&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    if background in {&quot;ecosystems&quot;, &quot;itn_coverage&quot;}:
+        # add useful features
+        ax.coastlines(resolution=&#39;50m&#39;, linewidth=1)
+        ax.add_feature(cfeature.BORDERS, linewidth=1)
         
-    <span class="k">if</span> <span class="n">background</span> <span class="o">==</span> <span class="s1">&#39;itn_coverage&#39;</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAKES</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    if background == &#39;itn_coverage&#39;:
+        ax.add_feature(cfeature.LAKES, linewidth=1)
 
-    <span class="c1"># draw gridlines</span>
-    <span class="k">if</span> <span class="n">gridlines</span><span class="p">:</span>
-        <span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">,</span> 
-                          <span class="n">xlocs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="n">gridlines</span><span class="p">),</span> 
-                          <span class="n">ylocs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="n">gridlines</span><span class="p">),</span> 
-                          <span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">None</span>
+    # draw gridlines
+    if gridlines:
+        gl = ax.gridlines(crs=crs_lonlat, 
+                          xlocs=np.arange(-180, 180, gridlines), 
+                          ylocs=np.arange(-180, 180, gridlines), 
+                          draw_labels=True)
+        gl.top_labels = None
+        gl.right_labels = None
         
-    <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    if title is not None:
+        ax.set_title(title)
 
-    <span class="c1"># plot sampling sites</span>
-    <span class="n">df_summary</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="n">sample_sets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">sample_query</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">df_samples</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">sample_query</span><span class="p">)</span>
-        <span class="n">df_sites</span> <span class="o">=</span> <span class="n">df_samples</span><span class="p">[[</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="n">df_sites</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">df_sites</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">df_sites</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">plot_kws</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">plot_kws</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;marker&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
-        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;linestyle&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
-        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;markeredgecolor&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
-        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;markerfacecolor&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
-        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;markersize&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-        <span class="n">plot_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;markeredgewidth&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">label_sites</span><span class="p">:</span>
-            <span class="c1"># trick to allow us to use the annotate() method</span>
-            <span class="n">xycoords</span> <span class="o">=</span> <span class="n">crs_lonlat</span><span class="o">.</span><span class="n">_as_mpl_transform</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-                <span class="n">t</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="n">xycoords</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> 
-                                <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">backgroundcolor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.7</span><span class="p">))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_kws</span><span class="p">)</span>
+    # plot sampling sites
+    df_summary = None
+    if sample_sets is not None:
+        df_samples = ag3.sample_metadata(sample_sets=sample_sets)
+        if sample_query is not None:
+            df_samples = df_samples.query(sample_query)
+        df_sites = df_samples[[&#39;location&#39;, &#39;longitude&#39;, &#39;latitude&#39;]].drop_duplicates()
+        l = df_sites[&#39;location&#39;]
+        x = df_sites[&#39;longitude&#39;]
+        y = df_sites[&#39;latitude&#39;]
+        if plot_kws is None:
+            plot_kws = dict()
+        plot_kws.setdefault(&#39;marker&#39;, &#39;o&#39;)
+        plot_kws.setdefault(&#39;linestyle&#39;, &#39; &#39;)
+        plot_kws.setdefault(&#39;markeredgecolor&#39;, &#39;black&#39;)
+        plot_kws.setdefault(&#39;markerfacecolor&#39;, &#39;red&#39;)
+        plot_kws.setdefault(&#39;markersize&#39;, 6)
+        plot_kws.setdefault(&#39;markeredgewidth&#39;, 1)
+        if label_sites:
+            # trick to allow us to use the annotate() method
+            xycoords = crs_lonlat._as_mpl_transform(ax)
+            for t, i, j in zip(l, x, y):
+                t = ax.annotate(t, xy=(i, j), xycoords=xycoords, xytext=(0, 5), textcoords=&#39;offset points&#39;, 
+                                ha=&#39;center&#39;, va=&#39;bottom&#39;, backgroundcolor=(1, 1, 1, .7))
+        ax.plot(x, y, transform=crs_lonlat, zorder=10, **plot_kws)
         
-        <span class="c1"># build a summary dataframe showing numbers of samples</span>
-        <span class="n">df_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;sample_set&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;taxon&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;n_samples&#39;</span><span class="p">))</span>
+        # build a summary dataframe showing numbers of samples
+        df_summary = pd.DataFrame(df_samples.groupby([&#39;sample_set&#39;, &#39;location&#39;, &#39;longitude&#39;, &#39;latitude&#39;, &#39;year&#39;, &#39;taxon&#39;]).size().rename(&#39;n_samples&#39;))
 
-    <span class="k">return</span> <span class="n">df_summary</span>
+    return df_summary
 
     
 </pre></div>
@@ -1365,7 +1365,7 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Let’s try out the map plotting function, with the different backgound options.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;osm&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sites(background=&#39;osm&#39;, bgzoom=3);
 </pre></div>
 </div>
 </div>
@@ -1375,7 +1375,7 @@ Feature cultural, railroads_north_america, 10m length: 1127
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bgstyle</span><span class="o">=</span><span class="s1">&#39;street&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sites(background=&#39;google&#39;, bgzoom=3, bgstyle=&#39;street&#39;);
 </pre></div>
 </div>
 </div>
@@ -1385,7 +1385,7 @@ Feature cultural, railroads_north_america, 10m length: 1127
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bgstyle</span><span class="o">=</span><span class="s1">&#39;satellite&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sites(background=&#39;google&#39;, bgzoom=3, bgstyle=&#39;satellite&#39;);
 </pre></div>
 </div>
 </div>
@@ -1395,7 +1395,7 @@ Feature cultural, railroads_north_america, 10m length: 1127
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;ecosystems&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sites(background=&#39;ecosystems&#39;);
 </pre></div>
 </div>
 </div>
@@ -1405,7 +1405,7 @@ Feature cultural, railroads_north_america, 10m length: 1127
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;itn_coverage&#39;</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="mi">2019</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_sites(background=&#39;itn_coverage&#39;, bgyear=2019);
 </pre></div>
 </div>
 </div>
@@ -1416,24 +1416,24 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Let’s add a function to make a multi-panel plot, so we can see some of these maps side-by-side.</p>
 <div class="cell tag_thebe-init docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fig_sites</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">sample_query</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span> <span class="n">gridlines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-              <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">)):</span>
-    <span class="sd">&quot;&quot;&quot;Make a multi-panel figure of collection sites with different map backgrounds.&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def fig_sites(extent, sample_query, bgzoom=5, bgyear=2019, gridlines=None, 
+              label_sites=True, figsize=(13, 6)):
+    &quot;&quot;&quot;Make a multi-panel figure of collection sites with different map backgrounds.&quot;&quot;&quot;
     
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-    <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
-        <span class="n">sample_query</span><span class="o">=</span><span class="n">sample_query</span><span class="p">,</span>
-        <span class="n">gridlines</span><span class="o">=</span><span class="n">gridlines</span><span class="p">,</span>
-        <span class="n">label_sites</span><span class="o">=</span><span class="n">label_sites</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-    <span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="n">bgzoom</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">)</span>
-    <span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;ecosystems&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_lonlat</span><span class="p">)</span>
-    <span class="n">df_summary</span> <span class="o">=</span> <span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;itn_coverage&#39;</span><span class="p">,</span> <span class="n">bgyear</span><span class="o">=</span><span class="n">bgyear</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df_summary</span>
+    fig = plt.figure(figsize=figsize, facecolor=&#39;w&#39;)
+    kwargs = dict(
+        extent=extent,
+        sample_query=sample_query,
+        gridlines=gridlines,
+        label_sites=label_sites,
+    )
+    ax = fig.add_subplot(1, 3, 1, projection=crs_mercator)
+    plot_sites(background=&#39;google&#39;, bgzoom=bgzoom, ax=ax, **kwargs)
+    ax = fig.add_subplot(1, 3, 2, projection=crs_lonlat)
+    plot_sites(background=&#39;ecosystems&#39;, ax=ax, **kwargs)
+    ax = fig.add_subplot(1, 3, 3, projection=crs_lonlat)
+    df_summary = plot_sites(background=&#39;itn_coverage&#39;, bgyear=bgyear, ax=ax, **kwargs)
+    return df_summary
 </pre></div>
 </div>
 </div>
@@ -1446,12 +1446,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes were collected in the village of Furvela in 2003 and 2004 and are all <em>An. gambiae</em>. For more information about Furvela see <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/25088021/">Charlwood et al. (2014)</a> and references therein.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="o">-</span><span class="mi">28</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Mozambique&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(28, 43, -28, -8),
+    sample_query=&#39;country == &quot;Mozambique&quot;&#39;,
+    bgzoom=5,
+    gridlines=5,
+)
 </pre></div>
 </div>
 </div>
@@ -1596,12 +1596,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes were collected from several villages within the catchment of the Majete Malaria Project in Chikhwawa District in 2015, and are all <em>An. arabiensis</em>. More information about the collection site is available in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5610449/">McCann et al. (2017)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="o">-</span><span class="mi">18</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Malawi&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(32, 38, -18, -8),
+    sample_query=&#39;country == &quot;Malawi&quot;&#39;,
+    bgzoom=6,
+    gridlines=2,
+)
 </pre></div>
 </div>
 </div>
@@ -1741,12 +1741,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes were contributed from four different collection sites in north west and north east Tanzania. Most mosquitoes were <em>An. arabiensis</em> or <em>An. gambiae</em> but a subset of mosquitoes had an unexpected species genotype, being apparently intermediate between <em>An. gambiae</em> and <em>An. coluzzii</em>, which we’re investigating further. For more information about these locations see <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/22519840/">Kabula et al. (2012)</a>, <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/24946780/">Matowo et al. (2014)</a> and <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/s12936-019-2738-6">Matiya et al. (2019)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="o">-</span><span class="mi">13</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Tanzania&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(28, 43, -13, 2),
+    sample_query=&#39;country == &quot;Tanzania&quot;&#39;,
+    bgzoom=5,
+    gridlines=5,
+)
 </pre></div>
 </div>
 </div>
@@ -1926,12 +1926,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>The Kenyan mosquitoes were collected from villages in Kilifi County. Similar to eastern Tanzania, there are <em>An. gambiae</em> and <em>An. arabiensis</em> in addition to mosquitoes with apparent intermediate species genotypes. Some more information about malaria entomology in Kilifi is available in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3292715/">Midega et al. (2012)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Kenya&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(33, 43, -6, 6),
+    sample_query=&#39;country == &quot;Kenya&quot;&#39;,
+    bgzoom=5,
+    gridlines=2,
+)
 </pre></div>
 </div>
 </div>
@@ -2085,12 +2085,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes were collected from two sites in Uganda, with both <em>An. arabiensis</em> and <em>An. gambiae</em> collected in Nagongera in the east but almost exclusively <em>An. gambiae</em> from Kihihi in the west. More information about these collections is available in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/1475-2875-13-111">Kilama et al. (2014)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Uganda&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(29, 36, -2, 5),
+    sample_query=&#39;country == &quot;Uganda&quot;&#39;,
+    bgzoom=6,
+    gridlines=2,
+)
 </pre></div>
 </div>
 </div>
@@ -2250,12 +2250,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p><em>An. gambiae</em> mosquitoes were collected from the town of Gbadolite in the far north, close to the border with the Central African Republic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Democratic Republic of the Congo&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(11, 32, -14, 7),
+    sample_query=&#39;country == &quot;Democratic Republic of the Congo&quot;&#39;,
+    bgzoom=4,
+    gridlines=5,
+)
 </pre></div>
 </div>
 </div>
@@ -2395,12 +2395,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes were collected in the capital Bangui. Both <em>An. gambiae</em> and <em>An. coluzzii</em> are represented. These are the oldest mosquitoes in Ag1000G, collected in 1993 and 1994.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Central African Republic&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(13, 29, 1, 12),
+    sample_query=&#39;country == &quot;Central African Republic&quot;&#39;,
+    bgzoom=5,
+    gridlines=5,
+)
 </pre></div>
 </div>
 </div>
@@ -2553,13 +2553,13 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes from Cameroon were collected by three separate studies, sampling a number of different locations. Here’s an overview of all Cameroon sites, then further details for each sample set are below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cameroon&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(8, 17, 1, 14),
+    sample_query=&#39;country == &quot;Cameroon&quot;&#39;,
+    label_sites=False,
+    bgzoom=5,
+    gridlines=5,
+);
 </pre></div>
 </div>
 </div>
@@ -2572,15 +2572,15 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in this sample set were collected at 11 sites spread across Cameroon. Further details are given in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5400387/">Kamdem et al. (2017)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-C&quot;&#39;</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-CM-C&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(8, 17, 2, 12),
+    sample_query=&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-C&quot;&#39;,
+    gridlines=2,
+    label_sites=True,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, bgzoom=6, ax=ax, title=&quot;AG1000G-CM-C&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -2812,15 +2812,15 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in this sample set were collected in 2005 from 64 locations covering a 1,500 km north-to-south transect crossing all eco-geographical areas of Cameroon. The original study and collection sites are described in <a class="reference external" href="https://bmcecol.biomedcentral.com/articles/10.1186/1472-6785-9-17">Simard et al. (2009)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-B&quot;&#39;</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-CM-B&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(8, 17, 2, 12),
+    sample_query=&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-B&quot;&#39;,
+    gridlines=2,
+    label_sites=False,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, bgzoom=6, ax=ax, title=&quot;AG1000G-CM-B&quot;, **kwargs);
 </pre></div>
 </div>
 </div>
@@ -2834,16 +2834,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p><em>An. gambiae</em> mosquitoes were collected from three villages comprising a transect from forest to savanna. Further details of the collections are in <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2988034/">Lobo et al. (2010)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-A&quot;&#39;</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">plot_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-CM-A&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(8, 17, 2, 12),
+    sample_query=&#39;country == &quot;Cameroon&quot; and sample_set == &quot;AG1000G-CM-A&quot;&#39;,
+    gridlines=2,
+    label_sites=True,
+    plot_kws=dict(markerfacecolor=&#39;red&#39;, markersize=8)
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, bgzoom=6, ax=ax, title=&quot;AG1000G-CM-A&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -3008,12 +3008,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p><em>An. gambiae</em> mosquitoes were collected from the capital city, Libreville. Further information about malaria entomology and epidemiology in Libreville is available in <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/16608487/">Pinto et al. (2006)</a> and <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3310827/">Mourou et al. (2012)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Gabon&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(8, 15, -5, 3),
+    sample_query=&#39;country == &quot;Gabon&quot;&#39;,
+    bgzoom=6,
+    gridlines=2,
+)
 </pre></div>
 </div>
 </div>
@@ -3153,12 +3153,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p><em>An. coluzzii</em> mosquitoes were collected from peri-urban areas in Luanda province, in the west of Angola. See <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/16420701/">Cuamba et al. (2006)</a> and <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/18187801/">Calzetta et al. (2008)</a> for more information about malaria vectors in Angola.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="o">-</span><span class="mi">19</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Angola&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(10, 25, -19, -5),
+    sample_query=&#39;country == &quot;Angola&quot;&#39;,
+    bgzoom=5,
+    gridlines=5,
+)
 </pre></div>
 </div>
 </div>
@@ -3298,12 +3298,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes were collected from four sites in southern Ghana during 2012. See <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/24206629/">Essandoh et al. (2013)</a> for more information about these collections.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Ghana&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(-4, 2, 4, 12),
+    sample_query=&#39;country == &quot;Ghana&quot;&#39;,
+    bgzoom=6,
+    gridlines=2,
+)
 </pre></div>
 </div>
 </div>
@@ -3475,12 +3475,12 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p><em>An. coluzzii</em> mosquitoes were collected in Tiassale in southern Côte d’Ivoire. Further information about these specimens is available in <a class="reference external" href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1009253">Grau-Bové et al. (2021)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Cote d</span><span class="se">\&#39;</span><span class="s1">Ivoire&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(-9, -2, 4, 11),
+    sample_query=&#39;country == &quot;Cote d\&#39;Ivoire&quot;&#39;,
+    bgzoom=6,
+    gridlines=2,
+)
 </pre></div>
 </div>
 </div>
@@ -3620,13 +3620,13 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes were collected at four sites by two separate studies. Further details about the different collections is below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Burkina Faso&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(-7, 4, 9, 16),
+    sample_query=&#39;country == &quot;Burkina Faso&quot;&#39;,
+    bgzoom=6,
+    label_sites=False,
+    gridlines=2,
+);
 </pre></div>
 </div>
 </div>
@@ -3639,16 +3639,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in these two sample sets were collected at three sites near to Bobo-Dioulasso, with sampling in both 2012 and 2014. These collections were performed as part of the <a class="reference external" href="https://targetmalaria.org/">Target Malaria project</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">4.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">11.5</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set in [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-BF-A, AG1000G-BF-B&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(-4.6, -4.1, 11, 11.5),
+    gridlines=.1,
+    sample_query=&#39;sample_set in [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]&#39;,
+    label_sites=True,
+    bgzoom=10,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-BF-A, AG1000G-BF-B&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -3861,16 +3861,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in this sample set were collected from Monomtega in central Burkina Faso in 2004.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">11.9</span><span class="p">,</span> <span class="mf">12.5</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-BF-C&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-BF-C&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(-1.8, -0.8, 11.9, 12.5),
+    gridlines=.2,
+    sample_query=&#39;sample_set == &quot;AG1000G-BF-C&quot;&#39;,
+    label_sites=True,
+    bgzoom=10,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-BF-C&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -4011,13 +4011,13 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes from Mali were collected from several locations in the south west of the country in the context of three separate studies, described further below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Mali&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(-13, 6, 9, 22),
+    sample_query=&#39;country == &quot;Mali&quot;&#39;,
+    bgzoom=5,
+    gridlines=5,
+    label_sites=False,
+);
 </pre></div>
 </div>
 </div>
@@ -4030,16 +4030,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Malian mosquitoes in this sample set were collected at two sites to the south of Bamako, further details are given in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/s12936-016-1242-5">Coulibaly et al. (2016)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Mali&quot; and sample_set == &quot;AG1000G-GN-B&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(-9, -6, 10.5, 13),
+    gridlines=1,
+    sample_query=&#39;country == &quot;Mali&quot; and sample_set == &quot;AG1000G-GN-B&quot;&#39;,
+    label_sites=True,
+    bgzoom=8,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -4199,16 +4199,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in this sample set were collected at three sites in close proximity, located to the north of Bamako. These collections were performed as part of the <a class="reference external" href="https://targetmalaria.org/">Target Malaria project</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">8.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.8</span><span class="p">,</span> <span class="mf">12.6</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-ML-A&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-ML-A&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(-8.4, -7.8, 12.6, 13.0),
+    gridlines=.1,
+    sample_query=&#39;sample_set == &quot;AG1000G-ML-A&quot;&#39;,
+    label_sites=True,
+    bgzoom=10,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-ML-A&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -4376,16 +4376,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in this sample set were collected from seven villages in southern Mali, further details are given in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/1475-2875-6-133">Coulibaly et al. (2007)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-ML-B&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-ML-B&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(-9, -5, 10.5, 14),
+    gridlines=1,
+    sample_query=&#39;sample_set == &quot;AG1000G-ML-B&quot;&#39;,
+    label_sites=True,
+    bgzoom=7,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-ML-B&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -4578,13 +4578,13 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes were collected from two sites in south eastern Guinea, further details are given in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/s12936-016-1242-5">Coulibaly et al. (2016)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Guinea&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(-16, -7, 7, 13),
+    sample_query=&#39;country == &quot;Guinea&quot;&#39;,
+    bgzoom=6,
+    gridlines=2,
+    label_sites=True,
+)
 </pre></div>
 </div>
 </div>
@@ -4769,13 +4769,13 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>There are three collection sites in Guinea-Bissau, two coastal and one inland. Further details are available in <a class="reference external" href="https://www.nature.com/articles/srep46451">Vicente et al. (2017)</a>. At the coastal sites there are a significant fraction of mosquitoes with apparent intermediate <em>An. gambiae</em>/<em>An. coluzzii</em> species genotypes, which we’re investigating further.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Guinea-Bissau&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(-17, -13, 10, 14),
+    sample_query=&#39;country == &quot;Guinea-Bissau&quot;&#39;,
+    bgzoom=7,
+    gridlines=1,
+    label_sites=True,
+)
 </pre></div>
 </div>
 </div>
@@ -4931,13 +4931,13 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes from The Gambia were contributed from various collection sites via three separate studies, described further below. At almost all of these sites there are mosquitoes with apparent intermediate <em>An. gambiae</em>/<em>An. coluzzii</em> species genotypes, similar to coastal Guinea-Bissau.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_sites</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mf">13.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Gambia, The&quot;&#39;</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig_sites(
+    extent=(-17, -13.5, 12, 15),
+    sample_query=&#39;country == &quot;Gambia, The&quot;&#39;,
+    bgzoom=7,
+    gridlines=1,
+    label_sites=False,
+);
 </pre></div>
 </div>
 </div>
@@ -4950,16 +4950,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in this sample set were collected at Njabakunda, further details are given in <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/23335339/">Nwakanma et al. (2013)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-GM-A&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-GM-A&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(-17, -14.5, 13, 14),
+    gridlines=.5,
+    sample_query=&#39;sample_set == &quot;AG1000G-GM-A&quot;&#39;,
+    label_sites=True,
+    bgzoom=8,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-GM-A&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -5103,16 +5103,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in this sample set were collected from three sites along the Gambia River, further details are given in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/1475-2875-7-182">Caputo et al. (2008)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-GM-B&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-GM-B&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(-17, -14.5, 13, 14),
+    gridlines=.5,
+    sample_query=&#39;sample_set == &quot;AG1000G-GM-B&quot;&#39;,
+    label_sites=True,
+    bgzoom=8,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-GM-B&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -5276,16 +5276,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Mosquitoes in this sample set were collected at Wali Kunda in the rural central river region of The Gambia. Further details are given in <a class="reference external" href="https://ora.ox.ac.uk/objects/uuid:1e65b4bf-48fb-4921-a20b-8d8f7d0bdd12">Fabrigar (2015)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.5</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;sample_set == &quot;AG1000G-GM-C&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-GM-C&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(-17, -14.5, 13, 14),
+    gridlines=.5,
+    sample_query=&#39;sample_set == &quot;AG1000G-GM-C&quot;&#39;,
+    label_sites=True,
+    bgzoom=8,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-GM-C&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -5430,16 +5430,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p>Returning to East Africa, Mayotte Island is one of the two oceanic islands represented. Seven collection sites were sampled.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mf">44.9</span><span class="p">,</span> <span class="mf">45.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">13.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.6</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Mayotte&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-FR&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(44.9, 45.4, -13.1, -12.6),
+    gridlines=.1,
+    sample_query=&#39;country == &quot;Mayotte&quot;&#39;,
+    label_sites=True,
+    bgzoom=11,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-FR&quot;, **kwargs)
 </pre></div>
 </div>
 </div>
@@ -5627,16 +5627,16 @@ Feature cultural, railroads_north_america, 10m length: 1127
 <p><em>An. gambiae</em> mosquitoes were collected from a location in the north part of the island. Further information on malaria vector biology in Bioko is available in <a class="reference external" href="https://malariajournal.biomedcentral.com/articles/10.1186/1475-2875-11-56">Overgaard et al. (2012)</a> and <a class="reference external" href="https://www.pnas.org/content/115/18/4619.short">Vontas et al. (2018)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mf">8.3</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">),</span>
-    <span class="n">gridlines</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s1">&#39;country == &quot;Equatorial Guinea&quot;&#39;</span><span class="p">,</span>
-    <span class="n">label_sites</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">bgzoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">crs_mercator</span><span class="p">)</span>
-<span class="n">plot_sites</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="s1">&#39;google&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;AG1000G-GQ&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(9, 9))
+kwargs = dict(
+    extent=(8.3, 9.0, 3.1, 3.9),
+    gridlines=.1,
+    sample_query=&#39;country == &quot;Equatorial Guinea&quot;&#39;,
+    label_sites=False,
+    bgzoom=10,
+)
+ax = fig.add_subplot(1, 1, 1, projection=crs_mercator)
+plot_sites(background=&#39;google&#39;, ax=ax, title=&quot;AG1000G-GQ&quot;, **kwargs)
 </pre></div>
 </div>
 </div>

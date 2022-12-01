@@ -732,7 +732,7 @@ title="Print to PDF"
 <p>Running this notebook requires some Python packages to be installed:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q malariagen_data
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install -q malariagen_data
 </pre></div>
 </div>
 </div>
@@ -757,14 +757,14 @@ title="Print to PDF"
 <p>Import other packages we’ll need to use here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">dask</span>
-<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
-<span class="kn">from</span> <span class="nn">dask.diagnostics.progress</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
-<span class="c1"># silence some warnings</span>
-<span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;array.slicing.split_large_chunks&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
-<span class="kn">import</span> <span class="nn">allel</span>
-<span class="kn">import</span> <span class="nn">malariagen_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import dask
+import dask.array as da
+from dask.diagnostics.progress import ProgressBar
+# silence some warnings
+dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: False})
+import allel
+import malariagen_data
 </pre></div>
 </div>
 </div>
@@ -772,8 +772,8 @@ title="Print to PDF"
 <p><code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data access from Google Cloud is set up with the following code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ag3</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Ag3</span><span class="p">()</span>
-<span class="n">ag3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ag3 = malariagen_data.Ag3()
+ag3
 </pre></div>
 </div>
 </div>
@@ -839,8 +839,8 @@ title="Print to PDF"
 <p>To see which sample sets are available, load the sample set manifest into a pandas dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample_sets</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_sets</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">df_sample_sets</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_sample_sets = ag3.sample_sets(release=&quot;3.0&quot;)
+df_sample_sets
 </pre></div>
 </div>
 </div>
@@ -1128,8 +1128,8 @@ title="Print to PDF"
 <p>E.g., load sample metadata for all samples in the Ag3.0 release into a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">pandas DataFrame</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">df_samples</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_samples = ag3.sample_metadata(sample_sets=&quot;3.0&quot;)
+df_samples
 </pre></div>
 </div>
 </div>
@@ -1532,7 +1532,7 @@ title="Print to PDF"
 <p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> can be used to explore and query the sample metadata in various ways. E.g., here is a summary of the numbers of samples by species:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;taxon&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_samples.groupby(&quot;taxon&quot;).size()
 </pre></div>
 </div>
 </div>
@@ -1559,8 +1559,8 @@ dtype: int64
 <p>E.g., access SNP calls for chromosome arm 3R for all samples in <code class="docutils literal notranslate"><span class="pre">Ag3.0</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;3R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_snps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_snps = ag3.snp_calls(region=&quot;3R&quot;, sample_sets=&quot;3.0&quot;)
+ds_snps
 </pre></div>
 </div>
 </div>
@@ -5254,8 +5254,8 @@ Attributes:
 <p>We have called SNP genotypes in all samples at all positions in the genome where the reference allele is not “N”. Data on this set of genomic positions and alleles for a given chromosome arm (e.g., 3R) can be accessed as <a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask arrays</a> as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">pos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pos = ds_snps[&quot;variant_position&quot;].data
+pos
 </pre></div>
 </div>
 </div>
@@ -5398,8 +5398,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alleles</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_allele&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">alleles</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>alleles = ds_snps[&quot;variant_allele&quot;].data
+alleles
 </pre></div>
 </div>
 </div>
@@ -5544,9 +5544,9 @@ Attributes:
 <p>Data can be loaded into memory as a <a class="reference external" href="https://numpy.org/doc/stable/user/absolute_beginners.html">NumPy array</a> as shown in the following examples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read first 10 SNP positions into a numpy array</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">p</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># read first 10 SNP positions into a numpy array
+p = pos[:10].compute()
+p
 </pre></div>
 </div>
 </div>
@@ -5558,9 +5558,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read first 10 SNP alleles into a numpy array</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">alleles</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># read first 10 SNP alleles into a numpy array
+a = alleles[:10].compute()
+a
 </pre></div>
 </div>
 </div>
@@ -5596,9 +5596,9 @@ Attributes:
 <p>The site filters data can be accessed as dask arrays as shown in the examples below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access gamb_colu_arab site filters for chromosome arm 3R as a dask array</span>
-<span class="n">filter_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s1">&#39;variant_filter_pass_gamb_colu_arab&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">filter_pass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># access gamb_colu_arab site filters for chromosome arm 3R as a dask array
+filter_pass = ds_snps[&#39;variant_filter_pass_gamb_colu_arab&#39;].data
+filter_pass
 </pre></div>
 </div>
 </div>
@@ -5816,9 +5816,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read filter values for first 10 SNPs (True means the site passes filters)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">filter_pass</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">f</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># read filter values for first 10 SNPs (True means the site passes filters)
+f = filter_pass[:10].compute()
+f
 </pre></div>
 </div>
 </div>
@@ -5836,8 +5836,8 @@ Attributes:
 <p>SNP genotypes can be accessed as dask arrays as shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">gt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt = ds_snps[&quot;call_genotype&quot;].data
+gt
 </pre></div>
 </div>
 </div>
@@ -6399,9 +6399,9 @@ Attributes:
 <p>Note that the columns of this array (second dimension) match the rows in the sample metadata, if the same sample sets were loaded. I.e.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">df_samples</span><span class="p">)</span> <span class="o">==</span> <span class="n">gt</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_samples = ag3.sample_metadata(sample_sets=&quot;3.0&quot;)
+gt = ds_snps[&quot;call_genotype&quot;].data
+len(df_samples) == gt.shape[1]
 </pre></div>
 </div>
 </div>
@@ -6414,8 +6414,8 @@ Attributes:
 <p>You can use this correspondance to apply further subsetting operations to the genotypes by querying the sample metadata. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc_gambiae</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;taxon == &#39;gambiae&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;found </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">loc_gambiae</span><span class="p">)</span><span class="si">}</span><span class="s2"> gambiae samples&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>loc_gambiae = df_samples.eval(&quot;taxon == &#39;gambiae&#39;&quot;).values
+print(f&quot;found {np.count_nonzero(loc_gambiae)} gambiae samples&quot;)
 </pre></div>
 </div>
 </div>
@@ -6427,8 +6427,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps_gambiae</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">loc_gambiae</span><span class="p">)</span>
-<span class="n">ds_snps_gambiae</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_snps_gambiae = ds_snps.isel(samples=loc_gambiae)
+ds_snps_gambiae
 </pre></div>
 </div>
 </div>
@@ -9929,8 +9929,8 @@ Attributes:
 <p>Data can be read into memory as numpy arrays, e.g., read genotypes for the first 5 SNPs and the first 3 samples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">gt</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-<span class="n">g</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = gt[:5, :3, :].compute()
+g
 </pre></div>
 </div>
 </div>
@@ -9962,9 +9962,9 @@ Attributes:
 E.g., the code below sets up a genotype array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the scikit-allel wrapper class for genotype calls</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">gt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># use the scikit-allel wrapper class for genotype calls
+gt = allel.GenotypeDaskArray(ds_snps[&quot;call_genotype&quot;].data)
+gt
 </pre></div>
 </div>
 </div>
@@ -9988,8 +9988,8 @@ E.g., the code below sets up a genotype array.</p>
 <p>Access HMM data via the <code class="docutils literal notranslate"><span class="pre">cnv_hmm()</span></code> method, which returns an <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a> dataset. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_hmm</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">cnv_hmm</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_hmm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_hmm = ag3.cnv_hmm(region=&quot;2R&quot;, sample_sets=&quot;3.0&quot;)
+ds_hmm
 </pre></div>
 </div>
 </div>
@@ -10962,8 +10962,8 @@ Attributes:
 <p>Here “variants” are the 300 bp windows in which coverage was calculated and the HMM fitted. Window start positions are given by the <code class="docutils literal notranslate"><span class="pre">variant_position</span></code> array and ends are given by <code class="docutils literal notranslate"><span class="pre">variant_end</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;variant_position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">pos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pos = ds_hmm[&#39;variant_position&#39;].values
+pos
 </pre></div>
 </div>
 </div>
@@ -10976,8 +10976,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;variant_end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">end</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>end = ds_hmm[&#39;variant_end&#39;].values
+end
 </pre></div>
 </div>
 </div>
@@ -10995,8 +10995,8 @@ Attributes:
 <p>Rows are variants (windows), columns are individual samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cn</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;call_CN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">cn</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cn = ds_hmm[&#39;call_CN&#39;].values
+cn
 </pre></div>
 </div>
 </div>
@@ -11015,8 +11015,8 @@ Attributes:
 <p>The <code class="docutils literal notranslate"><span class="pre">gene_cnv()</span></code> method can be used to summarise the HMM data and compute modal coverage by gene, for all genes in a chromosome arm. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_gene_cnv</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">gene_cnv</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_gene_cnv</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_gene_cnv = ag3.gene_cnv(region=&quot;2R&quot;, sample_sets=&quot;3.0&quot;)
+ds_gene_cnv
 </pre></div>
 </div>
 </div>
@@ -11415,13 +11415,13 @@ Data variables:
 <p>The <code class="docutils literal notranslate"><span class="pre">gene_cnv_frequencies()</span></code> method can be used to compute CNV frequencies by gene and cohort, e.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_gene_cnv_freqs</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">gene_cnv_frequencies</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> 
-    <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">,</span>
-    <span class="n">sample_query</span><span class="o">=</span><span class="s2">&quot;country == &#39;Burkina Faso&#39;&quot;</span><span class="p">,</span>
-    <span class="n">cohorts</span><span class="o">=</span><span class="s2">&quot;admin1_year&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">df_gene_cnv_freqs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_gene_cnv_freqs = ag3.gene_cnv_frequencies(
+    region=&quot;2R&quot;, 
+    sample_sets=&quot;3.0&quot;,
+    sample_query=&quot;country == &#39;Burkina Faso&#39;&quot;,
+    cohorts=&quot;admin1_year&quot;,
+)
+df_gene_cnv_freqs
 </pre></div>
 </div>
 </div>
@@ -11763,12 +11763,12 @@ Data variables:
 <p>N.B., coverage calls can only be accessed on sample set at a time, because the CNV alleles do not necessarily match between sample sets. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_cnv</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">cnv_coverage_calls</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s1">&#39;2R&#39;</span><span class="p">,</span> 
-    <span class="n">analysis</span><span class="o">=</span><span class="s1">&#39;arab&#39;</span><span class="p">,</span> 
-    <span class="n">sample_set</span><span class="o">=</span><span class="s1">&#39;AG1000G-TZ&#39;</span>
-<span class="p">)</span>
-<span class="n">ds_cnv</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_cnv = ag3.cnv_coverage_calls(
+    region=&#39;2R&#39;, 
+    analysis=&#39;arab&#39;, 
+    sample_set=&#39;AG1000G-TZ&#39;
+)
+ds_cnv
 </pre></div>
 </div>
 </div>
@@ -12462,8 +12462,8 @@ Attributes:
 <p>Here “variants” are copy number variants, inferred from the HMM results. CNV start positions are given by the <code class="docutils literal notranslate"><span class="pre">variant_position</span></code> array and ends are given by <code class="docutils literal notranslate"><span class="pre">variant_end</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">&#39;variant_position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">pos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pos = ds_cnv[&#39;variant_position&#39;].values
+pos
 </pre></div>
 </div>
 </div>
@@ -12476,8 +12476,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">&#39;variant_end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">end</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>end = ds_cnv[&#39;variant_end&#39;].values
+end
 </pre></div>
 </div>
 </div>
@@ -12491,8 +12491,8 @@ Attributes:
 <p>CNV genotypes are given by the <code class="docutils literal notranslate"><span class="pre">call_genotype</span></code> array, coded as 0 for absence and 1 for presence of the CNV allele. Rows are CNV alleles and columns are individual samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">&#39;call_genotype&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">gt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt = ds_cnv[&#39;call_genotype&#39;].values
+gt
 </pre></div>
 </div>
 </div>
@@ -12511,8 +12511,8 @@ Attributes:
 <p>Note that not all samples will have been included in the coverage calls, as some are excluded due to high coverage variance. Use the <code class="docutils literal notranslate"><span class="pre">sample_id</span></code> array to access the samples included in a given dataset, e.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">&#39;sample_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">samples</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>samples = ds_cnv[&#39;sample_id&#39;].values
+samples[:5]
 </pre></div>
 </div>
 </div>
@@ -12529,8 +12529,8 @@ Attributes:
 <p>Access the discordant read calls via the <code class="docutils literal notranslate"><span class="pre">cnv_discordant_read_calls()</span></code> method. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_cnv_dr</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">cnv_discordant_read_calls</span><span class="p">(</span><span class="n">contig</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_cnv_dr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_cnv_dr = ag3.cnv_discordant_read_calls(contig=&quot;2R&quot;, sample_sets=&quot;3.0&quot;)
+ds_cnv_dr
 </pre></div>
 </div>
 </div>
@@ -13439,8 +13439,8 @@ Attributes:
 <p>CNV genotypes are given by the <code class="docutils literal notranslate"><span class="pre">call_genotype</span></code> array, coded as 0 for absence and 1 for presence of the CNV allele. Rows are CNV alleles and columns are individual samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vid</span> <span class="o">=</span> <span class="n">ds_cnv_dr</span><span class="p">[</span><span class="s1">&#39;variant_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">vid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>vid = ds_cnv_dr[&#39;variant_id&#39;].values
+vid
 </pre></div>
 </div>
 </div>
@@ -13461,8 +13461,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">ds_cnv_dr</span><span class="p">[</span><span class="s1">&#39;variant_Region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">reg</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reg = ds_cnv_dr[&#39;variant_Region&#39;].values
+reg
 </pre></div>
 </div>
 </div>
@@ -13483,8 +13483,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_cnv_dr</span><span class="p">[</span><span class="s1">&#39;variant_position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">pos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pos = ds_cnv_dr[&#39;variant_position&#39;].values
+pos
 </pre></div>
 </div>
 </div>
@@ -13502,8 +13502,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">ds_cnv_dr</span><span class="p">[</span><span class="s1">&#39;variant_end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">end</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>end = ds_cnv_dr[&#39;variant_end&#39;].values
+end
 </pre></div>
 </div>
 </div>
@@ -13521,8 +13521,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">ds_cnv_dr</span><span class="p">[</span><span class="s1">&#39;call_genotype&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">gt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gt = ds_cnv_dr[&#39;call_genotype&#39;].values
+gt
 </pre></div>
 </div>
 </div>
@@ -13540,8 +13540,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">ds_cnv_dr</span><span class="p">[</span><span class="s1">&#39;sample_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">samples</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>samples = ds_cnv_dr[&#39;sample_id&#39;].values
+samples[:5]
 </pre></div>
 </div>
 </div>
@@ -13566,8 +13566,8 @@ Attributes:
 <p>Data can be accessed in the cloud via the <code class="docutils literal notranslate"><span class="pre">haplotypes()</span></code> method. E.g., access haplotypes from the “gamb_colu_arab” analysis for all available samples, for chromosome arm 2R. This method returns an <a class="reference external" href="http://xarray.pydata.org/en/stable/user-guide/data-structures.html#dataset">xarray Dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_haps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">haplotypes</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2R&quot;</span><span class="p">,</span> <span class="n">analysis</span><span class="o">=</span><span class="s2">&quot;gamb_colu_arab&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">ds_haps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ds_haps = ag3.haplotypes(region=&quot;2R&quot;, analysis=&quot;gamb_colu_arab&quot;, sample_sets=&quot;3.0&quot;)
+ds_haps
 </pre></div>
 </div>
 </div>
@@ -14527,9 +14527,9 @@ Attributes:
 <p>The SNP positions and alleles can be accessed as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access haplotype SNP positions</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">&quot;variant_position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
-<span class="n">pos</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># access haplotype SNP positions
+pos = ds_haps[&quot;variant_position&quot;].data  # dask array
+pos
 </pre></div>
 </div>
 </div>
@@ -14635,8 +14635,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load positions of first 10 haplotype SNPs</span>
-<span class="n">pos</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># numpy array</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load positions of first 10 haplotype SNPs
+pos[:10].compute()  # numpy array
 </pre></div>
 </div>
 </div>
@@ -14648,9 +14648,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access haplotype SNP alleles</span>
-<span class="n">alleles</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">&quot;variant_allele&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
-<span class="n">alleles</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># access haplotype SNP alleles
+alleles = ds_haps[&quot;variant_allele&quot;].data  # dask array
+alleles
 </pre></div>
 </div>
 </div>
@@ -14757,8 +14757,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load alleles of first 10 haplotype SNPs - note all are biallelic</span>
-<span class="n">alleles</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># numpy array</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load alleles of first 10 haplotype SNPs - note all are biallelic
+alleles[:10].compute()  # numpy array
 </pre></div>
 </div>
 </div>
@@ -14780,9 +14780,9 @@ Attributes:
 <p>The phased genotypes can be accessed as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access genotypes</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
-<span class="n">gt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># access genotypes
+gt = ds_haps[&quot;call_genotype&quot;].data  # dask array
+gt
 </pre></div>
 </div>
 </div>
@@ -15087,9 +15087,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wrap as scikit-allel genotype array</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_haps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">gt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># wrap as scikit-allel genotype array
+gt = allel.GenotypeDaskArray(ds_haps[&quot;call_genotype&quot;].data)
+gt
 </pre></div>
 </div>
 </div>
@@ -15098,9 +15098,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to scikit-allel haplotype array - useful for some analyses</span>
-<span class="n">ht</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">to_haplotypes</span><span class="p">()</span>
-<span class="n">ht</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># convert to scikit-allel haplotype array - useful for some analyses
+ht = gt.to_haplotypes()
+ht
 </pre></div>
 </div>
 </div>
@@ -15113,9 +15113,9 @@ Attributes:
 <p>For some analyses, you’ll want to subset the haplotypes, e.g., by location and species. In order to perform subsetting, you need to obtain sample metadata, and align it with the haplotype data. This ensures that every row in the sample metadata dataframe corresponds to every column in the phased genotypes array. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load sample metadata</span>
-<span class="n">df_samples</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
-<span class="n">df_samples</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load sample metadata
+df_samples = ag3.sample_metadata(sample_sets=&quot;3.0&quot;)
+df_samples.head()
 </pre></div>
 </div>
 </div>
@@ -15368,9 +15368,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load IDs of phased samples</span>
-<span class="n">samples_phased</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s1">&#39;sample_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">samples_phased</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># load IDs of phased samples
+samples_phased = ds_haps[&#39;sample_id&#39;].values
+samples_phased[:5]
 </pre></div>
 </div>
 </div>
@@ -15383,9 +15383,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># align sample metadata to haplotypes</span>
-<span class="n">df_samples_phased</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;sample_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_phased</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">df_samples_phased</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># align sample metadata to haplotypes
+df_samples_phased = df_samples.set_index(&quot;sample_id&quot;).loc[samples_phased].reset_index()
+df_samples_phased.head()
 </pre></div>
 </div>
 </div>
@@ -15638,10 +15638,10 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now define some cohort of interest and locate samples</span>
-<span class="n">cohort_query</span> <span class="o">=</span> <span class="s2">&quot;country == &#39;Burkina Faso&#39; and taxon == &#39;coluzzii&#39; and year == 2012&quot;</span>
-<span class="n">loc_cohort_samples</span> <span class="o">=</span> <span class="n">df_samples_phased</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">cohort_query</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
-<span class="n">loc_cohort_samples</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># now define some cohort of interest and locate samples
+cohort_query = &quot;country == &#39;Burkina Faso&#39; and taxon == &#39;coluzzii&#39; and year == 2012&quot;
+loc_cohort_samples = df_samples_phased.query(cohort_query).index.values
+loc_cohort_samples
 </pre></div>
 </div>
 </div>
@@ -15659,9 +15659,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># subset haplotypes to cohort</span>
-<span class="n">ds_haps_cohort</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">loc_cohort_samples</span><span class="p">)</span>
-<span class="n">ds_haps_cohort</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># subset haplotypes to cohort
+ds_haps_cohort = ds_haps.isel(samples=loc_cohort_samples)
+ds_haps_cohort
 </pre></div>
 </div>
 </div>
@@ -16483,10 +16483,10 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now access subsetted haplotypes</span>
-<span class="n">gt_cohort</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_haps_cohort</span><span class="p">[</span><span class="s1">&#39;call_genotype&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ht_cohort</span> <span class="o">=</span> <span class="n">gt_cohort</span><span class="o">.</span><span class="n">to_haplotypes</span><span class="p">()</span>
-<span class="n">ht_cohort</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># now access subsetted haplotypes
+gt_cohort = allel.GenotypeDaskArray(ds_haps_cohort[&#39;call_genotype&#39;].data)
+ht_cohort = gt_cohort.to_haplotypes()
+ht_cohort
 </pre></div>
 </div>
 </div>
@@ -16501,33 +16501,33 @@ Attributes:
 <p>Here’s an example computation to count the number of segregating SNPs on chromosome arm 3R that also pass gamb_colu_arab site filters. This may take a minute or two, because it is scanning genotype calls at millions of SNPs in hundreds of samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose chromosome arm</span>
-<span class="n">region</span> <span class="o">=</span> <span class="s2">&quot;3R&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># choose chromosome arm
+region = &quot;3R&quot;
 
-<span class="c1"># choose site filter mask</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="s2">&quot;gamb_colu_arab&quot;</span>
+# choose site filter mask
+mask = &quot;gamb_colu_arab&quot;
 
-<span class="c1"># choose sample sets</span>
-<span class="n">sample_sets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AG1000G-BF-A&quot;</span><span class="p">,</span> <span class="s2">&quot;AG1000G-BF-B&quot;</span><span class="p">]</span>
+# choose sample sets
+sample_sets = [&quot;AG1000G-BF-A&quot;, &quot;AG1000G-BF-B&quot;]
 
-<span class="c1"># access SNP calls</span>
-<span class="n">ds_snps</span> <span class="o">=</span> <span class="n">ag3</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
+# access SNP calls
+ds_snps = ag3.snp_calls(region=region, sample_sets=sample_sets)
 
-<span class="c1"># locate pass sites</span>
-<span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;variant_filter_pass_</span><span class="si">{</span><span class="n">mask</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+# locate pass sites
+loc_pass = ds_snps[f&quot;variant_filter_pass_{mask}&quot;].values
 
-<span class="c1"># perform an allele count over genotypes</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
-    <span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+# perform an allele count over genotypes
+gt = allel.GenotypeDaskArray(ds_snps[&quot;call_genotype&quot;].data)
+with ProgressBar():
+    ac = gt.count_alleles(max_allele=3).compute()
 
-<span class="c1"># locate segregating sites</span>
-<span class="n">loc_seg</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="n">is_segregating</span><span class="p">()</span>
+# locate segregating sites
+loc_seg = ac.is_segregating()
 
-<span class="c1"># count segregating and pass sites</span>
-<span class="n">n_pass_seg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">loc_pass</span> <span class="o">&amp;</span> <span class="n">loc_seg</span><span class="p">)</span>
+# count segregating and pass sites
+n_pass_seg = np.count_nonzero(loc_pass &amp; loc_seg)
 
-<span class="n">n_pass_seg</span>
+n_pass_seg
 </pre></div>
 </div>
 </div>
