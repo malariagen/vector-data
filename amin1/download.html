@@ -521,11 +521,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#snp-calls-zarr-format">
-   SNP calls (Zarr format)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feedback-and-suggestions">
    Feedback and suggestions
   </a>
@@ -565,11 +560,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#snp-calls-zarr-format">
-   SNP calls (Zarr format)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feedback-and-suggestions">
    Feedback and suggestions
   </a>
@@ -591,7 +581,8 @@ title="Print to PDF"
 <p>Examples in this notebook assume you are downloading data to a local folder within your home directory at the path <code class="docutils literal notranslate"><span class="pre">~/vo_amin_release/</span></code>. Change this if you want to download to a different folder on the local file system.</p>
 <section id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> data are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_amin_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Amin1.0</span></code> metadata files are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_amin_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
+<p>BAM and VCF files and associated index files are stored on S3-compatible object storage hosted at the Sanger Institute. These files can be downloaded with tools such as <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
 </section>
 <section id="sample-metadata">
 <h2>Sample metadata<a class="headerlink" href="#sample-metadata" title="Permalink to this headline">#</a></h2>
@@ -600,7 +591,7 @@ title="Print to PDF"
 <li><p>https://storage.googleapis.com/vo_amin_release/v1/metadata/samples.meta.csv</p></li>
 </ul>
 <p>Download this file:</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_amin_release/v1/metadata
 !gsutil rsync -r gs://vo_amin_release/v1/metadata/ ~/vo_amin_release/v1/metadata/
@@ -652,24 +643,24 @@ VBS09483-4248STDY7308997,VBS09483,4248STDY7308997,CB-2-03873,Brandy St. Laurent,
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_id,alignments_bam
-VBS09378-4248STDY7308980,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09378-4248STDY7308980-2019-03-03.bam
-VBS09382-4248STDY7308981,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09382-4248STDY7308981-2019-03-03.bam
-VBS09397-4248STDY7308982,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09397-4248STDY7308982-2019-03-04.bam
-VBS09460-4248STDY7308986,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09460-4248STDY7308986-2019-03-07.bam
-VBS09466-4248STDY7308989,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09466-4248STDY7308989-2019-03-06.bam
-VBS09467-4248STDY7308990,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09467-4248STDY7308990-2019-03-06.bam
-VBS09477-4248STDY7308994,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09477-4248STDY7308994-2019-03-06.bam
-VBS09482-4248STDY7308996,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09482-4248STDY7308996-2019-03-06.bam
-VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09483-4248STDY7308997-2019-03-06.bam
+VBS09378-4248STDY7308980,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09378-4248STDY7308980-2019-03-03.bam
+VBS09382-4248STDY7308981,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09382-4248STDY7308981-2019-03-03.bam
+VBS09397-4248STDY7308982,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09397-4248STDY7308982-2019-03-04.bam
+VBS09460-4248STDY7308986,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09460-4248STDY7308986-2019-03-07.bam
+VBS09466-4248STDY7308989,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09466-4248STDY7308989-2019-03-06.bam
+VBS09467-4248STDY7308990,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09467-4248STDY7308990-2019-03-06.bam
+VBS09477-4248STDY7308994,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09477-4248STDY7308994-2019-03-06.bam
+VBS09482-4248STDY7308996,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09482-4248STDY7308996-2019-03-06.bam
+VBS09483-4248STDY7308997,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09483-4248STDY7308997-2019-03-06.bam
 </pre></div>
 </div>
 </div>
 </div>
 <p>For example, the first row provides information about sample VBS09378-4248STDY7308980, and the value of the alignments_bam field gives the download URL for the BAM file. To download this file locally:</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># N.B., large data download
-!wget --no-clobber https://storage.googleapis.com/vo_amin_release/v1/alignments/VBS09378-4248STDY7308980-2019-03-03.bam
+!wget --no-clobber https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09378-4248STDY7308980-2019-03-03.bam
 </pre></div>
 </div>
 </div>
@@ -684,37 +675,24 @@ VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/align
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_id,snp_genotypes_vcf
-VBS09378-4248STDY7308980,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09378-4248STDY7308980-2019-03-04.vcf.gz
-VBS09382-4248STDY7308981,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09382-4248STDY7308981-2019-03-04.vcf.gz
-VBS09397-4248STDY7308982,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09397-4248STDY7308982-2019-03-04.vcf.gz
-VBS09460-4248STDY7308986,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09460-4248STDY7308986-2019-03-07.vcf.gz
-VBS09466-4248STDY7308989,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09466-4248STDY7308989-2019-03-07.vcf.gz
-VBS09467-4248STDY7308990,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09467-4248STDY7308990-2019-03-07.vcf.gz
-VBS09477-4248STDY7308994,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09477-4248STDY7308994-2019-03-07.vcf.gz
-VBS09482-4248STDY7308996,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09482-4248STDY7308996-2019-03-07.vcf.gz
-VBS09483-4248STDY7308997,https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09483-4248STDY7308997-2019-03-07.vcf.gz
+VBS09378-4248STDY7308980,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09378-4248STDY7308980-2019-03-04.vcf.gz
+VBS09382-4248STDY7308981,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09382-4248STDY7308981-2019-03-04.vcf.gz
+VBS09397-4248STDY7308982,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09397-4248STDY7308982-2019-03-04.vcf.gz
+VBS09460-4248STDY7308986,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09460-4248STDY7308986-2019-03-07.vcf.gz
+VBS09466-4248STDY7308989,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09466-4248STDY7308989-2019-03-07.vcf.gz
+VBS09467-4248STDY7308990,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09467-4248STDY7308990-2019-03-07.vcf.gz
+VBS09477-4248STDY7308994,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09477-4248STDY7308994-2019-03-07.vcf.gz
+VBS09482-4248STDY7308996,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09482-4248STDY7308996-2019-03-07.vcf.gz
+VBS09483-4248STDY7308997,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09483-4248STDY7308997-2019-03-07.vcf.gz
 </pre></div>
 </div>
 </div>
 </div>
 <p>For example, the first row provides information about sample VBS09378-4248STDY7308980, and the value of the snp_genotypes_vcf field gives the download URL for the VCF file for this sample. To download this file locally:</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># N.B., large data download
-!wget --no-clobber https://storage.googleapis.com/vo_amin_release/v1/snp_genotypes/per_sample/vcf/VBS09378-4248STDY7308980-2019-03-04.vcf.gz
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="snp-calls-zarr-format">
-<h2>SNP calls (Zarr format)<a class="headerlink" href="#snp-calls-zarr-format" title="Permalink to this headline">#</a></h2>
-<p>SNP data are also available in Zarr format, which can be convenient and efficient to use for certain types of analysis. These data can be analysed directly in the cloud without downloading to the local system – see the section on <a class="reference internal" href="cloud.html"><span class="doc std std-doc">cloud data access</span></a> for more information. The Zarr data can also be downloaded to your own system for local analysis, if that is more convenient. Below are examples of how to download the Zarr data to your local system.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># N.B., large data download
-!mkdir -pv ~/vo_amin_release/v1/snp_genotypes/all
-!gsutil -m rsync -r gs://vo_amin_release/v1/snp_genotypes/all/ ~/vo_amin_release/v1/snp_genotypes/all/
+!wget --no-clobber https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09378-4248STDY7308980-2019-03-04.vcf.gz
 </pre></div>
 </div>
 </div>
