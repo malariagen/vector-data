@@ -1,8 +1,7 @@
 jupyter-book==0.13.1
 numpydoc==1.2.0
-malariagen_data>=7.0.5
+malariagen_data>=7.1.1
 # avoid backtracking problems
 jsonschema>=3
 jinja2>=3
-ipywidgets>=8
 

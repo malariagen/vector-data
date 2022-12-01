@@ -272,7 +272,7 @@ This page provides documentation for functions in the [malariagen_data](https://
 .. automethod:: malariagen_data::Ag3.plot_pca_coords_3d
 ```
 
-## plot_pca_snps()
+## plot_snps()
 
 ```{eval-rst}
 .. automethod:: malariagen_data::Ag3.plot_snps
