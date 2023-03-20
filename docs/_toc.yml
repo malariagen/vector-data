@@ -16,6 +16,7 @@ parts:
         - file: ag3/examples/pca
         - file: ag3/examples/cnv-explore
     - file: ag3/api
+    - file: ag3/ag3.1-data
   - caption: Anopheles minimus
     chapters:
     - file: amin1/intro
