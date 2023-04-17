@@ -4,19 +4,12 @@ parts:
   - caption: Anopheles gambiae complex
     chapters:
     - file: ag3/intro
-      sections:
-      - file: ag3/cloud
-      - file: ag3/download
-      - file: ag3/methods
-      - file: ag3/examples
-        sections:
-        - file: ag3/examples/collection-sites
-        - file: ag3/examples/snps
-        - file: ag3/examples/snp-effects
-        - file: ag3/examples/pca
-        - file: ag3/examples/cnv-explore
+    - file: ag3/ag3.1
+    - file: ag3/cloud
+    - file: ag3/download
+    - file: ag3/methods
     - file: ag3/api
-    - file: ag3/ag3.1-data
+    - file: ag3/analysis
   - caption: Anopheles minimus
     chapters:
     - file: amin1/intro
