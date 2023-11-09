@@ -3,7 +3,7 @@ root: landing-page
 parts:
   - caption: Anopheles gambiae complex
     chapters:
-    - file: ag3/intro
+    - file: ag3/ag3.0
     - file: ag3/ag3.1
     - file: ag3/ag3.2
     - file: ag3/ag3.3
