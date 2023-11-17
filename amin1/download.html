@@ -154,73 +154,74 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ag3/intro.html">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.0.html">
    Ag3.0 (Ag1000G phase 3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ag3/cloud.html">
-     Ag3.0 cloud data access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ag3/download.html">
-     Ag3.0 data downloads
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ag3/methods.html">
-     Ag3.0 sequencing and variant calling methods
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../ag3/examples.html">
-     Ag3.0 analysis examples
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../ag3/examples/collection-sites.html">
-       Mosquito collection sites
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../ag3/examples/snps.html">
-       Single nucleotide polymorphisms (SNPs)
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../ag3/examples/snp-effects.html">
-       Genes and SNP effects
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../ag3/examples/pca.html">
-       Investigating population structure with PCA
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../ag3/examples/cnv-explore.html">
-       Exploring copy number variation (CNV)
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.1.html">
+   Ag3.1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.2.html">
+   Ag3.2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.3.html">
+   Ag3.3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.4.html">
+   Ag3.4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.5.html">
+   Ag3.5
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.6.html">
+   Ag3.6
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.7.html">
+   Ag3.7
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.8.html">
+   Ag3.8
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/cloud.html">
+   Ag3 cloud data access
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/download.html">
+   Ag3 data downloads
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/methods.html">
+   Ag3 sequencing and variant calling methods
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ag3/api.html">
    Ag3 API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/analysis.html">
+   Ag3 analysis
   </a>
  </li>
 </ul>
@@ -234,8 +235,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="intro.html">
    Amin1.0
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -593,8 +594,8 @@ title="Print to PDF"
 <p>Download this file:</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_amin_release/v1/metadata
-!gsutil rsync -r gs://vo_amin_release/v1/metadata/ ~/vo_amin_release/v1/metadata/
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-pv<span class="w"> </span>~/vo_amin_release/v1/metadata
+<span class="o">!</span>gsutil<span class="w"> </span>rsync<span class="w"> </span>-r<span class="w"> </span>gs://vo_amin_release/v1/metadata/<span class="w"> </span>~/vo_amin_release/v1/metadata/
 </pre></div>
 </div>
 </div>
@@ -602,7 +603,7 @@ title="Print to PDF"
 <p>Inspect the first few rows of the sample metadata file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_amin_release/v1/metadata/samples.meta.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1/metadata/samples.meta.csv
 </pre></div>
 </div>
 </div>
@@ -637,7 +638,7 @@ VBS09483-4248STDY7308997,VBS09483,4248STDY7308997,CB-2-03873,Brandy St. Laurent,
 <p>Here are the first few rows, showing the columns with the sample IDs and the BAM file URLs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_amin_release/v1/metadata/wgs_snp_data.csv | cut -d, -f1,2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1/metadata/wgs_snp_data.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1,2
 </pre></div>
 </div>
 </div>
@@ -659,8 +660,8 @@ VBS09483-4248STDY7308997,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/V
 <p>For example, the first row provides information about sample VBS09378-4248STDY7308980, and the value of the alignments_bam field gives the download URL for the BAM file. To download this file locally:</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># N.B., large data download
-!wget --no-clobber https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09378-4248STDY7308980-2019-03-03.bam
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># N.B., large data download</span>
+<span class="o">!</span>wget<span class="w"> </span>--no-clobber<span class="w"> </span>https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09378-4248STDY7308980-2019-03-03.bam
 </pre></div>
 </div>
 </div>
@@ -669,7 +670,7 @@ VBS09483-4248STDY7308997,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/V
 <p>For example, here are the first few rows of the catalog file, this time showing the sample_id and snp_genotypes_vcf columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head ~/vo_amin_release/v1/metadata/wgs_snp_data.csv | cut -d, -f1,4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1/metadata/wgs_snp_data.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1,4
 </pre></div>
 </div>
 </div>
@@ -691,8 +692,8 @@ VBS09483-4248STDY7308997,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/V
 <p>For example, the first row provides information about sample VBS09378-4248STDY7308980, and the value of the snp_genotypes_vcf field gives the download URL for the VCF file for this sample. To download this file locally:</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># N.B., large data download
-!wget --no-clobber https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09378-4248STDY7308980-2019-03-04.vcf.gz
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># N.B., large data download</span>
+<span class="o">!</span>wget<span class="w"> </span>--no-clobber<span class="w"> </span>https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/VBS09378-4248STDY7308980-2019-03-04.vcf.gz
 </pre></div>
 </div>
 </div>

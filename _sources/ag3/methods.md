@@ -1,4 +1,4 @@
-# Ag3.0 sequencing and variant calling methods
+# Ag3 sequencing and variant calling methods
 
 This page contains a description of methods used in phase 3 of the *Anopheles gambiae* 1000 Genomes Project (Ag1000G). 
 
