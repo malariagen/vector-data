@@ -1,6 +1,9 @@
 format: jb-book
 root: landing-page
 parts:
+  - caption: Malaria Vector Genome Observatory
+    chapters:
+    - file: vobs/vobs-data-access
   - caption: Anopheles gambiae complex
     chapters:
     - file: ag3/ag3.0
