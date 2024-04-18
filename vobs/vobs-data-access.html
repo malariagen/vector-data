@@ -618,7 +618,9 @@ title="Print to PDF"
 <section id="step-2-fill-out-the-data-access-request-form">
 <h2>Step 2. Fill out the data access request form<a class="headerlink" href="#step-2-fill-out-the-data-access-request-form" title="Permalink to this headline">#</a></h2>
 <p>Please fill out and submit the following form:</p>
-<p>https://forms.gle/kCqistorZyxaU4LP7</p>
+<blockquote>
+<div><p><a class="reference external" href="https://forms.gle/kCqistorZyxaU4LP7">MalariaGEN cloud data access form</a></p>
+</div></blockquote>
 <p>All requests for data access will be granted, subject to verification checks and agreement to reasonable use. This is to ensure that the data resources remain accessible to everyone. Submitting this form will allow us to configure storage permissions and monitor storage for excessive network usage in future.</p>
 </section>
 <section id="step-3-ensure-you-are-using-the-latest-version-of-the-malariagen-data-python-package">
@@ -627,15 +629,18 @@ title="Print to PDF"
 </section>
 <section id="step-4-set-up-google-cloud-authentication-credentials">
 <h2>Step 4. Set up Google Cloud authentication credentials<a class="headerlink" href="#step-4-set-up-google-cloud-authentication-credentials" title="Permalink to this headline">#</a></h2>
-<p>If you are only accessing data via the malariagen_data Python package from within Google Colab, you can skip this step, because authentication credentials will be obtained automatically.</p>
+<p>If you are only accessing data via the <code class="docutils literal notranslate"><span class="pre">malariagen_data</span></code> Python package from within Google Colab, you can skip this step, because authentication credentials will be obtained automatically.</p>
 <p>If you are accessing data from any other location, you will need to authenticate with Google Cloud. To do this, you will need to:</p>
 <ol class="simple">
 <li><p>Install the <a class="reference external" href="https://cloud.google.com/sdk/gcloud">Google Cloud CLI</a>. See the details in the Google Documentation <a class="reference external" href="https://cloud.google.com/sdk/docs/install-sdk">here</a>.</p></li>
-<li><p>Check gcloud is installed correctly:</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">gcloud</span></code> is installed correctly:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcloud<span class="w"> </span><span class="nb">help</span>
 </pre></div>
 </div>
+<ol class="simple">
+<li><p>Authenticate using <code class="docutils literal notranslate"><span class="pre">gcloud</span></code>:</p></li>
+</ol>
 <ul class="simple">
 <li><p>If you need to authenticate within the <code class="docutils literal notranslate"><span class="pre">malariagen_data</span></code> package, you will need to use the following command:</p></li>
 </ul>
@@ -648,7 +653,7 @@ title="Print to PDF"
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcloud<span class="w"> </span>auth<span class="w"> </span>login
 </pre></div>
 </div>
-<p>If you have any questions, please contact us at: support&#64;malariagen.net</p>
+<p>If you have any questions, please contact us at: <a class="reference external" href="mailto:support&#37;&#52;&#48;malariagen&#46;net">mailto:support<span>&#64;</span>malariagen<span>&#46;</span>net</a></p>
 </section>
 </section>
 
