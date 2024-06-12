@@ -1,0 +1,1626 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Af1.0 (Anopheles funestus Project Phase 1 Data Release) &#8212; MalariaGEN vector data user guide</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "malariagen/vector-data");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Af1.1" href="af1.1.html" />
+    <link rel="prev" title="Ag3 analysis" href="../ag3/analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MalariaGEN vector data user guide</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../landing-page.html">
+                    MalariaGEN vector data user guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Malaria Vector Genome Observatory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vobs/vobs-data-access.html">
+   Vector Observatory Data Access
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Anopheles gambiae complex
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.0.html">
+   Ag3.0 (Ag1000G phase 3)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.1.html">
+   Ag3.1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.2.html">
+   Ag3.2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.3.html">
+   Ag3.3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.4.html">
+   Ag3.4
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.5.html">
+   Ag3.5
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.6.html">
+   Ag3.6
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.7.html">
+   Ag3.7
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.8.html">
+   Ag3.8
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/ag3.9.html">
+   Ag3.9
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/cloud.html">
+   Ag3 cloud data access
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/download.html">
+   Ag3 data downloads
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/methods.html">
+   Ag3 sequencing and variant calling methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/api.html">
+   Ag3 API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ag3/analysis.html">
+   Ag3 analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Anopheles funestus
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Af1.0  (
+   <em>
+    Anopheles funestus
+   </em>
+   Project Phase 1 Data Release)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="af1.1.html">
+   Af1.1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="af1.2.html">
+   Af1.2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="af1.3.html">
+   Af1.3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cloud.html">
+   Af1 cloud data access
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="download.html">
+   Af1 data downloads
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api.html">
+   Af1 API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Anopheles minimus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../amin1/intro.html">
+   Amin1.0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../amin1/cloud.html">
+     Amin1.0 cloud data access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../amin1/download.html">
+     Amin1.0 data downloads
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../amin1/api.html">
+   Amin1 API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Partners and community
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../studies-ag1000g.html">
+   Ag1000G partner studies
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Release notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../release-notes.html">
+   Release notes
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://gke.mybinder.org/v2/gh/malariagen/vector-data/master?urlpath=lab/tree/docs/af1/af1.0.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/malariagen/vector-data/blob/master/docs/af1/af1.0.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/malariagen/vector-data"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Faf1/af1.0.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/af1/af1.0.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terms-of-use">
+   Terms of use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partner-studies">
+   Partner studies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#population-sampling">
+   Population sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whole-genome-sequencing-and-variant-calling">
+   Whole-genome sequencing and variant calling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-hosting">
+   Data hosting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-sets">
+   Sample sets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Af1.0  (Anopheles funestus Project Phase 1 Data Release)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terms-of-use">
+   Terms of use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partner-studies">
+   Partner studies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#population-sampling">
+   Population sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whole-genome-sequencing-and-variant-calling">
+   Whole-genome sequencing and variant calling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-hosting">
+   Data hosting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-sets">
+   Sample sets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="af1-0-anopheles-funestus-project-phase-1-data-release">
+<h1>Af1.0  (<em>Anopheles funestus</em> Project Phase 1 Data Release)<a class="headerlink" href="#af1-0-anopheles-funestus-project-phase-1-data-release" title="Permalink to this headline">#</a></h1>
+<p>The <a class="reference external" href="https://www.malariagen.net/project/anopheles-funestus-genomic-surveillance-project/">MalariaGEN Vector Observatory Anopheles funestus Genomic Surveillance Project</a> is a collaborative project using whole-genome sequencing to enhance the monitoring and surveillance natural populations of mosquitoes in the major African malaria vector <em>Anopheles funestus</em></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> release provides a first baseline understanding of Anopheles funestus genetic diversity and population structure across Africa using 656 whole genome sequenced individuals. Over the coming years, the <a class="reference external" href="https://www.malariagen.net/project/anopheles-funestus-genomic-surveillance-project/">MalariaGEN Vector Observatory Anopheles funestus Genomic Surveillance Project</a> will continue to carry out further spatiotemporal sampling of <em>Anopheles funestus</em> that builds upon Phase 1.</p>
+<p>This page provides an introduction to open data resources released as part of the first phase of the Anopheles funestus Genomic Surveillance Project project, known as <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> for short. We hope the data from <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> will be a valuable resource for research and surveillance of malaria vectors. If you have any questions about this guide or how to use the data, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/discussions/new">start a new discussion</a> on the malariagen/vector-open-data repo on GitHub. If you find any bugs, please <a class="reference external" href="https://github.com/malariagen/vector-public-data/issues/new/choose">raise an issue</a>.</p>
+<section id="terms-of-use">
+<h2>Terms of use<a class="headerlink" href="#terms-of-use" title="Permalink to this headline">#</a></h2>
+<p>Data from <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> have been released prior to publication by the Phase 1 Data Release Consortium with the expectation that they will be valuable for many researchers. These data are subject to a publication embargo.</p>
+<p>The Af1.0 data release is led by the MalariaGEN Vector Observatory Anopheles funestus Consortium. The Consortium includes researchers who have contributed samples, know-how, analyses, and expertise to the project. The Consortium has released the project data prior to publication with the expectation that they will be valuable for many researchers. In keeping with Fort Lauderdale principles, researchers outside the Consortium may use the data for their own studies, but are expected to allow the Consortium to make the first presentations and to publish the first paper(s) that include global analyses of the data. Researchers inside the Consortium are permitted to evaluate the specific samples they contributed to the project separate from the Global analyses, but are expected to submit publications on these samples at the same time as or after the Global publications are submitted.</p>
+<p>If you have any questions about the terms of use, please email support&#64;malariagen.net.</p>
+</section>
+<section id="partner-studies">
+<h2>Partner studies<a class="headerlink" href="#partner-studies" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.malariagen.net/network/where-we-work/1229-VO-GH-DADZIE">1229-VO-GH-DADZIE</a> - <em>Anopheles funestus</em> vector surveillance in Ghana</p></li>
+<li><p><a class="reference external" href="https://www.malariagen.net/network/where-we-work/1230-VO-MULTI-AYALA">1230-VO-MULTI-AYALA</a> - ANOSPP screening of <em>Anopheles</em> species and <em>Plasmodium</em> presence in malaria vectors in West-Central Africa</p></li>
+<li><p><a class="reference external" href="https://www.malariagen.net/network/where-we-work/1231-VO-MULTI-WONDJI">1231-VO-MULTI-WONDJI</a> - ANOSPP screening of <em>Anopheles</em> species and <em>Plasmodium</em> presence in malaria vectors</p></li>
+<li><p><a class="reference external" href="https://www.malariagen.net/network/where-we-work/1232-VO-KE-OCHOMO">1232-VO-KE-OCHOMO</a> - <em>Anopheles funestus</em> vector surveillance in Kenya</p></li>
+<li><p><a class="reference external" href="https://www.malariagen.net/network/where-we-work/1235-VO-MZ-PAAIJMANS">1235-VO-MZ-PAAIJMANS</a> - <em>Anopheles funestus</em> vector surveillance in Mozambique</p></li>
+<li><p><a class="reference external" href="https://www.malariagen.net/network/where-we-work/1236-VO-TZ-OKUMU">1236-VO-TZ-OKUMU</a> - <em>Anopheles funestus</em> vector surveillance in Tanzania</p></li>
+<li><p><a class="reference external" href="https://www.malariagen.net/network/where-we-work/1240-VO-MULTI-KOEKEMOER">1240-VO-MULTI-KOEKEMOER</a> - <em>Anopheles funestus</em> vector surveillance in Mozambique and the Democratic Republic of Congo</p></li>
+</ul>
+</section>
+<section id="population-sampling">
+<h2>Population sampling<a class="headerlink" href="#population-sampling" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> includes data from 656 individual mosquitoes in 13 countries. The map below provides an overview of the numbers of samples and collection locations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install -q malariagen_data
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/javascript">'use strict';
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded(error = null) {
+    const el = document.getElementById(null);
+    if (el != null) {
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(() => display_loaded(error), 100);
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.4.1.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+
+      } catch (error) {throw error;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById(null)).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     
+</pre></div>
+</div>
+<div class="output text_html">
+<div id="bbb6c5c1-6a34-4ba1-8cbc-af276a6a52e6" data-root-id="p1001" style="display: contents;"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+  const docs_json = {"1e2e2107-2a70-455d-a639-7f140fe7f52f":{"version":"3.4.1","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1001","attributes":{"width":800,"height":550,"x_range":{"type":"object","name":"Range1d","id":"p1011","attributes":{"start":-3000000.0,"end":6000000.0}},"y_range":{"type":"object","name":"Range1d","id":"p1012","attributes":{"start":-3500000.0,"end":2000000.0}},"x_scale":{"type":"object","name":"LinearScale","id":"p1013"},"y_scale":{"type":"object","name":"LinearScale","id":"p1014"},"title":{"type":"object","name":"Title","id":"p1004","attributes":{"text":"Af1.0 Sampling Locations"}},"renderers":[{"type":"object","name":"TileRenderer","id":"p1038","attributes":{"tile_source":{"type":"object","name":"WMTSTileSource","id":"p1037","attributes":{"url":"https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png","max_zoom":20,"attribution":"&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"https://carto.com/attributions\">CARTO</a>"}}}},{"type":"object","name":"GlyphRenderer","id":"p1051","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1042","attributes":{"selected":{"type":"object","name":"Selection","id":"p1043","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1044"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"HwAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Obuasi"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Ghana"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1052","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1053"}}},"glyph":{"type":"object","name":"Wedge","id":"p1048","attributes":{"x":{"type":"value","value":-180003.61661272336},"y":{"type":"value","value":661642.0272950786},"radius":{"type":"value","value":156335.20609917105},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1040","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1041","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1049","attributes":{"x":{"type":"value","value":-180003.61661272336},"y":{"type":"value","value":661642.0272950786},"radius":{"type":"value","value":156335.20609917105},"start_angle":{"type":"expr","expr":{"id":"p1040"}},"end_angle":{"type":"expr","expr":{"id":"p1041"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1050","attributes":{"x":{"type":"value","value":-180003.61661272336},"y":{"type":"value","value":661642.0272950786},"radius":{"type":"value","value":156335.20609917105},"start_angle":{"type":"expr","expr":{"id":"p1040"}},"end_angle":{"type":"expr","expr":{"id":"p1041"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1065","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1056","attributes":{"selected":{"type":"object","name":"Selection","id":"p1057","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1058"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"BgAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Dimabi"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Ghana"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1066","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1067"}}},"glyph":{"type":"object","name":"Wedge","id":"p1062","attributes":{"x":{"type":"value","value":-120559.00852911526},"y":{"type":"value","value":1053385.971106188},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1054","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1055","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1063","attributes":{"x":{"type":"value","value":-120559.00852911526},"y":{"type":"value","value":1053385.971106188},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1054"}},"end_angle":{"type":"expr","expr":{"id":"p1055"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1064","attributes":{"x":{"type":"value","value":-120559.00852911526},"y":{"type":"value","value":1053385.971106188},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1054"}},"end_angle":{"type":"expr","expr":{"id":"p1055"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1079","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1070","attributes":{"selected":{"type":"object","name":"Selection","id":"p1071","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1072"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"EwAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Gbullung"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Ghana"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1080","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1081"}}},"glyph":{"type":"object","name":"Wedge","id":"p1076","attributes":{"x":{"type":"value","value":-112321.366210413},"y":{"type":"value","value":1061059.9262004783},"radius":{"type":"value","value":132796.7438109558},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1068","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1069","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1077","attributes":{"x":{"type":"value","value":-112321.366210413},"y":{"type":"value","value":1061059.9262004783},"radius":{"type":"value","value":132796.7438109558},"start_angle":{"type":"expr","expr":{"id":"p1068"}},"end_angle":{"type":"expr","expr":{"id":"p1069"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1078","attributes":{"x":{"type":"value","value":-112321.366210413},"y":{"type":"value","value":1061059.9262004783},"radius":{"type":"value","value":132796.7438109558},"start_angle":{"type":"expr","expr":{"id":"p1068"}},"end_angle":{"type":"expr","expr":{"id":"p1069"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1093","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1084","attributes":{"selected":{"type":"object","name":"Selection","id":"p1085","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1086"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"CgAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Gupanarigu"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Ghana"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1094","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1095"}}},"glyph":{"type":"object","name":"Wedge","id":"p1090","attributes":{"x":{"type":"value","value":-105976.15523519642},"y":{"type":"value","value":1062075.7105529539},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1082","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1083","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1091","attributes":{"x":{"type":"value","value":-105976.15523519642},"y":{"type":"value","value":1062075.7105529539},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"id":"p1082"}},"end_angle":{"type":"expr","expr":{"id":"p1083"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1092","attributes":{"x":{"type":"value","value":-105976.15523519642},"y":{"type":"value","value":1062075.7105529539},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"id":"p1082"}},"end_angle":{"type":"expr","expr":{"id":"p1083"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1107","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1098","attributes":{"selected":{"type":"object","name":"Selection","id":"p1099","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1100"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"AQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Woribogu"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Ghana"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1108","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1109"}}},"glyph":{"type":"object","name":"Wedge","id":"p1104","attributes":{"x":{"type":"value","value":35733.556544640815},"y":{"type":"value","value":991259.0921946851},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1096","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1097","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1105","attributes":{"x":{"type":"value","value":35733.556544640815},"y":{"type":"value","value":991259.0921946851},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1096"}},"end_angle":{"type":"expr","expr":{"id":"p1097"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1106","attributes":{"x":{"type":"value","value":35733.556544640815},"y":{"type":"value","value":991259.0921946851},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1096"}},"end_angle":{"type":"expr","expr":{"id":"p1097"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1121","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1112","attributes":{"selected":{"type":"object","name":"Selection","id":"p1113","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1114"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"JQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Kpome"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Benin"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1122","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1123"}}},"glyph":{"type":"object","name":"Wedge","id":"p1118","attributes":{"x":{"type":"value","value":244902.87974520188},"y":{"type":"value","value":712026.6560352404},"radius":{"type":"value","value":165832.68555775317},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1110","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1111","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1119","attributes":{"x":{"type":"value","value":244902.87974520188},"y":{"type":"value","value":712026.6560352404},"radius":{"type":"value","value":165832.68555775317},"start_angle":{"type":"expr","expr":{"id":"p1110"}},"end_angle":{"type":"expr","expr":{"id":"p1111"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1120","attributes":{"x":{"type":"value","value":244902.87974520188},"y":{"type":"value","value":712026.6560352404},"radius":{"type":"value","value":165832.68555775317},"start_angle":{"type":"expr","expr":{"id":"p1110"}},"end_angle":{"type":"expr","expr":{"id":"p1111"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1135","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1126","attributes":{"selected":{"type":"object","name":"Selection","id":"p1127","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1128"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"KQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Akaka Remo"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Nigeria"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1136","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1137"}}},"glyph":{"type":"object","name":"Wedge","id":"p1132","attributes":{"x":{"type":"value","value":413774.54727859783},"y":{"type":"value","value":775574.7398539326},"radius":{"type":"value","value":171605.3584717831},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1124","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1125","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1133","attributes":{"x":{"type":"value","value":413774.54727859783},"y":{"type":"value","value":775574.7398539326},"radius":{"type":"value","value":171605.3584717831},"start_angle":{"type":"expr","expr":{"id":"p1124"}},"end_angle":{"type":"expr","expr":{"id":"p1125"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1134","attributes":{"x":{"type":"value","value":413774.54727859783},"y":{"type":"value","value":775574.7398539326},"radius":{"type":"value","value":171605.3584717831},"start_angle":{"type":"expr","expr":{"id":"p1124"}},"end_angle":{"type":"expr","expr":{"id":"p1125"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1149","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1140","attributes":{"selected":{"type":"object","name":"Selection","id":"p1141","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1142"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"LQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Mibellon"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Cameroon"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1150","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1151"}}},"glyph":{"type":"object","name":"Wedge","id":"p1146","attributes":{"x":{"type":"value","value":1280174.1441226462},"y":{"type":"value","value":678432.1792110694},"radius":{"type":"value","value":177013.77494857428},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1138","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1139","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1147","attributes":{"x":{"type":"value","value":1280174.1441226462},"y":{"type":"value","value":678432.1792110694},"radius":{"type":"value","value":177013.77494857428},"start_angle":{"type":"expr","expr":{"id":"p1138"}},"end_angle":{"type":"expr","expr":{"id":"p1139"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1148","attributes":{"x":{"type":"value","value":1280174.1441226462},"y":{"type":"value","value":678432.1792110694},"radius":{"type":"value","value":177013.77494857428},"start_angle":{"type":"expr","expr":{"id":"p1138"}},"end_angle":{"type":"expr","expr":{"id":"p1139"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1163","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1154","attributes":{"selected":{"type":"object","name":"Selection","id":"p1155","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1156"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"KAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Benguia"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Gabon"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1164","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1165"}}},"glyph":{"type":"object","name":"Wedge","id":"p1160","attributes":{"x":{"type":"value","value":1501922.569782847},"y":{"type":"value","value":-181809.3446907341},"radius":{"type":"value","value":170198.69390538236},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1152","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1153","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1161","attributes":{"x":{"type":"value","value":1501922.569782847},"y":{"type":"value","value":-181809.3446907341},"radius":{"type":"value","value":170198.69390538236},"start_angle":{"type":"expr","expr":{"id":"p1152"}},"end_angle":{"type":"expr","expr":{"id":"p1153"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1162","attributes":{"x":{"type":"value","value":1501922.569782847},"y":{"type":"value","value":-181809.3446907341},"radius":{"type":"value","value":170198.69390538236},"start_angle":{"type":"expr","expr":{"id":"p1152"}},"end_angle":{"type":"expr","expr":{"id":"p1153"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1177","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1168","attributes":{"selected":{"type":"object","name":"Selection","id":"p1169","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1170"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"IgAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Kinshasa"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Democratic Republic of the Congo"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1178","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1179"}}},"glyph":{"type":"object","name":"Wedge","id":"p1174","attributes":{"x":{"type":"value","value":1704635.3625173983},"y":{"type":"value","value":-482137.9534045483},"radius":{"type":"value","value":161223.81674709579},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1166","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1167","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1175","attributes":{"x":{"type":"value","value":1704635.3625173983},"y":{"type":"value","value":-482137.9534045483},"radius":{"type":"value","value":161223.81674709579},"start_angle":{"type":"expr","expr":{"id":"p1166"}},"end_angle":{"type":"expr","expr":{"id":"p1167"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1176","attributes":{"x":{"type":"value","value":1704635.3625173983},"y":{"type":"value","value":-482137.9534045483},"radius":{"type":"value","value":161223.81674709579},"start_angle":{"type":"expr","expr":{"id":"p1166"}},"end_angle":{"type":"expr","expr":{"id":"p1167"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1191","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1182","attributes":{"selected":{"type":"object","name":"Selection","id":"p1183","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1184"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"CgAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Bangui"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Central African Republic"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1192","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1193"}}},"glyph":{"type":"object","name":"Wedge","id":"p1188","attributes":{"x":{"type":"value","value":2071433.0846812348},"y":{"type":"value","value":487720.02304763725},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1180","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1181","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1189","attributes":{"x":{"type":"value","value":2071433.0846812348},"y":{"type":"value","value":487720.02304763725},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"id":"p1180"}},"end_angle":{"type":"expr","expr":{"id":"p1181"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1190","attributes":{"x":{"type":"value","value":2071433.0846812348},"y":{"type":"value","value":487720.02304763725},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"id":"p1180"}},"end_angle":{"type":"expr","expr":{"id":"p1181"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1205","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1196","attributes":{"selected":{"type":"object","name":"Selection","id":"p1197","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1198"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"KwAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Watsa Moke"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Democratic Republic of the Congo"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1206","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1207"}}},"glyph":{"type":"object","name":"Wedge","id":"p1202","attributes":{"x":{"type":"value","value":3289268.3139596474},"y":{"type":"value","value":344590.0190058456},"radius":{"type":"value","value":174351.50923242987},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1194","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1195","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1203","attributes":{"x":{"type":"value","value":3289268.3139596474},"y":{"type":"value","value":344590.0190058456},"radius":{"type":"value","value":174351.50923242987},"start_angle":{"type":"expr","expr":{"id":"p1194"}},"end_angle":{"type":"expr","expr":{"id":"p1195"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1204","attributes":{"x":{"type":"value","value":3289268.3139596474},"y":{"type":"value","value":344590.0190058456},"radius":{"type":"value","value":174351.50923242987},"start_angle":{"type":"expr","expr":{"id":"p1194"}},"end_angle":{"type":"expr","expr":{"id":"p1195"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1219","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1210","attributes":{"selected":{"type":"object","name":"Selection","id":"p1211","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1212"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"KwAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Katete"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Zambia"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1220","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1221"}}},"glyph":{"type":"object","name":"Wedge","id":"p1216","attributes":{"x":{"type":"value","value":3547418.2131092492},"y":{"type":"value","value":-1595220.0593262194},"radius":{"type":"value","value":174351.50923242987},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1208","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1209","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1217","attributes":{"x":{"type":"value","value":3547418.2131092492},"y":{"type":"value","value":-1595220.0593262194},"radius":{"type":"value","value":174351.50923242987},"start_angle":{"type":"expr","expr":{"id":"p1208"}},"end_angle":{"type":"expr","expr":{"id":"p1209"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1218","attributes":{"x":{"type":"value","value":3547418.2131092492},"y":{"type":"value","value":-1595220.0593262194},"radius":{"type":"value","value":174351.50923242987},"start_angle":{"type":"expr","expr":{"id":"p1208"}},"end_angle":{"type":"expr","expr":{"id":"p1209"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1233","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1224","attributes":{"selected":{"type":"object","name":"Selection","id":"p1225","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1226"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"FgAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Palmeira"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Mozambique"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1234","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1235"}}},"glyph":{"type":"object","name":"Wedge","id":"p1230","attributes":{"x":{"type":"value","value":3659405.6208472815},"y":{"type":"value","value":-2907098.27835128},"radius":{"type":"value","value":139447.4101451283},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1222","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1223","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1231","attributes":{"x":{"type":"value","value":3659405.6208472815},"y":{"type":"value","value":-2907098.27835128},"radius":{"type":"value","value":139447.4101451283},"start_angle":{"type":"expr","expr":{"id":"p1222"}},"end_angle":{"type":"expr","expr":{"id":"p1223"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1232","attributes":{"x":{"type":"value","value":3659405.6208472815},"y":{"type":"value","value":-2907098.27835128},"radius":{"type":"value","value":139447.4101451283},"start_angle":{"type":"expr","expr":{"id":"p1222"}},"end_angle":{"type":"expr","expr":{"id":"p1223"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1247","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1238","attributes":{"selected":{"type":"object","name":"Selection","id":"p1239","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1240"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"TAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Palmeiras"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Mozambique"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1248","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1249"}}},"glyph":{"type":"object","name":"Wedge","id":"p1244","attributes":{"x":{"type":"value","value":3659850.8988104556},"y":{"type":"value","value":-2908329.1703118025},"radius":{"type":"value","value":210801.69082346273},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1236","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1237","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1245","attributes":{"x":{"type":"value","value":3659850.8988104556},"y":{"type":"value","value":-2908329.1703118025},"radius":{"type":"value","value":210801.69082346273},"start_angle":{"type":"expr","expr":{"id":"p1236"}},"end_angle":{"type":"expr","expr":{"id":"p1237"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1246","attributes":{"x":{"type":"value","value":3659850.8988104556},"y":{"type":"value","value":-2908329.1703118025},"radius":{"type":"value","value":210801.69082346273},"start_angle":{"type":"expr","expr":{"id":"p1236"}},"end_angle":{"type":"expr","expr":{"id":"p1237"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1261","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1252","attributes":{"selected":{"type":"object","name":"Selection","id":"p1253","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1254"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"MQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Tororo"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Uganda"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1262","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1263"}}},"glyph":{"type":"object","name":"Wedge","id":"p1258","attributes":{"x":{"type":"value","value":3794102.204707143},"y":{"type":"value","value":83492.00248384959},"radius":{"type":"value","value":182110.4716872872},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1250","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1251","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1259","attributes":{"x":{"type":"value","value":3794102.204707143},"y":{"type":"value","value":83492.00248384959},"radius":{"type":"value","value":182110.4716872872},"start_angle":{"type":"expr","expr":{"id":"p1250"}},"end_angle":{"type":"expr","expr":{"id":"p1251"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1260","attributes":{"x":{"type":"value","value":3794102.204707143},"y":{"type":"value","value":83492.00248384959},"radius":{"type":"value","value":182110.4716872872},"start_angle":{"type":"expr","expr":{"id":"p1250"}},"end_angle":{"type":"expr","expr":{"id":"p1251"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1275","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1266","attributes":{"selected":{"type":"object","name":"Selection","id":"p1267","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1268"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"AQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Nyamilu"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Kenya"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1276","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1277"}}},"glyph":{"type":"object","name":"Wedge","id":"p1272","attributes":{"x":{"type":"value","value":3828388.6078714714},"y":{"type":"value","value":-119564.13516977837},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1264","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1265","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1273","attributes":{"x":{"type":"value","value":3828388.6078714714},"y":{"type":"value","value":-119564.13516977837},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1264"}},"end_angle":{"type":"expr","expr":{"id":"p1265"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1274","attributes":{"x":{"type":"value","value":3828388.6078714714},"y":{"type":"value","value":-119564.13516977837},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1264"}},"end_angle":{"type":"expr","expr":{"id":"p1265"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1289","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1280","attributes":{"selected":{"type":"object","name":"Selection","id":"p1281","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1282"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"BQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Uriri"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Kenya"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1290","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1291"}}},"glyph":{"type":"object","name":"Wedge","id":"p1286","attributes":{"x":{"type":"value","value":3841969.58574825},"y":{"type":"value","value":-105981.03181703556},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1278","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1279","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1287","attributes":{"x":{"type":"value","value":3841969.58574825},"y":{"type":"value","value":-105981.03181703556},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1278"}},"end_angle":{"type":"expr","expr":{"id":"p1279"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1288","attributes":{"x":{"type":"value","value":3841969.58574825},"y":{"type":"value","value":-105981.03181703556},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1278"}},"end_angle":{"type":"expr","expr":{"id":"p1279"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1303","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1294","attributes":{"selected":{"type":"object","name":"Selection","id":"p1295","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1296"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"CAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Awendo"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Kenya"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1304","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1305"}}},"glyph":{"type":"object","name":"Wedge","id":"p1300","attributes":{"x":{"type":"value","value":3844195.975564116},"y":{"type":"value","value":-100302.99525658593},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1292","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1293","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1301","attributes":{"x":{"type":"value","value":3844195.975564116},"y":{"type":"value","value":-100302.99525658593},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1292"}},"end_angle":{"type":"expr","expr":{"id":"p1293"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1302","attributes":{"x":{"type":"value","value":3844195.975564116},"y":{"type":"value","value":-100302.99525658593},"radius":{"type":"value","value":99532.8},"start_angle":{"type":"expr","expr":{"id":"p1292"}},"end_angle":{"type":"expr","expr":{"id":"p1293"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1317","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1308","attributes":{"selected":{"type":"object","name":"Selection","id":"p1309","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1310"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"FQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Uradi"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Kenya"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1318","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1319"}}},"glyph":{"type":"object","name":"Wedge","id":"p1314","attributes":{"x":{"type":"value","value":3845309.1704720487},"y":{"type":"value","value":109098.42064735989},"radius":{"type":"value","value":137301.7241314534},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1306","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1307","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1315","attributes":{"x":{"type":"value","value":3845309.1704720487},"y":{"type":"value","value":109098.42064735989},"radius":{"type":"value","value":137301.7241314534},"start_angle":{"type":"expr","expr":{"id":"p1306"}},"end_angle":{"type":"expr","expr":{"id":"p1307"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1316","attributes":{"x":{"type":"value","value":3845309.1704720487},"y":{"type":"value","value":109098.42064735989},"radius":{"type":"value","value":137301.7241314534},"start_angle":{"type":"expr","expr":{"id":"p1306"}},"end_angle":{"type":"expr","expr":{"id":"p1307"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1331","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1322","attributes":{"selected":{"type":"object","name":"Selection","id":"p1323","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1324"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"CQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Sumba"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Kenya"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1332","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1333"}}},"glyph":{"type":"object","name":"Wedge","id":"p1328","attributes":{"x":{"type":"value","value":3851209.103484092},"y":{"type":"value","value":-76366.99526291488},"radius":{"type":"value","value":103518.28357153028},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1320","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1321","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1329","attributes":{"x":{"type":"value","value":3851209.103484092},"y":{"type":"value","value":-76366.99526291488},"radius":{"type":"value","value":103518.28357153028},"start_angle":{"type":"expr","expr":{"id":"p1320"}},"end_angle":{"type":"expr","expr":{"id":"p1321"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1330","attributes":{"x":{"type":"value","value":3851209.103484092},"y":{"type":"value","value":-76366.99526291488},"radius":{"type":"value","value":103518.28357153028},"start_angle":{"type":"expr","expr":{"id":"p1320"}},"end_angle":{"type":"expr","expr":{"id":"p1321"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1345","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1336","attributes":{"selected":{"type":"object","name":"Selection","id":"p1337","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1338"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"EgAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Chikwawa"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Malawi"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1346","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1347"}}},"glyph":{"type":"object","name":"Wedge","id":"p1342","attributes":{"x":{"type":"value","value":3872693.7652071943},"y":{"type":"value","value":-1806691.545297346},"radius":{"type":"value","value":130424.86452075765},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1334","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1335","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1343","attributes":{"x":{"type":"value","value":3872693.7652071943},"y":{"type":"value","value":-1806691.545297346},"radius":{"type":"value","value":130424.86452075765},"start_angle":{"type":"expr","expr":{"id":"p1334"}},"end_angle":{"type":"expr","expr":{"id":"p1335"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1344","attributes":{"x":{"type":"value","value":3872693.7652071943},"y":{"type":"value","value":-1806691.545297346},"radius":{"type":"value","value":130424.86452075765},"start_angle":{"type":"expr","expr":{"id":"p1334"}},"end_angle":{"type":"expr","expr":{"id":"p1335"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1359","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1350","attributes":{"selected":{"type":"object","name":"Selection","id":"p1351","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1352"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"JQAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Ahero"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Kenya"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1360","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1361"}}},"glyph":{"type":"object","name":"Wedge","id":"p1356","attributes":{"x":{"type":"value","value":3887276.6185011133},"y":{"type":"value","value":-19369.621171087503},"radius":{"type":"value","value":165832.68555775317},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1348","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1349","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1357","attributes":{"x":{"type":"value","value":3887276.6185011133},"y":{"type":"value","value":-19369.621171087503},"radius":{"type":"value","value":165832.68555775317},"start_angle":{"type":"expr","expr":{"id":"p1348"}},"end_angle":{"type":"expr","expr":{"id":"p1349"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1358","attributes":{"x":{"type":"value","value":3887276.6185011133},"y":{"type":"value","value":-19369.621171087503},"radius":{"type":"value","value":165832.68555775317},"start_angle":{"type":"expr","expr":{"id":"p1348"}},"end_angle":{"type":"expr","expr":{"id":"p1349"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1373","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1364","attributes":{"selected":{"type":"object","name":"Selection","id":"p1365","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1366"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"CgAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Minepa Village"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Tanzania"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1374","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1375"}}},"glyph":{"type":"object","name":"Wedge","id":"p1370","attributes":{"x":{"type":"value","value":4083310.241788068},"y":{"type":"value","value":-924163.0301871514},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1362","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1363","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1371","attributes":{"x":{"type":"value","value":4083310.241788068},"y":{"type":"value","value":-924163.0301871514},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"id":"p1362"}},"end_angle":{"type":"expr","expr":{"id":"p1363"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1372","attributes":{"x":{"type":"value","value":4083310.241788068},"y":{"type":"value","value":-924163.0301871514},"radius":{"type":"value","value":107218.45855800272},"start_angle":{"type":"expr","expr":{"id":"p1362"}},"end_angle":{"type":"expr","expr":{"id":"p1363"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}},{"type":"object","name":"GlyphRenderer","id":"p1387","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1378","attributes":{"selected":{"type":"object","name":"Selection","id":"p1379","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1380"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["taxon",{"type":"ndarray","array":["funestus"],"shape":[1],"dtype":"object","order":"little"}],["n_samples",{"type":"ndarray","array":{"type":"bytes","data":"KAAAAA=="},"shape":[1],"dtype":"int32","order":"little"}],["location",{"type":"ndarray","array":["Motinho"],"shape":[1],"dtype":"object","order":"little"}],["country",{"type":"ndarray","array":["Mozambique"],"shape":[1],"dtype":"object","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"GC1EVPshGUA="},"shape":[1],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":["#d62728"],"shape":[1],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1388","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1389"}}},"glyph":{"type":"object","name":"Wedge","id":"p1384","attributes":{"x":{"type":"value","value":4518903.409262148},"y":{"type":"value","value":-1215214.0015646738},"radius":{"type":"value","value":170198.69390538236},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1376","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1377","attributes":{"field":"angle"}}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.9},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.9},"hatch_alpha":{"type":"value","value":0.9}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1385","attributes":{"x":{"type":"value","value":4518903.409262148},"y":{"type":"value","value":-1215214.0015646738},"radius":{"type":"value","value":170198.69390538236},"start_angle":{"type":"expr","expr":{"id":"p1376"}},"end_angle":{"type":"expr","expr":{"id":"p1377"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.1},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1386","attributes":{"x":{"type":"value","value":4518903.409262148},"y":{"type":"value","value":-1215214.0015646738},"radius":{"type":"value","value":170198.69390538236},"start_angle":{"type":"expr","expr":{"id":"p1376"}},"end_angle":{"type":"expr","expr":{"id":"p1377"}},"line_color":{"type":"field","field":"color"},"line_alpha":{"type":"value","value":0.2},"line_width":{"type":"value","value":0.5},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1010","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1025"},{"type":"object","name":"WheelZoomTool","id":"p1026","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1027","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1028","attributes":{"syncable":false,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1033"},{"type":"object","name":"ResetTool","id":"p1034"},{"type":"object","name":"HelpTool","id":"p1035"},{"type":"object","name":"HoverTool","id":"p1036","attributes":{"renderers":"auto","tooltips":"@location, @country<br/>@n_samples <em>@taxon</em>"}}]}},"left":[{"type":"object","name":"MercatorAxis","id":"p1020","attributes":{"ticker":{"type":"object","name":"MercatorTicker","id":"p1021","attributes":{"mantissas":[1,2,5],"dimension":"lat"}},"formatter":{"type":"object","name":"MercatorTickFormatter","id":"p1022","attributes":{"dimension":"lat"}},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1023"}}}],"below":[{"type":"object","name":"MercatorAxis","id":"p1015","attributes":{"ticker":{"type":"object","name":"MercatorTicker","id":"p1016","attributes":{"mantissas":[1,2,5],"dimension":"lon"}},"formatter":{"type":"object","name":"MercatorTickFormatter","id":"p1017","attributes":{"dimension":"lon"}},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1018"}}}],"center":[{"type":"object","name":"Grid","id":"p1019","attributes":{"axis":{"id":"p1015"}}},{"type":"object","name":"Grid","id":"p1024","attributes":{"dimension":1,"axis":{"id":"p1020"}}}]}}]}};
+  const render_items = [{"docid":"1e2e2107-2a70-455d-a639-7f140fe7f52f","roots":{"p1001":"bbb6c5c1-6a34-4ba1-8cbc-af276a6a52e6"},"root_ids":["p1001"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+</section>
+<section id="whole-genome-sequencing-and-variant-calling">
+<h2>Whole-genome sequencing and variant calling<a class="headerlink" href="#whole-genome-sequencing-and-variant-calling" title="Permalink to this headline">#</a></h2>
+<p>All samples in <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> have been sequenced individually to high coverage using Illumina technology at the Wellcome Sanger Institute. These sequence data have then been analysed to identify genetic variants such as single nucleotide polymorphisms (SNPs). After variant calling, both the samples and the variants have been through a range of quality control analyses, to ensure the data are of high quality. Both the raw sequence data and the curated variant calls are openly available for download and analysis.</p>
+</section>
+<section id="data-hosting">
+<h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">#</a></h2>
+<p>Data from <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> are hosted by several different services.</p>
+<p>Raw sequence reads, sequence read alignments and SNP calls are available for download from the European Nucleotide Archive (ENA). Further information on how to find and download these data is provided in the <a class="reference external" href="https://malariagen.github.io/vector-data/af1/download.html">data download guide</a>.</p>
+<p>The SNP data have also been uploaded to Google Cloud, and can be analysed directly within the cloud without having to download or copy any data, including via free interactive computing services such as <a class="reference external" href="https://gke.mybinder.org/">MyBinder</a> and <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. Further information about analysing these data in the cloud is provided in the <a class="reference external" href="https://malariagen.github.io/vector-data/af1/cloud.html">cloud data access guide</a>.</p>
+</section>
+<section id="sample-sets">
+<h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">#</a></h2>
+<p>The samples included in <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> have been organised into 8 sample sets. Each of these sample sets corresponds to a set of mosquito specimens from a contributing study. Depending on your objectives, you may want to access data from only specific sample sets, or all sample sets. Here is a list of the sample sets included:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    const el = document.getElementById(null);
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.3.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.3.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.3.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.3.0.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+          for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById(null)).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>study_id</th>
+      <th>sample_count</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1229-VO-GH-DADZIE-VMF00095</th>
+      <td>1229-VO-GH-DADZIE</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>1230-VO-GA-CF-AYALA-VMF00045</th>
+      <td>1230-VO-MULTI-AYALA</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>1231-VO-MULTI-WONDJI-VMF00043</th>
+      <td>1231-VO-MULTI-WONDJI</td>
+      <td>320</td>
+    </tr>
+    <tr>
+      <th>1232-VO-KE-OCHOMO-VMF00044</th>
+      <td>1232-VO-KE-OCHOMO</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>1235-VO-MZ-PAAIJMANS-VMF00094</th>
+      <td>1235-VO-MZ-PAAIJMANS</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>1236-VO-TZ-OKUMU-VMF00090</th>
+      <td>1236-VO-TZ-OKUMU</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1240-VO-CD-KOEKEMOER-VMF00099</th>
+      <td>1240-VO-MULTI-KOEKEMOER</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>1240-VO-MZ-KOEKEMOER-VMF00101</th>
+      <td>1240-VO-MULTI-KOEKEMOER</td>
+      <td>40</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here is a more detailed breakdown of the samples contained within each sample set, summarised by country, year of collection, and species:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>taxon</th>
+      <th>funestus</th>
+    </tr>
+    <tr>
+      <th>sample_set</th>
+      <th>country</th>
+      <th>year</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1229-VO-GH-DADZIE-VMF00095</th>
+      <th>Ghana</th>
+      <th>2017</th>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">1230-VO-GA-CF-AYALA-VMF00045</th>
+      <th>Central African Republic</th>
+      <th>2016</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>Gabon</th>
+      <th>2017</th>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th rowspan="9" valign="top">1231-VO-MULTI-WONDJI-VMF00043</th>
+      <th>Benin</th>
+      <th>2014</th>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>Cameroon</th>
+      <th>2014</th>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>Democratic Republic of the Congo</th>
+      <th>2015</th>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>Ghana</th>
+      <th>2014</th>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>Malawi</th>
+      <th>2014</th>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>Mozambique</th>
+      <th>2016</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>Nigeria</th>
+      <th>2015</th>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>Uganda</th>
+      <th>2014</th>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>Zambia</th>
+      <th>2016</th>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">1232-VO-KE-OCHOMO-VMF00044</th>
+      <th rowspan="2" valign="top">Kenya</th>
+      <th>2014</th>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>1235-VO-MZ-PAAIJMANS-VMF00094</th>
+      <th>Mozambique</th>
+      <th>2018</th>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>1236-VO-TZ-OKUMU-VMF00090</th>
+      <th>Tanzania</th>
+      <th>2017</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1240-VO-CD-KOEKEMOER-VMF00099</th>
+      <th>Democratic Republic of the Congo</th>
+      <th>2017</th>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>1240-VO-MZ-KOEKEMOER-VMF00101</th>
+      <th>Mozambique</th>
+      <th>2015</th>
+      <td>40</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that there are also multiple sampling sites represented within some sample sets. More information about these sample sets can be found in the <a class="reference external" href="https://www.malariagen.net/data_package/af10-anopheles-funestus-data-resource/">Af1.0 data resource webpage</a>.</p>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
+<p>Hopefully this page has provided a useful introduction to the <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code> data resource. If you would like to start working with these data, please visit the <a class="reference internal" href="cloud.html"><span class="doc std std-doc">cloud data access guide</span></a> or the <a class="reference internal" href="download.html"><span class="doc std std-doc">data download guide</span></a> or continue browsing the other documentation on this site.</p>
+<p>If you have any questions about the data and how to use them, please do get in touch by <a class="reference external" href="https://github.com/malariagen/vector-data/discussions/new">starting a new discussion</a> on the malariagen/vector-data repo on GitHub.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-global-global-binder-5.0.0-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-global-global-binder-5.0.0-py",
+            path: "./af1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-global-global-binder-5.0.0-py'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../ag3/analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Ag3 analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="af1.1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Af1.1</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By MalariaGEN<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
