@@ -20,10 +20,8 @@ parts:
   - caption: Anopheles funestus
     chapters:
     - file: af1/af1.0
-   # - file: af1/af1.1
     - file: af1/cloud
     - file: af1/download
-    - file: af1/methods
     - file: af1/api
   - caption: Anopheles minimus
     chapters:
