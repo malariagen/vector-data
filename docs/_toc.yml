@@ -20,6 +20,9 @@ parts:
   - caption: Anopheles funestus
     chapters:
     - file: af1/af1.0
+    - file: af1/af1.1
+    - file: af1/af1.2
+    - file: af1/af1.3
     - file: af1/cloud
     - file: af1/download
     - file: af1/api
@@ -33,7 +36,6 @@ parts:
   - caption: Partners and community
     chapters:
     - file: studies-ag1000g
-    - file: studies-af1.0-consortium
   - caption: Release notes
     chapters:
     - file: release-notes
