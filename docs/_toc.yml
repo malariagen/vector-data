@@ -21,6 +21,15 @@ parts:
     - file: ag3/methods
     - file: ag3/api
     - file: ag3/analysis
+  - caption: Anopheles funestus
+    chapters:
+    - file: af1/af1.0
+    - file: af1/af1.1
+    - file: af1/af1.2
+    - file: af1/af1.3
+    - file: af1/cloud
+    - file: af1/download
+    - file: af1/api
   - caption: Anopheles minimus
     chapters:
     - file: amin1/intro
