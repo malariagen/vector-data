@@ -704,11 +704,12 @@ title="Print to PDF"
 <p>Each sample set corresponds to a set of mosquito specimens from a contributing study. Study details can be found in the partner studies webpages listed above.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p><strong>Note:</strong> To access the <code class="docutils literal notranslate"><span class="pre">Af1.1</span></code> release, you need to use the <code class="docutils literal notranslate"><span class="pre">pre=True</span></code> flag as shown in the line below.</p>
+<p><strong>Note:</strong> To access the <code class="docutils literal notranslate"><span class="pre">Af1.1</span></code> release, you need to use the <code class="docutils literal notranslate"><span class="pre">pre=True</span></code> flag.</p>
 <p>This flag is used when more data will be added to this release, for the case of <code class="docutils literal notranslate"><span class="pre">Af1.1</span></code>, CNV data for the sample sets on this release will be included at a future date.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<script type="application/javascript">(function(root) {
+<script type="application/javascript">'use strict';
+(function(root) {
   function now() {
     return new Date();
   }
@@ -869,17 +870,42 @@ const JS_MIME_TYPE = 'application/javascript';
      "</code>\n"+
      "</div>"}};
 
-  function display_loaded() {
+  function display_loaded(error = null) {
     const el = document.getElementById(null);
     if (el != null) {
-      el.textContent = "BokehJS is loading...";
-    }
-    if (root.Bokeh !== undefined) {
-      if (el != null) {
-        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
       }
     } else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(display_loaded, 100)
+      setTimeout(() => display_loaded(error), 100);
     }
   }
 
@@ -953,7 +979,7 @@ const JS_MIME_TYPE = 'application/javascript';
     document.body.appendChild(element);
   }
 
-  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.3.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.3.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.3.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.3.0.min.js"];
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.4.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.4.1.min.js"];
   const css_urls = [];
 
   const inline_js = [    function(Bokeh) {
@@ -965,10 +991,13 @@ function(Bokeh) {
 
   function run_inline_js() {
     if (root.Bokeh !== undefined || force === true) {
-          for (let i = 0; i < inline_js.length; i++) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
       inline_js[i].call(root, root.Bokeh);
     }
-} else if (Date.now() < root._bokeh_timeout) {
+
+      } catch (error) {throw error;
+      }} else if (Date.now() < root._bokeh_timeout) {
       setTimeout(run_inline_js, 100);
     } else if (!root._bokeh_failed_load) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
@@ -1117,6 +1146,9 @@ function(Bokeh) {
 <p>Here is a more detailed breakdown of the samples contained within this sample set, summarised by country, year of collection, and species:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1510,16 +1542,16 @@ function(Bokeh) {
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-global-global-binder-5.0.0-py"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "conda-env-global-global-binder-5.0.0-py",
             path: "./af1"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-global-global-binder-5.0.0-py'</script>
 
               </div>
               
