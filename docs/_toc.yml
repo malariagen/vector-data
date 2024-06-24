@@ -16,6 +16,7 @@ parts:
     - file: ag3/ag3.7
     - file: ag3/ag3.8
     - file: ag3/ag3.9
+    - file: ag3/ag3.10
     - file: ag3/cloud
     - file: ag3/download
     - file: ag3/methods
