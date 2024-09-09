@@ -29,6 +29,7 @@ parts:
     - file: af1/af1.1
     - file: af1/af1.2
     - file: af1/af1.3
+    - file: af1/af1.4
     - file: af1/cloud
     - file: af1/download
     - file: af1/api
