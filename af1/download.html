@@ -825,7 +825,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="af1-data-downloads">
 <h1>Af1 data downloads<a class="headerlink" href="#af1-data-downloads" title="Permalink to this headline">#</a></h1>
-<p>This notebook provides information about how to download data from the <a class="reference external" href="https://www.malariagen.net/projects/anopheles-funestus-genomic-surveillance-project">MalariaGEN Vector Observatory Anopheles funestus Genomic Surveillance Project</a>. This includes sample metadata, raw sequence reads, sequence read alignments, and single nucleotide polymorphism (SNP) calls. Data from other releases can be accessed by changing the release in the examples from <code class="docutils literal notranslate"><span class="pre">v1</span></code> to the specific Af release, e.g. <code class="docutils literal notranslate"><span class="pre">v1.0</span></code>.</p>
+<p>This notebook provides information about how to download data from the <a class="reference external" href="https://www.malariagen.net/project/anopheles-funestus-genomic-surveillance-project">MalariaGEN Vector Observatory Anopheles funestus Genomic Surveillance Project</a>. This includes sample metadata, raw sequence reads, sequence read alignments, and single nucleotide polymorphism (SNP) calls. Data from other releases can be accessed by changing the release in the examples from <code class="docutils literal notranslate"><span class="pre">v1</span></code> to the specific Af release, e.g. <code class="docutils literal notranslate"><span class="pre">v1.0</span></code>.</p>
 <p>Code examples that are intended to be run via a Linux command line are prefixed with an exclamation mark (!). If you are running these commands directly from a terminal, remove the exclamation mark.</p>
 <p>Examples in this notebook assume you are downloading data to a local folder within your home directory at the path <code class="docutils literal notranslate"><span class="pre">~/vo_afun_release/</span></code>. Change this if you want to download to a different folder on the local file system.</p>
 <section id="data-hosting">
@@ -833,7 +833,7 @@ title="Print to PDF"
 <p><code class="docutils literal notranslate"><span class="pre">Af1</span></code> data are hosted by several different services.</p>
 <p>Raw sequence reads in FASTQ format and sequence read alignments in BAM format are hosted by the European Nucleotide Archive (ENA). This guide provides examples of downloading data from ENA via FTP using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command line tool, but please note that there are several other options for downloading data, see the <a class="reference external" href="https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html">ENA documentation on how to download data files</a> for more information.</p>
 <p>SNP calls in VCF and Zarr formats are hosted on S3-compatible object storage at the Sanger Institute. This guide provides examples of downloading thes data using <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
-<p>Sample metadata in CSV format are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_afun_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible but do require an authentication step, please see details on the <a class="reference external" href="https://malariagen.github.io/vector-data/vobs/vobs-data-access.html">Vector Observatory Data Access page</a>.</p>
+<p>Sample metadata in CSV format are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_afun_release_master_us_central1</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible but do require an authentication step, please see details on the <a class="reference external" href="https://malariagen.github.io/vector-data/vobs/vobs-data-access.html">Vector Observatory Data Access page</a>.</p>
 <p>The guide below provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
 </section>
 <section id="sample-sets">
@@ -842,7 +842,7 @@ title="Print to PDF"
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-pv<span class="w"> </span>~/vo_afun_release/v1.0/
-<span class="o">!</span>gsutil<span class="w"> </span>cp<span class="w"> </span>gs://vo_afun_release/v1.0/manifest.tsv<span class="w"> </span>~/vo_afun_release/v1.0/
+<span class="o">!</span>gsutil<span class="w"> </span>cp<span class="w"> </span>gs://vo_afun_release_master_us_central1/v1.0/manifest.tsv<span class="w"> </span>~/vo_afun_release/v1.0/
 </pre></div>
 </div>
 </div>
@@ -884,11 +884,11 @@ Operation completed over 1 objects/1015.0 B.
 <p>Data about the samples that were sequenced to generate this data resource are available, including the time and place of collection, the gender of the specimen, and our call regarding the species of the specimen.</p>
 <section id="specimen-collection-metadata">
 <h3>Specimen collection metadata<a class="headerlink" href="#specimen-collection-metadata" title="Permalink to this headline">#</a></h3>
-<p>Specimen collection metadata can be downloaded from GCS. E.g., sample metadata for all sample sets can be downloaded using <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>. If you only want the sample metadata for a single sample set, these can be accessed by including the sample set name on the link below, e.g. to access the metadata for <code class="docutils literal notranslate"><span class="pre">1229-VO-GH-DADZIE-VMF00095</span></code>, you would use: <code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release/v1.0/metadata/general/1229-VO-GH-DADZIE-VMF00095/samples.meta.csv</span></code>:</p>
+<p>Specimen collection metadata can be downloaded from GCS. E.g., sample metadata for all sample sets can be downloaded using <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>. If you only want the sample metadata for a single sample set, these can be accessed by including the sample set name on the link below, e.g. to access the metadata for <code class="docutils literal notranslate"><span class="pre">1229-VO-GH-DADZIE-VMF00095</span></code>, you would use: <code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release_master_us_central1/v1.0/metadata/general/1229-VO-GH-DADZIE-VMF00095/samples.meta.csv</span></code>:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-pv<span class="w"> </span>~/vo_afun_release/v1.0/metadata/
-<span class="o">!</span>gsutil<span class="w"> </span>-m<span class="w"> </span>rsync<span class="w"> </span>-r<span class="w"> </span>gs://vo_afun_release/v1.0/metadata/general/<span class="w"> </span>~/vo_afun_release/v1.0/metadata/
+<span class="o">!</span>gsutil<span class="w"> </span>-m<span class="w"> </span>rsync<span class="w"> </span>-r<span class="w"> </span>gs://vo_afun_release_master_us_central1/v1.0/metadata/general/<span class="w"> </span>~/vo_afun_release/v1.0/metadata/
 </pre></div>
 </div>
 </div>
@@ -1008,7 +1008,7 @@ VBS24203,https://1229-vo-gh-dadzie-vmf00095.cog.sanger.ac.uk/VBS24203.vcf.gz
 <h3>Site filters<a class="headerlink" href="#site-filters" title="Permalink to this headline">#</a></h3>
 <p>SNP calling is not always reliable, and we have created some site filters to allow excluding low quality SNPs. We have created some sites-only VCF files with site filter information in the <code class="docutils literal notranslate"><span class="pre">FILTER</span></code> column. These VCF files are hosted on GCS.</p>
 <p>Each filter is available as a set of VCF files, one per chromosome arm. E.g., you can access the site filters on chromosome arms 2RL from:</p>
-<p><code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release/v1.0/site_filters/dt_20200416/vcf/funestus/2RL_sitefilters.vcf.gz</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release_master_us_central1/v1.0/site_filters/dt_20200416/vcf/funestus/2RL_sitefilters.vcf.gz</span></code></p>
 <p>Alternatively, all site filters VCFs can be downloaded using <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, e.g.:</p>
 <!--
 
@@ -1018,7 +1018,7 @@ VBS24203,https://1229-vo-gh-dadzie-vmf00095.cog.sanger.ac.uk/VBS24203.vcf.gz
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_afun_release/v1.0/site_filters/dt_20200416/vcf/funestus/
 !gsutil -m rsync -r \
-    gs://vo_afun_release/v1.0/site_filters/dt_20200416/vcf/funestus/ \
+    gs://vo_afun_release_master_us_central1/v1.0/site_filters/dt_20200416/vcf/funestus/ \
     ~/vo_afun_release/v1.0/site_filters/dt_20200416/vcf/funestus/
 </pre></div>
 </div>
@@ -1028,7 +1028,7 @@ VBS24203,https://1229-vo-gh-dadzie-vmf00095.cog.sanger.ac.uk/VBS24203.vcf.gz
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_afun_release/v1.0/site_filters/dt_20200416/vcf/funestus/
 !gsutil -m rsync -r \
-    gs://vo_afun_release/v1.0/site_filters/dt_20200416/vcf/funestus/ \
+    gs://vo_afun_release_master_us_central1/v1.0/site_filters/dt_20200416/vcf/funestus/ \
     ~/vo_afun_release/v1.0/site_filters/dt_20200416/vcf/funestus/
 </pre></div>
 </div>
@@ -1041,7 +1041,7 @@ These hard-filters can also be downloaded via <code class="docutils literal notr
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_afun_release/v1.0/site_filters/sc_20220908/vcf/funestus/
 !gsutil -m rsync -r \
-    gs://vo_afun_release/v1.0/site_filters/sc_20220908/vcf/funestus/ \
+    gs://vo_afun_release_master_us_central1/v1.0/site_filters/sc_20220908/vcf/funestus/ \
     ~/vo_afun_release/v1.0/site_filters/sc_20220908/vcf/funestus/
 </pre></div>
 </div>
@@ -1060,7 +1060,7 @@ These hard-filters can also be downloaded via <code class="docutils literal notr
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_afun_release/v1.0/snp_genotypes/all/sites/
 !gsutil -m rsync -r \
-    gs://vo_afun_release/v1.0/snp_genotypes/all/sites/ \
+    gs://vo_afun_release_master_us_central1/v1.0/snp_genotypes/all/sites/ \
     ~/vo_afun_release/v1.0/snp_genotypes/all/sites/
 </pre></div>
 </div>
@@ -1074,7 +1074,7 @@ These hard-filters can also be downloaded via <code class="docutils literal notr
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_afun_release/v1.0/site_filters/dt_20200416/funestus/
 !gsutil -m rsync -r \
-    gs://vo_afun_release/v1.0/site_filters/dt_20200416/funestus/ \
+    gs://vo_afun_release_master_us_central1/v1.0/site_filters/dt_20200416/funestus/ \
     ~/vo_afun_release/v1.0/site_filters/dt_20200416/funestus/
 </pre></div>
 </div>
@@ -1089,7 +1089,7 @@ These hard-filters can also be downloaded via <code class="docutils literal notr
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_afun_release/v1.0/snp_genotypes/all/1229-VO-GH-DADZIE-VMF00095/
 !gsutil -m rsync -r \
         -x &#39;.*/calldata/(AD|GQ|MQ)/.*&#39; \
-        gs://vo_afun_release/v1.0/snp_genotypes/all/1229-VO-GH-DADZIE-VMF00095/ \
+        gs://vo_afun_release_master_us_central1/v1.0/snp_genotypes/all/1229-VO-GH-DADZIE-VMF00095/ \
         ~/vo_afun_release/v1.0/snp_genotypes/all/1229-VO-GH-DADZIE-VMF00095/
 </pre></div>
 </div>
@@ -1111,7 +1111,7 @@ These hard-filters can also be downloaded via <code class="docutils literal notr
 <p>The HMM inferences of copy number state are available in VCF, Zarr and text formats, and are organised by sample set.</p>
 <p>For example, the VCF file for sample set <code class="docutils literal notranslate"><span class="pre">1229-VO-GH-DADZIE-VMF00095</span></code> can be downloaded from:</p>
 <ul class="simple">
-<li><p>gs://vo_afun_release/v1/cnv/1229-VO-GH-DADZIE-VMF00095/hmm/vcf/VBS24195_cnv_hmm.vcf.gz</p></li>
+<li><p>gs://vo_afun_release_master_us_central1/v1/cnv/1229-VO-GH-DADZIE-VMF00095/hmm/vcf/VBS24195_cnv_hmm.vcf.gz</p></li>
 </ul>
 <p>VCF files for all samples sets can be downloaded via gsutil as follows:</p>
 <div class="cell docutils container">
@@ -1127,7 +1127,7 @@ These hard-filters can also be downloaded via <code class="docutils literal notr
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download the HMM data in VCF format for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/coverage_calls/.*|.*/hmm/zarr/.*|.*/hmm/per_sample/.*&#39; \
-    gs://vo_afun_release/v1.0/cnv/ ~/vo_afun_release/v1.0/cnv/
+    gs://vo_afun_release_master_us_central1/v1.0/cnv/ ~/vo_afun_release/v1.0/cnv/
 </pre></div>
 </div>
 </div>
@@ -1138,7 +1138,7 @@ These hard-filters can also be downloaded via <code class="docutils literal notr
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download HMM data in Zarr format for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/coverage_calls/.*|.*/hmm/vcf/.*|.*/hmm/per_sample/.*&#39; \
-    gs://vo_afun_release/v1.0/cnv/ ~/vo_afun_release/v1.0/cnv/
+    gs://vo_afun_release_master_us_central1/v1.0/cnv/ ~/vo_afun_release/v1.0/cnv/
 </pre></div>
 </div>
 </div>
@@ -1150,7 +1150,7 @@ These hard-filters can also be downloaded via <code class="docutils literal notr
 Note that some samples were excluded from coverage calling because of high coverage variance.</p>
 <p>For example, the VCF file for sample set <code class="docutils literal notranslate"><span class="pre">1229-VO-GH-DADZIE-VMF00095</span></code> can be downloaded from:</p>
 <ul class="simple">
-<li><p>gs://vo_afun_release/v1.0/cnv/1229-VO-GH-DADZIE-VMF00095/coverage_calls/funestus/vcf/1229-VO-GH-DADZIE-VMF00095_funestus_cnv_coverage_calls.vcf.gz</p></li>
+<li><p>gs://vo_afun_release_master_us_central1/v1.0/cnv/1229-VO-GH-DADZIE-VMF00095/coverage_calls/funestus/vcf/1229-VO-GH-DADZIE-VMF00095_funestus_cnv_coverage_calls.vcf.gz</p></li>
 </ul>
 <p>VCF files for all sample sets can be downloaded with:</p>
 <div class="cell docutils container">
@@ -1158,7 +1158,7 @@ Note that some samples were excluded from coverage calling because of high cover
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download coverage calls in VCF format for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/hmm/.*|.*/coverage_calls/.*/zarr/.*&#39; \
-    gs://vo_afun_release/v1.0/cnv/ ~/vo_afun_release/v1.0/cnv/
+    gs://vo_afun_release_master_us_central1/v1.0/cnv/ ~/vo_afun_release/v1.0/cnv/
 </pre></div>
 </div>
 </div>
@@ -1169,7 +1169,7 @@ Note that some samples were excluded from coverage calling because of high cover
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download coverage calls in Zarr format for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/hmm/.*|.*/coverage_calls/.*/vcf/.*&#39; \
-    gs://vo_afun_release/v1.0/cnv/ ~/vo_afun_release/v1.0/cnv/
+    gs://vo_afun_release_master_us_central1/v1.0/cnv/ ~/vo_afun_release/v1.0/cnv/
 </pre></div>
 </div>
 </div>
@@ -1184,12 +1184,12 @@ Note that some samples were excluded from coverage calling because of high cover
 <h3>Haplotype reference panels (VCF format)<a class="headerlink" href="#haplotype-reference-panels-vcf-format" title="Permalink to this headline">#</a></h3>
 <p>These are the VCFs created by the phasing pipeline, containing all samples included each of the phasing runs. There is one VCF per phasing analysis per chromosome arm. The URL for each file has the following structure:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release/v1.0/snp_haplotypes/panel/funestus/af1.0_funestus_{contig}_phased.vcf.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/panel/funestus/af1.0_funestus_{contig}_phased.vcf.gz</span></code></p></li>
 </ul>
 <p>…where <code class="docutils literal notranslate"><span class="pre">{contig}</span></code> is one of “2RL”, “3RL”, “X”.</p>
 <p>E.g., the panel VCF for the chromosome arm 3RL can be downloaded from:</p>
 <ul class="simple">
-<li><p>gs://vo_afun_release/v1.0/snp_haplotypes/panel/funestus/af1.0_funestus_3RL_phased.vcf.gz</p></li>
+<li><p>gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/panel/funestus/af1.0_funestus_3RL_phased.vcf.gz</p></li>
 </ul>
 <p>Note that these files can be large, up to ~5 GB.</p>
 <p>If you’d like to download all of the panel files, you could also use <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, e.g.:</p>
@@ -1201,7 +1201,7 @@ Note that some samples were excluded from coverage calling because of high cover
 # copy files from cloud to local file system
 !gsutil -m rsync -r \
     -x &#39;.*/.*zarr.zip&#39; \
-    gs://vo_afun_release/v1.0/snp_haplotypes/panel/funestus/ \
+    gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/panel/funestus/ \
     ~/vo_afun_release/v1.0/snp_haplotypes/panel/funestus/
 </pre></div>
 </div>
@@ -1212,12 +1212,12 @@ Note that some samples were excluded from coverage calling because of high cover
 <h3>Sample set haplotypes (VCF format)<a class="headerlink" href="#sample-set-haplotypes-vcf-format" title="Permalink to this headline">#</a></h3>
 <p>These VCFs are subsets of the panel VCFs, containing only samples in a given sample set. There is one VCF per sample set, per phasing analysis, per chromosome arm. The URL for each file has the following structure:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release/v1.0/snp_haplotypes/{sample_set}/funestus/vcf/{sample_set}_funestus_{contig}_phased.vcf.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/{sample_set}/funestus/vcf/{sample_set}_funestus_{contig}_phased.vcf.gz</span></code></p></li>
 </ul>
 <p>…where <code class="docutils literal notranslate"><span class="pre">{contig}</span></code> is one of “2RL”,”3RL”, “X”; and <code class="docutils literal notranslate"><span class="pre">{sample_set}</span></code> is one of the <a class="reference external" href="https://malariagen.github.io/vector-data/af1/af1.0.html#sample-sets">Af sample sets</a>.</p>
 <p>E.g., the VCF for sample set 1229-VO-GH-DADZIE-VMF00095, for chromosome arm 2RL, can be downloaded here:</p>
 <ul class="simple">
-<li><p>gs://vo_afun_release/v1.0/snp_haplotypes/1229-VO-GH-DADZIE-VMF00095/funestus/vcf/1229-VO-GH-DADZIE-VMF00095_funestus_2RL_phased.vcf.gz</p></li>
+<li><p>gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/1229-VO-GH-DADZIE-VMF00095/funestus/vcf/1229-VO-GH-DADZIE-VMF00095_funestus_2RL_phased.vcf.gz</p></li>
 </ul>
 <p>If you’d like to download all of the VCF files for a given sample set, you could also use gsutil, e.g.:</p>
 <div class="cell docutils container">
@@ -1228,7 +1228,7 @@ Note that some samples were excluded from coverage calling because of high cover
 # copy files from cloud to local file system
 !gsutil -m rsync -r \
     -x &#39;.*/zarr/.*&#39; \
-    gs://vo_afun_release/v1.0/snp_haplotypes/1229-VO-GH-DADZIE-VMF00095/ \
+    gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/1229-VO-GH-DADZIE-VMF00095/ \
     ~/vo_afun_release/v1.0/snp_haplotypes/1229-VO-GH-DADZIE-VMF00095/
 </pre></div>
 </div>
@@ -1239,7 +1239,7 @@ Note that some samples were excluded from coverage calling because of high cover
 <h3>Sample set haplotypes (Zarr format)<a class="headerlink" href="#sample-set-haplotypes-zarr-format" title="Permalink to this headline">#</a></h3>
 <p>These contain the haplotype data in Zarr format, with one Zarr hierarchy per sample set. The root zarr path for a given hierarchy has the following structure:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release/v1.0/snp_haplotypes/{sample_set}/funestus/zarr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/{sample_set}/funestus/zarr</span></code></p></li>
 </ul>
 <p>Data can be downloaded with gsutil. E.g., download the Zarr data for sample 1229-VO-GH-DADZIE-VMF00095. Note that the sites are stored in a separate hierarchy:</p>
 <div class="cell docutils container">
@@ -1251,12 +1251,12 @@ Note that some samples were excluded from coverage calling because of high cover
 # copy haplotype data from cloud to local file system
 !gsutil -m rsync -r \
     -x &#39;.*/vcf/.*&#39; \
-    gs://vo_afun_release/v1.0/snp_haplotypes/1229-VO-GH-DADZIE-VMF00095/funestus/ \
+    gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/1229-VO-GH-DADZIE-VMF00095/funestus/ \
     ~/vo_afun_release/v1.0/snp_haplotypes/1229-VO-GH-DADZIE-VMF00095/funestus/
 
 # copy phased sites data from cloud to local file system
 !gsutil -m rsync -rn \
-    gs://vo_afun_release/v1.0/snp_haplotypes/sites/funestus/ \
+    gs://vo_afun_release_master_us_central1/v1.0/snp_haplotypes/sites/funestus/ \
     ~/vo_afun_release//v1.0/snp_haplotypes/sites/funestus/ 
 </pre></div>
 </div>

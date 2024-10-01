@@ -789,12 +789,12 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="af1-cloud-data-access">
 <h1>Af1 cloud data access<a class="headerlink" href="#af1-cloud-data-access" title="Permalink to this headline">#</a></h1>
-<p>This notebook provides information about how to download data from the <a class="reference external" href="https://www.malariagen.net/projects/anopheles-funestus-genomic-surveillance-project">MalariaGEN Vector Observatory Anopheles funestus Genomic Surveillance Project</a> via Google Cloud. This includes sample metadata, raw sequence reads, sequence read alignments, and single nucleotide polymorphism (SNP) calls.</p>
+<p>This notebook provides information about how to download data from the <a class="reference external" href="https://www.malariagen.net/project/anopheles-funestus-genomic-surveillance-project">MalariaGEN Vector Observatory Anopheles funestus Genomic Surveillance Project</a> via Google Cloud. This includes sample metadata, raw sequence reads, sequence read alignments, and single nucleotide polymorphism (SNP) calls.</p>
 <p>This notebook illustrates how to read data directly from the cloud, without having to first download any data locally. This notebook can be run from any computer, but will work best when run from a compute node within Google Cloud, because it will be physically closer to the data and so data transfer is faster. For example, this notebook can be run via <a class="reference external" href="https://colab.research.google.com/">Google Colab</a> which are free interactive computing service running in the cloud.</p>
 <p>To launch this notebook in the cloud and run it for yourself, click the launch icon (<i class="fas fa-rocket"></i>) at the top of the page and select one of the cloud computing services available.</p>
 <section id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">#</a></h2>
-<p>All data required for this notebook is hosted on Google Cloud Storage (GCS). Data are hosted in the <code class="docutils literal notranslate"><span class="pre">vo_afun_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted in GCS are publicly accessible and do not require any authentication to access.</p>
+<p>All data required for this notebook is hosted on Google Cloud Storage (GCS). Data are hosted in the <code class="docutils literal notranslate"><span class="pre">vo_afun_release_master_us_central1</span></code> bucket, which is a single-region bucket located in the United States. All data hosted in GCS are publicly accessible and do not require any authentication to access.</p>
 </section>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>

@@ -867,25 +867,25 @@ title="Print to PDF"
 <h1>Ag3 data downloads<a class="headerlink" href="#ag3-data-downloads" title="Permalink to this headline">#</a></h1>
 <p>This notebook provides information about how to download data from the <span class="xref myst"><em>Anopheles gambiae</em> 1000 Genomes project (Ag1000G) phase 3</span>. This includes sample metadata, raw sequence reads, sequence read alignments, and single nucleotide polymorphism (SNP) calls. Data from other releases can be accessed by changing the release in the examples from <code class="docutils literal notranslate"><span class="pre">v3</span></code> to the specific Ag release, e.g. <code class="docutils literal notranslate"><span class="pre">v3.1</span></code>.</p>
 <p>Code examples that are intended to be run via a Linux command line are prefixed with an exclamation mark (!). If you are running these commands directly from a terminal, remove the exclamation mark.</p>
-<p>Examples in this notebook assume you are downloading data to a local folder within your home directory at the path <code class="docutils literal notranslate"><span class="pre">~/vo_agam_release/</span></code>. Change this if you want to download to a different folder on the local file system.</p>
+<p>Examples in this notebook assume you are downloading data to a local folder within your home directory at the path <code class="docutils literal notranslate"><span class="pre">~/vo_agam_release_master_us_central1/</span></code>. Change this if you want to download to a different folder on the local file system.</p>
 <section id="data-hosting">
 <h2>Data hosting<a class="headerlink" href="#data-hosting" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Ag3</span></code> data are hosted by several different services.</p>
 <p>Raw sequence reads in FASTQ format and sequence read alignments in BAM format are hosted by the European Nucleotide Archive (ENA). This guide provides examples of downloading data from ENA via FTP using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command line tool, but please note that there are several other options for downloading data, see the <a class="reference external" href="https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html">ENA documentation on how to download data files</a> for more information.</p>
 <p>SNP calls in VCF and Zarr formats are hosted on S3-compatible object storage at the Sanger Institute. This guide provides examples of downloading thes data using <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
-<p>Sample metadata in CSV format are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
+<p>Sample metadata in CSV format are hosted on Google Cloud Storage (GCS) in the <code class="docutils literal notranslate"><span class="pre">vo_agam_release_master_us_central1</span></code> bucket, which is a multi-region bucket located in the United States. All data hosted on GCS are publicly accessible and do not require any authentication to access. This guide provides examples of downloading data from GCS to a local computer using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> and <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> command line tools. For more information about <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, see the <a class="reference external" href="https://cloud.google.com/storage/docs/gsutil">gsutil tool documentation</a>.</p>
 </section>
 <section id="sample-sets">
 <h2>Sample sets<a class="headerlink" href="#sample-sets" title="Permalink to this headline">#</a></h2>
 <p>Data in this release are organised into 28 sample sets. Each of these sample sets corresponds to a set of mosquito specimens contributed by a collaborating study. Depending on your objectives, you may want to download data from only specific sample sets, or all sample sets. For convenience there is a tab-delimited manifest file listing all sample sets in the release. Here is a direct download link for the sample set manifest:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/manifest.tsv</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/manifest.tsv</p></li>
 </ul>
 <p>The sample set manifest can also be downloaded via <code class="docutils literal notranslate"><span class="pre">gsutil</span></code> to a directory on the local file system, e.g.:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-pv<span class="w"> </span>~/vo_agam_release/v3/
-<span class="o">!</span>gsutil<span class="w"> </span>cp<span class="w"> </span>gs://vo_agam_release/v3/manifest.tsv<span class="w"> </span>~/vo_agam_release/v3/
+<span class="o">!</span>gsutil<span class="w"> </span>cp<span class="w"> </span>gs://vo_agam_release_master_us_central1/v3/manifest.tsv<span class="w"> </span>~/vo_agam_release/v3/
 </pre></div>
 </div>
 </div>
@@ -947,13 +947,13 @@ AG1000G-X	297
 <h3>Specimen collection metadata<a class="headerlink" href="#specimen-collection-metadata" title="Permalink to this headline">#</a></h3>
 <p>Specimen collection metadata can be downloaded from GCS. E.g., here is the download link for the sample metadata for sample set AG1000G-BF-A:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/general/AG1000G-BF-A/samples.meta.csv</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/metadata/general/AG1000G-BF-A/samples.meta.csv</p></li>
 </ul>
 <p>Sample metadata for all sample sets can also be downloaded using <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-pv<span class="w"> </span>~/vo_agam_release/v3/metadata/
-<span class="o">!</span>gsutil<span class="w"> </span>-m<span class="w"> </span>rsync<span class="w"> </span>-r<span class="w"> </span>gs://vo_agam_release/v3/metadata/<span class="w"> </span>~/vo_agam_release/v3/metadata/
+<span class="o">!</span>gsutil<span class="w"> </span>-m<span class="w"> </span>rsync<span class="w"> </span>-r<span class="w"> </span>gs://vo_agam_release_master_us_central1/v3/metadata/<span class="w"> </span>~/vo_agam_release/v3/metadata/
 </pre></div>
 </div>
 </div>
@@ -996,7 +996,7 @@ AB0094-Cx,BF3-17,Austin Burt,Burkina Faso,Bana Village,2012,7,11.233,-4.472,F
 <p>We have made a preliminary call for each specimen as to which species it belongs to (<em>Anopheles gambiae</em>, <em>Anopheles coluzzii</em>, <em>Anopheles arabiensis</em>) based on the genotypes of the samples. These calls were made from the sequence data, and there are cases where the species is not easy to determine. We report species calls using ancestry informative markers (AIMs).</p>
 <p>AIM species calls can be downloaded from GCS, e.g., for sample set AG1000G-BF-A:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/species_calls_aim_20220528/AG1000G-BF-A/samples.species_aim.csv</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/metadata/species_calls_aim_20220528/AG1000G-BF-A/samples.species_aim.csv</p></li>
 </ul>
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system.</p>
 <p>Here are the first few rows of the AIM species calls for sample set AG1000G-BF-A:</p>
@@ -1030,7 +1030,7 @@ AB0094-Cx,0.002106069308826345,0.8658536585365854,0.984297520661157,gambcolu,col
 <p>The raw sequence reads used in this data release can be downloaded from ENA. Note that for most samples there were multiple sequencing runs, and hence there are usually multiple ENA run accessions per sample. For most samples there were 3 sequencing runs, but some samples have 4 and some have a single sequencing run.</p>
 <p>To find the ENA run accessions for a given sample, first download the catalog of run accessions:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_runs.csv</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/metadata/ena_runs.csv</p></li>
 </ul>
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system. Inspect the file:</p>
 <div class="cell docutils container">
@@ -1061,7 +1061,7 @@ AR0004-C,ERR343468
 <h2>Sequence read alignments (BAM format)<a class="headerlink" href="#sequence-read-alignments-bam-format" title="Permalink to this headline">#</a></h2>
 <p>Analysis-ready sequence read alignments are available in BAM format for all samples in the release and can be downloaded from ENA. A catalog file mapping sample identifiers to ENA accessions is available at this link:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/metadata/ena_alignments.csv</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/metadata/ena_alignments.csv</p></li>
 </ul>
 <p>Alternatively if you ran the <code class="docutils literal notranslate"><span class="pre">gsutil</span> <span class="pre">rsync</span></code> command above to download sample metadata then this file will already be present on your local file system. Here are the first few rows:</p>
 <div class="cell docutils container">
@@ -1183,7 +1183,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 </ul>
 <p>Each filter is available as a set of VCF files, one per chromosome arm. E.g., here is the direct download link for the gamb_colu_arab filters on chromosome arm 3R:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3R_sitefilters.vcf.gz</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/site_filters/dt_20200416/vcf/gamb_colu_arab/3R_sitefilters.vcf.gz</p></li>
 </ul>
 <p>Alternatively, all site filters VCFs can be downloaded using <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, e.g.:</p>
 <!--
@@ -1194,7 +1194,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_agam_release/v3/site_filters/dt_20200416/vcf/
 !gsutil -m rsync -r \
-    gs://vo_agam_release/v3/site_filters/dt_20200416/vcf/ \
+    gs://vo_agam_release_master_us_central1/v3/site_filters/dt_20200416/vcf/ \
     ~/vo_agam_release/v3/site_filters/dt_20200416/vcf/
 </pre></div>
 </div>
@@ -1213,7 +1213,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_agam_release/v3/snp_genotypes/all/sites/
 !gsutil -m rsync -r \
-    gs://vo_agam_release/v3/snp_genotypes/all/sites/ \
+    gs://vo_agam_release_master_us_central1/v3/snp_genotypes/all/sites/ \
     ~/vo_agam_release/v3/snp_genotypes/all/sites/
 </pre></div>
 </div>
@@ -1228,7 +1228,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_agam_release/v3/site_filters/
 !gsutil -m rsync -r \
     -x &#39;.*vcf.*|.*crosses_stats.*|.*[MG]Q10.*|.*[MG]Q30.*|.*[MG]Q_mean.*|.*[MG]Q_std.*|.*/lo_.*|.*/hi_.*|.*no_cov.*|.*allele_consistency.*|.*heterozygosity.*&#39; \
-    gs://vo_agam_release/v3/site_filters/ \
+    gs://vo_agam_release_master_us_central1/v3/site_filters/ \
     ~/vo_agam_release/v3/site_filters/
 </pre></div>
 </div>
@@ -1243,7 +1243,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!mkdir -pv ~/vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-A/
 !gsutil -m rsync -r \
         -x &#39;.*/calldata/(AD|GQ|MQ)/.*&#39; \
-        gs://vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-A/ \
+        gs://vo_agam_release_master_us_central1/v3/snp_genotypes/all/AG1000G-BF-A/ \
         ~/vo_agam_release/v3/snp_genotypes/all/AG1000G-BF-A/
 </pre></div>
 </div>
@@ -1266,7 +1266,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <p>The HMM inferences of copy number state are available in VCF, Zarr and text formats, and are organised by sample set.</p>
 <p>For example, the VCF file for sample set AG1000G-AO can be downloaded from the following URL:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/hmm/vcf/AG1000G-AO_cnv_hmm.vcf.gz</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/cnv/AG1000G-AO/hmm/vcf/AG1000G-AO_cnv_hmm.vcf.gz</p></li>
 </ul>
 <p>VCF files for all samples sets can be downloaded via gsutil as follows:</p>
 <div class="cell docutils container">
@@ -1282,7 +1282,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download the HMM data in VCF format for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/coverage_calls/.*|.*/discordant_read_calls/.*|.*/hmm/zarr/.*|.*/hmm/per_sample/.*&#39; \
-    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+    gs://vo_agam_release_master_us_central1/v3/cnv/ ~/vo_agam_release/v3/cnv/
 </pre></div>
 </div>
 </div>
@@ -1293,7 +1293,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download HMM data in Zarr format for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/coverage_calls/.*|.*/discordant_read_calls/.*|.*/hmm/vcf/.*|.*/hmm/per_sample/.*&#39; \
-    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+    gs://vo_agam_release_master_us_central1/v3/cnv/ ~/vo_agam_release/v3/cnv/
 </pre></div>
 </div>
 </div>
@@ -1305,7 +1305,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <p>Note that some samples were excluded from coverage calling because of high coverage variance.</p>
 <p>For example, the VCF file for sample set AG1000G-AO and the gamb_colu callset can be downloaded from:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/coverage_calls/gamb_colu/vcf/AG1000G-AO_gamb_colu_cnv_coverage_calls.vcf.gz</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/cnv/AG1000G-AO/coverage_calls/gamb_colu/vcf/AG1000G-AO_gamb_colu_cnv_coverage_calls.vcf.gz</p></li>
 </ul>
 <p>VCF files for all sample sets can be downloaded with:</p>
 <div class="cell docutils container">
@@ -1313,7 +1313,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download coverage calls in VCF format for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/hmm/.*|.*/discordant_read_calls/.*|.*/coverage_calls/.*/zarr/.*&#39; \
-    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+    gs://vo_agam_release_master_us_central1/v3/cnv/ ~/vo_agam_release/v3/cnv/
 </pre></div>
 </div>
 </div>
@@ -1324,7 +1324,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download coverage calls in Zarr format for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/hmm/.*|.*/discordant_read_calls/.*|.*/coverage_calls/.*/vcf/.*&#39; \
-    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+    gs://vo_agam_release_master_us_central1/v3/cnv/ ~/vo_agam_release/v3/cnv/
 </pre></div>
 </div>
 </div>
@@ -1335,7 +1335,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <p>CNV calls for selected insecticide resistance loci are available in VCF and Zarr formats, and are organised by sample set.</p>
 <p>For example, the VCF file for sample set AG1000G-AO can be downloaded from:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/cnv/AG1000G-AO/discordant_read_calls/vcf/AG1000G-AO_cnv_discordant_read_calls.vcf.gz</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/cnv/AG1000G-AO/discordant_read_calls/vcf/AG1000G-AO_cnv_discordant_read_calls.vcf.gz</p></li>
 </ul>
 <p>VCF and Zarr files for all sample sets can be downloaded with:</p>
 <div class="cell docutils container">
@@ -1343,7 +1343,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># download discordant read calls for all sample sets
 !gsutil -m rsync -r \
     -x &#39;.*/hmm/.*|.*/coverage_calls/.*&#39; \
-    gs://vo_agam_release/v3/cnv/ ~/vo_agam_release/v3/cnv/
+    gs://vo_agam_release_master_us_central1/v3/cnv/ ~/vo_agam_release/v3/cnv/
 </pre></div>
 </div>
 </div>
@@ -1363,12 +1363,12 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <h3>Haplotype reference panels (VCF format)<a class="headerlink" href="#haplotype-reference-panels-vcf-format" title="Permalink to this headline">#</a></h3>
 <p>These are the VCFs created by the phasing pipeline, containing all samples included each of the phasing runs. There is one VCF per phasing analysis per chromosome arm. The URL for each file has the following structure:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/panel/{analysis}/ag3_{analysis}_{contig}_phased.vcf.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/snp_haplotypes/panel/{analysis}/ag3_{analysis}_{contig}_phased.vcf.gz</span></code></p></li>
 </ul>
 <p>…where <code class="docutils literal notranslate"><span class="pre">{analysis}</span></code> is one of “gamb_colu_arab”, “gamb_colu” or “arab”; and <code class="docutils literal notranslate"><span class="pre">{contig}</span></code> is one of “2R”, “2L”, “3R”, “3L”, “X”.</p>
 <p>E.g., the panel VCF for the <code class="docutils literal notranslate"><span class="pre">gamb_colu_arab</span></code> analysis for chromosome arm 3L can be downloaded here:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/panel/gamb_colu_arab/ag3_gamb_colu_arab_3L_phased.vcf.gz</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/snp_haplotypes/panel/gamb_colu_arab/ag3_gamb_colu_arab_3L_phased.vcf.gz</p></li>
 </ul>
 <p>Note that these files can be large, up to ~50 GB.</p>
 <p>If you’d like to download all of the panel files, you could also use <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>, e.g.:</p>
@@ -1380,7 +1380,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 # copy files from cloud to local file system
 !gsutil -m rsync -r \
     -x &#39;.*/.*zarr.zip&#39; \
-    gs://vo_agam_release/v3/snp_haplotypes/panel/ \
+    gs://vvo_agam_release_master_us_central1/v3/snp_haplotypes/panel/ \
     ~/vo_agam_release/v3/snp_haplotypes/panel/
 </pre></div>
 </div>
@@ -1391,12 +1391,12 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <h3>Sample set haplotypes (VCF format)<a class="headerlink" href="#sample-set-haplotypes-vcf-format" title="Permalink to this headline">#</a></h3>
 <p>These VCFs are subsets of the panel VCFs, containing only samples in a given sample set. There is one VCF per sample set, per phasing analysis, per chromosome arm. The URL for each file has the following structure:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/{sample_set}/{analysis}/vcf/AG1000G-AO_{analysis}_{contig}_phased.vcf.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/snp_haplotypes/{sample_set}/{analysis}/vcf/AG1000G-AO_{analysis}_{contig}_phased.vcf.gz</span></code></p></li>
 </ul>
 <p>…where <code class="docutils literal notranslate"><span class="pre">{analysis}</span></code> is one of “gamb_colu_arab”, “gamb_colu” or “arab”; <code class="docutils literal notranslate"><span class="pre">{contig}</span></code> is one of “2R”, “2L”, “3R”, “3L”, “X”; and <code class="docutils literal notranslate"><span class="pre">{sample_set}</span></code> is one of the <a class="reference external" href="intro.html#sample-sets">Ag1000G phase 3 sample sets</a>.</p>
 <p>E.g., the VCF for sample set AG1000G-AO, for the <code class="docutils literal notranslate"><span class="pre">gamb_colu</span></code> analysis, for chromosome arm 2L, can be downloaded here:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_agam_release/v3/snp_haplotypes/AG1000G-AO/gamb_colu/vcf/AG1000G-AO_gamb_colu_2L_phased.vcf.gz</p></li>
+<li><p>https://storage.googleapis.com/vo_agam_release_master_us_central1/v3/snp_haplotypes/AG1000G-AO/gamb_colu/vcf/AG1000G-AO_gamb_colu_2L_phased.vcf.gz</p></li>
 </ul>
 <p>If you’d like to download all of the VCF files for a given sample set, you could also use gsutil, e.g.:</p>
 <div class="cell docutils container">
@@ -1407,7 +1407,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 # copy files from cloud to local file system
 !gsutil -m rsync -r \
     -x &#39;.*/zarr/.*&#39; \
-    gs://vo_agam_release/v3/snp_haplotypes/AG1000G-AO/ \
+    gs://vo_agam_release_master_us_central1/v3/snp_haplotypes/AG1000G-AO/ \
     ~/vo_agam_release/v3/snp_haplotypes/AG1000G-AO/
 </pre></div>
 </div>
@@ -1418,7 +1418,7 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 <h3>Sample set haplotypes (Zarr format)<a class="headerlink" href="#sample-set-haplotypes-zarr-format" title="Permalink to this headline">#</a></h3>
 <p>These contain the haplotype data in Zarr format, with one Zarr hierarchy per sample set. The root zarr path for a given hierarchy has the following structure:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_agam_release/v3/snp_haplotypes/{sample_set}/{analysis}/zarr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gs://vo_agam_release_master_us_central1/v3/snp_haplotypes/{sample_set}/{analysis}/zarr</span></code></p></li>
 </ul>
 <p>Data can be downloaded with gsutil. E.g., download the Zarr data for sample set AG1000G. Note that the sites are stored in a separate hierarchy:</p>
 <div class="cell docutils container">
@@ -1430,12 +1430,12 @@ AR0047-C.vcf.gz.tbi 100%[===================&gt;] 252.49K  --.-KB/s    in 0.04s
 # copy haplotype data from cloud to local file system
 !gsutil -m rsync -r \
     -x &#39;.*/vcf/.*&#39; \
-    gs://vo_agam_release/v3/snp_haplotypes/AG1000G-AO/ \
+    gs://vo_agam_release_master_us_central1/v3/snp_haplotypes/AG1000G-AO/ \
     ~/vo_agam_release/v3/snp_haplotypes/AG1000G-AO/
 
 # copy phased sites data from cloud to local file system
 !gsutil -m rsync -rn \
-    gs://vo_agam_release/v3/snp_haplotypes/sites/ \
+    gs://vo_agam_release_master_us_central1/v3/snp_haplotypes/sites/ \
     ~/vo_agam_release/v3/snp_haplotypes/sites/ 
 </pre></div>
 </div>
