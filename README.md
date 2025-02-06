@@ -1,6 +1,6 @@
-# MalariaGEN vector data
+# MalariaGEN vector data user guide
 
-This repository provides a discussion forum, issue tracker and technical documentation for genomic data from sequencing of *Anopheles* mosquitoes (malaria vectors) by MalariaGEN projects.
+This repository provides technical documentation for genomic data from the Malaria Vector Genome Observatory.
 
 For further information, please see the [MalariaGEN vector data user guide](https://malariagen.github.io/vector-data/).
 
