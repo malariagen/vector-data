@@ -20,6 +20,7 @@ parts:
     - file: ag3/ag3.11
     - file: ag3/ag3.12
     - file: ag3/ag3.13
+    - file: ag3/ag3.14
     - file: ag3/cloud
     - file: ag3/download
     - file: ag3/methods
