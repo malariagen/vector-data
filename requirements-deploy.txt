@@ -5,3 +5,4 @@ malariagen_data>=7.1.1
 jsonschema>=3
 jinja2>=3
 lxml[html_clean]
+sphinx>=5
