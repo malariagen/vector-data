@@ -1,48 +1,57 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Ag3 sequencing and variant calling methods &#8212; MalariaGEN vector data user guide</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=a1e01515" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -77,69 +86,126 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ag3/methods';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Ag3 API" href="api.html" />
     <link rel="prev" title="Ag3 data downloads" href="download.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../landing-page.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">MalariaGEN vector data user guide</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MalariaGEN vector data user guide - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MalariaGEN vector data user guide - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -148,745 +214,313 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Malaria Vector Genome Observatory
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Malaria Vector Genome Observatory</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../vobs/vobs-data-access.html">
-   Vector Observatory Data Access
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../vobs/vobs-data-access.html">Vector Observatory Data Access</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Anopheles gambiae complex
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Anopheles gambiae complex</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.0.html">
-   Ag3.0 (Ag1000G phase 3)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.1.html">
-   Ag3.1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.2.html">
-   Ag3.2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.3.html">
-   Ag3.3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.4.html">
-   Ag3.4
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.5.html">
-   Ag3.5
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.6.html">
-   Ag3.6
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.7.html">
-   Ag3.7
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.8.html">
-   Ag3.8
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.9.html">
-   Ag3.9
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.10.html">
-   Ag3.10
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.11.html">
-   Ag3.11
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.12.html">
-   Ag3.12
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ag3.13.html">
-   Ag3.13
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cloud.html">
-   Ag3 cloud data access
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="download.html">
-   Ag3 data downloads
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Ag3 sequencing and variant calling methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="api.html">
-   Ag3 API
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="analysis.html">
-   Ag3 analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.0.html">Ag3.0 (Ag1000G phase 3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.1.html">Ag3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.2.html">Ag3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.3.html">Ag3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.4.html">Ag3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.5.html">Ag3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.6.html">Ag3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.7.html">Ag3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.8.html">Ag3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.9.html">Ag3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.10.html">Ag3.10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.11.html">Ag3.11</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.12.html">Ag3.12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.13.html">Ag3.13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag3.14.html">Ag3.14</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud.html">Ag3 cloud data access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">Ag3 data downloads</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ag3 sequencing and variant calling methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Ag3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Ag3 analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Anopheles funestus
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Anopheles funestus</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../af1/af1.0.html">
-   Af1.0  (
-   <em>
-    Anopheles funestus
-   </em>
-   Project Phase 1 Data Release)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../af1/af1.1.html">
-   Af1.1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../af1/af1.2.html">
-   Af1.2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../af1/af1.3.html">
-   Af1.3
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../af1/af1.4.html">
-   Af1.4
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../af1/cloud.html">
-   Af1 cloud data access
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../af1/download.html">
-   Af1 data downloads
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../af1/api.html">
-   Af1 API
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../af1/af1.0.html">Af1.0  (<em>Anopheles funestus</em> Project Phase 1 Data Release)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../af1/af1.1.html">Af1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../af1/af1.2.html">Af1.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../af1/af1.3.html">Af1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../af1/af1.4.html">Af1.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../af1/cloud.html">Af1 cloud data access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../af1/download.html">Af1 data downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../af1/api.html">Af1 API</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Anopheles minimus
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Anopheles minimus</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../amin1/intro.html">
-   Amin1.0
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../amin1/cloud.html">
-     Amin1.0 cloud data access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../amin1/download.html">
-     Amin1.0 data downloads
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../amin1/api.html">
-   Amin1 API
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../amin1/intro.html">Amin1.0</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../amin1/cloud.html">Amin1.0 cloud data access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../amin1/download.html">Amin1.0 data downloads</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Partners and community
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../studies-ag1000g.html">
-   Ag1000G partner studies
-  </a>
- </li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../amin1/api.html">Amin1 API</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Release notes
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partners and community</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../release-notes.html">
-   Release notes
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../studies-ag1000g.html">Ag1000G partner studies</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release notes</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/malariagen/vector-data" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/methods.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ag3/methods.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/malariagen/vector-data"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/malariagen/vector-data/issues/new?title=Issue%20on%20page%20%2Fag3/methods.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/ag3/methods.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
-      </li>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#partner-studies-and-population-sampling">
-   Partner studies and population sampling
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#whole-genome-sequencing">
-   Whole-genome sequencing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#alignment-and-snp-calling">
-   Alignment and SNP calling
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sample-qc">
-   Sample QC
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coverage">
-     Coverage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cross-contamination">
-     Cross-contamination
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#technical-replicates">
-     Technical replicates
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#population-outliers-and-anomaly-detection">
-     Population outliers and anomaly detection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colony-crosses">
-     Colony crosses
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sex-calling">
-     Sex calling
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#species-assignment">
-   Species assignment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#species-calling-via-ancestry-informative-markers-aims">
-     Species calling via ancestry-informative markers (AIMs)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#species-calling-via-pca">
-     Species calling via PCA
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#site-filtering">
-   Site filtering
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#site-filters-for-use-with-an-gambiae-and-or-an-coluzzii">
-     Site filters for use with
-     <em>
-      An. gambiae
-     </em>
-     and/or
-     <em>
-      An. coluzzii
-     </em>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#site-filters-for-use-with-an-arabiensis">
-     Site filters for use with
-     <em>
-      An. arabiensis
-     </em>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#site-filters-for-joint-analyses-of-all-three-species">
-     Site filters for joint analyses of all three species
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cnv-calling">
-   CNV calling
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculation-and-normalization-of-coverage">
-     Calculation and normalization of coverage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hmm-inference-of-copy-number-state">
-     HMM inference of copy number state
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#genome-wide-cnv-discovery-and-filtering-coverage-calls">
-     Genome-wide CNV discovery and filtering (“coverage calls”)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls">
-     Identifying CNV alleles at insecticide resistance loci (“discordant read calls”)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#haplotype-phasing">
-   Haplotype phasing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#acknowledgments">
-   Acknowledgments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appendices">
-   Appendices
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-statistics-used-as-input-to-site-filter-models">
-     Summary statistics used as input to site filter models
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Ag3 sequencing and variant calling methods</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#partner-studies-and-population-sampling">
-   Partner studies and population sampling
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#whole-genome-sequencing">
-   Whole-genome sequencing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#alignment-and-snp-calling">
-   Alignment and SNP calling
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sample-qc">
-   Sample QC
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#coverage">
-     Coverage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cross-contamination">
-     Cross-contamination
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#technical-replicates">
-     Technical replicates
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#population-outliers-and-anomaly-detection">
-     Population outliers and anomaly detection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colony-crosses">
-     Colony crosses
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sex-calling">
-     Sex calling
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#species-assignment">
-   Species assignment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#species-calling-via-ancestry-informative-markers-aims">
-     Species calling via ancestry-informative markers (AIMs)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#species-calling-via-pca">
-     Species calling via PCA
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#site-filtering">
-   Site filtering
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#site-filters-for-use-with-an-gambiae-and-or-an-coluzzii">
-     Site filters for use with
-     <em>
-      An. gambiae
-     </em>
-     and/or
-     <em>
-      An. coluzzii
-     </em>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#site-filters-for-use-with-an-arabiensis">
-     Site filters for use with
-     <em>
-      An. arabiensis
-     </em>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#site-filters-for-joint-analyses-of-all-three-species">
-     Site filters for joint analyses of all three species
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cnv-calling">
-   CNV calling
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculation-and-normalization-of-coverage">
-     Calculation and normalization of coverage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hmm-inference-of-copy-number-state">
-     HMM inference of copy number state
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#genome-wide-cnv-discovery-and-filtering-coverage-calls">
-     Genome-wide CNV discovery and filtering (“coverage calls”)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls">
-     Identifying CNV alleles at insecticide resistance loci (“discordant read calls”)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#haplotype-phasing">
-   Haplotype phasing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#acknowledgments">
-   Acknowledgments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appendices">
-   Appendices
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-statistics-used-as-input-to-site-filter-models">
-     Summary statistics used as input to site filter models
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ag3 sequencing and variant calling methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partner-studies-and-population-sampling">Partner studies and population sampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whole-genome-sequencing">Whole-genome sequencing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-and-snp-calling">Alignment and SNP calling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-qc">Sample QC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage">Coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-contamination">Cross-contamination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-replicates">Technical replicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-outliers-and-anomaly-detection">Population outliers and anomaly detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colony-crosses">Colony crosses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sex-calling">Sex calling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#species-assignment">Species assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#species-calling-via-ancestry-informative-markers-aims">Species calling via ancestry-informative markers (AIMs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#species-calling-via-pca">Species calling via PCA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#site-filtering">Site filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site-filters-for-use-with-an-gambiae-and-or-an-coluzzii">Site filters for use with <em>An. gambiae</em> and/or <em>An. coluzzii</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site-filters-for-use-with-an-arabiensis">Site filters for use with <em>An. arabiensis</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site-filters-for-joint-analyses-of-all-three-species">Site filters for joint analyses of all three species</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cnv-calling">CNV calling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-and-normalization-of-coverage">Calculation and normalization of coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hmm-inference-of-copy-number-state">HMM inference of copy number state</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genome-wide-cnv-discovery-and-filtering-coverage-calls">Genome-wide CNV discovery and filtering (“coverage calls”)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls">Identifying CNV alleles at insecticide resistance loci (“discordant read calls”)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haplotype-phasing">Haplotype phasing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendices">Appendices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-used-as-input-to-site-filter-models">Summary statistics used as input to site filter models</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="ag3-sequencing-and-variant-calling-methods">
-<h1>Ag3 sequencing and variant calling methods<a class="headerlink" href="#ag3-sequencing-and-variant-calling-methods" title="Permalink to this headline">#</a></h1>
+<h1>Ag3 sequencing and variant calling methods<a class="headerlink" href="#ag3-sequencing-and-variant-calling-methods" title="Link to this heading">#</a></h1>
 <p>This page contains a description of methods used in phase 3 of the <em>Anopheles gambiae</em> 1000 Genomes Project (Ag1000G).</p>
 <section id="partner-studies-and-population-sampling">
-<h2>Partner studies and population sampling<a class="headerlink" href="#partner-studies-and-population-sampling" title="Permalink to this headline">#</a></h2>
+<h2>Partner studies and population sampling<a class="headerlink" href="#partner-studies-and-population-sampling" title="Link to this heading">#</a></h2>
 <p>Ag1000G phase 3 includes data from 3,081 individual mosquitoes, including 2,784 mosquitoes collected from natural populations in 19 countries.
 Three species are represented within the cohort: <em>An. gambiae</em>, <em>An. coluzzii</em> and <em>An. arabiensis</em>.
 Further details of studies which contributed these samples and specimen collection locations and methods are provided in the <a class="reference internal" href="../studies-ag1000g.html"><span class="doc">Ag1000G partner studies</span></a> page.</p>
 </section>
 <section id="whole-genome-sequencing">
-<h2>Whole-genome sequencing<a class="headerlink" href="#whole-genome-sequencing" title="Permalink to this headline">#</a></h2>
+<h2>Whole-genome sequencing<a class="headerlink" href="#whole-genome-sequencing" title="Link to this heading">#</a></h2>
 <p>All library preparation and sequencing was performed at the Wellcome
 Sanger Institute.
 Paired-end multiplex libraries were prepared using
@@ -903,7 +537,7 @@ The HiSeq 2000 sequencing runs generated 100 bp paired-end reads, and the HiSeq 
 Library preparation and sequencing was performed at the Wellcome Sanger Institute by the Sample Logistics, Sequencing and Informatics facilities.</p>
 </section>
 <section id="alignment-and-snp-calling">
-<h2>Alignment and SNP calling<a class="headerlink" href="#alignment-and-snp-calling" title="Permalink to this headline">#</a></h2>
+<h2>Alignment and SNP calling<a class="headerlink" href="#alignment-and-snp-calling" title="Link to this heading">#</a></h2>
 <p>Reads were aligned to the AgamP4 reference genome using BWA version
 0.7.15. Indel realignment was performed using GATK version 3.7-0
 <code class="docutils literal notranslate"><span class="pre">RealignerTargetCreator</span></code> and <code class="docutils literal notranslate"><span class="pre">IndelRealigner</span></code>. Single nucleotide
@@ -926,17 +560,17 @@ completion of these pipelines, samples entered the sample quality
 control (QC) process described below. Alignment and SNP calling was performed by the MalariaGEN Resource Centre Team. Open source pipeline implementations were developed by the Broad Institute Data Engineering Team.</p>
 </section>
 <section id="sample-qc">
-<h2>Sample QC<a class="headerlink" href="#sample-qc" title="Permalink to this headline">#</a></h2>
+<h2>Sample QC<a class="headerlink" href="#sample-qc" title="Link to this heading">#</a></h2>
 <p>The following subsections describe analyses performed to identify and exclude samples from the final dataset. Sample QC was performed by the MalariaGEN Resource Centre Team.</p>
 <section id="coverage">
-<h3>Coverage<a class="headerlink" href="#coverage" title="Permalink to this headline">#</a></h3>
+<h3>Coverage<a class="headerlink" href="#coverage" title="Link to this heading">#</a></h3>
 <p>For each sample, depth of coverage was computed at all genome
 positions. Samples were excluded if median coverage across all
 chromosomes was less than 10×, or if less than 50% of the reference
 genome was covered by at least 1×.</p>
 </section>
 <section id="cross-contamination">
-<h3>Cross-contamination<a class="headerlink" href="#cross-contamination" title="Permalink to this headline">#</a></h3>
+<h3>Cross-contamination<a class="headerlink" href="#cross-contamination" title="Link to this heading">#</a></h3>
 <p>To identify samples affected by cross-contamination, we implemented
 the model for detecting contamination in NGS alignments described in
 <a class="reference external" href="https://doi.org/10.1016/j.ajhg.2012.09.004">Jun et
@@ -951,7 +585,7 @@ percentage contamination. Samples were excluded if <em>alpha</em> was 4.5% or
 greater.</p>
 </section>
 <section id="technical-replicates">
-<h3>Technical replicates<a class="headerlink" href="#technical-replicates" title="Permalink to this headline">#</a></h3>
+<h3>Technical replicates<a class="headerlink" href="#technical-replicates" title="Link to this heading">#</a></h3>
 <p>A number of samples were sequenced more than once within this project
 phase (technical replicates). To create a final dataset without any
 replicates suitable for population genetic analysis, we performed an
@@ -978,7 +612,7 @@ distance was below 0.006, but the samples were not expected to be
 replicates.</p>
 </section>
 <section id="population-outliers-and-anomaly-detection">
-<h3>Population outliers and anomaly detection<a class="headerlink" href="#population-outliers-and-anomaly-detection" title="Permalink to this headline">#</a></h3>
+<h3>Population outliers and anomaly detection<a class="headerlink" href="#population-outliers-and-anomaly-detection" title="Link to this heading">#</a></h3>
 <p>We used principal component analysis (PCA) to identify and exclude
 individual samples that were population outliers. SNPs were
 down-sampled to use 100,000 segregating non-singleton sites from
@@ -992,7 +626,7 @@ way that was not plausible given metadata regarding their collection
 location.</p>
 </section>
 <section id="colony-crosses">
-<h3>Colony crosses<a class="headerlink" href="#colony-crosses" title="Permalink to this headline">#</a></h3>
+<h3>Colony crosses<a class="headerlink" href="#colony-crosses" title="Link to this heading">#</a></h3>
 <p>Samples in the AG1000G-X sample set were parents and progeny from
 colony crosses and were subject to a slightly different set of QC
 steps. For each cross, we performed an analysis of Mendelian
@@ -1005,7 +639,7 @@ the colony crosses in the population outlier analysis due to their
 relatedness.</p>
 </section>
 <section id="sex-calling">
-<h3>Sex calling<a class="headerlink" href="#sex-calling" title="Permalink to this headline">#</a></h3>
+<h3>Sex calling<a class="headerlink" href="#sex-calling" title="Link to this heading">#</a></h3>
 <p>We called the sex of all samples based on the modal coverage ratio
 between the X chromosome and the autosomal chromosome arm 3R. The
 sample was classed as male where the coverage ratio was between
@@ -1019,12 +653,12 @@ uncertain sex call.</p>
 </section>
 </section>
 <section id="species-assignment">
-<h2>Species assignment<a class="headerlink" href="#species-assignment" title="Permalink to this headline">#</a></h2>
+<h2>Species assignment<a class="headerlink" href="#species-assignment" title="Link to this heading">#</a></h2>
 <p>We assigned a species to each individual that passed sample QC using
 their genomic data, via two independent methods: ancestry-informative
 markers (AIMs) and principal components analysis (PCA).</p>
 <section id="species-calling-via-ancestry-informative-markers-aims">
-<h3>Species calling via ancestry-informative markers (AIMs)<a class="headerlink" href="#species-calling-via-ancestry-informative-markers-aims" title="Permalink to this headline">#</a></h3>
+<h3>Species calling via ancestry-informative markers (AIMs)<a class="headerlink" href="#species-calling-via-ancestry-informative-markers-aims" title="Link to this heading">#</a></h3>
 <p>We derive AIMs between <em>An. arabiensis</em> and <em>An. gambiae</em> using
 publicly available data from the <em>Anopheles</em> 16 genomes project
 (<a class="reference external" href="https://doi.org/10.1126/science.1258522">Neafsey et
@@ -1055,7 +689,7 @@ AIMs. Individuals were called as <em>An. gambiae</em> where this fraction was
 individuals in between classed as intermediate.</p>
 </section>
 <section id="species-calling-via-pca">
-<h3>Species calling via PCA<a class="headerlink" href="#species-calling-via-pca" title="Permalink to this headline">#</a></h3>
+<h3>Species calling via PCA<a class="headerlink" href="#species-calling-via-pca" title="Link to this heading">#</a></h3>
 <p>To provide a complementary view of species assignments, we also used
 the results of the principal components analysis of Chromosome 3
 computed during the outlier analysis described above. Based on a
@@ -1072,7 +706,7 @@ status of these individuals.</p>
 </section>
 </section>
 <section id="site-filtering">
-<h2>Site filtering<a class="headerlink" href="#site-filtering" title="Permalink to this headline">#</a></h2>
+<h2>Site filtering<a class="headerlink" href="#site-filtering" title="Link to this heading">#</a></h2>
 <p>We developed filters that identify genomic sites where SNP calling and
 genotyping is likely to be less reliable in one or more mosquito
 species. To guide the design and calibration of the site filters, we
@@ -1087,7 +721,7 @@ was to use Mendelian consistency to identify sets of positive and
 negative training sites, then used these to train a machine learning
 model that classified all genomic sites as either PASS or FAIL. Site filtering was performed by the MalariaGEN Resource Centre Team.</p>
 <section id="site-filters-for-use-with-an-gambiae-and-or-an-coluzzii">
-<h3>Site filters for use with <em>An. gambiae</em> and/or <em>An. coluzzii</em><a class="headerlink" href="#site-filters-for-use-with-an-gambiae-and-or-an-coluzzii" title="Permalink to this headline">#</a></h3>
+<h3>Site filters for use with <em>An. gambiae</em> and/or <em>An. coluzzii</em><a class="headerlink" href="#site-filters-for-use-with-an-gambiae-and-or-an-coluzzii" title="Link to this heading">#</a></h3>
 <p>All the 15 crosses involved <em>An. gambiae</em> and/or <em>An. coluzzii</em>
 parents, and none of the crosses involved <em>An. arabiensis</em>, so we used
 the crosses to first develop site filters suitable for use with
@@ -1143,7 +777,7 @@ filter. Full performance metrics will be reported in a future
 publication.</p>
 </section>
 <section id="site-filters-for-use-with-an-arabiensis">
-<h3>Site filters for use with <em>An. arabiensis</em><a class="headerlink" href="#site-filters-for-use-with-an-arabiensis" title="Permalink to this headline">#</a></h3>
+<h3>Site filters for use with <em>An. arabiensis</em><a class="headerlink" href="#site-filters-for-use-with-an-arabiensis" title="Link to this heading">#</a></h3>
 <p>To generate site filters for use with <em>An. arabiensis</em>, we recomputed
 site summary statistics using only wild-caught <em>An. arabiensis</em>
 individuals, then applied the decision tree model described
@@ -1151,7 +785,7 @@ above. These filters, which we refer to as the “arab”” site filters,
 are appropriate when working with <em>An. arabiensis</em> samples only.</p>
 </section>
 <section id="site-filters-for-joint-analyses-of-all-three-species">
-<h3>Site filters for joint analyses of all three species<a class="headerlink" href="#site-filters-for-joint-analyses-of-all-three-species" title="Permalink to this headline">#</a></h3>
+<h3>Site filters for joint analyses of all three species<a class="headerlink" href="#site-filters-for-joint-analyses-of-all-three-species" title="Link to this heading">#</a></h3>
 <p>We created site filters suitable for joint analysis of individuals
 from all three species by taking the intersection of the “gamb_colu”
 and the “arab” site filters. We refer to these filters as the
@@ -1159,14 +793,14 @@ and the “arab” site filters. We refer to these filters as the
 </section>
 </section>
 <section id="cnv-calling">
-<h2>CNV calling<a class="headerlink" href="#cnv-calling" title="Permalink to this headline">#</a></h2>
+<h2>CNV calling<a class="headerlink" href="#cnv-calling" title="Link to this heading">#</a></h2>
 <p>Copy number variant (CNV) calling methods followed those described in
 <a class="reference external" href="https://genome.cshlp.org/content/29/8/1250.full#sec-8">Lucas et
 al. (2019)</a>
 with some adaptations to accommodate the different mosquito species
 being analysed, described further below. CNV calling was performed by the Liverpool School of Tropical Medicine.</p>
 <section id="calculation-and-normalization-of-coverage">
-<h3>Calculation and normalization of coverage<a class="headerlink" href="#calculation-and-normalization-of-coverage" title="Permalink to this headline">#</a></h3>
+<h3>Calculation and normalization of coverage<a class="headerlink" href="#calculation-and-normalization-of-coverage" title="Link to this heading">#</a></h3>
 <p>For each individual, we used
 <a class="reference external" href="https://github.com/pysam-developers/pysam">pysam</a> to count the number
 of aligned reads (coverage) in non-overlapping 300 bp windows over the
@@ -1207,7 +841,7 @@ differences between the species.  One individual with an intermediate
 species call between these two groups were excluded.</p>
 </section>
 <section id="hmm-inference-of-copy-number-state">
-<h3>HMM inference of copy number state<a class="headerlink" href="#hmm-inference-of-copy-number-state" title="Permalink to this headline">#</a></h3>
+<h3>HMM inference of copy number state<a class="headerlink" href="#hmm-inference-of-copy-number-state" title="Link to this heading">#</a></h3>
 <p>To infer the most likely copy number state (CN) at each window in each
 individual, we applied a Gaussian hidden Markov model (HMM) to the
 individual’s normalized windowed coverage data, following a similar
@@ -1237,7 +871,7 @@ data for each individual, to obtain a predicted copy number state
 within each window.</p>
 </section>
 <section id="genome-wide-cnv-discovery-and-filtering-coverage-calls">
-<h3>Genome-wide CNV discovery and filtering (“coverage calls”)<a class="headerlink" href="#genome-wide-cnv-discovery-and-filtering-coverage-calls" title="Permalink to this headline">#</a></h3>
+<h3>Genome-wide CNV discovery and filtering (“coverage calls”)<a class="headerlink" href="#genome-wide-cnv-discovery-and-filtering-coverage-calls" title="Link to this heading">#</a></h3>
 <p>Using the results of the HMM, we obtained a set of CNV calls for each
 individual by locating contiguous runs of at least five windows with
 amplified copy number (CN &gt; 2, or CN &gt; 1 for Chromosome X in
@@ -1262,7 +896,7 @@ end breakpoint.</p>
 the crosses, producing three sets of “CNV coverage calls”.</p>
 </section>
 <section id="identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls">
-<h3>Identifying CNV alleles at insecticide resistance loci (“discordant read calls”)<a class="headerlink" href="#identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls" title="Permalink to this headline">#</a></h3>
+<h3>Identifying CNV alleles at insecticide resistance loci (“discordant read calls”)<a class="headerlink" href="#identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls" title="Link to this heading">#</a></h3>
 <p>We characterized in detail the different duplication events (CNV
 alleles) at six loci containing genes of particular interest
 (Cyp6aa1–Cyp6p2, Gstu4–Gste3, Cyp6m2–Cyp6m4, Cyp6z3–Cyp6z1, Cyp9k1,
@@ -1279,7 +913,7 @@ in all samples with at least four supporting diagnostic reads.</p>
 </section>
 </section>
 <section id="haplotype-phasing">
-<h2>Haplotype phasing<a class="headerlink" href="#haplotype-phasing" title="Permalink to this headline">#</a></h2>
+<h2>Haplotype phasing<a class="headerlink" href="#haplotype-phasing" title="Link to this heading">#</a></h2>
 <p>Genotypes at biallelic SNPs passing site filters were phased into haplotypes using a combination of read-backed and statistical phasing. Read-backed phasing was performed for each individual using <a class="reference external" href="https://whatshap.readthedocs.io/en/latest/">WhatsHap</a> version 1.0. Statistical phasing was then performed using <a class="reference external" href="https://odelaneau.github.io/shapeit4/">SHAPEIT4</a> version 4.2.1. An <a class="reference external" href="https://github.com/malariagen/pipelines/tree/master/pipelines/phasing-vector/gcp">open source WDL implementation of this phasing pipeline</a> is available from the <a class="reference external" href="https://github.com/malariagen/pipelines">malariagen/pipelines GitHub repository</a>. The phasing pipeline was developed by the Broad Institute Data Engineering Team and run using the <a class="reference external" href="https://app.terra.bio/">Terra platform</a>.</p>
 <p>To allow for a range of different analyses, three different haplotype reference panels were constructed, each using a different subset of samples and applying different site filters:</p>
 <ul class="simple">
@@ -1289,7 +923,7 @@ in all samples with at least four supporting diagnostic reads.</p>
 </ul>
 </section>
 <section id="acknowledgments">
-<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline">#</a></h2>
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h2>
 <p>We would like to thank the staff of the Wellcome Sanger Institute
 Sample Logistics, Sequencing and Informatics facilities for their
 contributions to the production of this data release.</p>
@@ -1298,9 +932,9 @@ Broad Institute of Harvard and MIT for their work on open source
 implementations of the alignment, SNP calling and haplotype phasing pipelines used in Ag1000G phase 3.</p>
 </section>
 <section id="appendices">
-<h2>Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">#</a></h2>
+<h2>Appendices<a class="headerlink" href="#appendices" title="Link to this heading">#</a></h2>
 <section id="summary-statistics-used-as-input-to-site-filter-models">
-<h3>Summary statistics used as input to site filter models<a class="headerlink" href="#summary-statistics-used-as-input-to-site-filter-models" title="Permalink to this headline">#</a></h3>
+<h3>Summary statistics used as input to site filter models<a class="headerlink" href="#summary-statistics-used-as-input-to-site-filter-models" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>No Coverage</strong> – Number of samples with no coverage whatsoever at
 the given position.</p></li>
@@ -1350,7 +984,7 @@ counts at het calls.</p></li>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./ag3"
         },
         predefinedOutput: true
@@ -1358,50 +992,138 @@ counts at het calls.</p></li>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="download.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Ag3 data downloads</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="download.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Ag3 data downloads</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="api.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="api.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Ag3 API</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partner-studies-and-population-sampling">Partner studies and population sampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whole-genome-sequencing">Whole-genome sequencing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-and-snp-calling">Alignment and SNP calling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-qc">Sample QC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coverage">Coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-contamination">Cross-contamination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-replicates">Technical replicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-outliers-and-anomaly-detection">Population outliers and anomaly detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colony-crosses">Colony crosses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sex-calling">Sex calling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#species-assignment">Species assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#species-calling-via-ancestry-informative-markers-aims">Species calling via ancestry-informative markers (AIMs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#species-calling-via-pca">Species calling via PCA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#site-filtering">Site filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site-filters-for-use-with-an-gambiae-and-or-an-coluzzii">Site filters for use with <em>An. gambiae</em> and/or <em>An. coluzzii</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site-filters-for-use-with-an-arabiensis">Site filters for use with <em>An. arabiensis</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site-filters-for-joint-analyses-of-all-three-species">Site filters for joint analyses of all three species</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cnv-calling">CNV calling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-and-normalization-of-coverage">Calculation and normalization of coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hmm-inference-of-copy-number-state">HMM inference of copy number state</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genome-wide-cnv-discovery-and-filtering-coverage-calls">Genome-wide CNV discovery and filtering (“coverage calls”)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-cnv-alleles-at-insecticide-resistance-loci-discordant-read-calls">Identifying CNV alleles at insecticide resistance loci (“discordant read calls”)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haplotype-phasing">Haplotype phasing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendices">Appendices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-used-as-input-to-site-filter-models">Summary statistics used as input to site filter models</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By MalariaGEN<br/>
-  
-      &copy; Copyright 2021.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By MalariaGEN
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
