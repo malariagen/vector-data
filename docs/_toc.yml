@@ -43,6 +43,13 @@ parts:
       - file: amin1/cloud
       - file: amin1/download
     - file: amin1/api
+  - caption: Anopheles dirus
+    chapters:
+    - file: adir1/adir1.0
+      sections:
+      - file: adir1/cloud
+      - file: adir1/download
+    - file: adir1/api
   - caption: Partners and community
     chapters:
     - file: studies-ag1000g
