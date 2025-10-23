@@ -506,8 +506,8 @@ document.write(`
 <p>Download this file:</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-pv<span class="w"> </span>~/vo_amin_release/v1/metadata
-<span class="o">!</span>gsutil<span class="w"> </span>rsync<span class="w"> </span>-r<span class="w"> </span>gs://vo_amin_release/v1/metadata/<span class="w"> </span>~/vo_amin_release/v1/metadata/
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-pv<span class="w"> </span>~/vo_amin_release/v1.0/metadata
+<span class="o">!</span>gsutil<span class="w"> </span>rsync<span class="w"> </span>-r<span class="w"> </span>gs://vo_amin_release_master_us_central1/v1.0/metadata/<span class="w"> </span>~/vo_amin_release/v1.0/metadata/
 </pre></div>
 </div>
 </div>
@@ -515,7 +515,7 @@ document.write(`
 <p>Inspect the first few rows of the sample metadata file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1/metadata/samples.meta.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1.0/metadata/samples.meta.csv
 </pre></div>
 </div>
 </div>
@@ -544,13 +544,13 @@ VBS09483-4248STDY7308997,VBS09483,4248STDY7308997,CB-2-03873,Brandy St. Laurent,
 <p>Analysis-ready sequence read alignments are available in BAM format for all samples in the release and can be downloaded from GCS. SNP calls are also available for download in VCF format.</p>
 <p>A catalog file mapping sample identifiers to download URLs is available at this URL:</p>
 <ul class="simple">
-<li><p>https://storage.googleapis.com/vo_amin_release/v1/metadata/wgs_snp_data.csv</p></li>
+<li><p>https://storage.googleapis.com/vo_amin_release_master_us_central1/v1.0/metadata/wgs_snp_data.csv</p></li>
 </ul>
 <p>Alternatively if you ran the gsutil rsync command above to download metadata then this file will already be present on your local file system.</p>
 <p>Here are the first few rows, showing the columns with the sample IDs and the BAM file URLs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1/metadata/wgs_snp_data.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1,2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1.0/metadata/wgs_snp_data.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1,2
 </pre></div>
 </div>
 </div>
@@ -582,7 +582,7 @@ VBS09483-4248STDY7308997,https://1175-vo-kh-stlaurent-minimus.cog.sanger.ac.uk/V
 <p>For example, here are the first few rows of the catalog file, this time showing the sample_id and snp_genotypes_vcf columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1/metadata/wgs_snp_data.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1,4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>~/vo_amin_release/v1.0/metadata/wgs_snp_data.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d,<span class="w"> </span>-f1,4
 </pre></div>
 </div>
 </div>
