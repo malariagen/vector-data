@@ -38,6 +38,12 @@ parts:
     - file: af1/cloud
     - file: af1/download
     - file: af1/api
+  - caption: Anopheles stephensi
+    chapters:
+    - file: as1/as1.0
+    - file: as1/cloud
+    - file: as1/download
+    - file: as1/api
   - caption: Anopheles minimus
     chapters:
     - file: amin1/intro
