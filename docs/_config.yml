@@ -10,7 +10,7 @@ repository:
   branch: master
 launch_buttons:
   notebook_interface: "jupyterlab"
-  colab_url: ""
+  colab_url: "https://colab.research.google.com"
   binderhub_url: ""
 html:
   use_repository_button : true
