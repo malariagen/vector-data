@@ -21,6 +21,8 @@ parts:
     - file: ag3/ag3.12
     - file: ag3/ag3.13
     - file: ag3/ag3.14
+    - file: ag3/ag3.15
+    - file: ag3/ag3.16
     - file: ag3/cloud
     - file: ag3/download
     - file: ag3/methods
@@ -36,6 +38,12 @@ parts:
     - file: af1/cloud
     - file: af1/download
     - file: af1/api
+  - caption: Anopheles stephensi
+    chapters:
+    - file: as1/as1.0
+    - file: as1/cloud
+    - file: as1/download
+    - file: as1/api
   - caption: Anopheles minimus
     chapters:
     - file: amin1/intro
