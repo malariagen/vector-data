@@ -50,6 +50,12 @@ parts:
       - file: adir1/cloud
       - file: adir1/download
     - file: adir1/api
+  - caption: Anopheles darlingi
+    chapters:
+    - file: adar1/adar1.0
+    - file: adar1/cloud
+    - file: adar1/download
+    - file: adar1/api
   - caption: Partners and community
     chapters:
     - file: studies-ag1000g
