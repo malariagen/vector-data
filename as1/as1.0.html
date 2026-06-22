@@ -678,11 +678,6 @@ document.write(`
 <p>The samples included in <code class="docutils literal notranslate"><span class="pre">As1.0</span></code> have been organised into 13 sample sets.</p>
 <p>Each sample set corresponds to a set of mosquito specimens from a contributing study. Study details can be found in the partner studies webpages listed above.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -957,7 +952,7 @@ const JS_MIME_TYPE = 'application/javascript';
     document.body.appendChild(element);
   }
 
-  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.8.2.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.8.2.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.8.2.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.8.2.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.8.2.min.js"];
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.7.0.min.js"];
   const css_urls = [];
 
   const inline_js = [    function(Bokeh) {
@@ -1099,37 +1094,6 @@ function(Bokeh) {
 <p>Here is a more detailed breakdown of the samples contained within this sample set, summarised by country, year of collection, and species. The warning is a result of the surveillance flags not being set. This will be implemented in future versions.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Load sample metadata: ⠏ (0:00:00.76) 
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1363-VO-ET-GADISA-VMF00316
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1364-VO-SD-KAFY-VMF00317
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1365-VO-DJ-ADBI-VMF00318
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1366-VO-YE-ALLAN-VMF00319
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1367-VO-AF-DONNELLY-VMF00320
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1368-VO-PK-DONNELLY-VMF00321
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1369-VO-SA-AL-NAZAWI-VMF00322
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1370-VO-IR-ENAYATI-VMF00323
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1385-VO-DJ-WEETMAN-VMF00338
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1386-VO-KE-OCHOMO-VMF00339
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1458-VO-ET-YEWHALAW-VMF00340
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set 1459-VO-SD-AHMED-VMF00342
-  warnings.warn(
-/home/jupyter/malariagen-data-python/malariagen_data/anoph/sample_metadata.py:417: UserWarning: WARNING: The surveillance flags data is missing for sample set thakare-2022
-  warnings.warn(
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     
 </pre></div>
 </div>
@@ -1240,7 +1204,7 @@ function(Bokeh) {
     <tr>
       <th>1385-VO-DJ-WEETMAN</th>
       <th>1385-VO-DJ-WEETMAN-VMF00338</th>
-      <th>Colony</th>
+      <th>Lab Cross</th>
       <th>2025</th>
       <td>14</td>
     </tr>
@@ -1297,16 +1261,16 @@ function(Bokeh) {
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "malariagen-dev-as1"
+            mode: "mgenv_7.3.0"
         },
         kernelOptions: {
-            name: "malariagen-dev-as1",
+            name: "mgenv_7.3.0",
             path: "./as1"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'malariagen-dev-as1'</script>
+    <script>kernelName = 'mgenv_7.3.0'</script>
 
                 </article>
               
