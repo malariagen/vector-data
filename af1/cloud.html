@@ -16,20 +16,22 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -37,17 +39,18 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=a1e01515" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -95,40 +98,37 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'af1/cloud';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Af1 data downloads" href="download.html" />
     <link rel="prev" title="Af1.4" href="af1.4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -136,7 +136,6 @@ commentsRunWhenDOMLoaded(addUtterances);
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -144,15 +143,59 @@ commentsRunWhenDOMLoaded(addUtterances);
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -161,7 +204,8 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -191,21 +235,17 @@ commentsRunWhenDOMLoaded(addUtterances);
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MalariaGEN vector data user guide - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MalariaGEN vector data user guide - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MalariaGEN vector data user guide - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -303,9 +343,14 @@ commentsRunWhenDOMLoaded(addUtterances);
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -466,7 +511,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -480,25 +525,17 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -520,7 +557,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-hosting">Data hosting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-sets">Sample sets</a></li>
@@ -593,7 +630,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">dask.array</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">da</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dask.diagnostics.progress</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProgressBar</span>
 <span class="c1"># silence some warnings</span>
-<span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;array.slicing.split_large_chunks&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+<span class="n">dask</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">'array.slicing.split_large_chunks'</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">allel</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">malariagen_data</span>
 </pre></div>
@@ -987,7 +1024,7 @@ function(Bokeh) {
 <p>To see which sample sets are available, load the sample set manifest into a pandas dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample_sets</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">sample_sets</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample_sets</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">sample_sets</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s2">"1.0"</span><span class="p">)</span>
 <span class="n">df_sample_sets</span>
 </pre></div>
 </div>
@@ -1095,7 +1132,7 @@ function(Bokeh) {
 <p>E.g., load sample metadata for all samples in the Af1.0 release into a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">pandas DataFrame</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">"1.0"</span><span class="p">)</span>
 <span class="n">df_samples</span>
 </pre></div>
 </div>
@@ -1422,7 +1459,7 @@ function(Bokeh) {
 <p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> can be used to explore and query the sample metadata in various ways. E.g., here is a summary of the numbers of samples by species:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;taxon&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"taxon"</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1441,7 +1478,7 @@ dtype: int64
 <p>E.g., access SNP calls for chromosome 2RL for all samples in <code class="docutils literal notranslate"><span class="pre">Af1.0</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2RL&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_snps</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">"2RL"</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">"1.0"</span><span class="p">)</span>
 <span class="n">ds_snps</span>
 </pre></div>
 </div>
@@ -2801,7 +2838,7 @@ Attributes:
 <p>We have called SNP genotypes in all samples at all positions in the genome where the reference allele is not “N”. Data on this set of genomic positions and alleles for a given chromosome (e.g., 2RL) can be accessed as <a class="reference external" href="https://docs.dask.org/en/latest/array.html">Dask arrays</a> as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">"variant_position"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 <span class="n">pos</span>
 </pre></div>
 </div>
@@ -2884,7 +2921,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alleles</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;variant_allele&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alleles</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">"variant_allele"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 <span class="n">alleles</span>
 </pre></div>
 </div>
@@ -2990,16 +3027,16 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[b&#39;T&#39;, b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;],
-       [b&#39;G&#39;, b&#39;A&#39;, b&#39;C&#39;, b&#39;T&#39;],
-       [b&#39;G&#39;, b&#39;A&#39;, b&#39;C&#39;, b&#39;T&#39;],
-       [b&#39;C&#39;, b&#39;A&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;G&#39;, b&#39;A&#39;, b&#39;C&#39;, b&#39;T&#39;],
-       [b&#39;T&#39;, b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;],
-       [b&#39;C&#39;, b&#39;A&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;C&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;C&#39;, b&#39;A&#39;, b&#39;T&#39;, b&#39;G&#39;],
-       [b&#39;T&#39;, b&#39;A&#39;, b&#39;C&#39;, b&#39;G&#39;]], dtype=&#39;|S1&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[b'T', b'A', b'C', b'G'],
+       [b'G', b'A', b'C', b'T'],
+       [b'G', b'A', b'C', b'T'],
+       [b'C', b'A', b'T', b'G'],
+       [b'G', b'A', b'C', b'T'],
+       [b'T', b'A', b'C', b'G'],
+       [b'C', b'A', b'T', b'G'],
+       [b'A', b'C', b'T', b'G'],
+       [b'C', b'A', b'T', b'G'],
+       [b'T', b'A', b'C', b'G']], dtype='|S1')
 </pre></div>
 </div>
 </div>
@@ -3016,7 +3053,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access gamb_colu_arab site filters for chromosome 2RL as a dask array</span>
-<span class="n">filter_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s1">&#39;variant_filter_pass_funestus&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">filter_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s1">'variant_filter_pass_funestus'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 <span class="n">filter_pass</span>
 </pre></div>
 </div>
@@ -3115,13 +3152,13 @@ Attributes:
 <p>Note these filters are the result of different filter models. For the filters in this example, a decision-tree was used. These filters are the default ones used across functions in the API.</p>
 <p>We have also produced a second set of site filters, which are the result of static cutoffs on the site summary statistics. To access these hard-filters, instantiate an API client with the <code class="docutils literal notranslate"><span class="pre">site_filters_analysis</span></code> parameter as shown below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">af1_sc</span> <span class="o">=</span> <span class="n">malariagen_data</span><span class="o">.</span><span class="n">Af1</span><span class="p">(</span>
-    <span class="n">site_filters_analysis</span><span class="o">=</span><span class="s2">&quot;sc_20220908&quot;</span><span class="p">,</span>
+    <span class="n">site_filters_analysis</span><span class="o">=</span><span class="s2">"sc_20220908"</span><span class="p">,</span>
 <span class="p">)</span>
 
 </pre></div>
 </div>
 <p>Now, any function call via this API client will use the hard filters. For example, to access the site filters themselves and compute how many sites pass for Chromosome 3:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">af1_sc</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;3RL&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s2">&quot;funestus&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">af1_sc</span><span class="o">.</span><span class="n">site_filters</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">"3RL"</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s2">"funestus"</span><span class="p">)</span>
 <span class="n">x</span>
 </pre></div>
 </div>
@@ -3132,7 +3169,7 @@ Attributes:
 <p>SNP genotypes can be accessed as dask arrays as shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">"call_genotype"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 <span class="n">gt</span>
 </pre></div>
 </div>
@@ -3287,8 +3324,8 @@ Attributes:
 <p>Note that the columns of this array (second dimension) match the rows in the sample metadata, if the same sample sets were loaded. I.e.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_samples</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">"1.0"</span><span class="p">)</span>
+<span class="n">gt</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="s2">"call_genotype"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">df_samples</span><span class="p">)</span> <span class="o">==</span> <span class="n">gt</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -3302,8 +3339,8 @@ Attributes:
 <p>You can use this correspondance to apply further subsetting operations to the genotypes by querying the sample metadata. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc_funestus</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;taxon == &#39;funestus&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;found </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">loc_funestus</span><span class="p">)</span><span class="si">}</span><span class="s2"> funestus samples&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc_funestus</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">"taxon == 'funestus'"</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"found </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">loc_funestus</span><span class="p">)</span><span class="si">}</span><span class="s2"> funestus samples"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4703,7 +4740,7 @@ E.g., the code below sets up a genotype array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the scikit-allel wrapper class for genotype calls</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_snps</span><span class="p">[</span><span class="s2">"call_genotype"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">gt</span>
 </pre></div>
 </div>
@@ -4727,7 +4764,7 @@ E.g., the code below sets up a genotype array.</p>
 <p>Access HMM data via the <code class="docutils literal notranslate"><span class="pre">cnv_hmm()</span></code> method, which returns an <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a> dataset. E.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_hmm</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">cnv_hmm</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2RL&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_hmm</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">cnv_hmm</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">"2RL"</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">"1.0"</span><span class="p">)</span>
 <span class="n">ds_hmm</span>
 </pre></div>
 </div>
@@ -5699,7 +5736,7 @@ Attributes:
 <p>Here “variants” are the 300 bp windows in which coverage was calculated and the HMM fitted. Window start positions are given by the <code class="docutils literal notranslate"><span class="pre">variant_position</span></code> array and ends are given by <code class="docutils literal notranslate"><span class="pre">variant_end</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;variant_position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">'variant_position'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">pos</span>
 </pre></div>
 </div>
@@ -5713,7 +5750,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;variant_end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">'variant_end'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">end</span>
 </pre></div>
 </div>
@@ -5732,7 +5769,7 @@ Attributes:
 <p>Rows are variants (windows), columns are individual samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cn</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">&#39;call_CN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cn</span> <span class="o">=</span> <span class="n">ds_hmm</span><span class="p">[</span><span class="s1">'call_CN'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">cn</span>
 </pre></div>
 </div>
@@ -5757,9 +5794,9 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_cnv</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">cnv_coverage_calls</span><span class="p">(</span>
-    <span class="n">region</span><span class="o">=</span><span class="s1">&#39;2RL&#39;</span><span class="p">,</span> 
-    <span class="n">analysis</span><span class="o">=</span><span class="s1">&#39;funestus&#39;</span><span class="p">,</span> 
-    <span class="n">sample_set</span><span class="o">=</span><span class="s1">&#39;1229-VO-GH-DADZIE-VMF00095&#39;</span>
+    <span class="n">region</span><span class="o">=</span><span class="s1">'2RL'</span><span class="p">,</span> 
+    <span class="n">analysis</span><span class="o">=</span><span class="s1">'funestus'</span><span class="p">,</span> 
+    <span class="n">sample_set</span><span class="o">=</span><span class="s1">'1229-VO-GH-DADZIE-VMF00095'</span>
 <span class="p">)</span>
 <span class="n">ds_cnv</span>
 </pre></div>
@@ -6644,7 +6681,7 @@ Attributes:
 <p>Here “variants” are copy number variants, inferred from the HMM results. CNV start positions are given by the <code class="docutils literal notranslate"><span class="pre">variant_position</span></code> array and ends are given by <code class="docutils literal notranslate"><span class="pre">variant_end</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">&#39;variant_position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">'variant_position'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">pos</span>
 </pre></div>
 </div>
@@ -6658,7 +6695,7 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">&#39;variant_end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">'variant_end'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">end</span>
 </pre></div>
 </div>
@@ -6673,7 +6710,7 @@ Attributes:
 <p>CNV genotypes are given by the <code class="docutils literal notranslate"><span class="pre">call_genotype</span></code> array, coded as 0 for absence and 1 for presence of the CNV allele. Rows are CNV alleles and columns are individual samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">&#39;call_genotype&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">'call_genotype'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">gt</span>
 </pre></div>
 </div>
@@ -6693,13 +6730,13 @@ Attributes:
 <p>Note that not all samples will have been included in the coverage calls, as some are excluded due to high coverage variance. Use the <code class="docutils literal notranslate"><span class="pre">sample_id</span></code> array to access the samples included in a given dataset, e.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">&#39;sample_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">ds_cnv</span><span class="p">[</span><span class="s1">'sample_id'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">samples</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;VBS24196&#39;, &#39;VBS24197&#39;, &#39;VBS24201&#39;, &#39;VBS24213&#39;, &#39;VBS24216&#39;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(['VBS24196', 'VBS24197', 'VBS24201', 'VBS24213', 'VBS24216'],
       dtype=object)
 </pre></div>
 </div>
@@ -6713,7 +6750,7 @@ Attributes:
 <p>Data can be accessed in the cloud via the <code class="docutils literal notranslate"><span class="pre">haplotypes()</span></code> method. E.g., access haplotypes from the “funestus” analysis for all available samples, for chromosome 2RL. This method returns an <a class="reference external" href="http://xarray.pydata.org/en/stable/user-guide/data-structures.html#dataset">xarray Dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_haps</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">haplotypes</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">&quot;2RL&quot;</span><span class="p">,</span> <span class="n">analysis</span><span class="o">=</span><span class="s2">&quot;funestus&quot;</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_haps</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">haplotypes</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="s2">"2RL"</span><span class="p">,</span> <span class="n">analysis</span><span class="o">=</span><span class="s2">"funestus"</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="s2">"1.0"</span><span class="p">)</span>
 <span class="n">ds_haps</span>
 </pre></div>
 </div>
@@ -7508,7 +7545,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access haplotype SNP positions</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">&quot;variant_position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">"variant_position"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
 <span class="n">pos</span>
 </pre></div>
 </div>
@@ -7606,7 +7643,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access haplotype SNP alleles</span>
-<span class="n">alleles</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">&quot;variant_allele&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
+<span class="n">alleles</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">"variant_allele"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
 <span class="n">alleles</span>
 </pre></div>
 </div>
@@ -7696,16 +7733,16 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[b&#39;T&#39;, b&#39;A&#39;],
-       [b&#39;A&#39;, b&#39;G&#39;],
-       [b&#39;T&#39;, b&#39;A&#39;],
-       [b&#39;T&#39;, b&#39;C&#39;],
-       [b&#39;A&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;T&#39;],
-       [b&#39;A&#39;, b&#39;G&#39;],
-       [b&#39;G&#39;, b&#39;A&#39;],
-       [b&#39;A&#39;, b&#39;G&#39;],
-       [b&#39;A&#39;, b&#39;T&#39;]], dtype=&#39;|S1&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[b'T', b'A'],
+       [b'A', b'G'],
+       [b'T', b'A'],
+       [b'T', b'C'],
+       [b'A', b'G'],
+       [b'A', b'T'],
+       [b'A', b'G'],
+       [b'G', b'A'],
+       [b'A', b'G'],
+       [b'A', b'T']], dtype='|S1')
 </pre></div>
 </div>
 </div>
@@ -7714,7 +7751,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access genotypes</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
+<span class="n">gt</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s2">"call_genotype"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># dask array</span>
 <span class="n">gt</span>
 </pre></div>
 </div>
@@ -7865,7 +7902,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wrap as scikit-allel genotype array</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_haps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_haps</span><span class="p">[</span><span class="s2">"call_genotype"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">gt</span>
 </pre></div>
 </div>
@@ -7891,7 +7928,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load sample metadata</span>
-<span class="n">df_samples</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+<span class="n">df_samples</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">sample_metadata</span><span class="p">(</span><span class="n">sample_sets</span><span class="o">=</span><span class="s2">"1.0"</span><span class="p">)</span>
 <span class="n">df_samples</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -8067,13 +8104,13 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load IDs of phased samples</span>
-<span class="n">samples_phased</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s1">&#39;sample_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">samples_phased</span> <span class="o">=</span> <span class="n">ds_haps</span><span class="p">[</span><span class="s1">'sample_id'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">samples_phased</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;VBS24195&#39;, &#39;VBS24196&#39;, &#39;VBS24197&#39;, &#39;VBS24198&#39;, &#39;VBS24199&#39;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(['VBS24195', 'VBS24196', 'VBS24197', 'VBS24198', 'VBS24199'],
       dtype=object)
 </pre></div>
 </div>
@@ -8082,7 +8119,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># align sample metadata to haplotypes</span>
-<span class="n">df_samples_phased</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;sample_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_phased</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_samples_phased</span> <span class="o">=</span> <span class="n">df_samples</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"sample_id"</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_phased</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">df_samples_phased</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -8258,7 +8295,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now define some cohort of interest and locate samples</span>
-<span class="n">cohort_query</span> <span class="o">=</span> <span class="s2">&quot;country == &#39;Ghana&#39; and taxon == &#39;funestus&#39; and year == 2017&quot;</span>
+<span class="n">cohort_query</span> <span class="o">=</span> <span class="s2">"country == 'Ghana' and taxon == 'funestus' and year == 2017"</span>
 <span class="n">loc_cohort_samples</span> <span class="o">=</span> <span class="n">df_samples_phased</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">cohort_query</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
 <span class="n">loc_cohort_samples</span>
 </pre></div>
@@ -9032,7 +9069,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now access subsetted haplotypes</span>
-<span class="n">gt_cohort</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_haps_cohort</span><span class="p">[</span><span class="s1">&#39;call_genotype&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">gt_cohort</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_haps_cohort</span><span class="p">[</span><span class="s1">'call_genotype'</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">ht_cohort</span> <span class="o">=</span> <span class="n">gt_cohort</span><span class="o">.</span><span class="n">to_haplotypes</span><span class="p">()</span>
 <span class="n">ht_cohort</span>
 </pre></div>
@@ -9050,22 +9087,22 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose chromosome arm</span>
-<span class="n">region</span> <span class="o">=</span> <span class="s2">&quot;2RL&quot;</span>
+<span class="n">region</span> <span class="o">=</span> <span class="s2">"2RL"</span>
 
 <span class="c1"># choose site filter mask</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="s2">&quot;funestus&quot;</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="s2">"funestus"</span>
 
 <span class="c1"># choose sample sets</span>
-<span class="n">sample_sets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1229-VO-GH-DADZIE-VMF00095&quot;</span><span class="p">]</span>
+<span class="n">sample_sets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"1229-VO-GH-DADZIE-VMF00095"</span><span class="p">]</span>
 
 <span class="c1"># access SNP calls</span>
 <span class="n">ds_snps</span> <span class="o">=</span> <span class="n">af1</span><span class="o">.</span><span class="n">snp_calls</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">sample_sets</span><span class="o">=</span><span class="n">sample_sets</span><span class="p">)</span>
 
 <span class="c1"># locate pass sites</span>
-<span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;variant_filter_pass_</span><span class="si">{</span><span class="n">mask</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">loc_pass</span> <span class="o">=</span> <span class="n">ds_snps</span><span class="p">[</span><span class="sa">f</span><span class="s2">"variant_filter_pass_</span><span class="si">{</span><span class="n">mask</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># perform an allele count over genotypes</span>
-<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_snps</span><span class="p">[</span><span class="s2">&quot;call_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">gt</span> <span class="o">=</span> <span class="n">allel</span><span class="o">.</span><span class="n">GenotypeDaskArray</span><span class="p">(</span><span class="n">ds_snps</span><span class="p">[</span><span class="s2">"call_genotype"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
     <span class="n">ac</span> <span class="o">=</span> <span class="n">gt</span><span class="o">.</span><span class="n">count_alleles</span><span class="p">(</span><span class="n">max_allele</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 
@@ -9153,15 +9190,17 @@ Attributes:
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-hosting">Data hosting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-sets">Sample sets</a></li>
@@ -9232,8 +9271,8 @@ By MalariaGEN
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
