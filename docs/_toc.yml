@@ -46,7 +46,7 @@ parts:
     - file: as1/api
   - caption: Anopheles minimus
     chapters:
-    - file: amin1/intro
+    - file: amin1/amin1.0
       sections:
       - file: amin1/cloud
       - file: amin1/download
